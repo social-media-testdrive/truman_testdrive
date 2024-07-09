@@ -20,7 +20,6 @@ function startIntro(){
   let subdirectory2 = pathArrayForHeader[2];
 
   var currentSelect = ($(".ui.selection.dropdown[name='topicSelect']").dropdown('get text'));
-  console.log('chosen topic = ' + currentSelect);
   if($('.ui.big.labeled.icon.button').hasClass('green')){
     //record the choice in the db to use when generating the free play section
     $.post("/interest", {

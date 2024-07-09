@@ -1,0 +1,102 @@
+extends ../ui_layout-esp
+
+block content
+
+  #content.sixteen.wide.column.centered.addBottomMargin
+   //- #####################################################
+   .ui.one.column.centered.grid.feedbackMessagesGrid
+     .ui.fixed.bottom.sticky
+       .ui.icon.compact.message.warning.hidden#removeHidden
+         i.close.icon
+         i.question.icon.float
+         .content
+           .ui.header ¿Necesitas ayuda?
+           p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
+         
+       .ui.icon.message.warning.hidden#clickAllDotsWarning
+         i.close.icon
+         i.hand.pointer.icon.float
+         .content
+           .ui.header ¡Todavía quedan puntos azules por encontrar!
+           p Haz clic en todos los puntos azules para seguir.
+       .ui.icon.message.success.hidden#instructionsToContinue
+         .content
+           .ui.header Haz clic en "Volver al feed" para continuar!
+           
+   .ui.grid.gridInsideTab 
+     .row 
+       .column
+         button.ui.big.button.articleTab
+           i.icon.reply
+           | Volver al feed
+         button.ui.big.button.articleTab2
+           i.icon.reply
+           | Volver al artículo
+           
+     .row
+       .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.left.floated.column    
+
+         h2 Resultados de la búsqueda "Cierre del Colegio San Francisco"
+         
+         br#hint1
+         p.resultURL colegiosanfranciscomedellin.com.co
+         a
+           h4.resultTitle
+             | Colegio San Francisco - Secretaría de Educación
+         p.resultPublished#hint2
+           | Hace 4 meses
+         p.resultPreviewText
+           | Por favor completa el formulario lo antes posible. ¡Gracias! Graduación de la clase 2020, el 25 de junio del 2020, a las 6:00 de la tarde. Centro de eventos y atletismo, Colegio San Francisco.
+
+         p.resultURL noticiasmedellin.com.co
+         a
+           h4.resultTitle#hint3 
+             | Se halló a estudiante desaparecido - Noticias Medellin
+         p.resultPublished
+           | Hace un año
+         p.resultPreviewText
+           | Se notificó a los funcionarios del Colegio San Francisco que se había reportado la desaparición de un estudiante de 16 años. Se le dijo al Departamento de Policía de Colombia...
+
+         p.resultURL es.wikipedia.com
+         a
+           h4.resultTitle 
+             | Colegio San Francisco (Medellin, CO) - Wikipedia
+         p.resultPublished
+           | Hace un año
+         p.resultPreviewText
+           | El Colegio San Francisco es una escuela pública en Medellin, Colombia. Es parte del Distrito Escolar de la Secretaría de Educación y cuenta con más de 1,000 estudiantes matriculados...
+
+         p.resultURL mejorescolegiosmedellin.com
+         a
+           h4.resultTitle   
+             | Colegio San Francisco en Medellin Colombia - Indice de las mejores escuelas
+         p.resultPublished
+           | Hace 9 meses
+         p.resultPreviewText
+           | El Colegio San Francisco es una escuela pública de primer nivel ubicada en Medellin, Colombia. Tiene 1,407 estudiantes en los grados 9-11 con una proporción de alumnos por maestro de 25 a 1.
+               
+         p.resultURL colegiosanfranciscomedellin.com.co
+         a
+           h4.resultTitle   
+             | Regístrese para recibir noticias electrónicas - Colegio San Francisco
+         p.resultPublished
+           | Hace 6 meses
+         p.resultPreviewText
+           | Este boletín electrónico es únicamente informativo y no está patrocinado ni respaldado por la Secretaría de Educación, el...
+
+     .row 
+       .column
+         button.ui.big.button.articleTab
+           i.icon.reply
+           | Volver al feed
+         button.ui.big.button.articleTab2
+           i.icon.reply
+           | Volver al artículo
+
+block scripts
+  script(src='/module_js/advancedlit-esp/advancedlit-esp_sim3.js')
+  script(src='/module_js/voiceover.js')
+  script(src='/module_js/base_sim.js')
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')

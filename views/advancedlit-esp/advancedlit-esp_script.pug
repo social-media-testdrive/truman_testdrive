@@ -1,0 +1,220 @@
+extends ../ui_layout-esp
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  -var s3 = "https://testdrive-filesystem.s3.us-east-2.amazonaws.com/"
+  
+  .ui.active.tab(data-tab='timeline')
+    .ui.grid
+      .computer.only.tablet.only.four.wide.column
+        .ui.sticky
+          .ui.icon.message.success.hidden#pleaseshowonback
+            .content
+              .ui.header ¡Haz clic en el artículo para continuar! 
+          .ui.card
+            .image
+              if user.profile.picture
+                img(src=cdn+'/profile_pictures/'+user.profile.picture)
+              else
+                img(src=user.gravatar(60))
+            .content
+              a.header(href='/me/'+mod)= user.profile.name || user.email || user.id
+              .meta="@Guest"
+              .description=user.profile.bio
+              .description
+                if user.profile.location
+                  i.marker.icon
+                  span=user.profile.location
+            .one.ui.bottom.attached.icon.buttons
+                button.ui.editprofile.button(data-tooltip='Actualiza tu perfil', data-position='bottom left')
+                    i.write.icon
+        
+      #loading.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column
+        img.ui.centered.small.image(src='/images/heart.svg')
+      #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.trackHeightOffset
+        //- Input for creating new post at top of feed
+        .ui.sticky.newPostSticky
+          #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
+            .ui.label
+              if user.profile.picture
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+              else
+                img.ui.avatar.image(src=user.gravatar(60))
+            input(type='text', placeholder='Crear una publicación')
+            i.big.photo.link.icon
+
+        each val in script
+          //- create a card for each post in val (if by user make the card a little different)
+          //- if val.relativeTime - then post came from user_post (so user post, user reply to actor reply to user post)
+          if val.relativeTime
+            include ../partials/script/userPost
+          //- Now we are making posts by Actors, not the USER
+          else
+            if(val.info_text !== "")
+              include ../partials/script/advancedlit_articlePost
+            else
+              include ../partials/script/actorPost
+        a.ui.fluid.card
+          .content
+            .ui.big.green.labeled.icon.button.script
+              i.rocket.icon
+              |   Let's Continue!        
+        br
+        br
+          
+        include ../partials/script/modals/newUserPost    
+          
+  //- #########################################################################
+  
+  .ui.tab(data-tab="article1")
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Regresar al feed
+    button.ui.big.green.button.searchTab(data-tab='search1')
+      i.icon.search
+      span.searchButtonText 
+    include ../partials/script/advancedlit_articleTab
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Regresar al feed
+    button.ui.big.green.button.searchTab(data-tab='search1')
+      i.icon.search
+      span.searchButtonText 
+      
+  .ui.tab(data-tab="article2")
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Regresar al feed
+    button.ui.big.green.button.searchTab(data-tab='search2')
+      i.icon.search
+      span.searchButtonText 
+    include ../partials/script/advancedlit_articleTab
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Regresar al feed
+    button.ui.big.green.button.searchTab(data-tab='search2')
+      i.icon.search
+      span.searchButtonText 
+    
+  .ui.tab(data-tab="article3")
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Regresar al feed
+    button.ui.big.green.button.searchTab(data-tab='search3')
+      i.icon.search
+      span.searchButtonText 
+    include ../partials/script/advancedlit_articleTab
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Regresar al feed
+    button.ui.big.green.button.searchTab(data-tab='search3')
+      i.icon.search
+      span.searchButtonText 
+      
+  .ui.tab(data-tab="article4")
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Regresar al feed
+    button.ui.big.green.button.searchTab(data-tab='search4')
+      i.icon.search
+      span.searchButtonText 
+    include ../partials/script/advancedlit_articleTab
+    button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+      i.icon.reply
+      | Regresar al feed
+    button.ui.big.green.button.searchTab(data-tab='search4')
+      i.icon.search
+      span.searchButtonText 
+    
+  //- #########################################################################
+  
+  .ui.tab(data-tab="search1")
+    .ui.grid.gridInsideTab      
+      .row
+        .column
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Volver al feed
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article1')
+            i.icon.reply
+            | Volver al artículo
+      include ../partials/script/advancedlit_searchTab
+      .row
+        .column
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Volver al feed
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article1')
+            i.icon.reply
+            | Volver al artículo
+      
+  .ui.tab(data-tab="search2")
+    .ui.grid.gridInsideTab          
+      .row
+        .column
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Volver al feed
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article2')
+            i.icon.reply
+            | Volver al artículo
+      include ../partials/script/advancedlit_searchTab
+      .row
+        .column
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Volver al feed
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article2')
+            i.icon.reply
+            | Volver al artículo
+  
+  .ui.tab(data-tab="search3")
+    .ui.grid.gridInsideTab          
+      .row
+        .column
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Volver al feed
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article3')
+            i.icon.reply
+            | Volver al artículo
+      include ../partials/script/advancedlit_searchTab
+      .row
+        .column
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Volver al feed
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article3')
+            i.icon.reply
+            | Volver al artículo
+            
+  .ui.tab(data-tab="search4")
+    .ui.grid.gridInsideTab          
+      .row
+        .column
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Volver al feed
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article4')
+            i.icon.reply
+            | Volver al artículo
+      include ../partials/script/advancedlit_searchTab
+      .row
+        .column
+          button.ui.big.testDriveBlueButton.button.timelineTab(data-tab='timeline')
+            i.icon.reply
+            | Volver al feed
+          button.ui.big.testDriveBlueButton.button.articleTab(data-tab='article4')
+            i.icon.reply
+            | Volver al artículo
+      
+  //- #########################################################################
+           
+block scripts
+  script(src='/postFunctionalities.js')
+  script(src='/module_js/script.js')   
+  script(src='/module_js/advancedlit-esp/advancedlit-esp_script.js')  
+     
+block styles
+  link(rel='stylesheet', href='/css/script.css')
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')

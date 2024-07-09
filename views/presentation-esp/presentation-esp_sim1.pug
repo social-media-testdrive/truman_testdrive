@@ -1,0 +1,299 @@
+extends ../ui_layout-esp
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+    .ui.card#hint1
+      .image
+        img(src=cdn+"/profile_pictures/user78.png")
+      .content
+        a.header= 'Jack, “El hombre serpiente”'
+        .meta="@"+'jacklaserpiente'
+        .description="sígueme 🐍" 
+        .description 
+          i.marker.icon
+          span="Buenos Aires, AR"
+
+  
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p Sube y dale clic a "Listo" para comenzar!
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda? 
+            p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
+          
+        .ui.icon.message.warning#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header ¡Todavía quedan puntos azules por encontrar!
+            p Haz clic en todos los puntos azules para seguir.
+    #hint2.ui.fluid.card.dim.test
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  ¡Has reportado esto!
+                  h3.ui.inverted.header
+                    span="Los administradores del TestDrive van a revisar este comentario pronto. Lamentamos que hayas tenido esta experiencia."
+      .content
+        .right.floated.meta= "Ayer"
+        |
+        a(href='/user/jacklaserpiente')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
+          span='Jack, “El hombre serpiente”'
+      .image
+        img.post(src=cdn+"/post_pictures/selfpresga4.jpg")
+      .content
+        .description="¿quién más siente que la cabra es su animal espiritual?"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user44.png')
+            .content
+              a.author Ebony Darkness Raven Way
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | Igual yo o tal vez un animal perezoso
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  ¡Has reportado esto!
+                  h3.ui.inverted.header
+                    span="Los administradores del TestDrive van a revisar este comentario pronto. Lamentamos que hayas tenido esta experiencia."
+      .content
+        .right.floated.meta= "Hace 2 días"
+        |
+        a(href='/user/jacklaserpiente')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
+          span='Jack, “El hombre serpiente”'
+      .image
+        img.post(src=cdn+"/post_pictures/selfpresga5.png")
+      .content
+        .description="mi primo me dejó andar en bicicleta 😎 shh, no se lo digan a mis padres"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user44.png')
+            .content
+              a.author Ebony Darkness Raven Way
+              .metadata
+                span.date Hace 2 días
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
+              .text()
+                | que sospechosooo
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user43.png')
+            .content
+              a.author Mi nombre
+              .metadata
+                span.date Hace 2 días
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text()
+                | jaja, te crees tan genial
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  ¡Has reportado esto!
+                  h3.ui.inverted.header
+                    span="Los administradores del TestDrive van a revisar este comentario pronto. Lamentamos que hayas tenido esta experiencia."
+      .content
+        .right.floated.meta= "Hace 3 días"
+        |
+        a(href='/user/jacklaserpiente')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user78.png')
+          span='Jack, “El hombre serpiente”'
+      .image
+        img.post(src=cdn+"/post_pictures/selfpresga6.jpg")
+      .content#hint3
+        .description="Uf, estoy tan molesto con no sabes quién, es tan estúpido y no quiero que venga a la escuela"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user1.png')
+            .content
+              a.author Nombre Fake
+              .metadata
+                span.date Hace 3 días
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text()
+                | sí, en serio
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user43.png')
+            .content
+              a.author Mi nombre
+              .metadata
+                span.date Hace 3 días
+                .rating
+                  i.heart.icon
+                  span.num=0
+                  |  Likes
+              .text()
+                | yo también quiero que se vaya
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+
+    button.ui.big.labeled.icon.button.cybersim2.addBottomMargin#cyberTransButton
+        i.rocket.icon
+        |   Continuar!
+
+block scripts
+  script.
+    var stepsList = [
+      {
+        element: '#hint2',
+        intro: `Click "Next" to begin!`,
+        position: 'right',
+        scrollTo: 'tooltip',
+        audioFile: ['']
+      },
+      {
+        element: '#hint2',
+        intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
+        class='introjs-hint'><div class='introjs-hint-dot'></div><div
+        class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
+        position:'right',
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.03.mp3']
+      }
+    ];
+    
+    var hintsList = [
+      {
+        hint: `Aquí está el finsta de Jake, jakethesnake. Solo 16 de sus amigos más
+        cercanos de la escuela siguen esta cuenta.`,
+        element: '#hint2',
+        hintPosition: 'top-left',
+        audioFile: ['CUSML.12.4.05.mp3']
+      },
+      {
+        hint: `Aquí publica fotos divertidas y cosas casuales que no publicaría
+        en su cuenta principal porque solo quiere que sus mejores amigos
+        lo vean.`,
+        element: '#hint2',
+        hintPosition: 'top-middle',
+        audioFile: ['CUSML.12.4.06.mp3']
+      },
+      {
+        hint: `Aunque Jake no menciona a la persona, la publicación es
+        desagradable y crea drama. ¿Jake publicaría lo mismo en su cuenta
+        pública? ¡Recuerda ser amable y respetuoso en línea!`,
+        element: '#hint3',
+        hintPosition: 'top-middle',
+        audioFile: ['CUSML.12.4.07.mp3']
+      }
+    ];
+
+  //- script(src='/module_js/voiceover.js')    
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/base_sim.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')

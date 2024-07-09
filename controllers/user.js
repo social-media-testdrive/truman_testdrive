@@ -331,6 +331,9 @@ exports.postUpdateInterestSelection = (req, res, next) => {
             case 'targeted':
                 userTopic = user.targetedAdTopic;
                 break;
+            case 'targeted-esp':
+                userTopic = user.targetedAdTopic;
+                break;
             case 'esteem-esp':
                 userTopic = user.esteemTopic;
                 break;

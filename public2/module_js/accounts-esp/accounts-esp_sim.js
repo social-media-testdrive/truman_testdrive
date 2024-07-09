@@ -3,48 +3,44 @@ let stepsList = [{
         intro: `¡Dale clic a "Siguiente" para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
-        // audioFile: ['']
+        audioFile: ['']
     },
     {
         element: '#generalStep',
-        intro: `Let’s practice creating an account on social media.`,
+        intro: `Practiquemos cómo crear una cuenta en las redes sociales.`,
         position: "right",
         scrollTo: 'tooltip',
-        // audioFile: ['CUSML.8.4.01.mp3']
+        audioFile: ['CUSML.8.4.01.mp3']
     },
     {
         element: '#generalStep',
-        intro: `Dale click a "Listo" y busca los puntos azules &nbsp;<a role='button' tabindex='0'
-                class='introjs-hint'><div class='introjs-hint-dot'></div><div
-                class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; para aprender más...`,
+        intro: `Dale clic a "Listo" y busca los puntos azules&nbsp;&nbsp;<a role='button' tabindex='0'
+      class='introjs-hint'><div class='introjs-hint-dot'></div>
+      <div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp;
+      para aprender más...`,
         position: "right",
         scrollTo: 'tooltip',
-        // audioFile: ['CUSML.8.4.02.mp3']
+        audioFile: ['CUSML.8.4.02.mp3']
     }
 ];
 
 let hintsList = [{
-        hint: `Think about whether you want to include part of your name or a
-    nickname. You may or may not want people to know exactly who you are based
-    on your username.`,
+        hint: `Piensa si quieres incluir parte de tu nombre o un apodo. Es posible que las personas te reconozcan por tu nombre de usuario.`,
         element: '#hint1',
         hintPosition: 'middle-middle',
-        // audioFile: ['CUSML.8.4.03.mp3']
+        audioFile: ['CUSML.8.4.03.mp3']
     },
     {
-        hint: `Make sure you have a strong password that you can easily remember,
-    but that is difficult for others to guess!`,
+        hint: `¡Asegúrate de tener una contraseña segura que puedas recordar fácilmente, pero que sea difícil de adivinar para otros!`,
         element: '#hint2',
         hintPosition: 'middle-middle',
-        // audioFile: ['CUSML.8.4.04.mp3']
+        audioFile: ['CUSML.8.4.04.mp3']
     },
     {
-        hint: `You can make your password stronger by including different types of
-    characters, such as capital letters, numbers, and symbols. Making your
-    password longer can be good too!`,
+        hint: `Puedes hacer que tu contraseña sea más segura si incluyes distintos tipos de caracteres, como letras mayúsculas, números y símbolos. ¡También puede ser buena idea que tu contraseña sea más larga!`,
         element: '#strengthLabel',
         hintPosition: 'middle-right',
-        // audioFile: ['CUSML.8.4.05.mp3']
+        audioFile: ['CUSML.8.4.05.mp3']
     }
 ];
 
@@ -94,48 +90,48 @@ function eventsAfterHints() {
             case 0:
                 if (result.password === "") {
                     $('#passwordStrength').progress('reset');
-                    $("#strengthLabel").text("Password Strength");
+                    $("#strengthLabel").text("Fortaleza de la contraseña");
                     $('#cyberTransButton').removeClass('green');
                     $('#feedbackWarning').text("");
                     $('#feedbackSuggestion').html("");
                     $('#feedbackMessage').hide();
                 } else {
                     $('#passwordStrength').progress({ value: 1 });
-                    $("#strengthLabel").text("Password Strength: Very Weak");
+                    $("#strengthLabel").text("Fortaleza de la contraseña: Muy débil");
                     hideFieldMessage('#passwordWarning');
                     displayFeedback(result);
                 }
                 break;
             case 1:
                 $('#passwordStrength').progress({ value: 2 });
-                $("#strengthLabel").text("Password Strength: Weak");
+                $("#strengthLabel").text("Fortaleza de la contraseña: Débil");
                 hideFieldMessage('#passwordWarning');
                 displayFeedback(result);
                 break;
             case 2:
                 $('#passwordStrength').progress({ value: 3 });
-                $("#strengthLabel").text("Password Strength: Moderate");
+                $("#strengthLabel").text("Fortaleza de la contraseña: Moderada");
                 hideFieldMessage('#passwordWarning');
                 hideFieldMessage('#confirmContinueCheck');
                 displayFeedback(result);
                 break;
             case 3:
                 $('#passwordStrength').progress({ value: 4 });
-                $("#strengthLabel").text("Password Strength: Strong");
+                $("#strengthLabel").text("Fortaleza de la contraseña: Fuerte");
                 hideFieldMessage('#passwordWarning');
                 hideFieldMessage('#confirmContinueCheck');
                 displayFeedback(result);
                 break;
             case 4:
                 $('#passwordStrength').progress({ value: 5 });
-                $("#strengthLabel").text("Password Strength: Very Strong");
+                $("#strengthLabel").text("Fortaleza de la contraseña: Muy fuerte");
                 hideFieldMessage('#passwordWarning');
                 hideFieldMessage('#confirmContinueCheck');
                 displayFeedback(result);
                 break;
             default:
                 $('#passwordStrength').progress('reset');
-                $("#strengthLabel").text("Password Strength");
+                $("#strengthLabel").text("Fortaleza de la contraseña");
                 hideFieldMessage('#passwordWarning');
                 hideFieldMessage('#confirmContinueCheck');
                 displayFeedback(result);
@@ -197,7 +193,7 @@ function customOnClickGreenContinue() {
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     if (enableDataCollection) {
         actionArray = [];
-        passwordDictionary = ["Very Weak", "Weak", "Moderate", "Strong", "Very Strong"];
+        passwordDictionary = ["Muy débil", "Débil", "Moderada", "Fuerte", "Muy fuerte"];
         $('input[type=text]').each(function() {
             let cat = {};
             cat.inputField = $(this).attr('name');

@@ -1,0 +1,286 @@
+extends ../ui_layout-esp
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+    .ui.card
+      .image
+        img(src=cdn+"/profile_pictures/user61.jpg")
+      .content
+        a.header= 'Johan Vera'
+        .meta="@"+'johan_es_increible15'
+        .description="🏈 #15 | sígueme y te sigo 👍" 
+        .description 
+          i.marker.icon
+          span="Quito, Ecuador"
+
+  
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column 
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p Sube y dale clic a "Siguiente" para comenzar
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda? 
+            p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
+          
+        .ui.icon.message.warning#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header ¡Todavía quedan puntos azules por encontrar!
+            p Haz clic en todos los puntos azules para seguir.
+
+    #step1.ui.fluid.card.dim.test
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  ¡Has reportado esto!
+                  h3.ui.inverted.header
+                    span="Los administradores del TestDrive van a revisar el post luego. Lamentamos que hayas tenido esta experiencia."
+      .content#hint1
+        .right.floated.meta= "Ayer"
+        |
+        a(href='/user/johan_es_increible15')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg')
+          span='Johan Vera'
+      .image
+        img.post(src=cdn+"/post_pictures/selfpresga1.png")
+      .content
+        .description="Gran carrera de Miguel 🏈"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user71.JPG')
+            .content
+              a.author Andrés Torres
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | estuve ahí también
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user74.jpg')
+            .content
+              a.author Santino Gómez
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | ¡¡¡Deberíamos jugar más!!!
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+            
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  ¡Has reportado esto!
+                  h3.ui.inverted.header
+                    span="Los administradores del TestDrive van a revisar el post luego. Lamentamos que hayas tenido esta experiencia."
+      .content
+        .right.floated.meta= "Hace 3 días"
+        |
+        a(href='/user/johan_es_increible15')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg')
+          span='Johan Vera'
+      .image
+        img.post(src=cdn+"/post_pictures/selfpresga2.png")
+      .content
+        .description="Este es mi proyecto de la clase de ciencias!"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user57.jpg')
+            .content
+              a.author Francisca Ferreira
+              .metadata
+                span.date Hace 2 días
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | ¡Parece interesante!
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+
+    .ui.fluid.card.dim.test()
+      .ui.dimmer.flag
+            .content
+              .center
+                h2.ui.inverted.icon.header
+                  i.red.flag.icon
+                  |  ¡Has reportado esto!
+                  h3.ui.inverted.header
+                    span="Los administradores del TestDrive van a revisar el post luego. Lamentamos que hayas tenido esta experiencia."
+      .content
+        .right.floated.meta= "Hace 5 días"
+        |
+        a(href='/user/johan_es_increible15')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/user61.jpg')
+          span='Johan Vera'
+      .image
+        img.post(src=cdn+"/post_pictures/selfpresga3.JPG")
+      .content
+        .description="¡Lista para el partido de mañana por la noche!"
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=2
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user63.jpg')
+            .content
+              a.author Jonathan Muñoz
+              .metadata
+                span.date Hace 5 días
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | jaja buen tiro
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+
+    button.ui.big.labeled.icon.button.cybersim1.addBottomMargin#cyberTransButton
+        i.rocket.icon
+        |   Continuar!
+
+block scripts
+  script.
+    var stepsList = [
+      {
+        element: '#step1',
+        intro: `Dale clic a "Siguiente" para comenzar!`,
+        position: 'right',
+        scrollTo: 'tooltip',
+        audioFile: ['']
+      },
+      {
+        element: '#step1',
+        intro: `Estos son posts de las cuentas de redes sociales de Johan, un chico
+        de 13 años. Tiene 3 cuentas diferentes. La principal (Johan Vera), así como
+        otras dos cuentas (johanelserpiente y minecraftboi23).`,
+        position:'right',
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.01.mp3']
+      },
+      {
+        element: '#step1',
+        intro: `En esta actividad, veremos las diferentes cuentas de Johan.`,
+        position:'right',
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.02.mp3']
+      },
+      {
+        element: '#step1',
+        intro: `Haz clic en "Listo" y luego busca los puntos azules&nbsp&nbsp;<a role='button' tabindex='0'
+        class='introjs-hint'><div class='introjs-hint-dot'></div>
+        <div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para aprender
+        más...`,
+        position:'right',
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.03.mp3']
+      }
+    ];
+    
+    var hintsList = [
+      {
+        hint: `Johan mantiene su cuenta principal cuidadosamente seleccionada. Solo publica cosas
+        que estaría bien con todos sus seguidores de redes sociales viendo.`,
+        element: '#hint1',
+        hintPosition: 'middle-middle',
+        scrollTo:'tooltip',
+        audioFile: ['CUSML.12.4.04.mp3']
+      }
+    ];
+    
+  //- script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_sim.js")
+  script(src='/postFunctionalities.js')
+  
+block styles
+  link(rel='stylesheet', href='/css/sim.css')

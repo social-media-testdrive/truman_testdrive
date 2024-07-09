@@ -73,7 +73,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber='Q1')
-                  | #{reflectionData.phishing.Q1.prompt}
+                  | #{reflectionData['phishing-esp'].Q1.prompt}
               .ui.stackable.two.cards.checkOne
         
                 .ui.fluid.card.dim()#card1
@@ -83,11 +83,11 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user35.jpg')
                       span Lucy Simms
                   .image
-                    img.post(src=cdn + reflectionData.phishing.Q1.groupPostImages[0])
+                    img.post(src=cdn + reflectionData['phishing-esp'].Q1.groupPostImages[0])
                   .content
                     .description.
-                      #{reflectionData.phishing.Q1.groupPostDescriptions[0]}
-                      #[span(class="blueText") #{reflectionData.phishing.Q1.groupPostLinks[0]}]
+                      #{reflectionData['phishing-esp'].Q1.groupPostDescriptions[0]}
+                      #[span(class="blueText") #{reflectionData['phishing-esp'].Q1.groupPostLinks[0]}]
             
         
                 .ui.fluid.card.dim()
@@ -99,7 +99,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='overshare', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[0]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -108,7 +108,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate')
                             label(for='inconsiderate', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[1]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -117,7 +117,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='responsible')
                             label(for='responsible', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[2]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -126,7 +126,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='somethingelse')
                             label(for='somethingelse', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[3]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[3]}
                               
               .ui.stackable.two.cards.checkTwo
               
@@ -137,11 +137,11 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user91.png')
                       span Socail Media Testdrive
                   .image
-                    img.post(src=cdn+reflectionData.phishing.Q1.groupPostImages[1])
+                    img.post(src=cdn+reflectionData['phishing-esp'].Q1.groupPostImages[1])
                   .content
                     .description.
-                      #{reflectionData.phishing.Q1.groupPostDescriptions[1]}
-                      #[span(class="blueText") #{reflectionData.phishing.Q1.groupPostLinks[1]}]
+                      #{reflectionData['phishing-esp'].Q1.groupPostDescriptions[1]}
+                      #[span(class="blueText") #{reflectionData['phishing-esp'].Q1.groupPostLinks[1]}]
                       
                       
                 .ui.fluid.card.dim.printvis()
@@ -153,7 +153,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='overshare2', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[0]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -162,7 +162,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate2')
                             label(for='inconsiderate2', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[1]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -171,7 +171,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='responsible2')
                             label(for='responsible2', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[2]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -180,7 +180,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='somethingelse')
                             label(for='somethingelse', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[3]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[3]}
                             
               .ui.stackable.two.cards.checkThree
               
@@ -191,11 +191,11 @@ block content
                       img.ui.avatar.image(src=cdn+'/profile_pictures/user41.jpg')
                       span Emma Garcia
                   .image
-                    img.post(src=cdn+reflectionData.phishing.Q1.groupPostImages[2])
+                    img.post(src=cdn+reflectionData['phishing-esp'].Q1.groupPostImages[2])
                   .content
                     .description.
-                      #{reflectionData.phishing.Q1.groupPostDescriptions[2]}
-                      #[span(class="blueText") #{reflectionData.phishing.Q1.groupPostLinks[2]}]
+                      #{reflectionData['phishing-esp'].Q1.groupPostDescriptions[2]}
+                      #[span(class="blueText") #{reflectionData['phishing-esp'].Q1.groupPostLinks[2]}]
            
               
                 .ui.fluid.card.dim()
@@ -207,7 +207,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox')
                             label(for='overshare3', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[0]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[0]}
                     hr
                     .ui.form
                       .inline.fields
@@ -216,7 +216,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='inconsiderate3')
                             label(for='inconsiderate3', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[1]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[1]}
                     hr
                     .ui.form
                       .inline.fields
@@ -225,7 +225,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='responsible3')
                             label(for='responsible3', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[2]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[2]}
                     hr
                     .ui.form
                       .inline.fields
@@ -234,7 +234,7 @@ block content
                           .ui.checkbox
                             input(type='checkbox', name='somethingelse')
                             label(for='somethingelse', tabindex='0') 
-                              | #{reflectionData.phishing.Q1.checkboxLabels[3]}
+                              | #{reflectionData['phishing-esp'].Q1.checkboxLabels[3]}
                                   
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -244,7 +244,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q2')
-                  | #{reflectionData.phishing.Q2.prompt}
+                  | #{reflectionData['phishing-esp'].Q2.prompt}
               .ui.form
                 .inline.fields
                   label
@@ -258,7 +258,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q3')
-                  | #{reflectionData.phishing.Q3.prompt}
+                  | #{reflectionData['phishing-esp'].Q3.prompt}
               .ui.form
                 .inline.fields
                   label

@@ -91,7 +91,7 @@ exports.postActivityData = (req, res, next) => {
             }, freeplayCommentsArray);
 
             // Assign the chosenTopic array according to the current module the user is in.
-            if (module === "targeted") {
+            if (module === "targeted" || module === "targeted-esp") {
                 activityData.chosenTopic = user.targetedAdTopic;
             } else if (module === "esteem" || module === "esteem-esp") {
                 activityData.chosenTopic = user.esteemTopic;

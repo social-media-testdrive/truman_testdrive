@@ -1,0 +1,253 @@
+extends ../ui_layout-esp
+
+block content
+
+  #content.sixteen.wide.column.centered.addBottomMargin
+   //- #####################################################
+   .ui.one.column.centered.grid.feedbackMessagesGrid
+     .ui.fixed.bottom.sticky
+       .ui.icon.compact.message.warning.hidden#removeHidden
+         i.close.icon
+         i.question.icon.float
+         .content
+           .ui.header ¿Necesitas ayuda?
+           p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
+         
+       .ui.icon.message.warning.hidden#clickAllDotsWarning
+         i.close.icon
+         i.hand.pointer.icon.float
+         .content
+           .ui.header ¡Todavía quedan puntos azules por encontrar!
+           p Haz clic en todos los puntos azules para seguir.
+
+   .ui.grid.gridInsideTab
+     .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.centered
+       
+       .ui.fluid.card.dim()#step1
+         .ui.dimmer.flag
+           .content
+             .center
+               h2.ui.inverted.icon.header
+                 i.red.flag.icon
+                 | ¡Has reportado esto!
+                 h3.ui.inverted.header
+                   span 
+                     | Los administradores del TestDrive van a revisar el post luego.
+         .content
+           .right.floated.meta= "10 minutes ago"
+           a
+             img.ui.avatar.image(src=cdn+'/profile_pictures/user47.jpeg')
+             span='María Teresa Hernandez'
+         .img.post.articleImage.articleTab(data-tab="two")        
+           img(src=cdn+'/post_pictures/dog_an.jpg')
+
+         .content.articleTab(data-tab="two")
+           .description
+             | Tengo el perro más lindo del universo. 🐶❤️
+         .four.ui.bottom.attached.icon.buttons
+           .ui.reply.button(tabindex='0')
+             i.reply.icon
+             | Responder
+           .ui.flag.button(tabindex='0')
+             i.flag.icon
+             | Reportar
+           .ui.labeled.button(tabindex='0')
+             .ui.like.button
+               i.heart.icon
+               | Like
+             a.ui.basic.red.left.pointing.label.count 0
+         .content
+           .ui.comments
+             .comment
+               a.avatar
+                 img(src=cdn+'/profile_pictures/user19.jpg')
+               .content
+                 a.author Daniel Ríos
+                 .metadata
+                   span.date Hace un minuto
+                   i.heart.icon
+                   |  0 Likes
+                 .text()
+                   | ¡Tienes razón!
+                 .actions
+                   a.like Like
+                   a.flag Reportar     
+             .comment
+               a.avatar
+                 img(src=cdn+'/profile_pictures/user25.jpg')
+               .content
+                 a.author Valeria Vargas
+                 .metadata
+                   span.date Hace un minuto
+                   i.heart.icon
+                   |  0 Likes
+                 .text()
+                   | que lindo 😍
+                 .actions
+                   a.like Like
+                   a.flag Reportar   
+         .extra.content
+           .ui.fluid.left.labeled.right.icon.input
+             .ui.label
+               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+             input.newcomment(type='text' placeholder='Escribir un comentario')
+             i.big.send.link.icon 
+       
+       .ui.fluid.card.dim()
+         .ui.dimmer.flag
+           .content
+             .center
+               h2.ui.inverted.icon.header
+                 i.red.flag.icon
+                 | ¡Has reportado esto!
+                 h3.ui.inverted.header
+                   span 
+                     | Los administradores del TestDrive van a revisar el post luego.
+         .content#hint1
+           .right.floated.meta= "Hace 40 minutos"
+           a
+                 img.ui.avatar.image(src=cdn+'/profile_pictures/user28.jpg')
+                 span='Juan David Gónzales'
+         .img.post.articleImage(data-tab="two")#hint2        
+           img(src=cdn+'/post_pictures/haywell1_an.png')
+
+         .content.articleTab(data-tab="two")
+           .description
+             | Acabo de enterarme que nuestro colegio cerrará por el resto del año. Los extrañaré chicos
+         .four.ui.bottom.attached.icon.buttons
+           .ui.reply.button(tabindex='0')
+             i.reply.icon
+             | Responder
+           .ui.flag.button(tabindex='0')#hint3
+             i.flag.icon
+             | Reportar
+           .ui.share.button(tabindex='0')
+             i.share.icon
+             | Compartir
+           .ui.labeled.button(tabindex='0')
+             .ui.like.button
+               i.heart.icon
+               | Like
+             a.ui.basic.red.left.pointing.label.count 0
+         .content
+           .ui.comments
+             .comment
+               a.avatar
+                 img(src=cdn+'/profile_pictures/user37.jpg')
+               .content
+                 a.author Daniel Melendez
+                 .metadata
+                   span.date Hace un minuto
+                   i.heart.icon
+                   |  0 Likes
+                 .text()
+                   | ¿¡¿qué?!?
+                 .actions
+                   a.like Like
+                   a.flag Reportar     
+             .comment
+               a.avatar
+                 img(src=cdn+'/profile_pictures/user73.JPG')
+               .content
+                 a.author Francisco Almeida
+                 .metadata
+                   span.date Hace un minuto
+                   i.heart.icon
+                   |  0 Likes
+                 .text()
+                   | estaré tan aburrido en casa
+                 .actions
+                   a.like Like
+                   a.flag Reportar   
+         .extra.content
+           .ui.fluid.left.labeled.right.icon.input
+             .ui.label
+               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+             input.newcomment(type='text' placeholder='Escribir un comentario')
+             i.big.send.link.icon    
+              
+       .ui.fluid.card.dim()
+         .ui.dimmer.flag
+           .content
+             .center
+               h2.ui.inverted.icon.header
+                 i.red.flag.icon
+                 | ¡Has reportado esto!
+                 h3.ui.inverted.header
+                   span 
+                     | Los administradores del TestDrive van a revisar el post luego.
+         .content
+           .right.floated.meta= "Ayer"
+           a
+                 img.ui.avatar.image(src=cdn+'/profile_pictures/user56.jpg')
+                 span='María Laura Díaz'
+         .img.post.articleImage.articleTab(data-tab="two")        
+           img(src=cdn+'/post_pictures/ice-cream_an.jpg')
+   
+         .content.articleTab(data-tab="two")
+           .description
+             | el día está perfecto para un helado 🍦
+         .four.ui.bottom.attached.icon.buttons
+           .ui.reply.button(tabindex='0')
+             i.reply.icon
+             | Responder
+           .ui.flag.button(tabindex='0')
+             i.flag.icon
+             | Reportar
+           .ui.labeled.button(tabindex='0')
+             .ui.like.button
+               i.heart.icon
+               | Like
+             a.ui.basic.red.left.pointing.label.count 0
+         .content
+           .ui.comments
+             .comment
+               a.avatar
+                 img(src=cdn+'/profile_pictures/user30.jpg')
+               .content
+                 a.author Lilian Ureña
+                 .metadata
+                   span.date Hace un minuto
+                   i.heart.icon
+                   |  0 Likes
+                 .text()
+                   | ¡Quiero un poco!
+                 .actions
+                   a.like Like
+                   a.flag Reportar     
+             .comment
+               a.avatar
+                 img(src=cdn+'/profile_pictures/user32.JPG')
+               .content
+                 a.author Francisca Rodriguez
+                 .metadata
+                   span.date Hace un minuto
+                   i.heart.icon
+                   |  0 Likes
+                 .text()
+                   | ¿De qué sabor es??
+                 .actions
+                   a.like Like
+                   a.flag Reportar   
+         .extra.content
+           .ui.fluid.left.labeled.right.icon.input
+             .ui.label
+               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+             input.newcomment(type='text' placeholder='Escribir un comentario')
+             i.big.send.link.icon                 
+       
+       button.ui.big.button.articleTab.continueButton
+         i.icon.rocket
+         | ¡Continuar!
+       
+                 
+   //- #####################################################
+
+block scripts
+  script(src='/postFunctionalities.js')
+  script(src='/module_js/advancedlit-esp/advancedlit-esp_sim4.js')
+  script(src='/module_js/voiceover.js')
+  script(src='/module_js/base_sim.js')
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')

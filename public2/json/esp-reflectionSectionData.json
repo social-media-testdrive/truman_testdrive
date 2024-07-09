@@ -58,6 +58,37 @@
       "prompt": "Why is it important to get the full story before reacting to or sharing breaking news?"
     }
   },
+  "advancedlit-esp": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "Revisé si era un artículo de opinión",
+      "checkboxLabels": {
+        "0": "Revisé si era un artículo de opinión",
+        "1": "Revisé las fuentes que utilizaron para el articulo",
+        "2": "Revisé otras fuentes",
+        "3": "Compartí la noticia",
+        "4": "Reporté el post",
+        "5": "No hice nada"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "0",
+        "4": "1",
+        "5": "0"
+      }
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "¿Leíste alguno de los artículos? ¿Notaste alguna señal de que el artículo podría ser erróneo?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "¿Por qué es importante conocer la historia completa antes de reaccionar o compartir noticias de último minuto?"
+    }
+  },
   "cyberbullying": {
     "Q1": {
       "type": "checkbox",
@@ -90,6 +121,58 @@
     }
   },
   "digfoot": {
+    "Q1": {
+      "type": "checkboxGrouped",
+      "prompt": "¿Cómo tendrían las siguientes publicaciones un impacto negativo en las huellas digitales?",
+      "checkboxLabels": {
+        "0": "Se comparte en exceso.",
+        "1": "Se comparte algo que luego podrían arrepentirse.",
+        "2": "El post no toma en cuenta la huella digital de los demás.",
+        "3": "Este es un post responsable."
+      },
+      "groupCount": "3",
+      "groupPostImages": {
+        "0": "/post_pictures/angrycat2.jpg",
+        "1": "/post_pictures/facepalm.jpg",
+        "2": "/post_pictures/backtoschool.jpg"
+      },
+      "groupPostDescriptions": {
+        "0": "¿A alguien más le recuerda este gato a la profesora Martina? Ella siempre nos está observando LOL. Por qué tiene que ser tan molestosa",
+        "1": "Lol Daniel no quería que se lo dijera a nadie, pero él se tropezó con una piedra y se dobló el tobillo. Él es literalmente un meme.",
+        "2": "¡Mi primer día en secundaria! Ven a mi casa en Calle Blancos si quieres pasar el rato"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": {
+          "0": "1",
+          "1": "1",
+          "2": "1",
+          "3": "0"
+        },
+        "1": {
+          "0": "1",
+          "1": "1",
+          "2": "1",
+          "3": "0"
+        },
+        "2": {
+          "0": "1",
+          "1": "1",
+          "2": "0",
+          "3": "0"
+        }
+      }
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "¿Qué puedes hacer en el futuro para asegurarte de tener una huella digital positiva en las redes sociales?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "¿Qué puedes hacer en el futuro para tener en cuenta las huellas digitales de los demás en las redes sociales?"
+    }
+  },
+  "digfoot-esp": {
     "Q1": {
       "type": "checkboxGrouped",
       "prompt": "¿Cómo tendrían las siguientes publicaciones un impacto negativo en las huellas digitales?",
@@ -206,6 +289,73 @@
     "Q5": {
       "type": "written",
       "prompt": "What would you do in the future on real social media sites to make sure that the information you see is credible?"
+    }
+  },
+  "digital-literacy-esp": {
+    "Q1": {
+      "type": "checkboxGrouped",
+      "prompt": "¿Notaste alguna señal de sospecha en estos posts?",
+      "checkboxLabels": {
+        "0": "Tenían titulares clickbait e imágenes extrañas.",
+        "1": "Tenían errores ortográficos o mala puntuación.",
+        "2": "Eran de un sitio web sospechoso."
+      },
+      "groupCount": "3",
+      "groupPostImages": {
+        "0": "/post_pictures/fakenews1.png",
+        "1": "/post_pictures/fakenews2.png",
+        "2": "/post_pictures/fakenews3.png"
+      },
+      "groupPostDescriptions": {
+        "0": "Noticia de último minuto: La edad para conducir acaba de reducirse a 12 años. El centro de emisión de licencias está inundado de citas para exámenes de manejo y las compañías automotrices no pueden mantener sus últimos modelos fuera de la pista.",
+        "1": "¿Antojo de una dona? ¡Piénsalo dos veces! Los científicos descubrieron que las donas son la principal causa de cáncer en los niños pequeños 😳",
+        "2": "¡Nunca adivinarás lo que son!!!"
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": {
+          "0": "1",
+          "1": "0",
+          "2": "1"
+        },
+        "1": {
+          "0": "1",
+          "1": "1",
+          "2": "1"
+        },
+        "2": {
+          "0": "1",
+          "1": "1",
+          "2": "1"
+        }
+      }
+    },
+    "Q2": {
+      "type": "checkbox",
+      "prompt": "Cuéntanos qué harías a continuación para verificar la credibilidad de los artículos anteriores.",
+      "checkboxLabels": {
+        "0": "Leería el artículo completo.",
+        "1": "Revisaría el sitio web.",
+        "2": "Buscaría corroborar con otros sitios web confiables."
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "1",
+        "1": "1",
+        "2": "1"
+      }
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "¿Cuáles son los beneficios y desventajas de revisar noticias en las redes sociales?"
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "¿Por qué es importante evaluar la información que ves en las redes social?"
+    },
+    "Q5": {
+      "type": "written",
+      "prompt": "¿Qué harías en el futuro en las redes sociales reales para asegurarte de que la información que ves sea confiable?"
     }
   },
   "esteem": {
@@ -415,7 +565,63 @@
       "prompt": "What are the drawbacks of having multiple social media accounts?"
     }
   },
+  "presentation-esp": {
+    "Q1": {
+      "type": "checkbox",
+      "prompt": "¿En qué se diferenciaban los posts en el finsta de Elena de las de su cuenta principal?",
+      "checkboxLabels": {
+        "0": "Publicó sobre cosas que solo le interesarian a ciertas personas.",
+        "1": "Subió posts más informales o personales.",
+        "2": "Publicó cosas malas sobre otras personas."
+      },
+      "responseRequirement": "exact",
+      "correctResponses": {
+        "0": "0",
+        "1": "1",
+        "2": "0"
+      }
+    },
+    "Q2": {
+      "type": "radio",
+      "prompt": "¿Creaste un post en el feed del TestDrive?",
+      "radioLabels": {
+        "0": "Si",
+        "1": "No"
+      },
+      "responseRequirement": "any"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "Si subiste un post, ¿cómo pensaste en la audiencia cuando lo creaste?"
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "¿Cuáles son los beneficios de tener varias cuentas en redes sociales?"
+    },
+    "Q5": {
+      "type": "written",
+      "prompt": "¿Cuáles son las desventajas de tener varias cuentas en redes sociales?"
+    }
+  },
   "privacy": {
+    "Q1": {
+      "type": "written",
+      "prompt": "¿Notaste algún cambio en el perfil de Lucía después de cambiar la configuración de privacidad?"
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "¿Por qué es importante saber qué información recopilan los sitios web sobre ti?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "¿Cuáles son las tres cosas que debes preguntarte al leer una política de privacidad?"
+    },
+    "Q4": {
+      "type": "written",
+      "prompt": "¿Qué puedes hacer en el futuro para proteger tu privacidad en las redes sociales?"
+    }
+  },
+  "privacy-esp": {
     "Q1": {
       "type": "written",
       "prompt": "¿Notaste algún cambio en el perfil de Lucía después de cambiar la configuración de privacidad?"
@@ -473,18 +679,18 @@
       "prompt": "What would you do in the future to protect your private information and other people’s private information on social media?"
     }
   },
-  "targeted": {
+  "targeted-esp": {
     "Q1": {
       "type": "checkbox",
-      "prompt": "What did you do when you saw an advertisement or a sponsored post?",
+      "prompt": "¿Qué hiciste cuando viste un anuncio o publicidad pagada?",
       "checkboxLabels": {
-        "0": "I hid the advertisement from my timeline.",
-        "1": "I reported the advertisement to the website.",
-        "2": "I looked at why I was getting the advertisement.",
-        "3": "I liked the ad or commented on it.",
-        "4": "I wanted to click on the advertisement.",
-        "5": "I ignored the advertisement.",
-        "6": "I didn't notice the advertisement."
+        "0": "Lo oculté en mi feed.",
+        "1": "Lo reporté en la página web.",
+        "2": "Me quedé pensando en por qué me aparecía.",
+        "3": "Le di like o comenté en el.",
+        "4": "Le quise dar clic.",
+        "5": "Lo ignoré.",
+        "6": "No me di cuenta."
       },
       "responseRequirement": "atLeastOne",
       "correctResponses": {
@@ -499,11 +705,11 @@
     },
     "Q2": {
       "type": "written",
-      "prompt": "Why do companies collect data from people's profiles or online activity?"
+      "prompt": "¿Por qué las compañías recopilan datos de los perfiles de las personas o de su actividad en línea?"
     },
     "Q3": {
       "type": "written",
-      "prompt": "Why is it important to know how to identify advertisements on social media?"
+      "prompt": "¿Por qué es importante identificar los anuncios en las redes sociales?"
     }
   }
 }

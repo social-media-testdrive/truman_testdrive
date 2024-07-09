@@ -1,0 +1,51 @@
+extends ../ui_layout-esp
+
+block content
+
+  .ui.equal.width.padded.grid.stackable
+    .row
+      .column.center.aligned
+        h3 Boggle Earth VR
+      .column.center.aligned
+        p Descripción general
+      .column.center.aligned
+        p Highlights
+      .column.center.aligned
+        p Disponible
+    .row
+      .column.center.aligned
+        .ui.fluid.image.gamingElement1
+          img(src=cdn+ '/post_pictures/Games_Interest_Page_1.png')
+          h1 El mundo te está esperando
+          p Explora al mundo sin moverte de casa
+    .row
+      .column.center.aligned
+        h1 Introducción Boggle Earth VR
+        p Contempla imágenes por satélite de alta resolución, explora relieves y edificios 3D de cientos de ciudades.
+        
+    .row
+      .column.left.aligned
+        .ui.fluid.image.gamingElement2
+          img(src=cdn+ '/post_pictures/Games_Interest_Page_2.jpg')
+          h2 Sé parte del cambio
+          
+        
+      .column
+        .ui.fluid.image.gamingElement2
+          img(src=cdn+ '/post_pictures/Games_Interest_Page_3.jpg')
+          h2 Realidad virtual
+        
+  a.addBottomMargin(href='javascript:void(0);', onclick='javascript:startIntro();')
+    .ui.big.green.labeled.icon.button
+        i.rocket.icon
+        |   Continuar
+          
+            
+block scripts
+  script().
+    function startIntro(){
+      window.location.href='/trans_script/targeted-esp';
+    };
+    
+block styles
+  link(rel='stylesheet', href='/css/modules/targeted.css')

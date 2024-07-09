@@ -1,0 +1,75 @@
+extends ../ui_layout-esp
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Repasemos
+        br
+        .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+          i.down.arrow.icon
+          |   Siguiente  
+        .ui.basic.segment.reviewSegment.hidden
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Las empresas obtienen todo tipo de datos sobre tu actividad en línea y luego los utilizan para mostrarte anuncios específicos en las redes sociales.
+
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Los anuncios deben estar etiquetados de alguna manera, como "anuncio" o "patrocinado". Pero las publicaciones aún pueden verse muy similares a las publicaciones normales en las redes sociales en tu feed.
+
+
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Aqui hay algunas estrategias para ayudar a reducir la cantidad de anuncios dirigidos que puedas ver en línea:
+              
+          h5.ui.header
+            i.circle.bullet.blue.icon
+            .content
+              |   Desactiva las cookies en tu navegador web
+              
+          h5.ui.header
+            i.circle.bullet.blue.icon
+            .content
+              |   Ajusta la configuración de privacidad en tus aplicaciones
+          
+          h5.ui.header
+            i.circle.bullet.blue.icon
+            .content
+              |   Limita lo que compartes
+          br
+            
+    br
+    br
+    .ui.warning.message.clickNextWarning.hidden
+      .header
+       | Haz clic a "Siguiente"
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.big.labeled.icon.button.gotItButton
+            i.rocket.icon
+            |   Entendido
+
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showReviewSectionButton': {
+        "initialDelay": 500,
+        "delay": 500,
+        "files": ['CUSML.2.6.1.mp3','CUSML.2.6.2.mp3','CUSML.2.6.3.mp3']
+      }
+    };
+    var nextPage = 'trans2';
+  script(src="/module_js/voiceover.js")  
+  script(src="/module_js/base_trans.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/targeted.css')
+  link(rel='stylesheet', href='/css/trans.css')  

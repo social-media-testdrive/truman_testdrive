@@ -284,6 +284,8 @@ exports.getScript = (req, res, next) => {
                         res.render('phishing-esp/phishing-esp_script', { script: finalfeed, mod: req.params.modId});
                     } else if (req.params.modId == "targeted"){
                         res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
+                    }  else if (req.params.modId == "targeted-esp"){
+                        res.render('targeted-esp/targeted-esp_script', { script: finalfeed, mod: req.params.modId});
                     } else {
                         if(req.params.modId === 'safe-posting') {
                         res.set({

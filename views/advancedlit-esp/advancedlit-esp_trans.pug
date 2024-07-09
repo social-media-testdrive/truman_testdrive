@@ -1,0 +1,73 @@
+extends ../ui_layout-esp
+
+block content
+
+  .ui.text.container.addBottomMargin
+    br
+    .column
+      .ui.raised.segment
+        .ui.blue.ribbon.label
+          h3
+            i.history.icon
+            | &nbsp Repasemos!
+        br
+        .ui.mini.green.right.labeled.icon.button.showReviewSectionButton
+          i.down.arrow.icon
+          |   Siguiente  
+        .ui.basic.segment.reviewSegment.hidden
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Las redes sociales pueden ser un lugar para encontrar información sobre cosas que acaban de suceder o que están sucediendo actualmente.
+
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Cuando encuentres noticias de último minuto en el feed, es importante verificar la información del artículo. Hazte estas preguntas:
+              
+          h5.ui.header
+            i.circle.bullet.blue.icon
+            .content
+              | ¿Este artículo es una noticia o un artículo de opinión?
+              
+          h5.ui.header
+            i.circle.bullet.blue.icon
+            .content
+              | ¿El artículo menciona dónde o de quién obtuvo el autor la información?
+              
+          h5.ui.header
+            i.circle.bullet.blue.icon
+            .content
+              | ¿Hay otras fuentes que también están reportando esta noticia?
+                      
+          h5.ui.header
+            i.arrow.circle.right.blue.icon
+            .content
+              | Si crees que el artículo es incorrecto o está incompleto, espera a conocer la historia completa antes de decidir compartirlo!
+          br
+    br
+    br
+    .ui.warning.message.clickNextWarning.hidden
+      .header
+       | Clic Siguiente
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+        .ui.big.green.labeled.icon.button
+            i.rocket.icon
+            |   Entendido
+            
+block scripts
+  script().
+    var voiceoverMappings = {
+      '.showReviewSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.9.5.01.mp3','CUSML.9.5.02.mp3','CUSML.9.5.03.mp3']
+      }
+    };
+    var nextPage = 'trans_script';
+  script(src="/module_js/voiceover.js")  
+  script(src="/module_js/base_trans.js")
+    
+block styles
+  link(rel='stylesheet', href='/css/modules/advancedlit.css')
+  link(rel='stylesheet', href='/css/trans.css')  

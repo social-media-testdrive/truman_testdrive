@@ -1,0 +1,73 @@
+extends ../ui_layout-esp
+
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  .ui.equal.width.padded.internally.celled.grid
+    .ten.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column.mainRecipe
+      img.ui.fluid.image(src=cdn+'/post_pictures/spcookies.jpg')  
+      .ui.equal.width.padded.internally.celled.grid.stackable
+        .ui.column.center.aligned
+          h2 Confetti Cookies
+        .row
+          .ui.column
+            p Nivel: <b>Fácil</b>
+            p Total: <b>25 minutos</b>
+          .ui.column
+            p Preparación: <b>10 minutos</b>
+            p Cocinar: <b>15 minutos</b>
+          .ui.column
+            p Raciones: <b>30-36 galletas</b>
+        .row 
+          .ui.column
+            h3 Ingredientes:
+            p 1 paquete de premezcla de galleta
+            p ½ taza de aceite de canola o vegetal
+            p ¼ taza de agua
+            p 1 huevo
+            p 3 tazas de hojuelas con frutas o cacao
+        .row
+          .column
+            h4 Elaboración paso a paso:
+            ol.ui.list
+              li Precalienta el horno a 180°C/350ºF.
+              li Pon la premezcla en un tazón grande y agrega el aceite, el agua y el huevo. Bate hasta incorporarlos bien.
+              li Agrega las hojuelas hasta que esté bien distribuido.
+              li Haz bolitas con la mano y colocalas en una bandeja previamente engrasada.
+              li Hornea durante 10 a 12 minutos, o hasta que los bordes comiencen a dorarse.
+              li Al sacarlas de horno, deja las galletas en la lata por 5 minutos (en ese tiempo se terminan de hacer). Luego las sacas de la lata con ayuda de una espátula y las colocas en una rejilla hasta que se enfríen. Guarda las galletas en un contenedor. Para comerlas frescas, disfrútalas por máximo 3 días. También se pueden congelar para disfrutarlas más tarde.
+            p (Receta de Sarah Hatfield en Go Dairy Free)
+          
+      a.addBottomMargin(href='javascript:void(0);', onclick='javascript:startIntro();')
+          .ui.big.green.labeled.icon.button
+              i.rocket.icon
+              |   Continuar
+
+          
+    .computer.only.tablet.only.six.wide.column.sideRecipes
+      h2 ¿Qué se está cocinando?
+      .ui.equal.width.padded.grid
+        .row 
+          .ui.column
+            img.ui.fluid.image(src=cdn+ '/post_pictures/Food_Interest_Page_2.jpg')
+          .ui.column
+            h4 Brownies de chocolate ¡irresistibles!
+        .row 
+          .ui.column
+            img.ui.fluid.image(src= cdn +'/post_pictures/Food_Interest_Page_3.jpg')
+          .ui.column
+            h4 Cenas fáciles y rápidas
+        .row 
+          .ui.column
+            img.ui.fluid.image(src= cdn +'/post_pictures/Food_Interest_Page_4.jpg')
+          .ui.column
+            h4 ¡Es la temporada de postres!
+          
+block scripts
+  script().
+    function startIntro(){
+      window.location.href='/trans_script/targeted-esp';
+    };
+
+block styles
+  link(rel='stylesheet', href='/css/modules/targeted.css')

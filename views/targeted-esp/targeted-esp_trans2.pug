@@ -1,0 +1,52 @@
+extends ../ui_layout-esp
+
+block content
+  
+  .ui.text.container.addBottomMargin
+    br
+    .column
+      .ui.raised.segment
+        h3.ui.header
+          i.binoculars.blue.icon
+          .content
+            | Explorar
+        hr    
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  Antes de explorar el feed de TlestDrive, tómate un momento para explorar una página según tus intereses.
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content
+            |  ¡Elige un tema para obtener más información!
+        br
+        .ui.container
+          form.ui.form
+              .field#animateDropdownError
+                label
+                  i.search.large.gray.icon
+                  .ui.selection.dropdown(name='topicSelect')
+                    input(type='hidden')
+                    i.dropdown.icon
+                    .default.text Elige un tema...
+                    .menu
+                      .item(data-value='0') Comida
+                      .item(data-value='1') Deportes
+                      .item(data-value='2') Videojuegos
+      br
+      br
+
+    .ui.warning.message.hidden#selectTopicError
+     .header
+      | Selecciona un interés para continuar
+      
+    a(href='javascript:void(0);', onclick='javascript:startIntro();')
+        .ui.big.labeled.icon.button
+            i.rocket.icon
+            |   Continuar
+    
+block scripts
+  script(src="/module_js/targeted-esp/targeted-esp_trans2.js")
+  
+block styles
+  link(rel='stylesheet', href='/css/modules/targeted.css')

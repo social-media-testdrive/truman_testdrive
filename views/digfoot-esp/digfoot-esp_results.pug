@@ -78,7 +78,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionCheckboxesPrompt(data-questionNumber="Q1")
-                  | #{ reflectionData.digfoot.Q1.prompt }
+                  | #{ reflectionData['digfoot-esp'].Q1.prompt }
 
               .ui.stackable.two.cards.checkOne
                 .ui.fluid.card.dim()#card1
@@ -91,11 +91,11 @@ block content
                       span Luis Alberto Torres
                   .image
                     img.post(
-                      src=cdn + reflectionData.digfoot.Q1.groupPostImages[0]
+                      src=cdn + reflectionData['digfoot-esp'].Q1.groupPostImages[0]
                     )
                   .content
                     .description
-                      | #{ reflectionData.digfoot.Q1.groupPostDescriptions[0] }
+                      | #{ reflectionData['digfoot-esp'].Q1.groupPostDescriptions[0] }
 
                 .ui.fluid.card.dim
                   .content
@@ -106,7 +106,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox")
                             label(for="overshare", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[0] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[0] }
 
                     hr
                     .ui.form
@@ -116,7 +116,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="regret")
                             label(for="regret", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[1] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[1] }
 
                     hr
                     .ui.form
@@ -126,7 +126,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="inconsiderate")
                             label(for="inconsiderate", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[2] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[2] }
 
                     hr
                     .ui.form
@@ -136,7 +136,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="responsible")
                             label(for="responsible", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[3] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[3] }
 
               .ui.stackable.two.cards.checkTwo
                 .ui.fluid.card.dim()#card2
@@ -149,11 +149,11 @@ block content
                       span Santino Gómez
                   .image
                     img.post(
-                      src=cdn + reflectionData.digfoot.Q1.groupPostImages[1]
+                      src=cdn + reflectionData['digfoot-esp'].Q1.groupPostImages[1]
                     )
                   .content
                     .description 
-                      | #{ reflectionData.digfoot.Q1.groupPostDescriptions[1] }
+                      | #{ reflectionData['digfoot-esp'].Q1.groupPostDescriptions[1] }
 
                 .ui.fluid.card.dim.printvis
                   .content
@@ -164,7 +164,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox")
                             label(for="overshare2", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[0] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[0] }
 
                     hr
                     .ui.form
@@ -174,7 +174,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="regret2")
                             label(for="regret2", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[1] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[1] }
 
                     hr
                     .ui.form
@@ -184,7 +184,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="inconsiderate2")
                             label(for="inconsiderate2", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[2] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[2] }
 
                     hr
                     .ui.form
@@ -194,7 +194,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="responsible2")
                             label(for="responsible2", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[3] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[3] }
 
               .ui.stackable.two.cards.checkThree
                 .ui.fluid.card.dim()#card3
@@ -207,11 +207,11 @@ block content
                       span Valeria Vargas
                   .image
                     img.post(
-                      src=cdn + reflectionData.digfoot.Q1.groupPostImages[2]
+                      src=cdn + reflectionData['digfoot-esp'].Q1.groupPostImages[2]
                     )
                   .content
                     .description
-                      | #{ reflectionData.digfoot.Q1.groupPostDescriptions[2] }
+                      | #{ reflectionData['digfoot-esp'].Q1.groupPostDescriptions[2] }
 
                 .ui.fluid.card.dim
                   .content
@@ -222,7 +222,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox")
                             label(for="overshare3", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[0] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[0] }
 
                     hr
                     .ui.form
@@ -232,7 +232,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="regret3")
                             label(for="regret3", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[1] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[1] }
 
                     hr
                     .ui.form
@@ -242,7 +242,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="inconsiderate3")
                             label(for="inconsiderate3", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[2] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[2] }
 
                     hr
                     .ui.form
@@ -252,7 +252,7 @@ block content
                           .ui.checkbox
                             input(type="checkbox", name="responsible3")
                             label(for="responsible3", tabindex="0") 
-                              | #{ reflectionData.digfoot.Q1.checkboxLabels[3] }
+                              | #{ reflectionData['digfoot-esp'].Q1.checkboxLabels[3] }
 
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
@@ -263,7 +263,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber="Q2")
-                  | #{ reflectionData.digfoot.Q2.prompt }
+                  | #{ reflectionData['digfoot-esp'].Q2.prompt }
 
               .ui.form
                 .inline.fields
@@ -279,7 +279,7 @@ block content
             .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber="Q3")
-                  | #{ reflectionData.digfoot.Q3.prompt }
+                  | #{ reflectionData['digfoot-esp'].Q3.prompt }
 
               .ui.form
                 .inline.fields

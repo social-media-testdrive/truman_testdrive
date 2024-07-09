@@ -256,6 +256,7 @@ function isValidModId(req, res, next) {
     'accounts',
     'accounts-esp',
     'advancedlit',
+    'advancedlit-esp',
     'cyberbullying',
     'digfoot',
     'digfoot-esp',
@@ -268,10 +269,12 @@ function isValidModId(req, res, next) {
     'phishing',
     'phishing-esp',
     'presentation',
+    'presentation-esp',
     'privacy',
     'privacy-esp',
     'safe-posting',
-    'targeted'
+    'targeted',
+    'targeted-esp',
   ];
   // console.log('req.params.modId = ' + req.params.modId);
   if (modIds.includes(req.params.modId)) {
@@ -376,7 +379,7 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, c
       title: 'Finished',
       isResearchVersion
     });
-  } else if ((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp') || (req.params.modId === 'digfoot-esp') || (req.params.modId === 'privacy-esp') || (req.params.modId === 'accounts-esp') || (req.params.modId === 'digital-literacy-esp') || (req.params.modId === 'phishing-esp')) {
+  } else if ((req.params.modId === 'esteem-esp') || (req.params.modId === 'habits-esp') || (req.params.modId === 'digfoot-esp') || (req.params.modId === 'privacy-esp') || (req.params.modId === 'accounts-esp') || (req.params.modId === 'digital-literacy-esp') || (req.params.modId === 'phishing-esp') || (req.params.modId === 'targeted-esp') || (req.params.modId === 'advancedlit-esp') || (req.params.modId === 'presentation-esp')) {
     res.render('base_end-esp.pug', {
       title: 'Terminado',
       isResearchVersion
@@ -393,6 +396,12 @@ app.get('/end/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, c
 
 app.get('/food/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   res.render('targeted/targeted_food', {
+    title: 'Interest Page'
+  });
+});
+
+app.get('/food/targeted-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+  res.render('targeted-esp/targeted-esp_food', {
     title: 'Interest Page'
   });
 });
@@ -488,10 +497,16 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
   });
 });
 
+app.get('/gaming/targeted-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+  res.render('targeted-esp/targeted-esp_gaming', {
+    title: 'Interest Page'
+  });
+});
+
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   if (req.params.modId === 'delete') {   // anticipating a specific user behavior that causes 500 errors
     res.redirect('/');
-  } else if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp') {
+  } else if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp' || req.params.modId === 'targeted-esp' || (req.params.modId === 'advancedlit-esp') || (req.params.modId === 'presentation-esp')) {
     res.render('base_intro-esp.pug', {
       title: 'Bienvenidos'
     });
@@ -558,11 +573,17 @@ app.get('/gaming/targeted', passportConfig.isAuthenticated, setHttpResponseHeade
   });
 });
 
+app.get('/gaming/targeted-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+  res.render('targeted-esp/targeted-esp_gaming', {
+    title: 'Interest Page'
+  });
+});
+
 // Render intro page (all modules)
 app.get('/intro/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   if (req.params.modId === 'delete') { // anticipating a specific user behavior that causes 500 errors
     res.redirect('/');
-  } else if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp') {
+  } else if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp' || req.params.modId === 'targeted-esp' || (req.params.modId === 'advancedlit-esp') || (req.params.modId === 'presentation-esp')) {
     res.render('base_intro-esp.pug', {
       title: 'Bienvenidos'
     });
@@ -588,7 +609,7 @@ app.get('/privacy', setHttpResponseHeaders, csrfProtection, addCsrf, function (r
 
 // Render the reflection page (all modules).
 app.get('/results/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, async function (req, res) {
-  if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp') {
+  if (req.params.modId === 'esteem-esp' || req.params.modId === 'habits-esp' || req.params.modId === 'digfoot-esp' || req.params.modId === 'privacy-esp' || req.params.modId === 'accounts-esp' || req.params.modId === 'digital-literacy-esp' || req.params.modId === 'phishing-esp' || req.params.modId === 'targeted-esp' || (req.params.modId === 'advancedlit-esp') || (req.params.modId === 'presentation-esp')) {
     const data = await fs.readFileAsync(`${__dirname}/public2/json/esp-reflectionSectionData.json`);
     const reflectionData = JSON.parse(data.toString());
     res.render(req.params.modId + '/' + req.params.modId + '_results', {
@@ -669,6 +690,12 @@ app.get('/sim4/:modId', passportConfig.isAuthenticated, setHttpResponseHeaders, 
 // Render page with sample targeted ads (sports) in the targeted ads module
 app.get('/sports/targeted', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
   res.render('targeted/targeted_sports', {
+    title: 'Interest Page'
+  });
+});
+
+app.get('/sports/targeted-esp', passportConfig.isAuthenticated, setHttpResponseHeaders, csrfProtection, addCsrf, function (req, res) {
+  res.render('targeted-esp/targeted-esp_sports', {
     title: 'Interest Page'
   });
 });

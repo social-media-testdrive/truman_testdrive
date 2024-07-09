@@ -7,8 +7,7 @@ var stepsList = [{
     },
     {
         element: '#step1',
-        intro: `In this activity, let's look at the signs of fake news on social
-    media. See if you can spot the clues!`,
+        intro: `En esta actividad, mostraremos señales de fake news en las redes sociales. ¡A ver si puedes encontrar las pistas!`,
         position: 'left',
         scrollTo: 'tooltip',
         audioFile: ['CUSML.5.6.1.mp3']
@@ -27,30 +26,24 @@ var stepsList = [{
 ];
 
 var hintsList = [{
-        hint: `Be sure to check the article's website. This one is suspicious
-    because of the '.com.co,' a sure sign it's trying to imitate a credible
-    site. Also note the spelling errors in the URL.`,
+        hint: `Asegúrate de consultar el sitio web del artículo. Este es sospechoso debido al ".com.co", pues es una clara señal de que está tratando de imitar un sitio creíble. Observa también los errores.`,
         element: '#hint1',
         hintPosition: 'top-left',
         audioFile: ['CUSML.5.6.3.mp3']
     },
     {
-        hint: `You can see that the headline uses shocking language and has a wild
-    image to get people to click on it. This is an example of a clickbait
-    headline.`,
+        hint: `El título utiliza un lenguaje llamativo y tiene una imagen atractiva para que la gente haga clic en él. Este es un ejemplo de un título clickbait.`,
         element: '#hint2',
         hintPosition: 'middle-right',
         audioFile: ['CUSML.5.6.4.mp3']
     },
     {
-        hint: `After analyzing the headline and image, be sure to click on the
-    article link to read the article more closely.`,
+        hint: `Después de analizar el título y la imagen, asegúrate de hacer clic en el enlace del artículo para leerlo con más atención.`,
         element: '#hint3',
         audioFile: ['CUSML.5.6.5.mp3']
     },
     {
-        hint: `If you decide the article is fake news, you can flag the post to
-    report it. Don’t share the article!`,
+        hint: `Si decides que el artículo es una fake news, puedes marcar la publicación para denunciarlo. ¡No compartas el artículo!`,
         element: '#hint4',
         audioFile: ['CUSML.5.6.6.mp3']
     }
@@ -60,9 +53,9 @@ var clickedArticle = false;
 
 var info_text = 'No Information Found';
 let post_info_description = new Map([
-    ['WWW.NEWSNETWORK.COM.CO', 'News Network provides the most up to date local and national news.'],
-    ['WWW.NYTIMES.COM', 'The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 125 Pulitzer Prizes, more than any other newspaper. The Times is ranked 17th in the world by circulation and 2nd in the U.S.'],
-    ['WWW.NPR.ORG', 'National Public Radio (NPR, stylized as npr) is an American privately and publicly funded non-profit membership media organization based in Washington, D.C.']
+    ['WWW.NEWSNETWORK.COM.CO', 'Sin medias tintas ofrece las noticias locales y nacionales más actualizadas.'],
+    ['WWW.NYTIMES.COM', 'The New York Times (a veces abreviado como NYT y NYTimes) es un periódico estadounidense con sede en la ciudad de Nueva York con influencia y lectores en todo el mundo. Fundado en 1851, el periódico ha ganado 125 premios Pulitzer, más que cualquier otro periódico. El Times por circulación ocupa el puesto 17.º en el mundo y el segundo en los Estados Unidos.'],
+    ['WWW.NPR.ORG', 'National Public Radio (abreviado como NPR) es una organización de medios de comunicación estadounidense, sin fines de lucro, financiada con fondos públicos y privados, con sede en Washington, D.C.']
 ]);
 
 $('.ui.accordion').accordion();

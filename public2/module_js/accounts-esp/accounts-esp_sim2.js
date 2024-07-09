@@ -1,16 +1,14 @@
 var hintsList = [{
-        hint: `Fill out the profile information. Remember to not share too many
-        details about who you are.`,
+        hint: `Completa la información de tu perfil. Recuerda no debes compartir demasiados detalles sobre quién eres.`,
         element: '#generalStep',
         hintPosition: 'top-middle',
-        // audioFile: ['CUSML.8.4.06.mp3']
+        audioFile: ['CUSML.8.4.06.mp3']
     },
     {
-        hint: `Start off by sharing only a little bit of information about
-        yourself. You can always add more information later if you need to.`,
+        hint: `Comienza compartiendo un poco de información sobre ti. Siempre puedes agregar más información más adelante si es necesario.`,
         element: '#generalStep',
         hintPosition: 'top-right',
-        // audioFile: ['CUSML.8.4.07.mp3']
+        audioFile: ['CUSML.8.4.07.mp3']
     }
 ];
 

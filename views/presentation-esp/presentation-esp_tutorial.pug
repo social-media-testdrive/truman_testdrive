@@ -1,0 +1,150 @@
+extends ../ui_layout-esp
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p Sube y dale clic a "Siguiente" para comenzar!
+    #step3.ui.fluid.card.test
+          .content
+            .right.floated.meta= "Ayer"
+            |
+            a(href='/user/dannyboii')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user37.jpg')
+              span='Daniel Melendez'
+          .image
+            img.post(src=cdn+"/post_pictures/selfprestut1.jpg")
+          .content
+            .description="¡¡Miren, tengo una nueva patineta!!"
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Responder
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Reportar
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2  
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user60.jpg')
+                .content
+                  a.author Noelia Díaz
+                  .metadata
+                    span.date Ayer
+                    .rating
+                      i.heart.icon
+                      span.num=2
+                      |  Likes
+                  .text()
+                    | me encanta
+                  .actions
+                    a.comment.like Like
+                    a.comment.flag Reportar
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user63.jpg')
+                .content
+                  a.author Jonathan Muñoz
+                  .metadata
+                    span.date Ayer
+                    .rating
+                      i.heart.icon
+                      span.num=2
+                      |  Likes
+                  .text()
+                    | Está bonita
+                  .actions
+                    a.comment.like Like
+                    a.comment.flag Reportar
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Escribir un comentario')
+              i.big.send.link.icon
+                
+    //-%%%%%%%%%%%%%%%%%%%%%%%%%
+    #step4.ui.fluid.card.test.addBottomMargin
+          .content
+            .right.floated.meta= "Ayer"
+            |
+            a#step5(href='/user/aperson')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user43.png')
+              span='Mi nombre'
+          .image
+            img.post(src=cdn+"/post_pictures/selfprestut2.png")
+          .content
+            .description="realmente odio a nuestro profesor de matemáticas"
+          .three.ui.bottom.attached.icon.buttons
+            .ui.reply.button(tabindex='0')
+              i.reply.icon
+              |  Responder
+            .ui.flag.button(tabindex='0')
+              i.flag.icon
+              |  Reportar
+            .ui.labeled.button(tabindex='0')
+              .ui.like.button
+                i.heart.icon
+                |  Like
+              a.ui.basic.red.left.pointing.label.count=2        
+          .content
+            .ui.comments
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user44.png')
+                .content
+                  a.author Ebony Darkness Raven Way
+                  .metadata
+                    span.date Ayer
+                    .rating
+                      i.heart.icon
+                      span.num=0
+                      |  Likes
+                  .text()
+                    | jaja igual yo
+                  .actions
+                    a.comment.like Like
+                    a.comment.flag Reportar
+              .comment
+                a.avatar
+                  img(src=cdn+'/profile_pictures/user1.png')
+                .content
+                  a.author Nombre Fake
+                  .metadata
+                    span.date Ayer
+                    .rating
+                      i.heart.icon
+                      span.num=0
+                      |  Likes
+                  #step3.text()
+                    | hice una cuenta solo para esto ^
+                  #step5.actions
+                    a.comment.like Like
+                    a.comment.flag Reportar
+          .extra.content
+            .ui.fluid.left.labeled.right.icon.input
+              .ui.label
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              input.newcomment(type='text' placeholder='Escribir un comentario')
+              i.big.send.link.icon
+    //-#######################
+
+block scripts
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/presentation/presentation_tutorial.js")
+  //- script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_introSteps.js")
+  script(src='/module_js/base_tutorial.js')

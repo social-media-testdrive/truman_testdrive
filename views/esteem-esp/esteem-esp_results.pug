@@ -112,41 +112,38 @@ block content
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection2
               i.down.arrow.icon
               |   Siguiente
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q1')
-                  | ¿Por qué estas publicaciones podrían haber causado en Jeremy una
-                  | sensación de alerta roja?
+                  | #{reflectionData['esteem-esp'].Q1.prompt}
               .ui.form
                 .inline.fields
                   label
                   textarea.glowing-border(rows='2' id="literacy_responseOne")
-
+                    
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection3
               i.down.arrow.icon
               |   Siguiente
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q2')
-                  | ¿Recuerdas haber visto publicaciones que podrían haber hecho
-                  | que Jeremy se sintiera bien? ¿Qué tipo de publicaciones eran?
+                  | #{reflectionData['esteem-esp'].Q2.prompt}
               .ui.form
                 .inline.fields
                   label
                   textarea.glowing-border(rows='2' id="literacy_responseTwo")
-
+                  
         .ui.basic.segment.noPadding.hidden.reflectionTopSegment
           .ui.raised.segment
             .ui.mini.green.right.labeled.icon.button.reflectionSegmentButton.voiceover_reflection4
               i.down.arrow.icon
               |   Siguiente
-            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden
+            .ui.basic.segment.noPadding.reflectionPromptSegment.hidden 
               .ui.label.resultsPromptLabel
                 h4.reflectionPrompt(data-questionNumber='Q3')
-                  | ¿Qué podría hacer Jeremy para sentirse mejor después de experimentar
-                  | una sensación de alerta roja en las redes sociales?
+                  | #{reflectionData['esteem-esp'].Q3.prompt}
               .ui.form
                 .inline.fields
                   label

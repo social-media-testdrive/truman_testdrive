@@ -65,20 +65,50 @@ block content
         .content
           .header="Las noticias en las redes sociales"
             
-        a.ui.card(href=`/${path}/phishing-esp`)
-          .image
-            img(src=cdn+'/phishing.png')
-          .content
-            .header="Estafas y fraudes en línea"
+      a.ui.card(href=`/${path}/phishing-esp`)
+        .image
+          img(src=cdn+'/phishing.png')
+        .content
+          .header="Estafas y fraudes en línea"
+            
+      a.ui.card(href=`/${path}/targeted-esp`)
+        .image
+          img(src=cdn+'/targetedads.png')
+        .content
+          .header="Anuncios en las redes sociales"
+            
+      a.ui.card(href=`/${path}/advancedlit-esp`)
+        .image
+          img(src=cdn+'/advancednews.png')
+        .content
+          .header="Noticias de Último minuto"
+            
+      a.ui.card(href=`/${path}/presentation-esp`)
+        .image
+          img(src=cdn+'/onlineidentity.png')
+        .content
+          .header="Identidades en línea"
 
-      //- a.ui.card(href="#")
-      //-   .ui.inverted.active.dimmer.soon
-      //-     .content
-      //-       .center
-      //-         h2.ui.header
-      //-           |
-      //-           | ¡PRÓXIMAMENTE!
-      //-   .image(style="filter: blur(1.5px)")
-      //-     img(src=cdn + "/smprivacy.png")
-      //-   .content
-      //-     .header= "La privacidad en redes sociales"
+      a.ui.card(href="#")
+        .ui.inverted.active.dimmer.soon
+          .content
+            .center
+              h2.ui.header
+                |
+                | ¡PRÓXIMAMENTE!
+        .image(style="filter: blur(1.5px)")
+          img(src=cdn + "/privateinfo.png")
+        .content
+          .header= "¿Esta información debería ser privada?"
+
+      a.ui.card(href="#")
+        .ui.inverted.active.dimmer.soon
+          .content
+            .center
+              h2.ui.header
+                |
+                | ¡PRÓXIMAMENTE!
+        .image(style="filter: blur(1.5px)")
+          img(src=cdn + "/upstander.png")
+        .content
+          .header= "¿Cómo defender a otras personas del cyberbullying?"

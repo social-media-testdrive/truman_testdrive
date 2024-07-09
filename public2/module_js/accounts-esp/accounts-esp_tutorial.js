@@ -1,50 +1,44 @@
 const stepsList = [{
         element: '#usernameStep',
-        intro: `Dale clic a "Siguiente" para comenzar`,
+        intro: `¡Dale clic a "Siguiente" para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
-        // audioFile: ['']
+        audioFile: ['']
     },
     {
         element: '#usernameStep',
-        intro: `Choose your username carefully! This is the name other people on
-social media will see.`,
+        intro: `Elige tu nombre de usuario con cuidado. Este es el nombre que verán otras personas en las redes sociales.`,
         position: "right",
         scrollTo: 'tooltip',
-        // audioFile: ['CUSML.8.3.01.mp3']
+        audioFile: ['CUSML.8.3.01.mp3']
     },
     {
         element: '#usernameStep',
-        intro: `Depending on who you are connecting with, you may want to
-include your first name or a nickname so that other people will know who
-you are.`,
+        intro: `Dependiendo de con quién te estés conectando, es posible que quieras incluir tu nombre o un apodo para que otras personas sepan quién eres.`,
         position: "right",
         scrollTo: 'tooltip',
-        // audioFile: ['CUSML.8.3.02.mp3']
+        audioFile: ['CUSML.8.3.02.mp3']
     },
     {
         element: '#usernameStep',
-        intro: `If you don't want anyone to know who you are, pick something
-that is not related to your real name.`,
+        intro: `Si no quieres que nadie sepa quién eres, elige algo que no esté relacionado con tu nombre real.`,
         position: "right",
         scrollTo: 'tooltip',
-        // audioFile: ['CUSML.8.3.03.mp3']
+        audioFile: ['CUSML.8.3.03.mp3']
     },
     {
         element: '#passwordStep',
-        intro: `Make sure to create a strong password that you can remember!`,
+        intro: `¡Asegúrate de crear una contraseña segura que puedas recordar!`,
         position: "right",
         scrollTo: "tooltip",
-        // audioFile: ['CUSML.8.3.04.mp3']
+        audioFile: ['CUSML.8.3.04.mp3']
     },
     {
         element: '#passwordStep',
-        intro: `Passwords should be easy to remember so you don't get locked out
-of your accounts, but you also want to make it hard for others to
-guess.`,
+        intro: `Las contraseñas deben ser fáciles de recordar para que no se te bloquee el acceso a tus cuentas, pero también deben ser difíciles de adivinar para otros.`,
         position: "right",
         scrollTo: "tooltip",
-        // audioFile: ['CUSML.8.3.05.mp3']
+        audioFile: ['CUSML.8.3.05.mp3']
     },
     {
         element: '#passwordStep',
@@ -53,26 +47,21 @@ password1, yourname11, or anything else that could be easily guessed by
 other people.`,
         position: "right",
         scrollTo: "tooltip",
-        // audioFile: ['CUSML.8.3.06.mp3']
+        audioFile: ['CUSML.8.3.06.mp3']
     },
     {
         element: '#passwordStep',
-        intro: `It’s a good idea to create different passwords for different
-sites, but make sure it’s something you can memorize! It’s not safe to
-write down your passwords. If you forget your password, there are ways
-the website can help you reset it.`,
+        intro: `Es una buena idea crear contraseñas diferentes para distintos sitios, pero asegúrate de que sean algo que puedas memorizar. No es seguro escribir tus contraseñas. Si olvidas tu contraseña, existen formas en las que el sitio web para poder restablecerla.`,
         position: "right",
         scrollTo: "tooltip",
-        // audioFile: ['CUSML.8.3.07.mp3']
+        audioFile: ['CUSML.8.3.07.mp3']
     },
     {
         element: '#passwordStep',
-        intro: `Don’t share your password with anyone else, not even your best
-friend! One exception might be your parents. Have a conversation with
-them about safe password practices.`,
+        intro: `No compartas tu contraseña con nadie, ¡ni siquiera con tu mejor amigo! Una excepción podrían ser tus padres. Habla con ellos sobre prácticas seguras para usar contraseñas.`,
         position: "right",
         scrollTo: "tooltip",
-        // audioFile: ['CUSML.8.3.08.mp3']
+        audioFile: ['CUSML.8.3.08.mp3']
     }
 ]
 

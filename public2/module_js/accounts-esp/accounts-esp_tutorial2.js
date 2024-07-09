@@ -1,34 +1,30 @@
 const stepsList = [{
         element: '#generalStep',
-        intro: `Dale clic a “Siguiente” para comenzar`,
+        intro: `¡Dale clic a "Siguiente" para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
-        // audioFile: ['']
+        audioFile: ['']
     },
     {
         element: '#generalStep',
-        intro: `When you first create your profile, think about how much
-    information you really want to share with other people.`,
+        intro: `Cuando crees tu perfil por primera vez, piensa en cuánta información realmente quieres compartir con otras personas.`,
         position: "right",
         scrollTo: 'tooltip',
-        // audioFile: ['CUSML.8.3.09.mp3']
+        audioFile: ['CUSML.8.3.09.mp3']
     },
     {
         element: '#generalStep',
-        intro: `Some platforms make it optional to share certain information.
-      Don't feel pressured to share everything!`,
+        intro: `Algunas plataformas permiten compartir cierta información de forma opcional. No te sientas presionado a compartirlo todo.`,
         position: "right",
         scrollTo: 'tooltip',
-        // audioFile: ['CUSML.8.3.10.mp3']
+        audioFile: ['CUSML.8.3.10.mp3']
     },
     {
         element: '#locationStep',
-        intro: `If you include detailed information about yourself, it can be
-    very easy for strangers to figure out who you are and where you live.
-    Try not to be too specific when you share your location.`,
+        intro: `Si incluyes información detallada sobre ti, puede resultar muy fácil que los desconocidos sepan quién eres y dónde vives. Intenta no ser demasiado específico cuando compartas tu ubicación.`,
         position: "right",
         scrollTo: 'tooltip',
-        // audioFile: ['CUSML.8.3.11.mp3']
+        audioFile: ['CUSML.8.3.11.mp3']
     }
 ];
 

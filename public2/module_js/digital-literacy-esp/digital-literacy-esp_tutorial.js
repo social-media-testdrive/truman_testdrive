@@ -10,36 +10,28 @@ const stepsList = [
   },
   {
     element: '#step1A',
-    intro: `Fake news articles use <b>shocking and exaggerated headlines and
-    images</b> to get you to click on them. Often, the headline will try to make
-    you curious and lure you like bait to click on it.`,
+    intro: `Las fake news utilizan <b>titulares e imágenes impactantes y exagerados</b> para que hagas clic en ellos. A menudo, el titular intentará despertar tu curiosidad y atraerte como cebo para que hagas clic en él.`,
     position: 'left',
     scrollTo: 'tooltip',
     // audioFile: ['CUSML.5.4.1.mp3']
   },
   {
     element: '.post',
-    intro: `Does the article <b>use wild or sensational images</b> that are
-    trying to make you feel a strong emotion? <br>This is another strategy of
-    <b>clickbait articles.</b>`,
+    intro: `¿El artículo <b>utiliza imágenes atrevidas o sensacionalistas</b> que intentan hacerte sentir una emoción fuerte? <br>Esta es otra estrategia de los <b>artículos clickbait.</b>`,
     position: 'left',
     scrollTo: "tooltip",
     // audioFile: ['CUSML.5.4.2.mp3']
   },
   {
     element: '#step3',
-    intro: `If you find <b>unusual web addresses or site names</b>, including
-    those that end with '.com.co' this is a sign of fake news. These sites may
-    appear like real news websites but most often are not.`,
+    intro: `Si encuentras direcciones <b>uweb o nombres de sitios inusuales</b>, incluidos aquellos que terminan en ".com.co", esto es una señal de fake news. Estos sitios pueden parecer sitios web de noticias reales, pero la mayoría de las veces no lo son.`,
     position: 'bottom',
     scrollTo: "tooltip",
     // audioFile: ['CUSML.5.4.3.mp3']
   },
   {
     element: '#step1',
-    intro: `Are there many spelling errors, lots of ALL CAPS, or dramatic
-    punctuation?!?!???? These are all signs that the article
-    <b>may not be credible.</b>`,
+    intro: `¿Hay muchos errores de ortografía, muchas MAYÚSCULAS o puntuación exagerada? Todos estos son signos de que el artículo puede <b>no ser creíble.</b>`,
     position: 'bottom',
     scrollTo: "tooltip",
     // audioFile: ['CUSML.5.4.4.mp3']

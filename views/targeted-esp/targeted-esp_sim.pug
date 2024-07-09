@@ -1,0 +1,403 @@
+
+extends ../ui_layout-esp
+  
+block content
+  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+
+  
+  .computer.only.tablet.only.four.wide.column 
+  #content.eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
+    .ui.one.column.centered.grid.feedbackMessagesGrid
+      .ui.fixed.bottom.sticky
+        .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p Sube y dale clic a "Siguiente" para comenzar
+        .ui.icon.compact.message.warning#removeHidden
+          i.close.icon
+          i.question.icon.float
+          .content
+            .ui.header ¿Necesitas ayuda?
+            p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
+          
+        .ui.icon.message.warning#clickAllDotsWarning
+          i.close.icon
+          i.hand.pointer.icon.float
+          .content
+            .ui.header ¡Todavía quedan puntos azules por encontrar!
+            p Haz clic en todos los puntos azules para seguir.
+
+    #blueDotStep.ui.fluid.card.dim
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado este anuncio!
+              h3.ui.inverted.header
+                span 
+                  | Los administradores de TestDrive van a revisar este comentario pronto. Lamentamos que hayas tenido esta experiencia.
+      .ui.inverted.dimmer.notflag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.eye.slash.icon
+              h1.ui.header ¡Has ocultado este anuncio!
+      .content#hint1    
+        .ui.right.floated.menu#hint2
+          .ui.dropdown.icon.item
+            i.ellipsis.horizontal.icon
+            .menu.fluid.floated.left#item1
+              .item(data-value='0')
+                i.fitted.circular.close.icon
+                | Ocultar anuncio
+              .item(data-value='1')
+                i.fitted.circular.exclamation.icon
+                | Reportar anuncio
+              .item(data-value='2')
+                i.fitted.circular.question.icon
+                | ¿Por qué veo este anuncio?
+        a.left.floated(href='/user/goldenguitarsca')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/golden_guitars_pfp.jpg')
+          span#companyName='Guitarra de Oro'
+      .image
+        img.post(src=cdn+'/post_pictures/golden_guitar_ad.jpg')
+      #step4.content
+        .description#hint3
+          | Solo lo mejor desde 1979. Bogotá, Medellín, Cali
+          span#hashtag  #anuncio
+      .content.sponsoredTag
+        i.left.floated.external.alternate.icon
+        .left.floated.meta="Patrocinado"
+      .ui.two.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Responder
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button#likeButton
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=46
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user71.JPG')
+            .content
+              a.author Andrés Torres
+              .metadata
+                span.date Hace 3 días
+                .rating
+                  i.heart.icon
+                  span.num=3
+                  |  Likes
+              .text()
+                | se ve bien
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user73.JPG')
+            .content
+              a.author Francisco Almeida
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | ¿Puedo tener descuento?
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+            
+
+    .ui.fluid.card.test#step1
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              | ¡Has reportado esto!
+              h3.ui.inverted.header
+                span Los administradores de TestDrive van a revisar este comentario pronto. Lamentamos que hayas tenido esta experiencia.
+      .content
+        .right.floated.meta= "Ayer"
+        a(href='/user/neenz03')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user60.jpg')
+              span='Noelia Diaz'
+      .img.post
+        img(src=cdn+'/post_pictures/watermelon.jpg')
+      .content
+        .description Siempre he amado la sandía
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 4
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user9.jpg')
+            .content
+              a.author Juana Ramirez
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=3
+                  |  Likes
+              .text jaja si la sandía es la mejor fruta del verano
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user5.jpeg')
+            .content
+              a.author Ana Pereira
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text 🍉🍉
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+            
+    #blueDotStep.ui.fluid.card.dim
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     ¡Has reportado este anuncio!
+              h3.ui.inverted.header
+                span The admins will review this ad further. We are sorry you had this experience.
+                
+      .ui.inverted.dimmer.notflag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.eye.slash.icon
+              h1.ui.header ¡Has ocultado este anuncio!
+      .content
+          
+        .ui.right.floated.menu#hint4
+          .ui.dropdown.icon.item
+            i.ellipsis.horizontal.icon
+            .menu.fluid.floated.left#item1
+              .item(data-value='0')
+                i.fitted.circular.close.icon
+                | Ocultar anuncio
+              .item(data-value='1')
+                i.fitted.circular.exclamation.icon
+                | Reportar anuncio
+              .item(data-value='2')
+                i.fitted.circular.question.icon
+                | ¿Por qué veo este anuncio?
+                  
+        a.left.floated(href='/user/rocknrollcenter')
+          img.ui.avatar.image(src=cdn+'/profile_pictures/rocknroll_pfp.jpg')
+          span#companyName="Centro de Rock N' Roll"
+
+      .image
+        img.post(src=cdn+'/post_pictures/rocknroll_ad.jpg')
+
+      #step4.content
+        .description
+          | Rockstars criando a la próxima generación de rockstars. El primer mes de clases es GRATIS, ¿qué estás esperando?
+          span#hashtag  #guitarrasdeoro #rock #guitarra #música
+        //-.right.floated.meta
+          i.icon.checkmark
+          | Seen by 12
+      .content.sponsoredTag#hint5
+        i.left.floated.external.alternate.icon
+        .left.floated.meta="Sponsored"
+      .ui.two.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |  Responder
+        //-.ui.flag.button(tabindex='0')
+          i.flag.icon
+          |  Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button#likeButton
+            i.heart.icon
+            |  Like
+          a.ui.basic.red.left.pointing.label.count=57
+      
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/user37.jpg')
+            .content
+              a.author Daniel Melendez
+              .metadata
+                span.date Hace 5 horas
+                .rating
+                  i.heart.icon
+                  span.num=4
+                  |  Likes
+              .text()
+                | que cool
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+          .comment      
+            a.avatar
+              img(src=cdn+'/profile_pictures/user71.JPG')
+            .content
+              a.author Andrés Torres
+              .metadata
+                span.date Hace 5 horas
+                .rating
+                  i.heart.icon
+                  span.num=2
+                  |  Likes
+              .text()
+                | ¿cómo puedo registrarme?
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+
+    .ui.fluid.card.test#step1
+      .ui.dimmer.flag
+        .content
+          .center
+            h2.ui.inverted.icon.header
+              i.red.flag.icon
+              |                                     ¡Has reportado esto!
+              h3.ui.inverted.header
+                span Los administradores de TestDrive van a revisar este comentario pronto. Lamentamos que hayas tenido esta experiencia.
+      .content
+        .right.floated.meta= "Ayer"
+        a(href='/user/alexa.garcia')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/user65.jpg')
+              span='Alexandra Garcia'
+      .image
+        img.post(src=cdn+'/post_pictures/sciencecamp_habits.JPG')
+      .content
+        .description ¡Foto de nuestro grupo en el campamento de ciencias!
+      .three.ui.bottom.attached.icon.buttons
+        .ui.reply.button(tabindex='0')
+          i.reply.icon
+          |                             Responder
+        .ui.flag.button(tabindex='0')
+          i.flag.icon
+          |                             Reportar
+        .ui.labeled.button(tabindex='0')
+          .ui.like.button
+            i.heart.icon
+            |                                 Like
+          a.ui.basic.red.left.pointing.label.count 6
+      .content
+        .ui.comments
+          .comment
+            a.avatar
+              img(src=cdn+'/profile_pictures/unicorn.jpg')
+            .content
+              a.author María Fernanda Hernandez
+              .metadata
+                span.date Ayer
+                .rating
+                  i.heart.icon
+                  span.num=1
+                  |  Likes
+              .text ¡Parece que lo pasaste genial!
+              .actions
+                a.like.comment Like
+                a.flag.comment Reportar
+        
+      .extra.content
+        .ui.fluid.left.labeled.right.icon.input
+          .ui.label
+            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+          input.newcomment(type='text' placeholder='Escribir un comentario')
+          i.big.send.link.icon
+    .ui.message.warning.hidden#confirmContinueCheck
+      .ui.header 
+        | Parece que no hiciste clic en los tres puntos de ninguno de los anuncios.
+        br 
+        br
+        | ¿Estás seguro que no quieres intentar hacer clic en ellos antes de continuar?
+    button.ui.big.labeled.icon.button.cybertrans#cyberTransButton
+        i.rocket.icon
+        |   Continuar
+        
+        
+    .ui.small.modal#whyAmISeeingThisAdModal(data-modalName="targeted_whySeeingAdModal")
+      i.close.icon  
+      .header ¿Por qué Stacy ve este anuncio?
+      .content
+  
+    .ui.small.modal#hideAdModal(data-modalName="targeted_hideAdModal")
+      i.close.icon  
+      .header ¿Por qué decidiste ocultar este anuncio?
+      .content
+          .ui.form
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label El anuncio no era relevante para mí
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label Veo este anuncio muy seguido
+             .field
+               .ui.checkbox
+                 input(type='checkbox')
+                 label El anuncio era inapropiado
+             br
+             .actions
+               .ui.positive.right.labeled.icon.button
+                 | Listo
+                 i.checkmark.icon
+
+
+
+
+block scripts
+
+  script(src='/module_js/base_sim_extraData.js')
+  script(src='/module_js/voiceover.js')
+  script(src='/postFunctionalities.js')
+  script(src="/module_js/targeted-esp/targeted-esp_sim.js")
+  script(src="/module_js/base_sim.js")
+
+block styles
+  link(rel='stylesheet', href='/css/sim.css')
+  link(rel='stylesheet', href='/css/modules/targeted.css')

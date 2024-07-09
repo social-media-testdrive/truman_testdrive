@@ -210,6 +210,63 @@
             "explanation": " \n<span class = 'inline bold green'>C is correct: If you are not sure if the news is true or not, never share it.</span> \n \n<span class = 'inline bold'>A and B are incorrect:</span> Before we share any news on social media, be sure to fact check to make sure the information is trustworthy so that you won’t spread false information. If you are not sure if the news is true or not, never share it. Even if the message looks urgent and looks official, it might still be fake news. \n \n<span class = 'inline bold'>D is incorrect:</span> Even if a lot of people share the news on social media, it doesn’t guarantee the information is true. Always double check with other reliable sources to make sure the information is trustworthy."
         }
     },
+    "advancedlit-esp": {
+        "Q1": {
+          "prompt": "¿Qué es una noticia de último minuto?",
+          "radioLabels": {
+            "0": "Las noticias de último minuto son noticias urgentes que todos deberían compartir de forma inmediata.",
+            "1": "Las noticias de último minuto informan sobre un evento que acaba de suceder o que está sucediendo actualmente.",
+            "2": "Las noticias de último minuto son noticias falsas y son clickbait",
+            "3": "Todas las anteriores.",
+            "4": "No lo sé."
+          },
+          "explanation": "B es correcta: las noticias de último minuto informan sobre un evento que acaba de suceder o que está ocurriendo actualmente. A es incorrecta: las noticias de último minuto pueden ser urgentes y merecer la atención de la gente, pero no debemos compartirlas hasta que tengamos suficiente información para confirmar si son ciertas. C es incorrecta: las noticias de último minuto pueden contener información verdadera o falsa; debemos verificarla para asegurarnos de que la información sea verdadera."
+        },
+        "Q2": {
+          "prompt": "¿Qué es fact-checking?",
+          "radioLabels": {
+            "0": "Averiguar si la información que vemos en las noticias es cierta.",
+            "1": "Indagar si las noticias tienen opiniones parciales.",
+            "2": "Consultar con amigos si vale la pena compartir una noticia.",
+            "3": "Todas las anteriores.",
+            "4": "No lo sé."
+          },
+          "explanation": "A es correcta: fact-checking consiste en verificar la información que ves en las noticias. B es incorrecta: fact-checking consiste en determinar si la información es verdadera o falsa, no si es un hecho o una opinión. C es incorrecta: cuando hacemos fact-checking, debemos buscar información confiable en fuentes confiables en lugar de simplemente consultar con amigos."
+        },
+        "Q3": {
+          "prompt": "¿Cuál de las siguientes acciones deberías tener en cuenta al momento de decidir si una noticia de último minuto es cierta?",
+          "radioLabels": {
+            "0": "Encontrar dónde o de quién obtuvo el autor la información.",
+            "1": "Leer la noticia y ver si es una suceso o un artículo de opinión..",
+            "2": "Buscar en línea y ver si hay otras fuentes que informen sobre esa noticia.",
+            "3": "Todas las anteriores.",
+            "4": "No lo sé."
+          },
+          "explanation": "A es correcta: cuando hacemos fact-checking de una noticia de último minuto, debemos verificar la fuente de información de dicho artículo para ver si proviene de fuentes confiables. B es correcta: para decidir si un artículo es confiable o no, necesitamos leerlo completo y ver si es una noticia (algo que realmente sucedió) o simplemente las opiniones del autor sobre algo que sucedió, ya que las opiniones pueden ser inexactas. C también es correcta: También es importante buscar en línea y encontrar otras fuentes confiables que confirmen la misma historia."
+        },
+        "Q4": {
+          "prompt": "Imagina que ves una noticia de último minuto con el título, \"Nuevas pruebas científicas demuestran que comer más helado causa cáncer.\" El mensaje parece confiable, pero no estás seguro. ¿Que deberías hacer después?",
+          "radioLabels": {
+            "0": "Compartir este artículo con amigos para que puedan obtener más información sobre este artículo.",
+            "1": "Reportar este artículo.",
+            "2": "Buscar en línea para ver si otros sitios web confiables también informaron la misma noticia.",
+            "3": "Revisar el Facebook para ver si alguno de tus amigos ha compartido la misma noticia.",
+            "4": "No lo sé."
+          },
+          "explanation": "C es correcta: es la forma adecuada de hacer fact-checking. A es incorrecta: no debemos compartir noticias de último minuto con nadie antes de verificar los hechos para asegurarnos de que sean confiables. B es incorrecta: si descubrimos que la noticia no es realmente confiable después de hacer fact-checking debemos reportarla como información falsa. D es incorrecta: no se recomienda consultar con amigos para decidir si una noticia es confiable, porque es posible que los amigos no tengan la información correcta. En otras palabras, los amigos no son la fuente más confiable para hacer fact-checking."
+        },
+        "Q5": {
+          "prompt": "Imagina que ves el siguiente mensaje en tus redes sociales: \"Las recientes vacunas contra el COVID provocaron un infarto. Por favor, deja de vacunarte y comparte esta noticia de inmediato\". Sientes que sería importante compartir el mensaje. ¿Está bien compartirlo?",
+          "radioLabels": {
+            "0": "Está <span class = 'inline bold underline'>BIEN compartir el mensaje porque dice,\"comparte esta noticia de inmediato\"",
+            "1": "Está <span class = 'inline bold underline'>BIEN compartir el mensaje porque parece oficial y busca que otros se protejan de los efectos secundarios de las vacunas.",
+            "2": "<span class = 'inline bold underline'>NO está bien compartir el mensaje porque no estás seguro de que sea cierto.",
+            "3": "<span class = 'inline bold underline'>NO está bien compartir el mensaje porque es más seguro esperar hasta que más personas lo compartan primero.",
+            "4": "No lo sé."
+          },
+          "explanation": "C es correcta: Si no estás seguro si la noticia es cierta o no, nunca la compartas. A y B son incorrectas: antes de compartir cualquier noticia en las redes sociales, asegúrate de hacer fact-checking para verificar que la información sea confiable. Si no estás seguro si la noticia es cierta o no, nunca la compartas. Incluso si el mensaje parece urgente y oficial, aún así podría ser una noticia falsa. D es incorrecta: incluso si mucha gente comparte la noticia en las redes sociales, eso no garantiza que la información sea cierta. Siempre verifica con otras fuentes confiables para asegurarse de que la información sea confiable."
+        }
+    },
     "cyberbullying": {
         "Q1": {
             "type": "radio",
@@ -1070,6 +1127,63 @@
             "explanation": " \n<span class = 'inline bold green'>D is correct: You can create a separate account for family, so your family can still share content without your friends seeing.</span> \n \n<span class = 'inline bold'>A is incorrect:</span> If you delete your social media account, you won't be able to stay connected with your family and friends. \n \n<span class = 'inline bold'>B is incorrect:</span> If you tell your grandma to delete her account, she might feel hurt and would not be able to share posts with others. \n \n<span class = 'inline bold'>C is incorrect:</span> You could tell your grandma that you don’ t like when she shares those videos on her public account."
         }
     },
+    "presentation-esp": {
+        "Q1": {
+          "prompt": "¿Cuál de las siguientes afirmaciones es verdadero sobre la audiencia en las redes sociales?",
+          "radioLabels": {
+            "0": "Tener múltiples cuentas puede ayudarte a administrar lo que diferentes personas verán sobre ti.",
+            "1": "Cuando abres una cuenta, siempre tienes el control total sobre quién ve tus publicaciones.",
+            "2": "No tienes control sobre tu audiencia en las redes sociales sin importar lo que hagas.",
+            "3": "Las redes sociales son para compartir, no tienes que preocuparte por quién verá tus publicaciones.",
+            "4": "No lo sé."
+          },
+          "explanation": "A es correcta: las personas pueden tener cuentas separadas para diferentes tipos de contenido y audiencia. B es incorrecta: no siempre tienes control total sobre quién ve tus posts, ya que otros usuarios las pueden compartir. C es incorrecta: puedes controlar quién te sigue en las redes sociales. Pero, no tienes control total sobre tu audiencia en las redes sociales. D es incorrecta: las redes sociales son para compartir, pero la información privada no debe compartirse con todos."
+        },
+        "Q2": {
+          "prompt": "¿Por qué algunas personas quieren crear diferentes cuentas en las redes sociales?",
+          "radioLabels": {
+            "0": "Interactuar con diferentes tipos de grupos como amigos, familiares o personas con intereses similares.",
+            "1": "Para ver y compartir contenido específico como juegos, deportes, libros, etc.",
+            "2": "Participar en interacciones en línea sin revelar sus verdaderas identidades.",
+            "3": "Todas las anteriores.",
+            "4": "No lo sé."
+          },
+          "explanation": "D es correcta: A, B y C son motivos para crear diferentes cuentas en las redes sociales. La gente prefiere diferentes cuentas de redes sociales para interactuar con múltiples grupos de personas, tener cuentas para contenido específico y mantener sus identidades anónimas."
+        },
+        "Q3": {
+          "prompt": "¿Qué es cierto acerca de las cuentas fake?",
+          "radioLabels": {
+            "0": "Nadie podrá descubrir quién eres.",
+            "1": "Las personas igual podrán descubrir quién eres según tus posts.",
+            "2": "Nunca es una buena idea utilizar una cuenta anónima.",
+            "3": "Siempre es una buena idea utilizar una cuenta anónima.",
+            "4": "No lo sé."
+          },
+          "explanation": "B es correcta: incluso si es de forma anónima, lo que publiques puede dar pistas sobre tu identidad. A es incorrecta: las personas pueden descubrir quién eres basándose en lo que publicas o en tus amigos en las redes sociales. C es incorrecta: puede ser una buena idea utilizar una cuenta anónima para publicar contenido específico sin revelar su identidad. D es incorrecta: no siempre es una buena idea utilizar una cuenta fake en caso de que desees conectarte con tus amigos o familiares."
+        },
+        "Q4": {
+          "prompt": "Olivia se ha dado cuenta de que su amiga Laura está utilizando una cuenta fake para decir cosas malas sobre sus compañeros. ¿Que debería de hacer Olivia?",
+          "radioLabels": {
+            "0": "Olivia no debería decir nada. Después de todo, esta es la cuenta de Laura.",
+            "1": "Puede decirle a Laura que haga posts hirientes sobre las personas que son malas.",
+            "2": "Puede pedirle a Laura que use su cuenta real si quiere decir cosas malas sobre alguien.",
+            "3": "Le puede decir a Laura que no es agradable publicar esos comentarios incluso si usa una cuenta fake.",
+            "4": "No lo sé."
+          },
+          "explanation": "D es correcta: Olivia debería decirle a Laura que puede herir a alguien al comentar o publicar cosas malas. A es incorrecta: Olivia debería pedirle a Laura que nunca comente ni publique cosas malas. B es incorrecta: Olivia puede explicarle a Laura que es doloroso decir cosas malas sobre las personas, incluso aunque las personas sean malas. C es incorrecta: Laura no debería usar ninguna cuenta para decir cosas malas sobre las personas."
+        },
+        "Q5": {
+          "prompt": "Imagina que tu abuela comparte y te etiqueta en videos tuyos de cuando eras bebé en su cuenta de redes sociales. Pero, te preocupa que algunos amigos empiecen a burlarse de ti. Una forma práctica y responsable de solucionar esto sería:",
+          "radioLabels": {
+            "0": "Eliminar tu cuenta de redes sociales.",
+            "1": "Pedirle a tu abuela que borre su cuenta.",
+            "2": "Decirle a tu abuela que no te gustan esos videos.",
+            "3": "Crear una cuenta solo para tu familia.",
+            "4": "No lo sé."
+          },
+          "explanation": "D es correcta: puedes crear una distinta para tu familia, así podrán  compartir contenido sin que tus amigos lo vean.A es incorrecta: si eliminas tu cuenta de redes sociales, no podrás permanecer conectado con tu familia y tus amigos. B es incorrecta: si le dices a tu abuela que elimine su cuenta, es posible que se sienta herida y no pueda compartir publicaciones con otras personas. C es incorrecta: podrías decirle a tu abuela que no te gusta cuando comparte ese tipo de videos en su cuenta pública."
+        }
+    },
     "privacy": {
         "Q1": {
             "type": "radio",
@@ -1281,6 +1395,63 @@
             "explanation": " \n<span class = 'inline bold green'>B is correct: Your friend should delete the message, so less people will see it. Sharing a phone number is not safe, and people may use it with bad intentions.</span> \n \n<span class = 'inline bold'>A is incorrect:</span> You should not share your number, and then tell your friend it’ s not safe to share private information with the entire school. \n \n<span class = 'inline bold'>C is incorrect:</span> The number of replies is important to know how many people have your friend’ s number, but you should also tell your friend not to share their private information. \n \n<span class = 'inline bold'>D is incorrect:</span> You should not encourage your friend to share private information. It is also dangerous for everyone to send their phone numbers in the group chat."
         }
     },
+    "safe-posting-esp": {
+        "Q1": {
+          "prompt": "¿Qué tipo de información NO es segura compartir en línea con desconocidos?",
+          "radioLabels": {
+            "0": "Tus personajes favoritos de Minecraft.",
+            "1": "El nombre de tu mascota.",
+            "2": "Tus sabores favoritos de helados.",
+            "3": "Tu dirección o nombre real.",
+            "4": "No lo sé."
+          },
+          "explanation": "D es correcta: la dirección de tu casa y tu nombre real son información privada y no deben compartirse con desconocidos. <span class = 'inline bold'>A, B y C son incorrectas: Tus personajes favoritos de Minecraft, el nombre de tu mascota y tus sabores de helado favoritos se pueden compartir con cualquier persona de forma segura porque no son información privada."
+        },
+        "Q2": {
+          "prompt": "¿Por qué es riesgoso compartir información privada en línea con desconocidos?",
+          "radioLabels": {
+            "0": "No sabes qué hará la persona con tu información.",
+            "1": "Algunas personas pueden usar tu información para engañarte.",
+            "2": "Algunas personas pueden usar tu información para enviarte spam.",
+            "3": "Todas las anteriores.",
+            "4": "No lo sé."
+          },
+          "explanation": "D es correcta: A, B y C son razones por las que compartir información privada en línea con desconocidos es riesgoso. No sabes qué harán las personas con la información que compartes y es posible que te engañen o te envíen spam."
+        },
+        "Q3": {
+          "prompt": "¿Cómo puedes responder cuando alguien que no conoces bien y que no has conocido en persona te pide información privada?",
+          "radioLabels": {
+            "0": "Envíar la información en un mensaje directo para que otros no lo vean.",
+            "1": "Pedir conocer al desconocido primero",
+            "2": "Ignorar el mensaje y contarle a un adulto de confianza sobre la solicitud.",
+            "3": "Preguntar por qué la persona quiere saber.",
+            "4": "Envíar la información y luego contarle a un adulto de confianza sobre la solicitud."
+          },
+          "explanation": "C es correcta: ignorar el mensaje evitará que la persona obtenga información tuya. Cuéntale a un adulto de confianza para que pueda evaluar la situación y decida cómo proceder. A es incorrecta: enviar información privada a la persona que no conoces bien puede ser riesgoso porque puede tener malas intenciones. B es incorrecta: compartir tu ubicación y conocer a alguien que no conoces es peligroso. D es incorrecta: la persona puede engañarte para que reveles tu información privada. No debes seguir respondiendo. E es incorrecta: es importante informarle a un adulto de confianza sobre la solicitud antes de compartir cualquier información privada."
+        },
+        "Q4": {
+          "prompt": "Samuel es tu amigo en línea a quien nunca has conocido en persona. Sabes un poco de lo que le gusta, pero nada más. Un día, Samuel te pregunta la dirección de tu casa. ¿Cuál de las siguientes respuestas es la más segura de usar?",
+          "radioLabels": {
+            "0": "OK. Te lo enviaré por correo electrónico.",
+            "1": "Lo enviaré hoy más tarde.",
+            "2": "Compartiré la dirección de mi casa solo después de que me envíes la tuya.",
+            "3": "No comparto este tipo de información en línea.",
+            "4": "No lo sé."
+          },
+          "explanation": "D es correcta: dado que nunca has conocido a Samuel en persona, no debes compartir la dirección de tu casa ni ninguna otra información privada. A, B y C son incorrectas: no es seguro compartir la dirección de tu casa. Debes ser claro en que no compartes información privada."
+        },
+        "Q5": {
+          "prompt": "Tu mejor amigo está ansioso por hablar sobre sus planes de verano y ha compartido su número de teléfono en un chat con toda la escuela. Como su amigo, ¿qué deberías decirle?",
+          "radioLabels": {
+            "0": "También compartiré mi número en el chat para que la gente pueda invitarme a actividades de verano.",
+            "1": "Por favor borra tu mensaje. No es seguro compartir tu información privada con personas que no conoces.",
+            "2": "¿Cuántas personas han respondido a tu mensaje?",
+            "3": "Gran idea. ¡Pidamos a todos que compartan sus números de teléfono!",
+            "4": "No lo sé."
+          },
+          "explanation": "B es correcta: tu amigo debería eliminar el mensaje para que menos personas lo vean. Compartir su número de teléfono no es seguro y las personas pueden usarlo con malas intenciones. A es incorrecta: no debes compartir tu número y luego decirle a tu amigo que no es seguro compartir información privada con toda la escuela. C es incorrecta: la cantidad de respuestas es importante para saber cuántas personas tienen el número de tu amigo, pero también debes decirle a tu amigo que no comparta su información privada. D es incorrecta: no debes animar a tu amigo a compartir información privada. Es riesgoso que todos envíen sus números de teléfono al chat."
+        }
+    },
     "targeted": {
         "Q1": {
             "type": "radio",
@@ -1352,6 +1523,59 @@
             "correctResponse": "1",
             "files": [""],
             "explanation": " \n<span class = 'inline bold green'>B is correct: Cookies are used to identify your device and track your behavior on websites. Turning off cookies in the web browser makes the companies unable to track your behaviors, so it may help prevent targeted advertisements.</span> \n \n<span class = 'inline bold'>A is incorrect:</span> Looking for different types of shoes may lead to more ads appearing on his Facebook page as his behavior may be tracked by cookies. \n \n<span class = 'inline bold'>C is incorrect:</span> Liking ads may result in more targeted ads since likes may be tracked as part of data that companies collect. \n \n<span class = 'inline bold'>D is incorrect:</span> Turning off his phone would help him to not see ads when the phone is off. But when Jeremy turns on his phone to use it, the ads will likely reappear."
+        }
+    },
+    "targeted-esp": {
+        "Q1": {
+          "prompt": "¿Qué es la \"publicidad dirigida\"?",
+          "radioLabels": {
+            "0": "Significa que las empresas recopilan tus datos y los utilizan para mostrarte anuncios de cosas que te gustan.",
+            "1": "Significa que las empresas han hecho anuncios llamativo.",
+            "2": "Se trata de anuncios que se muestran en grandes vallas publicitarias junto a las carreteras.",
+            "3": "Es simplemente otro término para todos los anuncios en Internet.",
+            "4": "No lo sé"
+          },
+          "explanation": "A es correcta: Las empresas recopilan tus datos (los sitios que visitas, los clics, etc.) para poder mostrarle anuncios de cosas que creen que te gustarian. B es incorrecta: Lo llamativo puede ser diferente para cada persona, por lo que las empresas deben recopilar datos para ver qué es lo que cada persona podría gustarle. <span class = 'inline bold'>C es incorrecta: Los paneles publicitarios no son anuncios dirigidos. <span class = 'inline bold'>D es incorrecta: La publicidad dirigida se refiere a anuncios específicos que muestran ciertas aplicaciones y sitios, no a todos los anuncios en Internet."
+        },
+        "Q2": {
+          "prompt": "Los anuncios en las redes sociales se basan en tus preferencias.",
+          "radioLabels": {
+            "0": "Verdadero",
+            "1": "Falso",
+            "2": "No lo sé."
+          },
+          "explanation": "A es correcta: Los anuncios en las redes sociales se basan en datos que las empresas han recopilado sobre ti, para ver qué podrías preferir. "
+        },
+        "Q3": {
+          "prompt": "Las empresas recopilan todo tipo de datos sobre ti en línea para mostrarte publicidad dirigida aún así no lo notes.",
+          "radioLabels": {
+            "0": "Verdadero",
+            "1": "Falso",
+            "2": "No lo sé."
+          },
+          "explanation": "La respuesta es correcta: las empresas quieren mostrarte anuncios de productos que podrían gustarte, por lo que recopilan datos sobre ti. Pero es posible que no te des cuenta de que se están recopilando datos tuyos, como los clics que haces en sitios web y aplicaciones. A is correct: Companies want to show you ads of products you might like, so they collect data about you. But you may not realize your data is being collected such as your clicks on websites and apps."
+        },
+        "Q4": {
+          "prompt": "¿A qué se refiere un post que dice “patrocinado”?",
+          "radioLabels": {
+            "0": "Es un post muy interesante.",
+            "1": "Es un post con muchos likes.",
+            "2": "Es un post pagado por una compañía.",
+            "3": "Es un post muy popular.",
+            "4": "No lo sé."
+          },
+          "explanation": "C es correcta: Las empresas pagan por posts en las redes sociales para publicitar sus productos, pero estos se parecen mucho a los de una persona promedio. A es incorrecta: Los posts pueden ser interesantes sin ser publicidad pagada. B es incorrecta: Los influencers y las celebridades de las redes sociales pueden recibir muchos “me gusta” en sus posts incluso si estos no están pagados. D es incorrecta: No todas los posts pagados son de usuarios muy populares."
+        },
+        "Q5": {
+          "prompt": "Ayer José estaba buscando zapatos en una página que encontró en internet. Hoy vio anuncios del mismo tipo de zapatos en su página de Facebook. ¿Qué podría hacer José para evitar que este tipo de anuncios?",
+          "radioLabels": {
+            "0": "Buscar otro tipo de zapatos en internet.",
+            "1": "Deshabilitar las cookies en su navegador.",
+            "2": "Darle like a los anuncios que aparecen en Facebook.",
+            "3": "Apagar su celular.",
+            "4": "No lo sé."
+          },
+          "explanation": "B es correcta: Las cookies se utilizan para identificar tu dispositivo y recopilar tus datos. Deshabilitar las cookies en tu navegador hace que las empresas no puedan rastrearte, por lo que puede ayudar a que no te aparezca publicidad dirigida. A es incorrecta: Buscar diferentes tipos de zapatos puede hacer que aparezcan más anuncios en Facebook, ya que esa información se rastrea por las cookies. C es incorrecta: Dar me gusta a los anuncios puede dar como resultado que te aparezcan más anuncios, ya que los me gusta pueden rastrearse como parte de los datos que recopilan las empresas. D es incorrecta: Apagar su teléfono ayudaría a no ver anuncios cuando el teléfono está apagado. Pero cuando José encienda su teléfono para usarlo, es probable que los anuncios vuelvan a aparecer."
         }
     }
 }
