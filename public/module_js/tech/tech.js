@@ -586,34 +586,35 @@ function setLinks(currentPage) {
           nextlink = baseurl + "protect-video";
         } else if (currentPage === "protect-video") {
           backlink = baseurl + "objectives";
-          nextlink = baseurl + "fundamental-measures";
-        } else if (currentPage === "fundamental-measures") {
+          nextlink = baseurl + "contact-methods";
+        } else if (currentPage === "contact-methods") {
           backlink = baseurl + "protect-video";
-          nextlink = baseurl + "preventative";
+          nextlink = baseurl + "fundamental-measures";
         }
-        else if (currentPage === "preventative") {
-          backlink = baseurl + "fundamental-measures";
+        else if (currentPage === "fundamental-measures") {
+          backlink = baseurl + "contact-methods";
           nextlink = baseurl + "contacted";
-        } 
-        
+        }
         else if (currentPage === "contacted") {
-          backlink = baseurl + "preventative";
-  
-          nextlink = baseurl + "reactive";
-        } else if (currentPage === "reactive") {
+          backlink = baseurl + "fundamental-measures";
+          nextlink = baseurl + "pop-up";
+        } else if (currentPage === "pop-up") {
           backlink = baseurl + "contacted";
-          nextlink = baseurl + "accident";
-        } else if (currentPage === "accident") {
-          backlink = baseurl + "reactive";
-          nextlink = baseurl + "post-actions";
-        } else if (currentPage === "post-actions") {
-          backlink = baseurl + "accident";
+          nextlink = baseurl + "download";
+        } else if (currentPage === "download") {
+          backlink = baseurl + "pop-up";
           nextlink = baseurl + "activity";
         } else if (currentPage === "activity") {
+          backlink = baseurl + "download";
+          nextlink = baseurl + "post-actions";
+        }else if (currentPage === "post-actions"){
+          backlink = baseurl + "activity";
+          nextlink = baseurl + "reporting";
+        }else if (currentPage === "reporting"){
           backlink = baseurl + "post-actions";
           nextlink = baseurl + "reflection";
         } else if (currentPage === "reflection") {
-          backlink = baseurl + "activity";
+          backlink = baseurl + "reporting";
           nextlink = baseurl + "quiz";
         } else if (currentPage === "quiz") {
           backlink = baseurl + "reflection";
