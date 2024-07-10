@@ -12249,15 +12249,95 @@
           {"time": 10314,"type": "word","value": "your","element": "narrate-5-badge"},
           {"time": 10452,"type": "word","value": "experience.","element": "narrate-5-badge"}
         ]
-        }
+      },
+      "quiz-results": {
+        "daring": [
+          {"time": 0,"type": "word","value": "here","element": "clear"},           
+          {"time": 25,"type": "word","value": "Your","element": "showResults"},
+          {"time": 1980,"type": "word","value": "here","element": "clear"},           
+          {"time": 1992,"type": "word","value": "Below","element": "none"},
+          {"time": 2630,"type": "word","value": "you'll","element": "none"},
+          {"time": 2792,"type": "word","value": "find","element": "none"},
+          {"time": 3117,"type": "word","value": "options","element": "none"},
+          {"time": 3642,"type": "word","value": "to","element": "none"},
+          {"time": 3742,"type": "word","value": "either","element": "none"},
+          {"time": 4030,"type": "word","value": "retake","element": "narrate-try-again"},
+          {"time": 4430,"type": "word","value": "the","element": "none"},
+          {"time": 4492,"type": "word","value": "quiz","element": "none"},
+          {"time": 4992,"type": "word","value": "clear","element": "clear"},
+          {"time": 5167,"type": "word","value": "review","element": "narrate-view-answers"},
+          {"time": 5455,"type": "word","value": "the","element": "none"},
+          {"time": 5555,"type": "word","value": "correct","element": "none"},
+          {"time": 5942,"type": "word","value": "answers","element": "none"},
+          {"time": 6442,"type": "word","value": "or","element": "clear"},
+          {"time": 6780,"type": "word","value": "proceed","element": "narrate-next"},
+          {"time": 7255,"type": "word","value": "to","element": "none"},
+          {"time": 7367,"type": "word","value": "the","element": "none"},
+          {"time": 7455,"type": "word","value": "next","element": "none"},
+          {"time": 7855,"type": "word","value": "page","element": "none"},
+          {"time": 8855,"type": "word","value": "page","element": "clear"}
+        ],
+        "intrepid": [
+          {"time": 0,"type": "word","value": "here","element": "clear"},           
+          {"time": 187,"type": "word","value": "Your","element": "showResults"},
+          {"time": 1375,"type": "word","value": "here","element": "clear"},
+          {"time": 2255,"type": "word","value": "Below","element": "none"},
+          {"time": 2867,"type": "word","value": "you'll","element": "none"},
+          {"time": 3117,"type": "word","value": "find","element": "none"},
+          {"time": 3430,"type": "word","value": "options","element": "none"},
+          {"time": 3867,"type": "word","value": "to","element": "none"},
+          {"time": 3992,"type": "word","value": "either","element": "none"},
+          {"time": 4255,"type": "word","value": "retake","element": "narrate-try-again"},
+          {"time": 4680,"type": "word","value": "the","element": "none"},
+          {"time": 4805,"type": "word","value": "quiz","element": "none"},
+          {"time": 5305,"type": "word","value": "clear","element": "clear"},
+          {"time": 5405,"type": "word","value": "review","element": "narrate-view-answers"},
+          {"time": 5705,"type": "word","value": "the","element": "none"},
+          {"time": 5842,"type": "word","value": "correct","element": "none"},
+          {"time": 6305,"type": "word","value": "answers","element": "none"},
+          {"time": 6880,"type": "word","value": "or","element": "clear"},
+          {"time": 7055,"type": "word","value": "proceed","element": "narrate-next"},
+          {"time": 7430,"type": "word","value": "to","element": "none"},
+          {"time": 7580,"type": "word","value": "the","element": "none"},
+          {"time": 7680,"type": "word","value": "next","element": "none"},
+          {"time": 7967,"type": "word","value": "page","element": "none"},
+          {"time": 8967,"type": "word","value": "page","element": "clear"}
+        ],
+        "valiant": [
+          {"time": 0,"type": "word","value": "here","element": "clear"},           
+          {"time": 25,"type": "word","value": "Your","element": "showResults"},
+          {"time": 1025,"type": "word","value": "here","element": "clear"},
+          {"time": 1817,"type": "word","value": "Below","element": "none"},
+          {"time": 2530,"type": "word","value": "you'll","element": "none"},
+          {"time": 2680,"type": "word","value": "find","element": "none"},
+          {"time": 2980,"type": "word","value": "options","element": "none"},
+          {"time": 3405,"type": "word","value": "to","element": "none"},
+          {"time": 3555,"type": "word","value": "either","element": "none"},
+          {"time": 3742,"type": "word","value": "retake","element": "narrate-try-again"},
+          {"time": 4142,"type": "word","value": "the","element": "none"},
+          {"time": 4217,"type": "word","value": "quiz","element": "none"},
+          {"time": 4717,"type": "word","value": "clear","element": "clear"},
+          {"time": 4867,"type": "word","value": "review","element": "narrate-view-answers"},
+          {"time": 5180,"type": "word","value": "the","element": "none"},
+          {"time": 5267,"type": "word","value": "correct","element": "none"},
+          {"time": 5617,"type": "word","value": "answers","element": "none"},
+          {"time": 6117,"type": "word","value": "or","element": "clear"},
+          {"time": 6292,"type": "word","value": "proceed","element": "narrate-next"},
+          {"time": 6405,"type": "word","value": "to","element": "none"},
+          {"time": 6830,"type": "word","value": "the","element": "none"},
+          {"time": 6930,"type": "word","value": "next","element": "none"},
+          {"time": 7017,"type": "word","value": "page","element": "none"},
+          {"time": 7267,"type": "word","value": "page","element": "clear"}
+        ]
+      }
+  
         
         
       
     
     
     
-      
-    
+
     
     
     

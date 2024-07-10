@@ -1327,7 +1327,7 @@
     {
       "daring": [
         {"time": 25,"type": "word","value": "Romance","element": "narrate-title-definitions"},
-        {"time": 537,"type": "word","value": "Scams","element": "narrate-title -definitions"},
+        {"time": 537,"type": "word","value": "Scams","element": "narrate-title-definitions"},
         {"time": 1025,"type": "word","value": "The","element": "narrate-1-definitions"},
         {"time": 1087,"type": "word","value": "scammer","element": "narrate-1-definitions"},
         {"time": 1525,"type": "word","value": "aims","element": "narrate-1-definitions"},
