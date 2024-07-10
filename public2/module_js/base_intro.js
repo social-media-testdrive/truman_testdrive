@@ -4,6 +4,7 @@ const moduleCards = {
   accounts: ['acctandpasswords.png', 'Accounts and Passwords'],
   'accounts-esp': ['acctandpasswords.png', 'Cuentas y Contraseñas'],
   advancedlit: ['advancednews.png', 'Responding to Breaking News!'],
+  'advancedlit-esp': ['advancednews.png', 'Noticias de Último minuto'],
   cyberbullying: ['upstander.png', 'How to Be an Upstander'],
   digfoot: ['digfoot.png', 'Shaping Your Digital Footprint'],
   'digfoot-esp': ['digfoot.png', 'Moldeando tu huella digital'],
@@ -14,10 +15,12 @@ const moduleCards = {
   phishing: ['phishing.png', 'Scams and Phishing'],
   'phishing-esp': ['phishing.png', 'Estafas y fraudes en línea'],
   presentation: ['onlineidentity.png', 'Online Identities'],
+  'presentation-esp': ['onlineidentity.png', 'Identidades en línea'],
   privacy: ['smprivacy.png', 'Social Media Privacy'],
   'privacy-esp': ['smprivacy.png', 'La privacidad en las redes sociales'],
   'safe-posting': ['privateinfo.png', 'Is It Private Information?'],
   targeted: ['targetedads.png', 'Ads on Social Media'],
+  'targeted-esp': ['targetedads.png', 'Anuncios en las redes sociales'],
   esteem: ['esteem.png', 'The Ups and Downs of Social Media'],
   'esteem-esp': ['esteem.png', 'Los Altibajos de las Redes Sociales']
 };
