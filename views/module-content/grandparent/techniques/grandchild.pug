@@ -1,65 +1,49 @@
 #grandchild.hidden
-    .ui.container#grandchild-read(style="width: 90%;")
-        //- css media query at bottom of example-email.css to make tablet stacking
-        .top-info#examplePage(style="margin-top: 10px;")
-            h1.ui.header.large#learn-title
-                .content
-                    i.book.icon
-                    | Example 1: Claim there is an account/payment issue
-                    a(href='https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams' target='_blank')
-                        sup [1]
-            //- h1.ui.header.large#learn-title
-            //-     .content
-            //-         | Recognize the Techniques of Scammers
-            //- h2 Example 2: Claim there is an account/payment issue
-            .ui.centered.stackable.grid
-                .eight.wide.column
-                    .limit-example-email
-                        .htmlImageExample#netflix-email
-                            .ui.raised.segments
-                                //- .metadata
-                                //-     .ui.basic.segment
-                                //-         p
-                                //-             strong From: 
-                                //-             | Netflix.com &lt;
-                                //-             span no-reply@ripnet.com
-                                //-             | &gt;
-                                //-         p
-                                //-             strong To: 
-                                //-             | #{user.email}
-                                //-         p
-                                //-             strong Date: 
-                                //-             | #{currentDate}
-                                //-         p
-                                //-             strong Subject: 
-                                //-             | Account on hold
-                                .content 
-                                    .image-container(style="background: #F3F4F5; margin: 0; padding: 2px;")
-                                        img.ui.small.image#netflix-logo(src='/images/netflix-logo.png' alt='Netflix logo' style="width: 150px;")
-                                    .ui.basic.segment.limit-content
-                                        h2.bold-message Please update your payment details
-                                        p Hi Dear Customer,
-                                        p.response We're having some trouble with your current billing information. Please update your payment details.
-                                        h2.update UPDATE ACCOUNT NOW
-                                        p Need help? We're here if you need it. Visit the <span class="underline-text">Help Center</span> or <span class="underline-text">contact us</span> now
-                                        p -Your friends at Netflix
-                .eight.wide.column
-                    //- p  Email scams can be tricky to spot, especially when they look like they come from a legitimate company you know. 
-                    //- p Here are some common signs why this email is not legitimate:
-                    p
-                        u Generic greeting
-                        | : if the email starts with a generic greeting like 'Dear Customer' instead of your name, it could be a sign that the email is not legitimate.
-                    p
-                        u Suspicious claim
-                        | : if the email claims that your account is on hold or you have a billing problem without providing specific details about the issue, it could be a scam.
-                    p
-                        u Phishing link
-                        | : if the email invites you to click on a new link to update your payment details, the link can be a phishing link.
-                    .callout
-                        .dark-blue-square
-                            img(src=user.avatarImg, alt='avatar picture')
-                        .light-blue-content
-                            h3.call-header Important
-                            p Legitimate companies won’t email or text you with a link to update your payment information.
-                    i.source *Sources: 1. Consumer Advice 
-                        a(href='https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams' target='_blank') 'How to Recognize and Avoid Phishing Scams' 
+    .ui.container(style="width: 90%;")
+        .ui.grid
+            .eight.wide.computer.sixteen.wide.tablet.column
+                h1.ui.header.large#learn-title
+                    .content
+                        i.book.icon
+                        | Impersonating Your Grandchild
+                p Grandparent scams typically start with a phone call from someone claiming to be your grandchild. They might provide your grandchild's name and location to gain your trust
+                    a(href='https://www.fbi.gov/news/stories/the-grandparent-scam' target='_blank')
+                    sup [1] 
+                p Alternatively, if they don't have your grandchild's name, they may begin with "Hi Grandpa/Grandma" and wait for you to provide further details, such as your grandchild's name or other information they can use to convince you they are your loved one 
+
+                i.source *Sources: 1. FBI.
+                    a(href='https://www.fbi.gov/news/stories/the-grandparent-scam' target='_blank') 'The Grandparent Scam.' 
+                i.source 2.  Holly Haase, Inside Edition. 
+                    a(href='https://www.youtube.com/watch?v=KpgwhdA0Wbg' target='_blank') 'Grandparent Scam Exposed.'
+
+
+                //- p [4] Elder Fraud Report. 2023. Internet Crime Complaint Center (IC3). https://www.ic3.gov/Media/PDF/AnnualReport/2023_IC3ElderFraudReport.pdf
+
+                    //- ul
+                    //-     li Family and friend imposter scams is up +36% since last year for ages 60+
+                    //-     li Results in losses of $32 million
+                //- .ui.bulleted.list 
+                //-     .item 
+                //-         | Family and friend imposter scams is up +36% since last year for ages 60+
+                //-     .item 
+                //-         | Results in losses of $32 million
+
+            .eight.wide.computer.sixteen.wide.tablet.column
+                div.ui.header
+                    i.phone.volume.icon
+                    | Audio Example
+                //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                .audio-player
+                    .wrap
+                        audio#audio.with-transcript(controls)
+                            source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3" type="audio/mpeg")
+                            | Your browser does not support the audio element.
+                        ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3")
+                            li.speaker1.current(data-timecode="00:00") Scammer: Hi Grandpa
+                            li.speaker2(data-timecode="00:01") Grandparent: Hi
+                            li.speaker1(data-timecode="00:02") Scammer: Do you know who this is?
+                            li.speaker2(data-timecode="00:03") Grandparent: Randy?
+                            li.speaker1(data-timecode="00:04") Scammer: Yeah.
+                            li.speaker2(data-timecode="00:05") Grandparent: What's the matter?
+                            li.speaker1.timecode-marker(data-timecode="00:06") Scammer: I've been in a car wreck.
+                            li.speaker2(data-timecode="00:07") Grandparent: Are you hurt bad?

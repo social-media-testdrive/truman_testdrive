@@ -571,9 +571,18 @@ function setLinks(currentPage) {
         nextlink = baseurl + "types";
       } else if (currentPage === "types") {
         backlink = baseurl + "avatar";
+        nextlink = baseurl + "grandchild";
+      } else if (currentPage === "grandchild") {
+        // resize player
+        window.dispatchEvent(new Event('resize'));
+
+        backlink = baseurl + "types";
+        nextlink = baseurl + "authority";
+      } else if (currentPage === "authority") {
+        backlink = baseurl + "grandchild";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
-        backlink = baseurl + "types";
+        backlink = baseurl + "authority";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
         backlink = baseurl + "reflection";
