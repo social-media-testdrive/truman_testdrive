@@ -18,7 +18,7 @@
     list-style: none;
     padding: 0;
     margin: 20px 0;
-    max-height: 300px;
+    max-height: 200px;
     overflow-y: scroll;
     padding-left: 100px;
     margin-left: -100px;
@@ -27,8 +27,28 @@
 .audio-player li {
     position: relative;
     padding: 0;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    cursor: pointer; /* Makes the list item clickable */
 }
+
+.audio-player li:hover {
+    background-color: #e0e0e0; /* Light gray background on hover */
+}
+
+.audio-player li:nth-child(odd) {
+    background-color: #f0f0f0; /* Light gray background for odd rows */
+}
+
+.audio-player li:nth-child(even) {
+    background-color: white; /* White background for even rows */
+}
+
+.audio-player li:hover {
+    background-color: #e0e0e0;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 
 .audio-player li:before,
 .audio-player li:after {
@@ -62,12 +82,4 @@
 .audio-player .mejs__container {
     width: 100% !important;
     /* background-color: red !important; */
-}
-
-.audio-player li:nth-child(odd) {
-    background-color: #f0f0f0; /* Light gray background for odd rows */
-}
-
-.audio-player li:nth-child(even) {
-    background-color: white; /* White background for even rows */
 }
