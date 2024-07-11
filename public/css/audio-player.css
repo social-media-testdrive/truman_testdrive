@@ -1,3 +1,7 @@
+.audio-player ul li {
+    margin-bottom: 0.5rem;
+}
+
 .audio-player .wrap {
     margin: 0 auto;
     max-width: 800px;
@@ -40,7 +44,8 @@
 
 .audio-player li:hover {
     /* background-color: #e0e0e0; */
-    font-weight: bold;
+    /* font-weight: bold; */
+    background-color: #fbffa1;
     text-decoration: underline;
 }
 

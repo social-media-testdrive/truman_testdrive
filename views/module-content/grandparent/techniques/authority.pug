@@ -1,38 +1,48 @@
 #authority.hidden
-    .ui.container
-        .limit#learn-target(style="padding: 0;")
-            .ui.grid
-                .ten.wide.computer.sixteen.wide.tablet.column
-                    h1.ui.header.large#learn-title
-                        .content
-                            i.book.icon
-                            | Impersonating Authority Figure
-                    p Social media posts, phone directories, and obituaries are the main sources used to gather information about potential targets. 
-                    p The scammers look for:
-                    .ui.bulleted.list 
-                        .item 
-                            | people who are already in distress from losing a loved one.
-                        .item 
-                            | details about a person's life, including their: address, birthdates, the name of family members, where grandchildren go to school, vacation plans, and even telephone numbers.
-                    //- p All the collected information is used to create a convincing story.
+    .ui.container(style="width: 75%;")
+        .ui.grid
+            .nine.wide.computer.sixteen.wide.tablet.column
+                h1.ui.header.large#learn-title
+                    .content
+                        i.book.icon
+                        | Impersonating Authority Figure
+                p To make their story convincing, grandparent scammers often introduce a fake authority figure like a doctor, lawyer, or police officer. They claim this person is calling on behalf of your grandchild who is in serious trouble and needs money to avoid legal issues or receive necessary treatment.
+                p The fake figure may call after being introduced by the impersonated grandchild, or they may call directly claiming to represent the grandchild.
 
 
 
-                    i.source *Sources: 1. Grandparent-Family Emergency Scam.
-                        a(href='https://www.michigan.gov/consumerprotection/protect-yourself/consumer-alerts/scams/grandparent-family-emergency-scam#:~:text=Scammers%20may%20also%20check%20Facebook,to%20be%20the%20real%20grandchild.' target='_blank') 'Consumer Protection.' 
+                i.source *Sources: 1. Grandparent-Family Emergency Scam.
+                    a(href='https://www.michigan.gov/consumerprotection/protect-yourself/consumer-alerts/scams/grandparent-family-emergency-scam#:~:text=Scammers%20may%20also%20check%20Facebook,to%20be%20the%20real%20grandchild.' target='_blank') 'Consumer Protection.' 
 
-                    //- p [4] Elder Fraud Report. 2023. Internet Crime Complaint Center (IC3). https://www.ic3.gov/Media/PDF/AnnualReport/2023_IC3ElderFraudReport.pdf
+                //- p [4] Elder Fraud Report. 2023. Internet Crime Complaint Center (IC3). https://www.ic3.gov/Media/PDF/AnnualReport/2023_IC3ElderFraudReport.pdf
 
-                        //- ul
-                        //-     li Family and friend imposter scams is up +36% since last year for ages 60+
-                        //-     li Results in losses of $32 million
-                    //- .ui.bulleted.list 
-                    //-     .item 
-                    //-         | Family and friend imposter scams is up +36% since last year for ages 60+
-                    //-     .item 
-                    //-         | Results in losses of $32 million
+                    //- ul
+                    //-     li Family and friend imposter scams is up +36% since last year for ages 60+
+                    //-     li Results in losses of $32 million
+                //- .ui.bulleted.list 
+                //-     .item 
+                //-         | Family and friend imposter scams is up +36% since last year for ages 60+
+                //-     .item 
+                //-         | Results in losses of $32 million
 
-                .six.wide.computer.sixteen.wide.tablet.column
-                    img.ui.medium.image(src='/images/grandparent/exploit-data.png' style='margin-left: auto; margin-right: auto')
-                    br
-                    b All the collected information is used to create a convincing story.
+            .seven.wide.computer.sixteen.wide.tablet.column
+                div.ui.header
+                    i.phone.volume.icon
+                    | Audio Example
+                //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                .audio-player
+                    .wrap
+                        audio#audio.with-transcript(controls)
+                            source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/authority.WAV" type="audio/mpeg")
+                            | Your browser does not support the audio element.
+                        ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/authority.WAV")
+                            li.speaker1.current(data-timecode="00:00") Grandparent: Hello?
+                            li.speaker2(data-timecode="00:01") Scammer: Hello, is this Mrs. Johnson?
+                            li.speaker1(data-timecode="00:03") Grandparent: Yes, speaking. Who is this?
+                            li.speaker2(data-timecode="00:05") Scammer: This is Dr. Langford calling from St. Mary's Hospital. I'm sorry to inform you that your grandson, Jason, has been admitted to our hospital.
+                            li.speaker1(data-timecode="00:13") Grandparent: Oh my goodness, is he okay? What happened?
+                            li.speaker2(data-timecode="00:17") Scammer: We've had to start treatment immediately. He's stable for now. But he needs surgery and his insurance isn't accepted. We can't do the surgery without payment.
+                            li.speaker1(data-timecode="00:26") Grandparent: Oh, I see. How much do you need?
+                            li.speaker2(data-timecode="00:28") Scammer: It's quite a substantial amount, Mrs. Johnson. We understand if this is difficult for you, but we need your assistance to ensure your grandson receives the care he needs.
+                                
+
