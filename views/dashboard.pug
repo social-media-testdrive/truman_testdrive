@@ -26,8 +26,13 @@ block content
                 button.ui.huge.button.right.floated.alert-learn-more 
                   span Learn More →
                 //-   i.arrow.right.icon
-                
+
+        br 
         //- Courses
+        .limit
+
+
+                  
         .limit
           h2.ui.header#in-progress My Missions:
 
@@ -51,12 +56,38 @@ block scripts
         
         data.forEach(module => {
           const progressBarHtml = `
-            <div class="label">${module.moduleName.charAt(0).toUpperCase() + module.moduleName.slice(1)} Progress</div>
-            <div class="ui indicating progress" data-value="${module.progress}" data-total="${module.total}" id="${module.moduleName}-progress">
-              <div class="bar">
-                <div class="progress"></div>
+          <a  class="ui" href="/about/${module.moduleName}"> 
+          <div class="ui raised segment">
+              <div class="ui fluid container" style="height: 200px;">
+                  <div class="ui image banner">
+                      <img src="/images/courses/${module.moduleName}-scams-banner.jpg">
+
+                      <div class="ui bottom small progress" data-percent="${(module.progress/module.total)*100}" style="margin:0;padding:0;">
+                          <div class="bar" style="border-radius: 0 !important; background: #3757A6;">
+                              <div class="progress"></div>
+                          </div>
+                      </div>
+                      <div style="text-align:center; color:grey">
+                        ${module.progress}/${module.total}
+                      </div>
+                  </div>
               </div>
-            </div>
+
+              <div id="raised-content" style="padding-top: 20px;">
+                  <h3 class="ui header large home-mod-title">
+                      ${module.moduleName.charAt(0).toUpperCase() + module.moduleName.slice(1)} Scams
+                  </h3>
+                  <p style="color:black"></p>
+                  <button class="ui huge blue button right floated" id="nextButton">
+                      Learn Now
+                      <i class="arrow right icon"></i>
+                  </button>
+              </div>
+          </div>
+          </a>
+          </br>
+          </br>
+
           `;
           progressBarsContainer.append(progressBarHtml);
         });
@@ -70,7 +101,7 @@ block scripts
               total: module.total,
               value: module.progress,
               text: {
-                active: '{value} of {total} done'
+                active: '{value}/{total}'
               }
             });
         });
