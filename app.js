@@ -58,7 +58,6 @@ const homeController = require("./controllers/home");
 const moduleController = require("./controllers/modules");
 const coursesController = require("./controllers/courses");
 const userController = require("./controllers/user");
-const apiController = require("./controllers/api");
 const contactController = require("./controllers/contact");
 
 /**
@@ -212,6 +211,8 @@ app.get("/about/:modId", isValidModId, moduleController.getAbout);
 app.get("/references/:modId", isValidModId, moduleController.getReferences);
 app.get("/course-player", moduleController.getModule);
 app.post("/completeModuleStatus", moduleController.completeModuleStatus);
+app.get("/completeModuleStatus/:id", moduleController.getModuleStatus);
+
 app.get("/login", userController.getLogin);
 app.post("/login", userController.postLogin);
 app.get("/logout", userController.logout);
@@ -409,10 +410,6 @@ app.get(
     res.redirect(req.session.returnTo || "/");
   }
 );
-// app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email', 'https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets.readonly'], accessType: 'offline', prompt: 'consent' }));
-// app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
-//   res.redirect(req.session.returnTo || '/');
-// });
 app.get(
   "/auth/google",
   passport.authenticate("google", {

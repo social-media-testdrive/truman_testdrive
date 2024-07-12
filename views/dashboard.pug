@@ -1,4 +1,5 @@
 extends ui_layout
+
 block content
   .ui.grid(style="margin-top: -58px;")
     .row#blue-upper
@@ -8,13 +9,8 @@ block content
           p#about 
             i.circular.info.pear.small.icon(style="position: relative; bottom: 2px; right: 5px; border: none !important; font-size: 0.8rem")
             | View your progress on DART Academy and alert hub updates below
-          //- button.ui.inverted.button(style="margin-right: 20px;")
-          //-   | Courses in Progress
-          //- button.ui.inverted.button
-          //-   | New Courses
 
     .row#white-lower
-
       //- Alert Hub
       .ui.container
         .limit.hub-container
@@ -30,30 +26,50 @@ block content
                 button.ui.huge.button.right.floated.alert-learn-more 
                   span Learn More →
                 //-   i.arrow.right.icon
-
+                
         //- Courses
-        
         .limit
           h2.ui.header#in-progress My Missions:
-        //-   a.ui#theft-link(href=user.moduleProgress.identity.link alt="Begin identity theft module")
-        //-     .ui.raised.segment
-        //-       .ui.fluid.container(style="height: 200px;")
-        //-         .ui.image.banner
-        //-           img(src="/images/identity-theft-banner.jpg", alt="Identity Theft Banner Image")
 
-        //-           #romance-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.identity.percent)
-        //-             .bar(style='border-radius: 0 !important;')
-        //-               .progress
-        //-       #raised-content(style="padding-top: 20px;")
-        //-         h3.ui.header.large.home-mod-title
-        //-           | Romance Scams
-        //-         p(style="color:black") Understand the consequences of Romance Scams and learn how to identify and take action against phishing scams on social media.
-        //-         button.ui.huge.blue.button.right.floated#nextButton
-        //-           | Learn Now
-        //-           i.arrow.right.icon
+          //- Progress Bars
+          div#progress-bars-container
 
 block styles
   link(rel='stylesheet', href='/css/mods.css')
 
 block scripts  
-  //- put scripts here
+  script.
+    $(window).ready(function () {
+      $.get('/completeModuleStatus/66915c0fc8687248f2692530', function(data) {
+        console.log("Response data saved to info:");
+        console.log(data);
+
+        const progressBarsContainer = $('#progress-bars-container');
+        
+        data.forEach(module => {
+          const progressBarHtml = `
+            <div class="label">${module.moduleName.charAt(0).toUpperCase() + module.moduleName.slice(1)} Progress</div>
+            <div class="ui indicating progress" data-value="${module.progress}" data-total="${module.total}" id="${module.moduleName}-progress">
+              <div class="bar">
+                <div class="progress"></div>
+              </div>
+            </div>
+          `;
+          progressBarsContainer.append(progressBarHtml);
+        });
+
+        data.forEach(module => {
+          $(`#${module.moduleName}-progress`)
+            .attr('data-total', module.total)
+            .attr('data-value', module.progress)
+            .progress({
+              duration: 200,
+              total: module.total,
+              value: module.progress,
+              text: {
+                active: '{value} of {total} done'
+              }
+            });
+        });
+      });
+    });
