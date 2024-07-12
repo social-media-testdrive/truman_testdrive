@@ -40,9 +40,12 @@ block styles
 block scripts  
   script.
     $(window).ready(function () {
-      $.get('/completeModuleStatus/66915c0fc8687248f2692530', function(data) {
+      $.post('/getModuleStatus', { "email": user.email }, function(data) {
         console.log("Response data saved to info:");
         console.log(data);
+        console.log(user.name)
+        console.log(user.id)
+        console.log(user.email)
 
         const progressBarsContainer = $('#progress-bars-container');
         

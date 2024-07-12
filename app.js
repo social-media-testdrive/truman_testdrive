@@ -211,7 +211,7 @@ app.get("/about/:modId", isValidModId, moduleController.getAbout);
 app.get("/references/:modId", isValidModId, moduleController.getReferences);
 app.get("/course-player", moduleController.getModule);
 app.post("/completeModuleStatus", moduleController.completeModuleStatus);
-app.get("/completeModuleStatus/:id", moduleController.getModuleStatus);
+app.post("/getModuleStatus", moduleController.getModuleStatus);
 
 app.get("/login", userController.getLogin);
 app.post("/login", userController.postLogin);
