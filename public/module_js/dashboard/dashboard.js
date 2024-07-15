@@ -68,7 +68,7 @@ $(window).ready(function () {
         console.log(data);
         const newsContainer = $('#news-container');
 
-        data.articles.forEach(article => {
+        data.forEach(article => {
             const articleHtml = `
             <a class="ui" href="${article.url}" alt="Begin identity theft module">
               <div class="ui raised segment">
