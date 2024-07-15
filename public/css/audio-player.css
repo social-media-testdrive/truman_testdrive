@@ -88,3 +88,38 @@
 .audio-player span.mejs__duration {
     font-size: 1.3rem;
 }
+
+
+
+
+
+
+/* text only examples */
+
+.text-only-audio ul li {
+    margin-bottom: 0.5rem;
+}
+
+
+.text-only-audio ul {
+    position: relative;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    max-height: 200px;
+    padding-left: 100px;
+    margin-left: -100px;
+}
+
+.text-only-audio li {
+    position: relative;
+    padding: 0;
+}
+
+.text-only-audio li:nth-child(odd) {
+    background-color: #f0f0f0; /* Light gray background for odd rows */
+}
+
+.text-only-audio li:nth-child(even) {
+    background-color: white; /* White background for even rows */
+}

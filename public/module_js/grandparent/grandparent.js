@@ -573,12 +573,15 @@ function setLinks(currentPage) {
         backlink = baseurl + "avatar";
         nextlink = baseurl + "grandchild";
       } else if (currentPage === "grandchild") {
-        // resize player
-        window.dispatchEvent(new Event('resize'));
+        // pause audio player
+        $('audio.with-transcript').get(0).pause();
 
         backlink = baseurl + "types";
         nextlink = baseurl + "authority";
       } else if (currentPage === "authority") {
+        // pause audio player
+        $('audio.with-transcript').get(1).pause();
+
         backlink = baseurl + "grandchild";
         nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
