@@ -10,22 +10,13 @@ block content
             i.circular.info.pear.small.icon(style="position: relative; bottom: 2px; right: 5px; border: none !important; font-size: 0.8rem")
             | View your progress on DART Academy and alert hub updates below
 
+
     .row#white-lower
       //- Alert Hub
       .ui.container
         .limit.hub-container
           h2.ui.header#in-progress DART Alert Hub:
-          a.ui(href=`#alert` alt="Begin identity theft module")
-            .ui.raised.segment
-              div#raised-content
-                div.ui.header.hub-alert
-                  i.exclamation.circle.icon
-                  | Rise in Fake Gift Cards
-
-                p.alert-info Gift cards are a fraudster’s favorite payment method. Since 2018, consumers have lost nearly $245 million to gift card scams...
-                button.ui.huge.button.right.floated.alert-learn-more 
-                  span Learn More →
-                //-   i.arrow.right.icon
+          #news-container
 
         br 
         //- Courses
@@ -43,67 +34,4 @@ block styles
   link(rel='stylesheet', href='/css/mods.css')
 
 block scripts  
-  script.
-    $(window).ready(function () {
-      $.post('/getModuleStatus', { "email": user.email }, function(data) {
-        console.log("Response data saved to info:");
-        console.log(data);
-        console.log(user.name)
-        console.log(user.id)
-        console.log(user.email)
-
-        const progressBarsContainer = $('#progress-bars-container');
-        
-        data.forEach(module => {
-          const progressBarHtml = `
-          <a  class="ui" href="/about/${module.moduleName}"> 
-          <div class="ui raised segment">
-              <div class="ui fluid container" style="height: 200px;">
-                  <div class="ui image banner">
-                      <img src="/images/courses/${module.moduleName}-scams-banner.jpg">
-
-                      <div class="ui bottom small progress" data-percent="${(module.progress/module.total)*100}" style="margin:0;padding:0;">
-                          <div class="bar" style="border-radius: 0 !important; background: #3757A6;">
-                              <div class="progress"></div>
-                          </div>
-                      </div>
-                      <div style="text-align:center; color:grey">
-                        ${module.progress}/${module.total}
-                      </div>
-                  </div>
-              </div>
-
-              <div id="raised-content" style="padding-top: 20px;">
-                  <h3 class="ui header large home-mod-title">
-                      ${module.moduleName.charAt(0).toUpperCase() + module.moduleName.slice(1)} Scams
-                  </h3>
-                  <p style="color:black"></p>
-                  <button class="ui huge blue button right floated" id="nextButton">
-                      Learn Now
-                      <i class="arrow right icon"></i>
-                  </button>
-              </div>
-          </div>
-          </a>
-          </br>
-          </br>
-
-          `;
-          progressBarsContainer.append(progressBarHtml);
-        });
-
-        data.forEach(module => {
-          $(`#${module.moduleName}-progress`)
-            .attr('data-total', module.total)
-            .attr('data-value', module.progress)
-            .progress({
-              duration: 200,
-              total: module.total,
-              value: module.progress,
-              text: {
-                active: '{value}/{total}'
-              }
-            });
-        });
-      });
-    });
+  script(src='/module_js/dashboard/dashboard.js')   

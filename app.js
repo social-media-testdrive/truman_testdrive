@@ -59,6 +59,8 @@ const moduleController = require("./controllers/modules");
 const coursesController = require("./controllers/courses");
 const userController = require("./controllers/user");
 const contactController = require("./controllers/contact");
+const newapiController = require("./controllers/newsapi");
+
 
 /**
  * API keys and Passport configuration.
@@ -212,6 +214,8 @@ app.get("/references/:modId", isValidModId, moduleController.getReferences);
 app.get("/course-player", moduleController.getModule);
 app.post("/completeModuleStatus", moduleController.completeModuleStatus);
 app.post("/getModuleStatus", moduleController.getModuleStatus);
+
+app.get("/newsapi",newapiController.getNewsAPI)  
 
 app.get("/login", userController.getLogin);
 app.post("/login", userController.postLogin);
