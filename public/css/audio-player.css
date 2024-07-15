@@ -21,7 +21,8 @@
     list-style: none;
     padding: 0;
     margin: 20px 0;
-    max-height: 200px;
+    max-height: 150px;
+    /* max-height: 200px; */
     overflow-y: scroll;
     padding-left: 100px;
     margin-left: -100px;

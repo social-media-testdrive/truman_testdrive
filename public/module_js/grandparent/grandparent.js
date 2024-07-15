@@ -663,9 +663,12 @@ function setLinks(currentPage) {
         nextlink = baseurl + "fear";
       } else if (currentPage === "fear") {
         backlink = baseurl + "voice";
+        nextlink = baseurl + "pressure";
+      } else if (currentPage === "pressure") {
+        backlink = baseurl + "fear";
         nextlink = baseurl + "secrecy1";
       } else if (currentPage === "secrecy1") {
-        backlink = baseurl + "fear";
+        backlink = baseurl + "pressure";
         nextlink = baseurl + "secrecy2";
       } else if (currentPage === "secrecy2") {
         backlink = baseurl + "secrecy1";
