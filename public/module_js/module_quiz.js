@@ -727,6 +727,7 @@ function displayCurrentQuestion()
 
     if(question.partial != "none") {
         $.get("/quizPartials/" + modID + "/" + currentSection + "/" + question.partial, function(data) {
+
             // 'data' contains the content of the Pug template
             htmlImageContainer.html(data);
 
@@ -779,6 +780,11 @@ function displayCurrentQuestion()
                 },
             });
           
+            if(question.partial.includes("audio")) {
+                // execute audio_player.js manually after dynamically adding the partial
+                // console.log("initializing audio partial & transcript");
+                initializeAudioPlayer();
+            }
             
         });
     } else {
@@ -1077,6 +1083,11 @@ function convertSelectedAnswerToLetters(userAnswersObj) {
 
 
 function displayScore() {
+    // pause any audio partials when going to results
+    $('audio.with-transcript').each(function() {
+        this.pause();
+    });
+
     if(pastAttempts === false) {
         // add up scores
         for (const score of questionScores) {

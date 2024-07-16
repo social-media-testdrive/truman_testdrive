@@ -1511,4 +1511,7 @@ blockquote p {
 #grey-buttons button {
     background-color: #E7E6E6;
     border: 2px solid #696969;
+    text-align: left;
 }
+
+

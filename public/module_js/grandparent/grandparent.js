@@ -213,9 +213,9 @@ $(document).ready(function() {
                         introJs().addHints();
                     }
 
-                    if(section === 'practice' && backPage === 'activity') {
-                        setupPractice();
-                    }
+                    // if(section === 'practice' && backPage === 'activity') {
+                    //     setupPractice();
+                    // }
 
                     if(speechData !== "none") {
                         // console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
@@ -299,7 +299,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Challenge", "Bronze", "Challenge Conqueror", "/badges/identity/challenge_conqueror.svg");
+                        postBadge("Grandparent Scams", "Challenge", "Bronze", "Challenge Conqueror", "/badges/identity/challenge_conqueror.svg");
 
                         badgeEarned = true;
                     } else if(section === 'concepts') {
@@ -312,7 +312,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Concepts", "Bronze", "Foundation Acheivers", "/badges/identity/foundation_acheivers.svg");
+                        postBadge("Grandparent Scams", "Concepts", "Bronze", "Foundation Acheivers", "/badges/identity/foundation_acheivers.svg");
 
                         badgeEarned = true;
                     } else if(section === 'consequences') {
@@ -325,7 +325,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Consequences", "Bronze", "Aftermath Ace", "/badges/identity/aftermath_ace.svg");
+                        postBadge("Grandparent Scams", "Consequences", "Bronze", "Aftermath Ace", "/badges/identity/aftermath_ace.svg");
 
                         badgeEarned = true;                    
                     } else if(section === 'techniques') {
@@ -338,7 +338,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Techniques", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
+                        postBadge("Grandparent Scams", "Techniques", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
 
                         badgeEarned = true;                    
                     } else if(section === 'protection') {
@@ -351,7 +351,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Protection", "Silver", "Prodigy Protector", "/badges/identity/prodigy_protector.svg");
+                        postBadge("Grandparent Scams", "Protection", "Silver", "Prodigy Protector", "/badges/identity/prodigy_protector.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'reporting') {
@@ -364,7 +364,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Reporting", "Gold", "Alert Advocate", "/badges/identity/alert_advocate.svg");
+                        postBadge("Grandparent Scams", "Reporting", "Gold", "Alert Advocate", "/badges/identity/alert_advocate.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'practice') {
@@ -377,7 +377,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Practice", "Gold", "Scam Spotter", "/badges/identity/scam_spotter.svg");
+                        postBadge("Grandparent Scams", "Practice", "Gold", "Scam Spotter", "/badges/identity/scam_spotter.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'evaluation') {
@@ -390,7 +390,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Evaluation", "Platinum", "Champion of Completion", "/badges/identity/champion_of_completion.svg");
+                        postBadge("Grandparent", "Evaluation", "Platinum", "Champion of Completion", "/badges/identity/champion_of_completion.svg");
 
                         badgeEarned = true;                             
                     }
@@ -418,9 +418,9 @@ $(document).ready(function() {
                 if(section === "techniques" && nextPage === 'activity') {
                     introJs().addHints();
                 }
-                if(section === 'practice' && nextPage === 'activity') {
-                    setupPractice();
-                }
+                // if(section === 'practice' && nextPage === 'activity') {
+                //     setupPractice();
+                // }
 
                 if(speechData !== "none") {
                     if(pastAttempts && nextPage === 'quiz') {
@@ -465,9 +465,9 @@ function setLinks(currentPage) {
                     introJs().addHints();
                 }
 
-                if(section === 'practice' && currentPage === 'activity') {
-                    setupPractice();
-                }
+                // if(section === 'practice' && currentPage === 'activity') {
+                //     setupPractice();
+                // }
             }
         });
 
@@ -504,7 +504,7 @@ function setLinks(currentPage) {
         nextlink = baseurl + "intro-video";
       } else if (currentPage === "intro-video") {
         // pause video
-        $("#my_video_1")[0].player.pause();
+        // $("#my_video_1")[0].player.pause();
   
         backlink = baseurl + "objectives";
         nextlink = baseurl + "definitions";
@@ -595,53 +595,7 @@ function setLinks(currentPage) {
         nextlink =
           "/course-player?module=grandparent&section=signs&page=objectives";
       }
-    } else if (section === "protection") {
-      let baseurl = "/course-player?module=grandparent&section=protection&page=";
-  
-      if (currentPage === "objectives") {
-        backlink =
-          "/course-player?module=grandparent&section=signs&page=objectives";
-        nextlink = baseurl + "protect-video";
-      } else if (currentPage === "protect-video") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "fundamental-measures";
-      } else if (currentPage === "fundamental-measures") {
-        backlink = baseurl + "protect-video";
-        nextlink = baseurl + "preventative";
-      }
-      else if (currentPage === "preventative") {
-        backlink = baseurl + "fundamental-measures";
-        nextlink = baseurl + "contacted";
-      } 
-      
-      else if (currentPage === "contacted") {
-        backlink = baseurl + "preventative";
-
-        nextlink = baseurl + "reactive";
-      } else if (currentPage === "reactive") {
-        backlink = baseurl + "contacted";
-        nextlink = baseurl + "accident";
-      } else if (currentPage === "accident") {
-        backlink = baseurl + "reactive";
-        nextlink = baseurl + "post-actions";
-      } else if (currentPage === "post-actions") {
-        backlink = baseurl + "accident";
-        nextlink = baseurl + "activity";
-      } else if (currentPage === "activity") {
-        backlink = baseurl + "post-actions";
-        nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
-        backlink = baseurl + "activity";
-        nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "reflection";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
-        backlink = baseurl + "reflection";
-        nextlink =
-          "/course-player?module=grandparent&section=signs&page=objectives";
-      }
-    } else if (section === "signs") {
+    }else if (section === "signs") {
       let baseurl = "/course-player?module=grandparent&section=signs&page=";
   
       if (currentPage === "objectives") {
@@ -659,12 +613,18 @@ function setLinks(currentPage) {
         backlink = baseurl + "responses";
         nextlink = baseurl + "voice";
       } else if (currentPage === "voice") {
+        $('audio.with-transcript').get(0).pause();
+
         backlink = baseurl + "family";
         nextlink = baseurl + "fear";
       } else if (currentPage === "fear") {
+        $('audio.with-transcript').get(1).pause();
+
         backlink = baseurl + "voice";
         nextlink = baseurl + "pressure";
       } else if (currentPage === "pressure") {
+        $('audio.with-transcript').get(2).pause();
+
         backlink = baseurl + "fear";
         nextlink = baseurl + "secrecy1";
       } else if (currentPage === "secrecy1") {
@@ -674,6 +634,8 @@ function setLinks(currentPage) {
         backlink = baseurl + "secrecy1";
         nextlink = baseurl + "payment";
       } else if (currentPage === "payment") {
+        $('audio.with-transcript').get(3).pause();
+
         backlink = baseurl + "secrecy2";
         nextlink = baseurl + "money";
       } else if (currentPage === "money") {
@@ -696,6 +658,47 @@ function setLinks(currentPage) {
        else if (currentPage === "takeaways") {
         backlink = baseurl + "quiz";
         nextlink =
+          "/course-player?module=grandparent&section=protection&page=objectives";
+      }
+    } else if (section === "protection") {
+      let baseurl = "/course-player?module=grandparent&section=protection&page=";
+  
+      if (currentPage === "objectives") {
+        backlink =
+          "/course-player?module=grandparent&section=signs&page=objectives";
+        nextlink = baseurl + "intro-video";
+      } else if (currentPage === "intro-video") {
+        backlink = baseurl + "objectives";
+        nextlink = baseurl + "fundamental-measures";
+      } else if (currentPage === "fundamental-measures") {
+        backlink = baseurl + "intro-video";
+        nextlink = baseurl + "contacted";
+      }
+      else if (currentPage === "contacted") {
+        backlink = baseurl + "fundamental-measures";
+
+        nextlink = baseurl + "reactive";
+      } else if (currentPage === "reactive") {
+        backlink = baseurl + "contacted";
+        nextlink = baseurl + "accident";
+      } else if (currentPage === "accident") {
+        backlink = baseurl + "reactive";
+        nextlink = baseurl + "post-actions";
+      } else if (currentPage === "post-actions") {
+        backlink = baseurl + "accident";
+        nextlink = baseurl + "activity";
+      } else if (currentPage === "activity") {
+        backlink = baseurl + "post-actions";
+        nextlink = baseurl + "quiz";
+      } else if (currentPage === "quiz") {
+        backlink = baseurl + "activity";
+        nextlink = baseurl + "reflection";
+      } else if (currentPage === "reflection") {
+        backlink = baseurl + "quiz";
+        nextlink = baseurl + "takeaways";
+      } else if (currentPage === "takeaways") {
+        backlink = baseurl + "reflection";
+        nextlink =
           "/course-player?module=grandparent&section=practice&page=objectives";
       }
     } else if (section === "practice") {
@@ -703,77 +706,18 @@ function setLinks(currentPage) {
   
       if (currentPage === "objectives") {
         backlink = "/course-player?module=grandparent&section=signs&page=objectives";
-
-        //- check if they have completed the practice module, then show results page
-        //- console.log("Checking if practice module is completed. Their score is: "  + scoreTotal);
-        if(scoreTotal > 0) {
-          nextlink = baseurl + "results";
-        } else {
-          nextlink = baseurl + "arrive";
-        }
-      } else if (currentPage === "arrive") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "conversation";
-      } else if (currentPage === "conversation") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "arrive";
-  
-        var conversationChoice = localStorage.getItem('conversation_choice');
-
-        if (conversationChoice === 'yes') {
-          nextlink = baseurl + "conversation2";
-        } else if (conversationChoice === 'no') {
-            nextlink = baseurl + "conversation3";
-        } else {
-            console.log('Skipping');
-            nextlink = baseurl + "takeaways";
-        }      
-      } else if (currentPage === "conversation2") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "conversation";
-          nextlink = baseurl + "conversation3";
-      } else if (currentPage === "conversation3") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "conversation";
-        nextlink = baseurl + "conversation4";
-      } else if (currentPage === "conversation4") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "conversation3";
-        nextlink = baseurl + "conversation5";
-      } else if (currentPage === "conversation5") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "conversation4";
-        nextlink = baseurl + "conversation6";
-      } else if (currentPage === "conversation6") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "conversation5";
-        nextlink = baseurl + "conversation7";
-      } else if (currentPage === "conversation7") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "conversation6";
-        nextlink = baseurl + "conversation8";
-      } else if (currentPage === "conversation8") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "conversation7";
-        nextlink = baseurl + "ending";
-      } else if (currentPage === "ending") {
-        $('.ui.modal').modal('hide');
-        backlink = baseurl + "conversation8";
-        nextlink = baseurl + "results";
-      } else if (currentPage === "results") {
+        nextlink = baseurl + "activity";
+      } else if (currentPage === "activity") {
         backlink = baseurl + "objectives";
         nextlink = baseurl + "takeaways";
-
-      
       } else if (currentPage === "takeaways") {
-        backlink = baseurl + "results";
+        backlink = baseurl + "activity";
         nextlink = "/course-player?module=grandparent&section=evaluation&page=intro";
 
         // complete module status to 100 manually since there is no quiz
         console.log("HEY Posting to complete practice module status");
         $.post('/completeModuleStatus', {
-            modId: 'romance',
+            modId: 'grandparent',
             section: 'practice'
         });
       }
@@ -818,20 +762,18 @@ function setLinks(currentPage) {
         progress = 0;
       } else if (pageParam === "intro-video") {
         progress = (1 / total) * 100;
-      } else if (pageParam === "phases") {
-        progress = (2 / total) * 100;
       } else if (pageParam === "definitions") {
+        progress = (2 / total) * 100;
+      } else if (pageParam === "types") {
         progress = (3 / total) * 100;
-      } else if (pageParam === "fake-websites") {
+      } else if (pageParam === "avatar") {
         progress = (4 / total) * 100;
-      } else if (pageParam === "trusted") {
-        progress = (5 / total) * 100;
       } else if (pageParam === "matching") {
-        progress = (6 / total) * 100;
+        progress = (5 / total) * 100;
       } else if (pageParam === "quiz") {
-        progress = (7 / total) * 100;
+        progress = (6 / total) * 100;
       } else if (pageParam === "reflection") {
-        progress = (10 / total) * 100;
+        progress = (8.5 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
@@ -922,22 +864,54 @@ function setLinks(currentPage) {
         progress = 0;
       } else if (pageParam === "intro-video") {
         progress = (1 / total) * 100;
-      } else if (pageParam === "types") {
+      } else if (pageParam === "data") {
         progress = (2 / total) * 100;
-      } else if (pageParam === "issue") {
+      } else if (pageParam === "avatar") {
         progress = (3 / total) * 100;
-      } else if (pageParam === "know-you") {
+      } else if (pageParam === "types") {
         progress = (4 / total) * 100;
-      } else if (pageParam === "offer") {
+      } else if (pageParam === "grandchild") {
         progress = (5 / total) * 100;
-      } else if (pageParam === "suspicious") {
+      } else if (pageParam === "authority") {
         progress = (6 / total) * 100;
-      } else if (pageParam === "activity") {
-        progress = (7 / total) * 100;
       } else if (pageParam === "reflection") {
-        progress = (8 / total) * 100;
+        progress = (7 / total) * 100;
       } else if (pageParam === "quiz") {
+        progress = (11 / total) * 100;
+      } else if (pageParam === "takeaways") {
+        progress = 100;
+      }
+    } else if (section === "signs") {
+      if (pageParam === "objectives") {
+        progress = 0;
+      } else if (pageParam === "titles") {
+        progress = (1 / total) * 100;
+      } else if (pageParam === "responses") {
+        progress = (2 / total) * 100;
+      } else if (pageParam === "family") {
+        progress = (3 / total) * 100;
+      } else if (pageParam === "voice") {
+        progress = (4 / total) * 100;
+      } else if (pageParam === "fear") {
+        progress = (5 / total) * 100;
+      } else if (pageParam === "pressure") {
+        progress = (6 / total) * 100;
+      } else if (pageParam === "secrecy1") {
+        progress = (7 / total) * 100;
+      } else if (pageParam === "secrecy2") {
+        progress = (8 / total) * 100;
+      } else if (pageParam === "payment") {
         progress = (9 / total) * 100;
+      } else if (pageParam === "money") {
+        progress = (10 / total) * 100;
+      } else if (pageParam === "activity1") {
+        progress = (11 / total) * 100;
+      } else if (pageParam === "activity2") {
+        progress = (12 / total) * 100;
+      } else if (pageParam === "quiz") {
+        progress = (17 / total) * 100;
+      } else if (pageParam === "reflection") {
+        progress = (18 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
@@ -946,22 +920,24 @@ function setLinks(currentPage) {
         progress = 0;
       } else if (pageParam === "intro-video") {
         progress = (1 / total) * 100;
-      } else if (pageParam === "guidelines") {
+      } else if (pageParam === "fundamental-measures") {
         progress = (2 / total) * 100;
-      } else if (pageParam === "security") {
+      } else if (pageParam === "preventative") {
         progress = (3 / total) * 100;
-      } else if (pageParam === "communication") {
+      } else if (pageParam === "contacted") {
         progress = (4 / total) * 100;
-      } else if (pageParam === "privacy") {
+      } else if (pageParam === "reactive") {
         progress = (5 / total) * 100;
-      } else if (pageParam === "search") {
+      } else if (pageParam === "accident") {
         progress = (6 / total) * 100;
-      } else if (pageParam === "reverse-image") {
+      } else if (pageParam === "post-actions") {
         progress = (7 / total) * 100;
+      } else if (pageParam === "activity") {
+        progress = (8 / total) * 100;
       } else if (pageParam === "quiz") {
-        progress = (7.5 / total) * 100;
+        progress = (13 / total) * 100;
       } else if (pageParam === "reflection") {
-        progress = (11 / total) * 100;
+        progress = (14 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
