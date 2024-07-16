@@ -39,25 +39,29 @@
   },
   "3": {
     "progress": 67,
-    "type": "abcd",
+    "type": "multi_select",
     "partial": "none",
-    "prompt": "3. What is a recommended strategy to verify the identity of a caller claiming to be your grandchild?",
+    "prompt": "3. Which are recommended strategies to verify the identity of a caller claiming to be your grandchild? Select all that apply.",
     "choices": {
-      "a": {
-        "text": "A. Ask them to provide their social media profile information."
+      "0": {
+        "text": "A. Ask them to provide their social media profile information.",
+        "explanation": "Choice A is incorrect. Knowing the unknown caller’s social media profile information cannot verify the caller’s identity as the social media profile itself can be fake as well."
       },
-      "b": {
-        "text": "B. Set your social media to private and be cautious about what information you share online."
+      "1": {
+        "text": "B. Share personal information about your family to confirm their identity.",
+        "explanation": "Choice B is incorrect. Do not share any of your or your family's personal information with the caller. Doing so will only provide more information to the scammer, which could be used against you."
       },
-      "c": {
-        "text": "C. Answer calls from numbers that you do not recognize to see if it is your grandchild."
+      "2": {
+        "text": "C. Contact your grandchild or their parents through a known method to confirm they called you.",
+        "explanation": "Choice C is correct. This strategy allows you to bypass the potentially spoofed phone number and contact your grandchild or their parents directly through a separate verified method (like their known personal phone number, email, etc.). Also,  you can double-check if your grandchild genuinely tried to call you and was truly in need of help as the caller claimed. Therefore, do not take any action until you have confirmed the caller's identity with a separate method."
       },
-      "d": {
-        "text": "D. Establish a secret word or question that only your grandchild would know the answer to."
+      "3": {
+        "text": "D. Establish a secret word or question that only your grandchild would know the answer to.",
+        "explanation": "Choice D is correct. Establishing a secret word or question provides a secure method of verification that only your actual grandchild would be able to answer correctly. It helps to prevent falling victim to impostors who may claim to be your grandchild over the phone."
       }
     },
-    "explanation": "<h1>D is correct</h1><p>Establishing a secret word or question provides a secure method of verification that only your actual grandchild would be able to answer correctly. It helps to prevent falling victim to impostors who may claim to be your grandchild over the phone.</p>",
-    "correctResponse": "d"
+    "correctResponse": ["2", "3"],
+    "theAnswers": "C, D"
   },
   "4": {
     "progress": 73,
