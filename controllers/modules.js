@@ -84,6 +84,8 @@ exports.getModule = async (req, res) => {
         numPages = 12;
       } else if (module === 'romance') {
         numPages = 11;
+      } else if (module === 'grandparent') {
+        numPages = 3;
       }
 
     }

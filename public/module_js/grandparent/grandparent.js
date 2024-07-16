@@ -991,7 +991,7 @@ function setLinks(currentPage) {
       if (pageParam === "intro") {
         progress = 0;
       } else if (pageParam === "quiz") {
-        progress = (9 / total) * 100;
+        progress = (1 / total) * 100;
       } else if (pageParam === "badge") {
         progress = 100;
       } else if (pageParam === "certificate") {
