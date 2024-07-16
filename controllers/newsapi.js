@@ -17,17 +17,18 @@ const getNewsAPI = async (req, res) => {
         while (articles.length < 5) {
             const response = await axios.get('https://newsapi.org/v2/everything', {
                 params: {
-                    q: '"scam" AND (fraud OR victim OR arrested OR charged OR scheme OR investigation OR senior) AND (experience OR story OR narrative) NOT political',
+                    q: 'scam AND (fraud OR victim OR "arrested for scam" OR "charged in scam" OR "ponzi scheme" OR "scam investigation" OR "senior scam") AND (experience OR story OR narrative) NOT (political OR "foreign affairs" OR espionage OR treason)',
                     sortBy: 'publishedAt',
                     apiKey: process.env.NEWS_APIKEY,
                     language: 'en',
                     from: fromDate,
                     to: toDate,
-                    pageSize: 100,
-                    page
+                    pageSize: 30,
+                    page,
+                    searchIn: 'content'
                 }
             });
-
+            
             for (const article of response.data.articles) {
                 if (!article.title || article.title.includes("[Removed]") || !article.author) {
                     continue;
@@ -52,7 +53,7 @@ const getNewsAPI = async (req, res) => {
                 if (articles.length === 5) break;
             }
 
-            if (response.data.articles.length < 100) break;  // No more pages to fetch
+            if (response.data.articles.length < 30) break;  // No more pages to fetch
             page++;
         }
 
