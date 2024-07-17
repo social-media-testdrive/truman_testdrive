@@ -178,6 +178,52 @@ exports.completeModuleStatus = async (req, res, next) => {
   }
 };
 
+// exports.getModuleStatus = async (req, res, next) => {
+//   console.log("GET /ModuleStatus ")
+//   try {
+//     const { modId, section } = req.body;
+//     const existingUser = await User.find({ email: req.user.email });
+//     if (existingUser) {
+//       res.status(200).json (existingUser.moduleStatus)
+//       console.log(existingUser.moduleStatus)
+//     }
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+exports.getModuleStatus = async (req, res, next) => {
+  console.log("GET /ModuleStatus ")
+  try {
+    const existingUser = await User.findOne({ email: req.body.email });
+    if (existingUser) {
+      const holdModules = existingUser.moduleStatus;
+      let result = [];
+
+      for (let moduleName in holdModules) {
+        if (holdModules.hasOwnProperty(moduleName)) {
+          let module = holdModules[moduleName];
+          let total = Object.keys(module).length;
+          let progress = Object.values(module).filter(value => value === 100).length;
+          if (progress>0){
+            result.push({
+              moduleName,
+              total,
+              progress
+            });
+          }
+        }
+      }
+
+      res.status(200).json(result);
+    } else {
+      res.status(404).json({message: "User not found"});
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 
 // time helper functions
 
