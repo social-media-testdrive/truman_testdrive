@@ -1,16 +1,16 @@
 #payment.hidden
-    .ui.container(style="width: 90%;")
+    .ui.container(style="width: 70%;")
         .limit(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
                     i.book.icon
-                    | Red Flag 7:  Request for Untraceable Payment Methods
+                    | Request for Untraceable Payment Methods
             .ui.centered.stackable.grid
-                .eight.wide.column
+                .ten.wide.column
                     p When the caller demands payment <strong> via cash, gift cards, wire transfers, or even cryptocurrency, </strong> it is a warning sign for a grandparent scam. 
-
-
                     p The scammer may claim these untraceable payment methods allow for faster transfers than checks. However, this excuse creates a false sense of urgency to pressure you into sending money quickly. 
+                        em Do not use any untraceable payment methods they suggest.
+
                     .callout
                         .dark-blue-square
                             img(src=user.avatarImg, alt='avatar picture')
@@ -18,15 +18,23 @@
                             h3.call-header Important
                             p The real reason scammers demand these methods is that:
                             .ui.bulleted.list
-                                .item The money cannot be reversed or recovered once sent 
+                                .item(style="margin-top: -10px;") The money cannot be reversed or recovered once sent 
                                 .item Anoymous payments make it easier for scammers to avoid being traced or caught
 
-                .eight.wide.column
-                    h3 Audio Example
-                    p Scammer (female voice): I'm at the store, Grandpa. They have the phone I need, but I can't pay for it.
-                    p Grandparent: Don't worry, I'll help you. What do I need to do?
-                    p Scammer: Grandpa, I need you to buy a gift card for me. Can you do it?
-                    p Grandparent: A gift card? Why?
-                    p Scammer: Yes, Grandpa. Buy an iTunes gift card for $500. I'll use it to purchase the phone online.
-                    p Grandparent: Alright, I'll try. How do I do that?
-                    p Scammer: Just go to the store and ask for an iTunes gift card. Once you have it, scratch off the back to reveal the code, and then text me the code. I'll take care of the rest.
+                .six.wide.column
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/untrace.mp3" type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/untrace.mp3" style="max-height: 200px;")
+                                li.speaker1.current(data-timecode="00:00") Scammer: I'm at the store, Grandpa. They have the phone I need, but I can't pay for it.
+                                li.speaker2(data-timecode="00:05") Grandpa: What do I need to do?
+                                li.speaker1(data-timecode="00:06") Scammer: Grandpa, I need you to buy a gift card for me. Can you do it?
+                                li.speaker2(data-timecode="00:09") Grandpa: A gift card? Why?
+                                li.speaker1(data-timecode="00:12") Scammer: Yes, Grandpa. Buy an iTunes gift card for $500. I'll use it to purchase the phone online.
+                                li.speaker2(data-timecode="00:18") Grandpa: Alright, I'll try. How do I do that?
+                                li.speaker1(data-timecode="00:21") Scammer: Just go to the store and ask for an iTunes gift card. Once you have it, scratch off the back to reveal the code, and then text me the code. I'll take care of the rest.

@@ -4,15 +4,20 @@
             h1.ui.header.large#learn-title
                 .content
                     i.book.icon
-                    | Red Flag 1: Generic Titles
+                    | Generic Titles
             .ui.centered.stackable.grid
-                .eight.wide.column
+                .twelve.wide.column
                     p Be alert if you answer the phone and hear 'Grandma' or 'Grandpa' instead of being addressed by your name or a personal nickname. This generic greeting could be a red flag, especially if it's not how your grandchild would normally address you.
                     p  Do not give any names; wait the caller to speak their own name, or else you may inadvertently provide your grandchild’s name to the scammers.
 
-                .eight.wide.column
-                    h3 Audio Example
-                    p Grandparent: Hello
-                    p Scammer: Hi grandma
-                    p Grandparent: Alex?
-                    p Scammer: Yes!
+                .four.wide.column
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Example
+                    //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                    .text-only-audio
+                        ul
+                            li.speaker1 Grandparent: Hello
+                            li.speaker2 Scammer: Hi grandma
+                            li.speaker1 Scammer: Alex?
+                            li.speaker2 Grandpa: Yes!

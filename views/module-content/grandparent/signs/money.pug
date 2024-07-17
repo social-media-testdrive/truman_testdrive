@@ -1,5 +1,5 @@
 #money.hidden
-    .ui.container
+    .ui.container(style="width: 85%;")
         .limit(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
@@ -7,7 +7,9 @@
                     | Red Flag 8: Money Pickup
             .ui.centered.stackable.grid
                 .eight.wide.column
-                    p If the caller claims they will <b>quickly send someone to your home to pick up the money, do no comply</b>. Regardless of how they try to legitimize it by calling that person an 'officer,' 'government delivery person,' or any other official title, it is definitely a grandparent scam. Do not send any money.
+                    p If the caller claims they will <b>quickly send someone to your home to pick up the money, do no comply</b>. Regardless of how they try to legitimize it by calling that person an 'officer,' 'government delivery person,' or any other official title, it is definitely a grandparent scam. 
+                    p
+                        em Do not send any money.
 
 
                     .callout
@@ -16,10 +18,17 @@
                         .light-blue-content
                             h3.call-header Important
                             p No legitimate government agency will demand money over the phone.
+                            p
 
                 .eight.wide.column
-                    p Scammer: Grandma, I need you to do something for me. Can you withdraw some cash for someone to pick up and deliver to me? I need it right away.
-                    p Grandparent: Yes, yes, of course. How much do you need?
-                    p Scammer: It's $2,000, Grandma. Can you have it ready for pickup as soon as possible?
-                    p Grandparent: Yes, yes, I'll get it ready right away. Where should I bring it to you?
-                    p Scammer: I'll arrange for someone to come, Grandma. Just have the money ready. And please don't tell Mom and Dad about this, okay? They'll only worry, and I don't want to stress them out more than they already are.
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Example
+                    //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                    .text-only-audio
+                        ul
+                            li.speaker2 Scammer: Grandma, I need you to do something for me. Can you withdraw some cash for someone to pick up and deliver to me? I need it right away.
+                            li.speaker1 Grandparent: Yes, yes, of course. How much do you need?
+                            li.speaker2 Scammer: It's $2,000, Grandma. Can you have it ready for pickup as soon as possible?
+                            li.speaker1 Grandparent: Yes, yes, I'll get it ready right away. Where should I bring it to you?
+                            li.speaker2 Scammer: I'll arrange for someone to come, Grandma. Just have the money ready. And please don't tell Mom and Dad about this, okay? They'll only worry, and I don't want to stress them out more than they already are.

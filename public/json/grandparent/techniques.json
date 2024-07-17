@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 100,
+    "progress": 66,
     "type": "multi_select",
     "partial": "none",
     "prompt": "1. In grandparent scams, what information scammers try to find online? Select all that apply.",
@@ -22,11 +22,11 @@
         "explanation": "Choice D is correct. Scammers may find out the name of the target’s grandchild. By using the grandchild's name, scammers can more convincingly pose as the target’s grandchild or a trusted family member, increasing the emotional impact on the target."
       }
     },
-    "correctResponse": ["0", "1", "3"],
+    "correctResponse": ["0", "2", "3"],
     "theAnswers": "A, C, D"
   },
   "2": {
-    "progress": 100,
+    "progress": 75,
     "type": "multi_select",
     "partial": "none",
     "prompt": "2. What are some common stories that scammers tell?  Select all that apply.",
@@ -52,7 +52,7 @@
     "theAnswers": "A, B, C"
   },
   "3": {
-    "progress": 100,
+    "progress": 83,
     "type": "abcd",
     "partial": "none",
     "prompt": "3. What is Caller ID Spoofing?",

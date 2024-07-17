@@ -1,6 +1,6 @@
 {   
     "1": {
-      "progress": 100,
+      "progress": 77,
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. How do scammers gather information about potential targets in grandparent scams? Select all that apply.",
@@ -26,7 +26,7 @@
     "theAnswers": "A, B, C"
 },
     "2": {
-        "progress": 100,
+        "progress": 88,
         "type": "multi_select",
         "partial": "none",
         "prompt": "2. In grandparent scams, which of the following roles might the scammer pretend to be? Select all that apply.",

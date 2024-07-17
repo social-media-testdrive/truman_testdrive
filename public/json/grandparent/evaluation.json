@@ -84,13 +84,13 @@
               "text": "A. Inaccurate Family Details"
           },
           "b": {
-              "text": "B. Voice sounding Unnatural"
+              "text": "B. Pressure to Act Fast and Deter Questions"
           },
           "c": {
               "text": "C. Demand for Secrecy"
           },
           "d": {
-              "text": "D. Pressure to Act Fast and Deter Questions"
+              "text": "D. Request for Untraceable Payment Methods"
           }
       },
       "explanation": "<h1>The correct answer is C.</h1><p>In this conversation, the scammer strongly emphasizes \"don't tell the parents\" with the excuse of \"don't want to worry them.\" By explicitly instructing the grandparent not to inform the parents/family, the scammer is demanding secrecy. This tactic isolates the victim from others who may identify it as a scam if the circumstances were discussed. Therefore, the correct answer is C. Demand for Secrecy.</p>",
@@ -99,7 +99,7 @@
   "5": {
       "progress": 50,
       "type": "multi_select",
-      "partial": "q5.html",
+      "partial": "audio_q5.html",
       "prompt": "5. According to this conversation, what red flags did you notice that can indicate the caller is a scammer? Select all that apply.",
       "choices": {
           "0": {
@@ -107,7 +107,7 @@
               "explanation": "Choice A is correct. The scammer creates a fearful and urgent scenario about hitting a pregnant woman and potentially going to jail to evoke an emotional reaction from the grandparent."
           },
           "1": {
-              "text": "B. Voice sounding Unnatural",
+              "text": "B. Voice sounding Different",
               "explanation": "Choice B is correct.  When the grandparent says \"Brandon, it doesn't sound like you\", it indicates the voice sounds unnatural or different than expected."
           },
           "2": {
@@ -125,7 +125,7 @@
   "6": {
     "progress": 60,
     "type": "multi_select",
-    "partial": "q6.html",
+    "partial": "audio_q6.html",
     "prompt": "6. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?  Select all that apply.",
     "choices": {
         "0": {
@@ -133,7 +133,7 @@
             "explanation": "Choice A is incorrect. In this conversation, there is no mention of the detailed family information, so this recording doesn’t exhibit this warning sign."
         },
         "1": {
-            "text": "B. Voice sounding unnatural",
+            "text": "B. Voice Sounding Different",
             "explanation": "Choice B is incorrect. In this conversation, there is no mention of the voice sounding unusual or different, so this recording doesn’t exhibit this warning sign."
         },
         "2": {
@@ -151,14 +151,14 @@
   "7": {
     "progress": 70,
     "type": "multi_select",
-    "partial": "q7.html",
+    "partial": "audio_q7.html",
     "prompt": "7. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?  Select all that apply.",
     "choices": {
         "0": {
             "text": "A. Inaccurate Family Details"
         },
         "1": {
-            "text": "B. Voice sounding unnatural"
+            "text": "B. Voice Sounding Different"
         },
         "2": {
             "text": "C. Pressure to Act Fast and Deter Questions"

@@ -4,7 +4,7 @@
             h1.ui.header.large#learn-title
                 .content
                     i.book.icon
-                    | Red Flag 4:  Voice Sounding Unnatural
+                    | Voice Sounding Different
             .ui.centered.stackable.grid
                 .eight.wide.column
                     p  When you answer the phone,  if you feel their voice does not sound the same as it usually doess, <strong>be alert!!</strong>
@@ -16,10 +16,22 @@
                         .item They need to talk quietly because they are hiding and trying to disguise themselves or not be heard by others.
 
                 .eight.wide.column
-                    h3 Audio Example
-                    p Grandparent: Hello?
-                    p Scammer [Female Accented Voice Hoarsely] Grandma, is that you?
-                    p Grandparent: Yes, who is this?
-                    p Scammer: It's me, Grandma. It's your granddaughter.
-                    p Grandparent: Oh my dear, you sound terrible. What's happened?
-                    p Scammer: I'm sorry, Grandma. I'm in the hospital. I've been really sick, and it’s hard to talk.
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/sick.mp3" type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/sick.mp3")
+                                li.speaker1.current(data-timecode="00:00") Scammer: *sneeze* *sneeze*
+                                li.speaker2(data-timecode="00:03") Grandparent: Hello?
+                                li.speaker1(data-timecode="00:04") Scammer: Grandma, is that you?
+                                li.speaker2(data-timecode="00:06") Grandparent: Yes, who is this?
+                                li.speaker1(data-timecode="00:08") Scammer: It's me, Grandma—your granddaughter.
+                                li.speaker2(data-timecode="00:11") Grandparent: Oh my dear, you sound terrible. What's happened?
+                                li.speaker1(data-timecode="00:14") Scammer: I'm sorry, Grandma. I'm in the hospital. I've been really sick, and it’s hard to talk.
+
+
+

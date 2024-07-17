@@ -1,34 +1,89 @@
 #fear.hidden
-    .ui.container(style="width: 90%;")
+    .ui.container(style="width: 75%;")
         .limit(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
                     i.book.icon
-                    | Red Flag 5:  A Fear Inducing and Urgent Scenario
+                    | Urgent Scenarios
             .ui.centered.stackable.grid
                 .eight.wide.column
                     p  Grandparent scammers often create a false sense of urgency to manipulate grandparents' emotions, making them feel extremely worried and compelled to take immediate action.
 
                     .ui.bulleted.list
                         .item 
-                            p They'll try to make it sound extremely frightening and urgent. 
+                            p They'll try to make it 
+                                b sound extremely frightening and urgent.
                         .item 
-                            p The scammer may act very upset, cry, and beg for help.
+                            p The scammer may 
+                                b act very upset, cry, and beg for help.
 
 
                     p If a phone call instills an acute feeling of fear or urgency, it could be a warning sign of grandparent scams.
+                    em Hang up immediately, then make separate phone calls to other family members to verify the information.
+
 
                 .eight.wide.column
-                    h3 Audio Example
-                    p Grandparent: Hello
-                    p Scammer (accented speech, male speech): Hello?
-                    p Grandparent: Yeah?
-                    p Scammer: Yes, is this Mrs. Smith?
-                    p Grandparent: Yes it is
-                    p Scammer: I am David Pelzer, I am calling on behalf of the Legal Aid Society. I am the attorney that is assigned to your relative’s case
-                    p Grandparent: Okay
-                    p Scammer: Pretty much as Jimmy informed you, he was involved in a car accident. He has a fractured nose.
-                    p Grandparent: He told me he was okay
-                    p Scammer: Yeah he is, I mean he has a fractured nose. The lady in the other vehicle got injured, and she was released from the hospital which is obviously good news. Now, when the authorities arrive on an accident scene, they perform what is called a breathalyzer test, that he failed. Jimmy had an alcohol content of .10. The legal limit is .08.
-                    p Grandparent: He was drinking and driving?
-                    p Scammer: Yes, I spoke to the judge handling the matter behind chambers because when I did the interview I did a background check and noticed that Jimmy has a clean record. If we are able to post his bond, the judge will dismiss his reckless endangerment charge
+                    //- <div class="ui header">
+                    //-     <i class="phone volume icon"></i>
+                    //-     Audio Example
+                    //- </div>
+                    //- <div class="audio-player">
+                    //-     <div class="wrap">
+                    //-         <audio id="audio" class="with-transcript" controls>
+                    //-             <source src="https://dart-store.s3.amazonaws.com/grandparent-audio/q4.mp3" type="audio/mpeg">
+                    //-             Your browser does not support the audio element.
+                    //-         </audio>
+                    //-         <ul id="transcript" data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/q4.mp3">
+                    //-             <li class="speaker1 current" data-timecode="00:00"> Scammer: We have to get the money to the bonding agency. The quickest way is if you wire the money using a service that is called a Walmart Money Transfer, write that down.</li>
+                    //-             <li class="speaker2" data-timecode="00:08"> Grandparent: Okay</li>
+                    //-             <li class="speaker1" data-timecode="00:09"> Scammer: Do you guys know where your local Walmart is?</li>
+                    //-             <li class="speaker2" data-timecode="00:12"> Grandparent: It is just around the corner</li>
+                    //-             <li class="speaker1" data-timecode="00:14"> Scammer: Okay good. When you go to Walmart they will not accept checks, credit cards, or money orders. You will need cash or a debit card. They are going to charge you $2,200 and a fee of about $40. When you go to Walmart it is very simple, you go to customer service and you are going to tell them that you want to send a Walmart Money Transfer.</li>
+                    //-             <p style="font-size: 1rem;">Source: <a href="https://www.youtube.com/watch?v=oHDGYD_W_SU" target="_blank">Grandparents Telephone Scam</a>. CPHarding. May 23, 2018. YouTube.</p>
+
+                    //-         </ul>
+
+                    //-     </div>
+                    //- </div>
+
+                    //- div.ui.header
+                    //-     i.phone.volume.icon
+                    //-     | Audio Example
+                    //- .audio-player
+                    //-     .wrap
+                    //-         audio#audio.with-transcript(controls)
+                    //-             source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/distorted.mp3")
+                    //-             | Your browser does not support the audio element.
+                    //-         ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/distorted.mp3")
+                    //-             li.speaker1.current(data-timecode="00:00") Grandparent: Hello?
+                    //-             li.speaker2(data-timecode="00:01") Scammer: Hello? Can you hear me?
+                    //-             li.speaker1(data-timecode="00:02") Grandparent: Yes, I can hear you. Who is this?
+                    //-             li.speaker2(data-timecode="00:04") Scammer: Oh, thank goodness. It's me, your grandson. Can you hear me okay?
+                    //-             li.speaker1(data-timecode="00:08") Grandparent: Yes, yes, I can hear you. What's the matter? You sound different.
+                    //-             li.speaker2(data-timecode="00:12") Scammer: Yeah, sorry about that. I'm calling from a bad connection. I'm in a bit of trouble, Grandma.
+                    //-             li.speaker1(data-timecode="00:18") Grandparent: Trouble? What kind of trouble?
+                                
+
+
+                        
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/fear.mp3" type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/fear.mp3")
+                                li.speaker1.current(data-timecode="00:00") Grandparent: Hello
+                                li.speaker2(data-timecode="00:01") Scammer: Hello?
+                                li.speaker1(data-timecode="00:02") Grandparent: Yeah?
+                                li.speaker2(data-timecode="00:03") Scammer: Yes, is this Mrs. Smith?
+                                li.speaker1(data-timecode="00:04") Grandparent: It is
+                                li.speaker2(data-timecode="00:05") Scammer: I am David Pelzer, I am calling on behalf of the Legal Aid Society. I am the attorney that is assigned to your relative’s case
+                                li.speaker1(data-timecode="00:12") Grandparent: Okay
+                                li.speaker2(data-timecode="00:13") Scammer: Pretty much as Jimmy informed you, he was involved in a car accident. He has a fractured nose.
+                                li.speaker1(data-timecode="00:18") Grandparent: He told me he was okay
+                                li.speaker2(data-timecode="00:20") Scammer: Yeah he is, I mean he has a fractured nose. The lady in the other vehicle got injured, and she was released from the hospital which is obviously good news. Now, when the authorities arrive on an accident scene, they perform what is called a breathalyzer test, that he failed. Jimmy had an alcohol content of .10. The legal limit is .08.
+                                li.speaker1(data-timecode="00:38") Grandparent: He was drinking and driving?
+                                li.speaker2(data-timecode="00:39") Scammer: Yes. But I spoke to the judge handling the matter. Because Jimmy has a clean record, if we are able to post his bond, the judge will dismiss his reckless endangerment charge.

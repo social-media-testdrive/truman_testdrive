@@ -15,6 +15,7 @@ block content
         include signs/family.pug
         include signs/voice.pug
         include signs/fear.pug
+        include signs/pressure.pug
         include signs/secrecy1.pug
         include signs/secrecy2.pug
         include signs/payment.pug
@@ -91,7 +92,6 @@ block scripts
         var username = "#{user.name}";
         var current_percent = 50;
         var link = "/course-player?module=identity&section=consequences&page=takeaways";
-
 
     script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
     script(src='/module_js/module-narration.js')    

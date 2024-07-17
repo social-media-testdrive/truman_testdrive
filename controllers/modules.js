@@ -51,6 +51,9 @@ exports.getModule = async (req, res) => {
       else if(module === 'romance') {
         numPages = 11;
       }
+      else if(module === 'grandparent') {
+        numPages = 9;
+      }
     } else if(section === 'consequences') {
       numPages = 8;
     } else if(section === 'fake'){
@@ -61,11 +64,16 @@ exports.getModule = async (req, res) => {
       numPages = 13;
     } else if(section === 'techniques') {
       numPages = 12;
+    } else if(section === 'signs'){
+      numPages = 19
     } else if(section === 'protection') {
       if(module === 'identity') {
         numPages = 10;
       } else if (module === 'romance') {
         numPages = 12;
+      }
+      else if(module === 'grandparent') {
+        numPages = 15;
       }
     } else if(section === 'reporting') {
       numPages = 9;
@@ -76,6 +84,8 @@ exports.getModule = async (req, res) => {
         numPages = 12;
       } else if (module === 'romance') {
         numPages = 11;
+      } else if (module === 'grandparent') {
+        numPages = 3;
       }
 
     }

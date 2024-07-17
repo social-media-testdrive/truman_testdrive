@@ -1,0 +1,32 @@
+#pressure.hidden
+    .ui.container(style="width: 75%;")
+        .limit(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.book.icon
+                    | Pressure to Act fast and Deter Questions
+            .ui.centered.stackable.grid
+                .eight.wide.column
+                    p  Be wary if the caller 
+                        b insists you act quickly
+                        span , claims your grandchild's safety is at risk unless you immediately send money, and 
+                        b discourages you from asking questions or verifying information. 
+                        span This is a red flag! The scammers are trying to get the money from you before anyone else finds out and can intervene.
+                    em Remain calm, hang up immediately, then make separate phone calls to other family members to verify the information.
+
+                .eight.wide.column
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/pressure.mp3" type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/pressure.mp3")
+                                li.speaker1.current(data-timecode="00:00") Scammer: Grandma, I'm in the hospital. I've been in a terrible accident. I need surgery urgently, but they won't proceed without payment.
+                                li.speaker2(data-timecode="00:08") Grandparent: Oh no, sweetheart, are you okay? Where are you? What is going on?
+                                li.speaker1(data-timecode="00:13") Scammer: I’m in the ICU, Grandma. I'm scared. Can you please help me with the funds for the surgery? I don't know what to do. I’m afraid I won’t make it if they can’t operate quickly enough!
+                                li.speaker2(data-timecode="00:23") Grandparent: Of course, of course, I'll do whatever I can to help you. How much do you need?
+                                li.speaker1(data-timecode="00:28") Scammer: They said it's around $10,000 for the surgery, Grandma. Can you wire it to me now? Please, they told me I don’t have much time.
+
