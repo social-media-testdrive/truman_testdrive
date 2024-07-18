@@ -131,3 +131,70 @@ i.exclamation.circle.icon {
     font-weight: bold;
 }
 
+/* module slider identity theft consequences types */
+
+.slick-dots {
+    text-align: center;
+    font-size: 2rem;
+    margin: -15px;
+}
+
+.slick-dots > li {
+    /* display: inline-block; */
+    /* margin: 12px; */
+    /* margin-right: 50px;    */
+}
+
+ul.slick-dots li {
+    margin-right: 35px; /* Adjust margin as needed */
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #3757A6 !important; 
+    font-size: 3rem !important;
+}
+
+.slick-prev:before {
+    margin-left: -25px;
+}
+
+#steps-slider {
+    /* padding-left: 25px !important; */
+    /* background-color: red; */
+    /* width: 50% !important; */
+    margin-left: 25px;
+}
+
+
+#steps-slider .ui.bulleted.list {
+    margin-left: 50px;
+}
+
+
+#steps-slider .dot {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Doubled width */
+    height: 40px; /* Doubled height */
+    border-radius: 50%;
+    /* background-color: #3757A6; */
+    /* color: white; */
+    text-align: center;
+    font-size: 1.75rem;
+    /* box-shadow: inset 0 0 2px #3757A6; */
+    border: 2px solid #3757A6 !important;  
+    margin-top:10px;
+}
+
+.slick-dots > .slick-active {
+    font-weight: bold;
+    color: white;
+}
+
+.slick-dots > .slick-active .dot {
+    border: 2px solid #7AC4E0;  
+    background-color: #3757A6;
+}
+

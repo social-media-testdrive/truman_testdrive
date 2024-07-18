@@ -7,7 +7,7 @@ const getNewsAPI = async (req, res) => {
     try {
         const currentDate = new Date();
         const toDate = currentDate.toISOString().split('T')[0];
-        const priorDate = new Date(currentDate.setDate(currentDate.getDate() - 7));
+        const priorDate = new Date(currentDate.setDate(currentDate.getDate() - 30));
         const fromDate = priorDate.toISOString().split('T')[0];
 
         let page = 1;
@@ -17,15 +17,19 @@ const getNewsAPI = async (req, res) => {
         while (articles.length < 5) {
             const response = await axios.get('https://newsapi.org/v2/everything', {
                 params: {
-                    q: 'scam AND (fraud OR victim OR "arrested for scam" OR "charged in scam" OR "ponzi scheme" OR "scam investigation" OR "senior scam") AND (experience OR story OR narrative) NOT (political OR "foreign affairs" OR espionage OR treason)',
-                    sortBy: 'publishedAt',
+                    q: '(scam OR scammer OR scammed) AND (fake OR fraud OR pretending OR target OR conned OR swindle OR trick) AND (victim OR senior OR grandparent OR elderly OR adult) AND (experience OR story OR narrative OR interviewed OR told) NOT (political OR "foreign affairs" OR espionage OR treason OR election OR trump OR sex OR molestation OR porn OR "child abuse" OR cartel)',
+
+                    // q: '(scam OR scammer) AND ($) AND (fake OR fraud OR pretending) AND (victim OR senior OR grandparent OR elderly OR "older adult") AND (experience OR story OR narrative) AND ("identity theft" OR Romance OR "tech support" OR investment OR medical OR phishing OR smishing OR email OR "phone call" OR crypto) NOT (political OR "foreign affairs" OR espionage OR treason OR election OR trump OR sex OR molestation OR porn OR "child abuse")',
+                    // q: '(scam OR scammer) AND ($) AND (fake OR fraud OR pretending) AND (victim OR senior OR grandma OR grandparent OR grandpa OR grandmother OR grandfather OR elderly OR "older adult" OR "arrested for scam" OR "charged in scam" OR "ponzi scheme" OR "scam investigation" OR "senior scam") AND (experience OR story OR narrative) AND ("identity theft" OR Romance OR "tech support" OR investement OR medical OR phishing OR smishing OR email OR text OR "phone call" OR employment OR crypto OR cryptocurrency) NOT (political OR "foreign affairs" OR espionage OR treason OR election OR trump OR sex OR molestation OR porn OR "child abuse")',
+                    sortBy: 'relevancy',
+                    // sortBy: 'publishedAt',
                     apiKey: process.env.NEWS_APIKEY,
                     language: 'en',
                     from: fromDate,
                     to: toDate,
-                    pageSize: 30,
+                    // pageSize: 20,
                     page,
-                    searchIn: 'content'
+                    // searchIn: 'title,content'
                 }
             });
             
