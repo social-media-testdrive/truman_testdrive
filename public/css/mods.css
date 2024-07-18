@@ -198,3 +198,12 @@ ul.slick-dots li {
     background-color: #3757A6;
 }
 
+/* enrolled missions margin */
+div#progress-bars-container {
+    margin-left: 30px;
+    transition: none !important;
+}
+
+.progress .bar {
+    transition: none !important;
+}

@@ -16,15 +16,16 @@ $(window).ready(function () {
       //     <img src="/images/courses/empty-mission-banner.jpg">
       //   </div>
       // </div>
+      // <h3 class="ui header large home-mod-title">
+      //   No Missions Found
+      // </h3>
   
       const noModulesHtml = `
-        <div class="ui raised segment">
+        <div >
           <div id="raised-content" style="padding-top: 20px;">
-            <h3 class="ui header large home-mod-title">
-              No Missions Found
-            </h3>
+
             <p style="color:black">You are not currently enrolled in any missions. Click the button below to start your first mission!</p>
-            <a href="/about">
+            <a href="/courses">
               <button class="ui huge blue button right floated" id="nextButton">
                 Start Mission
                 <i class="arrow right icon"></i>
@@ -32,6 +33,8 @@ $(window).ready(function () {
             </a>
           </div>
         </div>
+        </br>
+        </br>
       `;
       progressBarsContainer.append(noModulesHtml);
       
@@ -47,9 +50,9 @@ $(window).ready(function () {
                       <img src="/images/courses/${module.moduleName
           }-scams-banner.jpg">
   
-                      <div class="ui bottom small progress" data-percent="${(module.progress / module.total) * 100
+                      <div class="ui bottom small progress" id="${module.moduleName}-progress" data-percent="${(module.progress / module.total) * 100
           }" style="margin:0;padding:0;">
-                          <div class="bar" style="border-radius: 0 !important; background: #3757A6;">
+                          <div class="bar">
                               <div class="progress"></div>
                           </div>
                       </div>
@@ -78,6 +81,22 @@ $(window).ready(function () {
   
           `;
         progressBarsContainer.append(progressBarHtml);
+
+        // Initialize progress bars
+        $(`#${module.moduleName}-progress`).progress({
+          percent: (module.progress / module.total) * 100,
+          showActivity: false // Disable the indicating animation
+        });
+
+        // change bar color to red and transition to none
+        $(`#${module.moduleName}-progress .bar`).css({
+          "background-color": "#7AC4E0",
+          "border-radius": "0px",
+          "transition": "none !important",
+          "transition-duration": "0s !important"
+        });
+
+          
       });
   
       data.forEach((module) => {
@@ -104,7 +123,8 @@ $(window).ready(function () {
     const newsContainer = $("#news-container");
 
     data.forEach((article) => {
-      let truncatedTitle = article.title.length > 100 ? article.title.slice(0, 90) + '...' : article.title;
+      let truncatedTitle = article.title.length > 90 ? article.title.slice(0, 90) + '...' : article.title;
+      let truncatedDescription = article.description.length > 300 ? article.description.slice(0, 300) + '...' : article.description;
 
       const articleHtml = `
       <a class="ui" href="${article.url}" alt="Read news article" target="_blank">
