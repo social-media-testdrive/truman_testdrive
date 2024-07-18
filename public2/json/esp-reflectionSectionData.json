@@ -527,6 +527,63 @@
       "prompt": "Why is it important to protect yourself against phishing scams?"
     }
   },
+  "phishing-esp": {
+    "Q1": {
+      "type": "checkboxGrouped",
+      "prompt": "¿Cómo respondiste a estos post de estafa de phishing?",
+      "checkboxLabels": {
+        "0": "Reporté el post.",
+        "1": "Hice clic en el link.",
+        "2": "Lo ignoré.",
+        "3": "Hice algo más."
+      },
+      "groupCount": "3",
+      "groupPostImages": {
+        "0": "/post_pictures/nintendo_phi.jpg",
+        "1": "/post_pictures/accountrisk_phi.png",
+        "2": "/post_pictures/giftcard_phi.jpg"
+      },
+      "groupPostDescriptions": {
+        "0": "Consigue un Nintendo Switch a solo 100 soles!!!! Apúrate, aprovecha la súper oferta",
+        "1": "!!&$!ALERTA!&$!! Tu cuenta PUEDE ESTAR EN RIESGO. Haz clic aquí para resolverlo",
+        "2": "No lo podrás creer!!! Llené una encuesta en 5 minata y gan3 una gift card de 200 soles altoque!! Llena la cuesta AHORA"
+      },
+      "groupPostLinks": {
+        "0": " http://goo.gl/FreeSwitch",
+        "1": "http://testdrive.info/youraccount",
+        "2": "http://bit.ly/FREEGIFTS"
+      },
+      "responseRequirement": "atLeastOne",
+      "correctResponses": {
+        "0": {
+          "0": "1",
+          "1": "0",
+          "2": "1",
+          "3": "0"
+        },
+        "1": {
+          "0": "1",
+          "1": "0",
+          "2": "1",
+          "3": "0"
+        },
+        "2": {
+          "0": "1",
+          "1": "0",
+          "2": "1",
+          "3": "0"
+        }
+      }
+    },
+    "Q2": {
+      "type": "written",
+      "prompt": "¿Cuáles fueron las pistas que usas para identificar que eran post de estafa de phishing?"
+    },
+    "Q3": {
+      "type": "written",
+      "prompt": "¿Por qué es importante protegerte de las estafas de phishing?"
+    }
+  },
   "presentation": {
     "Q1": {
       "type": "checkbox",
