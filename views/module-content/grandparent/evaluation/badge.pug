@@ -6,13 +6,23 @@
                     h1.ui.header.large#learn-title
                         .content#great-job
                             i.award.icon
-                            | Congratulations!
+                            span#narrate-title-badge Congratulations!
                     #text
-                        p You've completed the Evaluation and earned a platinum badge!  
-                        p You have an Grandparent Scam Resilience score of 
+                        p#narrate-1-badge  
+                            span You've completed the Evaluation and earned a platinum badge!  
+                        p 
+                            span#narrate-2-badge  
+                                span You have an Grandparent Scam Resilience score of 
                             span#resil-score 
-                            |  out of 100.
-                        p Next, chat with Agent #{user.avatar} to reflect on your experience.
+                            span#narrate-3-badge  
+                                span out of 100.
+                        p 
+                            span#narrate-4-badge 
+                                span Next, chat with Agent 
+                            span 
+                                span #{user.avatar} 
+                            span#narrate-5-badge  
+                                span to reflect on your experience.
                 .six.wide.center.aligned.column
                     img.ui.small.centered.image#earned_badge(src='/badges/identity/champion_of_completion.svg' onmouseenter="animateBadge()" style="margin-bottom: -10px; width: 125px;")
                     h3 <strong>Champion of</strong>
