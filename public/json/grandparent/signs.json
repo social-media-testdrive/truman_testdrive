@@ -3,22 +3,22 @@
       "progress": 68,
       "type": "multi_select",
       "partial": "none",
-      "prompt": "1. What are the warning signs indicating that the person calling you is a scammer?  Select all that apply.",
+      "prompt": "1. What are the warning signs indicating that the person calling you is a scammer? Select all that apply.",
       "choices": { 
         "0": {
-            "text": "A. The caller starts with “Hey Grandma/Grandpa,” and when you inquire about their identity, they ask you to guess",
+            "text": "A. The caller starts with “Hey Grandma/Grandpa,” and when you inquire about their identity, they ask you to guess.",
             "explanation": "Choice A is correct. In some cases, scammers may not have your grandchild's name. They will use generic terms like ‘grandma’ or ‘grandpa’ and then try to get you to provide additional details, such as your grandchild's name or other information. This information can then be used to convince you that they are your loved one."
         },
         "1": {
-            "text": "B. The caller provides wrong information about your family member",
+            "text": "B. The caller provides wrong information about your family member.",
             "explanation": "Choice B is correct. Scammers may know the names of your family members, such as your grandchild, but they likely lack specific details about them or other relatives. Be wary if they say something inaccurate about your family members. They may try to make excuses for their mistakes by claiming they misremembered or misspoke, but do not trust them."
         },
         "2": {
-          "text": "C. The caller claims to be your grandchild and they are planning to visit you",
+          "text": "C. The caller claims to be your grandchild and they are planning to visit you.",
           "explanation": "Choice C is correct. Scammers may use online platforms, such as dating sites, to gather personal details about potential targets. For example, scammers may pose as potential romantic interests and manipulate individuals into sharing sensitive information, enabling them to create more convincing narratives."
         },
         "3": {
-          "text": "D. The caller tells you they are in a car accident",
+          "text": "D. The caller tells you they are in a car accident.",
           "explanation": "Choice D is correct. This scammer claims to have been in a car accident, a common tactic used to create a sense of urgency.  So, If you receive a call with a frightening and urgent story, it could indicate a grandparent scam."
         }
     },
@@ -32,16 +32,16 @@
     "prompt": "2. In this conversation, what warning sign did you notice that could indicate that the caller is a scammer?",
     "choices": {
       "a": {
-        "text": "A. Inaccurate Family Details"
+        "text": "A. Inaccurate Family Details."
       },
       "b": {
         "text": "B. Voice Sounding Distorted."
       },
       "c": {
-        "text": "C. Pressure to Act Fast and Deter Questions"
+        "text": "C. Pressure to Act Fast and Deter Questions."
       },
       "d": {
-        "text": "D. Demand for Secrecy"
+        "text": "D. Demand for Secrecy."
       }
     },
     "explanation": "<h1>B is correct</h1><p>In this conversation, the grandparent comments \"you sound different.\" The scammer then blames a bad connection - a common excuse. So, the correct answer is B. voice sounding distorted.</p>",
