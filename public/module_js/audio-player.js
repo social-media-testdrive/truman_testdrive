@@ -95,6 +95,7 @@ function calc_seconds(array) {
 
 
 function initializeAudioPlayer() {
+    console.log("intiailizing audio players now!! manually");
     $('audio.with-transcript').each(function() {
         let $audio_el = $(this);
         let source = $audio_el.find('source').attr('src');    
@@ -106,6 +107,7 @@ function initializeAudioPlayer() {
     
             // get timecode from data attribute
             let timecode = $(this).attr('data-timecode');
+            console.log("Beyonce timecode is: ", timecode);
     
             // build object of timecodes and element offsets
             timecodes[timecode] = {};
@@ -120,6 +122,17 @@ function initializeAudioPlayer() {
                 $audio_el[0].play();
             });
         });
+
+        // print out time codes object
+        // console.log("999 timecodes object: ", timecodes);
+        // Loop through the timecodes object and print each timecode and its associated values
+        // for (let timecode in timecodes) {
+        //     if (timecodes.hasOwnProperty(timecode)) {
+        //         console.log(`Timecode: ${timecode}`);
+        //         console.log(`Element: `, timecodes[timecode]['el']);
+        //         console.log(`Offset: ${timecodes[timecode]['offset']}`);
+        //     }
+        // }
     
         // Define mediaelement.js player
         $audio_el.mediaelementplayer({
@@ -137,6 +150,9 @@ function initializeAudioPlayer() {
             let current_seconds = formatNumber(parseInt(current_time % 60));
     
             let timecode_index = current_minutes + ":" + current_seconds;
+
+            console.log("current Time code is: ", timecode_index);
+
             // console.log(current_minutes + ":" + current_seconds);    
             // console.log($('li[data-timecode="'+timecode+'"]').length + 'matching els');
             if (typeof timecodes[timecode_index] !== 'undefined') {
@@ -162,6 +178,4 @@ function initializeAudioPlayer() {
         });
     });
 }
-
-
 

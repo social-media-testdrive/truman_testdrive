@@ -278,6 +278,10 @@ $(document).ready(function() {
             location.reload();
         }
 
+        if(section === 'practice' && nextPage === 'activity') {
+          initializeAudioPlayer();
+        }
+
         if(currentPage === 'certificate') {
             window.location.href = '/about/grandparent';
         }
@@ -494,7 +498,9 @@ function setGrandparentRole(role, file) {
     $('#num6').attr('data-timecode', '00:08');
     $('#num7').attr('data-timecode', '00:12')
   }
-  resetAudioPlayer();
+  // initializeAudioPlayer();
+  // let $audioElement = $('.audio-player ul#transcript');
+  // initializeOneAudioPlayer($audioElement);
 
   
   
@@ -774,6 +780,7 @@ function setLinks(currentPage) {
 
 
       } else if (currentPage === "activity") {
+
         backlink = baseurl + "introduction";
         nextlink = baseurl + "activity2";
 
