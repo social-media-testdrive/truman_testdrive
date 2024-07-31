@@ -175,7 +175,7 @@ $(document).ready(function() {
         let backPage = backParams.get('page');
 
         var audio = document.getElementById('narration-audio');
-        audio.src = `https://dart-store.s3.amazonaws.com/identity+narration/${section}/${backPage}_${avatar}.mp3`;
+        audio.src = `https://dart-store.s3.amazonaws.com/grandparent-narration/${section}/${backPage}_${avatar}.mp3`;
         audio.load(); // Reload the audio to apply the new source
         
         if(backPage === null) {

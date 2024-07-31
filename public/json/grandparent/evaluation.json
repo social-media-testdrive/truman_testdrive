@@ -34,7 +34,7 @@
           },
           "1": {
               "text": "B. Promising rewards or prizes if you send money immediately",
-              "explanation": "Choice B is incorrect.  In grandparent scams, scammers will not try to entice you into sending money by promising fake rewards or prizes."
+              "explanation": "Choice B is incorrect. In grandparent scams, scammers will not try to entice you into sending money by promising fake rewards or prizes."
           },
           "2": {
               "text": "C. Sounding frightened and in an urgent situation",
@@ -56,7 +56,7 @@
       "choices": {
           "0": {
               "text": "A. Late at night",
-              "explanation": "Choice A is correct. The initial contact from the scammer will often come  late at night when people may be disoriented or less alert, making them more vulnerable to being confused or misled."
+              "explanation": "Choice A is correct. The initial contact from the scammer will often come late at night when people may be disoriented or less alert, making them more vulnerable to being confused or misled."
           },
           "1": {
               "text": "B. During typical working hours",
@@ -108,7 +108,7 @@
           },
           "1": {
               "text": "B. Voice sounding Different",
-              "explanation": "Choice B is correct.  When the grandparent says \"Brandon, it doesn't sound like you\", it indicates the voice sounds unnatural or different than expected."
+              "explanation": "Choice B is correct. When the grandparent says \"Brandon, it doesn't sound like you\", it indicates the voice sounds unnatural or different than expected."
           },
           "2": {
               "text": "C. Demand for Secrecy",
@@ -126,7 +126,7 @@
     "progress": 60,
     "type": "multi_select",
     "partial": "audio_q6.html",
-    "prompt": "6. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?  Select all that apply.",
+    "prompt": "6. According to this conversation, what red flags did you notice that can indicate the caller is a scammer? Select all that apply.",
     "choices": {
         "0": {
             "text": "A. Inaccurate Family Details",
@@ -138,7 +138,7 @@
         },
         "2": {
             "text": "C. Pressure to Act Fast and Deter Questions",
-            "explanation": "Choice C is correct.  In this conversation, the caller says \"I need you to send the money quickly\" which creates a sense of urgency and pressure to act fast without properly considering the situation."
+            "explanation": "Choice C is correct. In this conversation, the caller says \"I need you to send the money quickly\" which creates a sense of urgency and pressure to act fast without properly considering the situation."
         },
         "3": {
             "text": "D. Request for Untraceable Payment Methods",
@@ -152,7 +152,7 @@
     "progress": 70,
     "type": "multi_select",
     "partial": "audio_q7.html",
-    "prompt": "7. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?  Select all that apply.",
+    "prompt": "7. According to this conversation, what red flags did you notice that can indicate the caller is a scammer? Select all that apply.",
     "choices": {
         "0": {
             "text": "A. Inaccurate Family Details"
@@ -243,7 +243,7 @@
         },
         "3": {
             "text": "D. Send money as requested to prevent any potential harm to the supposed grandchild",
-            "explanation": "Choice D is incorrect.  Never give money to someone you already suspect."
+            "explanation": "Choice D is incorrect. Never give money to someone you already suspect."
         }
     },
     "correctResponse": ["0", "2"],

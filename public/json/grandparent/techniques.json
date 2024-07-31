@@ -14,7 +14,7 @@
         "explanation": "Choice B is incorrect. In grandparent scams, the scammer tends to use information about the target or the target’s family relationships to construct convincing narratives. Although social security numbers count as sensitive information and are often used in identity theft or other types of fraud, they are not typically used in grandparent scams."
       },
       "2": {
-        "text": "C. Target’s  recent life events",
+        "text": "C. Target’s recent life events",
         "explanation": "Choice C is correct. In grandparent scams, scammers often use information about the target or their family relationships to craft convincing stories. Incorporating details about the target's recent life events can add credibility and foster more trust in the targets."
       },
       "3": {
@@ -29,7 +29,7 @@
     "progress": 75,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "2. What are some common stories that scammers tell?  Select all that apply.",
+    "prompt": "2. What are some common stories that scammers tell? Select all that apply.",
     "choices": {
       "0": {
         "text": "A. They have been involved in a car accident",

@@ -31,6 +31,7 @@ const getNewsAPI = async (req, res) => {
                     page,
                     // excludeDomains: 'foxnews.com'
                     // searchIn: 'title,content'
+                    country:'us'
                 }
             });
             
