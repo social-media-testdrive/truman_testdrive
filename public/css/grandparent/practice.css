@@ -1,0 +1,85 @@
+.hidden {
+    display: none;
+}
+
+#submit-button, #second-submit-button, #submit-button2 {
+    margin-left: 20px;
+}
+
+.item.ui.card.draggable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    cursor: grab;
+    background-color: #3757A6;
+    color: white;
+    /* width: 22%; */
+    text-align: center;
+    padding: 20px !important;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 75px;
+    font-size: 1.2rem;
+}
+  
+.ui.horizontal.list.draggable-options {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.ui.card {
+    cursor: grab;
+}
+
+.ui.horizontal.list.draggable-options#adjust-width {
+    min-width: 700px;
+}
+  
+.ui.segment.droppable-activity2 {
+    /* border: 4px solid red; */
+    border: 4px dashed black;
+    padding: 20px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.ui.segment.droppable-activity2.hovered {
+    border-color: #007bff;
+}
+
+#drop-text.hovered {
+    color: #007bff;
+}
+
+.ui.message {
+    padding: 10px;
+}
+
+.ui.message.green {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.ui.message.red {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.ui.message#instruction-text {
+    padding: 5px; 
+    z-index: 99;
+    font-size: 1.25rem;
+}
+
+#drop-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+#current-quote {
+    font-style: italic;
+}
+

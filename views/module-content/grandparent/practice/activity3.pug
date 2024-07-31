@@ -1,0 +1,115 @@
+#activity3.hidden
+    .ui.container(style="width: 90%;")
+        .limit(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.volume.up.icon
+                    | Car Accident: Part 3/4
+            .ui.centered.stackable.grid
+                .eight.wide.column
+                    //- div.ui.header
+                    //-     i.phone.volume.icon
+                    //-     | Audio Example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car3.wav" type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car3.wav" style="max-height: 300px;")
+                                li.speaker1.current(data-timecode="00:00") Grandma: Hello, who is this?
+                                li.speaker2(data-timecode="00:01") Scammer: Hello, this is Olivia, Alex’s lawyer. I am calling about an urgent matter regarding your grandson, Alex. He mentioned that he had already briefly spoken to you.
+                                li.speaker1(data-timecode="00:10") Grandma: Yes, he did. Can you tell me more?
+                                li.speaker2(data-timecode="00:12") Scammer: Alex has been involved in a car accident and has been charged with DUI. He's currently in custody and needs to post bail to be released.
+                                li.speaker1(data-timecode="00:20") Grandma: Is it that bad? What happened?
+                                li.speaker2(data-timecode="00:22") Scammer: Alex was driving home from work when another car ran a red light and collided with his vehicle. He suffered minor injuries but was taken to the hospital as a precaution. The other driver was also injured but is in stable condition. Unfortunately, the police found alcohol in Alex's system, leading to the DUI charge.
+                                li.speaker1(data-timecode="00:40") Grandma: Oh my god. Is Alex okay now?
+                                li.speaker2(data-timecode="00:42") Scammer: Yes, he's okay, but shaken up by the accident. He's currently in custody, but we're working to get him released as soon as possible. Your assistance with the bail payment will greatly help in this process.
+                                li.speaker1(data-timecode="00:50") Grandma: Is the other driver okay?
+                                li.speaker2(data-timecode="00:52") Scammer: Yes, for now. But, let’s focus on Alex, alright? We need to post bail as soon as possible to get Alex out of custody. The bail amount is $8,000, and they're requesting cash or wire transfer to expedite the process. Can you provide the bail amount?
+                                li.speaker1(data-timecode="01:10") Grandma: How about I write you a check? I can get that to you immediately.
+                                li.speaker2(data-timecode="01:12") Scammer:  I'm sorry, but we can't accept checks for this type of payment. Checks can take several days to be processed. However, we need to process the payment immediately to ensure your grandchild is released soon.
+                                li.speaker1(data-timecode="01:30") Grandma: I see, what should I do?
+                .eight.wide.column#content-column
+                    .step1-activity3
+                        p After listening to that conversation, what feelings best describe your reaction? Select all that apply.
+                        .ui.vertical.inverted.buttons
+                            button.ui.button(data-value="concern") Concern
+                            button.ui.button(data-value="anxiety") Anxiety
+                            button.ui.button(data-value="anger") Anger
+                            button.ui.button(data-value="confusion") Confusion
+                            button.ui.button(data-value="embarrassment") Embarrassment
+                            button.ui.button(data-value="empathy") Empathy
+                            button.ui.button(data-value="nothing") I didn't feel anything
+                        button.ui.button.primary#submit-button-activity3 Submit
+                    .step2-activity3.hidden
+                        p Click the buttons below to identify the warning signs related to this part of the conversation
+                        .ui.vertical.inverted.buttons
+                            button.ui.button(data-value="generic") Impersonates a lawyer
+                            button.ui.button(data-value="voice") Pressures you to act quickly
+                            button.ui.button(data-value="urgent") Discourages you asking questions 
+                            button.ui.button(data-value="secrecy") Uses generic terms
+                            button.ui.button(data-value="info") Requests untraceable payment options 
+                        button.ui.button.primary#second-submit-button-activity3 Submit
+                    .step3-activity3.hidden
+                        p In this conversation, the scammer 
+                          strong impersonates a lawyer
+                          span , providing detailed information about Alex’s accident but deflects your questions about the other driver by saying "let’s focus on Alex," 
+                          strong discouraging you from asking questions. 
+                          span The scammer 
+                          strong pressures you to act quickly
+                          span , repeatedly emphasizing the need for immediate payment. They also 
+                          strong request untraceable payment options
+                          span , like cash or wire transfer, claiming it is to expedite the process. These are clear signals of a scam.
+                        p If someone asks you for untraceable payment options like cash, wire transfer, or gift cards, hang up immediately and report the incident. You can report the scam via the FTC’s website at ftc.gov/complaint or by calling 1-877-FTC-HELP.
+                        .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                            i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                            .content 
+                                p#narrate-2-intro-video 
+                                    span Click the "Next" button below to move on to the next part of the conversation.
+
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+    const selectedValues = new Set();
+    document.querySelectorAll('.step1-activity3 .ui.button').forEach(button => {
+      button.addEventListener('click', function () {
+        const value = this.getAttribute('data-value');
+        if (selectedValues.has(value)) {
+          selectedValues.delete(value);
+          this.classList.remove('active');
+        } else {
+          selectedValues.add(value);
+          this.classList.add('active');
+        }
+      });
+    });
+
+    document.getElementById('submit-button-activity3').addEventListener('click', function () {
+      document.querySelector('.step1-activity3').classList.add('hidden');
+      document.querySelector('.step2-activity3').classList.remove('hidden');
+
+      const secondSelectedValues = new Set();
+      document.querySelectorAll('.step2-activity3 .ui.button').forEach(button => {
+        button.addEventListener('click', function () {
+          const value = this.getAttribute('data-value');
+          if (secondSelectedValues.has(value)) {
+            secondSelectedValues.delete(value);
+            this.classList.remove('active');
+          } else {
+            secondSelectedValues.add(value);
+            this.classList.add('active');
+          }
+        });
+
+
+        document.getElementById('second-submit-button-activity3').addEventListener('click', function () {
+          document.querySelector('.step2-activity3').classList.add('hidden');
+          document.querySelector('.step3-activity3').classList.remove('hidden');
+        });
+      });
+
+
+    });
+
+
+
+  });

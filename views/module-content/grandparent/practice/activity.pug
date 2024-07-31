@@ -1,12 +1,139 @@
 #activity.hidden
-    .ui.container#raised-container.center-layout
-        .limit
-            #common-measures-read
-                h1.ui.header.large#learn-title
-                    .content
-                        i.dice.icon
-                        span#narrate-title-preventative Activity
-                h3 
-                    b#narrate-header-preventative 
-                        span Coming soon
-                
+    .ui.container(style="width: 90%;")
+        .limit(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.volume.up.icon
+                    | Car Accident: Part 1/4
+            .ui.centered.stackable.grid
+                .eight.wide.column
+                    //- div.ui.header
+                    //-     i.phone.volume.icon
+                    //-     | Audio Example
+                    if user.rolePlay === 'Grandma'
+                      .audio-player
+                          .wrap
+                              audio#audio.with-transcript(controls)
+                                  source(src=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandma.wav` type="audio/mpeg")
+                                  | Your browser does not support the audio element.
+                              ul#transcript(data-audio-file=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandma.wav` style="max-height: 300px;")
+                                  li.speaker1.current#num1(data-timecode="00:00") Scammer: Hey <span class="role-placeholder">Grandma</span>
+                                  li.speaker2#num2(data-timecode="00:01") <span class="role-placeholder">Grandma</span>: Who is this?
+                                  li.speaker1#num3(data-timecode="00:02") Scammer: <span class="role-placeholder">Grandma</span>, it is me, your favorite grandson.
+                                  li.speaker2#num4(data-timecode="00:04") <span class="role-placeholder">Grandma</span>: Alex?
+                                  li.speaker1#num5(data-timecode="00:05") Scammer: You got it, <span class="role-placeholder">Grandma</span>.
+                                  li.speaker2#num6(data-timecode="00:06") <span class="role-placeholder">Grandma</span>: Hey, Alex? You sound a little different. Are you okay?
+                                  li.speaker1#num7(data-timecode="00:10") Scammer: I am okay, but I’ve been sick, so my voice might sound a bit different. Hey grandma, I'm in a bit of trouble. I was in a car accident, and the police have charged me with DUI. I am currently in jail. I'm so embarrassed, and I didn't want to worry Mom and Dad, so I asked the police to call you. Can you please help me?
+                    else 
+                      .audio-player
+                          .wrap
+                              audio#audio.with-transcript(controls)
+                                  source(src=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandpa.wav` type="audio/mpeg")
+                                  | Your browser does not support the audio element.
+                              ul#transcript(data-audio-file=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandpa.wav` style="max-height: 300px;")
+                                  li.speaker1.current#num1(data-timecode="00:00") Scammer: Hey <span class="role-placeholder">Grandpa</span>
+                                  li.speaker2#num2(data-timecode="00:01") <span class="role-placeholder">Grandpa</span>: Who is this?
+                                  li.speaker1#num3(data-timecode="00:03") Scammer: <span class="role-placeholder">Grandpa</span>, it is me, your favorite grandson.
+                                  li.speaker2#num4(data-timecode="00:05") <span class="role-placeholder">Grandpa</span>: Alex?
+                                  li.speaker1#num5(data-timecode="00:06") Scammer: You got it, <span class="role-placeholder">Grandpa</span>.
+                                  li.speaker2#num6(data-timecode="00:08") <span class="role-placeholder">Grandpa</span>: Hey, Alex? You sound a little different. Are you okay?
+                                  li.speaker1#num7(data-timecode="00:12") Scammer: I am okay, but I’ve been sick, so my voice might sound a bit different. Hey grandpa, I'm in a bit of trouble. I was in a car accident, and the police have charged me with DUI. I am currently in jail. I'm so embarrassed, and I didn't want to worry Mom and Dad, so I asked the police to call you. Can you please help me?
+       
+                .eight.wide.column#content-column
+                    .step1
+                        p After listening to that conversation, what feelings best describe your reaction? Select all that apply.
+                        .ui.vertical.inverted.buttons
+                            button.ui.button(data-value="concern") Concern
+                            button.ui.button(data-value="anxiety") Anxiety
+                            button.ui.button(data-value="anger") Anger
+                            button.ui.button(data-value="confusion") Confusion
+                            button.ui.button(data-value="embarrassment") Embarrassment
+                            button.ui.button(data-value="empathy") Empathy
+                            button.ui.button(data-value="nothing") I didn't feel anything
+                        button.ui.button.primary#submit-button Submit
+                    .step2.hidden
+                        p#response-text
+                        button.ui.big.teal.button#continue-button Continue
+                    .step3.hidden
+                        p Click the buttons below to identify the warning signs related to this part of the conversation
+                        .ui.vertical.inverted.buttons
+                            button.ui.button(data-value="generic") Generic term "<span class="role-placeholder">#{user.rolePlay}</span>"
+                            button.ui.button(data-value="voice") The voice doesn’t sound right
+                            button.ui.button(data-value="urgent") An urgent and fear-inducing scenario
+                            button.ui.button(data-value="secrecy") Request for secrecy
+                            button.ui.button(data-value="info") Wrong or Insufficient family member information
+                        button.ui.button.primary#second-submit-button Submit
+                    .step4.hidden
+                        p Great Job! In this conversation, the grandson begins with a 
+                          strong generic term "Hey <span class="role-placeholder">Grandpa</span>#{user.rolePlay}</span>"
+                          span , doesn't provide a name, and waits for you to fill it in, suggesting he might be a scammer who knows you have a grandson but doesn't know the name. The 
+                          strong voice doesn’t sound right
+                          span , which the "grandson" explains by claiming illness, a potential red flag indicating impersonation. He describes an 
+                          strong urgent and fear-inducing scenario 
+                          span involving a car accident and jail with a distressed tone to manipulate emotions and compel compliance. Additionally, the "grandson" insists on 
+                          strong secrecy from his parents 
+                          span to prevent you from verifying the situation with others, raising another red flag. 
+                          //- span However, there is no mention of detailed family member information, so this cannot be considered a warning sign in this case.
+                        //- p In this conversation, the grandson begins with a generic greeting, addressing you as Grandma/Grandpa rather than using a personal name. Furthermore, when you ask who is calling, he doesn’t provide a name, but instead waits for you to fill that in. In such an emergency situation, he shouldn't have had that casual attitude. Therefore, the grandson in this conversation could be a scammer who knows you have a grandson but doesn’t know the name.
+                        .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                            i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                            .content 
+                                p#narrate-2-intro-video 
+                                    span Click the "Next" button below to move on to the next part of the conversation.
+
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const selectedValues = new Set();
+    document.querySelectorAll('.step1 .ui.button').forEach(button => {
+      button.addEventListener('click', function () {
+        const value = this.getAttribute('data-value');
+        if (selectedValues.has(value)) {
+          selectedValues.delete(value);
+          this.classList.remove('active');
+        } else {
+          selectedValues.add(value);
+          this.classList.add('active');
+        }
+      });
+    });
+
+    document.getElementById('submit-button').addEventListener('click', function () {
+      document.querySelector('.step1').classList.add('hidden');
+      document.querySelector('.step2').classList.remove('hidden');
+      const responseText = document.getElementById('response-text');
+      if (selectedValues.has('nothing')) {
+        responseText.innerHTML = `
+          It is okay if you didn’t feel anything strong listening to that recording. We all react differently based on our personal experiences. However, when you actually receive a call claiming a loved one like your grandchild is in danger, <b>it is so important to be aware of your emotions</b> in that moment. Those types of calls are designed to trigger intense feelings of worry, panic, and an urgency to help family in crisis. By recognizing how you feel in those moments, you can pause, stay calm, and protect yourself from making rash decisions.
+        `;
+      } else {
+        responseText.innerHTML = `
+          It is completely normal if you feel any or all of those emotions shown in the last page when you receive a call claiming your grandchild is in trouble. Our loved ones are precious, so having strong emotional reactions is understandable. However, it's crucial to: 1) take a deep breath, 2) collect yourself, and 3) approach the situation with a calm, skeptical mindset.
+        `;
+      }
+    });
+
+    document.getElementById('continue-button').addEventListener('click', function () {
+      document.querySelector('.step2').classList.add('hidden');
+      document.querySelector('.step3').classList.remove('hidden');
+
+      const secondSelectedValues = new Set();
+      document.querySelectorAll('.step3 .ui.button').forEach(button => {
+        button.addEventListener('click', function () {
+          const value = this.getAttribute('data-value');
+          if (secondSelectedValues.has(value)) {
+            secondSelectedValues.delete(value);
+            this.classList.remove('active');
+          } else {
+            secondSelectedValues.add(value);
+            this.classList.add('active');
+          }
+        });
+      });
+
+      document.getElementById('second-submit-button').addEventListener('click', function () {
+        document.querySelector('.step3').classList.add('hidden');
+        document.querySelector('.step4').classList.remove('hidden');
+      });
+    });
+  });

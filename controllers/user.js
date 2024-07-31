@@ -885,6 +885,49 @@ exports.getNarrationSettings = async (req, res, next) => {
   }
 };
 
+exports.postRolePlay = async (req, res, next) => {
+  const { role } = req.body;
+  try {
+    const existingUser = await User.findOne({ email: req.user.email });
+
+    if (existingUser) {
+      // Update the user's avatar
+      existingUser.rolePlay = role;
+
+      // Save to MongoDB database
+      await existingUser.save();
+
+      // Manually update the user object in the session
+      req.session.passport.user.rolePlay = role;
+      
+      // Save the session
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+
+        // Redirect or send a success response
+        res.status(200).send('Role updated successfully');
+      });
+
+      // Update the user in the session
+      // req.login(existingUser, (err) => {
+      //   if (err) {
+      //     return next(err);
+      //   }
+  
+      //   // Redirect or send a success response
+      //   res.status(200).send('Avatar updated successfully');
+      // });
+    } else {
+      res.status(404).send('User not found while updating role');
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+
 exports.postAvatar = async (req, res, next) => {
   const { avatar, avatarImg } = req.body;
 

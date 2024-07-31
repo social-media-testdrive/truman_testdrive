@@ -9,7 +9,12 @@ block content
             .ui.active.blue.large.elastic.loader 
             h1 Loading...
     .display-page.hidden
+        include practice/introduction.pug
         include practice/activity.pug
+        include practice/activity2.pug
+        include practice/activity3.pug
+        include practice/activity4.pug
+
         include practice/objectives.pug
         include practice/arrive.pug
         include practice/reflection.pug
@@ -21,6 +26,7 @@ block styles
     link(rel='stylesheet', href='/css/identity-theft.css')
     link(rel='stylesheet', href='/css/learning-targets.css')
     link(rel='stylesheet', href='/css/middle-aligned-layout.css')
+    link(rel='stylesheet', href='/css/grandparent/practice.css')
 
 
 block scripts     

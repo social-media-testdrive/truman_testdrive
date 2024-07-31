@@ -49,7 +49,7 @@ $('audio.with-transcript').each(function() {
                 timecodes[timecode_index]['el'].addClass('current');
                 // Scroll the ul element to the next timecode position proactively
                 let newScrollTop = timecodes[timecode_index]['el'].position().top + $list.scrollTop();
-                console.log("now newScrollTop: " + newScrollTop);
+                // console.log("now newScrollTop: " + newScrollTop);
 
                 $list.stop().animate({
                     scrollTop: newScrollTop
@@ -145,7 +145,7 @@ function initializeAudioPlayer() {
                     timecodes[timecode_index]['el'].addClass('current');
                     // Scroll the ul element to the next timecode position proactively
                     let newScrollTop = timecodes[timecode_index]['el'].position().top + $list.scrollTop();
-                    console.log("now newScrollTop: " + newScrollTop);
+                    // console.log("now newScrollTop: " + newScrollTop);
     
                     $list.stop().animate({
                         scrollTop: newScrollTop
@@ -162,4 +162,6 @@ function initializeAudioPlayer() {
         });
     });
 }
+
+
 
