@@ -7,28 +7,46 @@
                     | Car Accident: Part 3/4
             .ui.centered.stackable.grid
                 .eight.wide.column
-                    //- div.ui.header
-                    //-     i.phone.volume.icon
-                    //-     | Audio Example
-                    .audio-player
-                        .wrap
-                            audio#audio.with-transcript(controls)
-                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car3.wav" type="audio/mpeg")
-                                | Your browser does not support the audio element.
-                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car3.wav" style="max-height: 300px;")
-                                li.speaker1.current(data-timecode="00:00") Grandma: Hello, who is this?
-                                li.speaker2(data-timecode="00:01") Scammer: Hello, this is Olivia, Alex’s lawyer. I am calling about an urgent matter regarding your grandson, Alex. He mentioned that he had already briefly spoken to you.
-                                li.speaker1(data-timecode="00:10") Grandma: Yes, he did. Can you tell me more?
-                                li.speaker2(data-timecode="00:12") Scammer: Alex has been involved in a car accident and has been charged with DUI. He's currently in custody and needs to post bail to be released.
-                                li.speaker1(data-timecode="00:20") Grandma: Is it that bad? What happened?
-                                li.speaker2(data-timecode="00:22") Scammer: Alex was driving home from work when another car ran a red light and collided with his vehicle. He suffered minor injuries but was taken to the hospital as a precaution. The other driver was also injured but is in stable condition. Unfortunately, the police found alcohol in Alex's system, leading to the DUI charge.
-                                li.speaker1(data-timecode="00:40") Grandma: Oh my god. Is Alex okay now?
-                                li.speaker2(data-timecode="00:42") Scammer: Yes, he's okay, but shaken up by the accident. He's currently in custody, but we're working to get him released as soon as possible. Your assistance with the bail payment will greatly help in this process.
-                                li.speaker1(data-timecode="00:50") Grandma: Is the other driver okay?
-                                li.speaker2(data-timecode="00:52") Scammer: Yes, for now. But, let’s focus on Alex, alright? We need to post bail as soon as possible to get Alex out of custody. The bail amount is $8,000, and they're requesting cash or wire transfer to expedite the process. Can you provide the bail amount?
-                                li.speaker1(data-timecode="01:10") Grandma: How about I write you a check? I can get that to you immediately.
-                                li.speaker2(data-timecode="01:12") Scammer:  I'm sorry, but we can't accept checks for this type of payment. Checks can take several days to be processed. However, we need to process the payment immediately to ensure your grandchild is released soon.
-                                li.speaker1(data-timecode="01:30") Grandma: I see, what should I do?
+                  #audio-container_car3
+
+                    //- .audio-player
+                    //-     .wrap
+                    //-         audio#audio.with-transcript(controls)
+                    //-             source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car3_Grandpa.wav" type="audio/mpeg")
+                    //-             | Your browser does not support the audio element.
+                    //-         ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car3_Grandpa.wav" style="max-height: 300px;")
+                    //-             li.speaker1.current(data-timecode="00:00") Grandpa: Hello, who is this?
+                    //-             li.speaker2(data-timecode="00:02") Scammer: Hello, this is Olivia, Alex’s lawyer. I am calling about an urgent matter regarding your grandson, Alex. He mentioned that he had already briefly spoken to you.
+                    //-             li.speaker1(data-timecode="00:12") Grandpa: Yes, he did. Can you tell me more?
+                    //-             li.speaker2(data-timecode="00:16") Scammer: Alex has been involved in a car accident and has been charged with DUI. He's currently in custody and needs to post bail to be released.
+                    //-             li.speaker1(data-timecode="00:26") Grandpa: Is it that bad? What happened?
+                    //-             li.speaker2(data-timecode="00:29") Scammer: Alex was driving home from work when another car ran a red light and collided with his vehicle. He suffered minor injuries but was taken to the hospital as a precaution. The other driver was also injured but is in stable condition. Unfortunately, the police found alcohol in Alex's system, leading to the DUI charge.
+                    //-             li.speaker1(data-timecode="00:52") Grandpa: Oh my god. Is Alex okay now?
+                    //-             li.speaker2(data-timecode="00:54") Scammer: Yes, he's okay, but shaken up by the accident. He's currently in custody, but we're working to get him released as soon as possible. Your assistance with the bail payment will greatly help in this process.
+                    //-             li.speaker1(data-timecode="01:05") Grandpa: Is the other driver okay?
+                    //-             li.speaker2(data-timecode="01:07") Scammer: Yes, for now. But, let’s focus on Alex, alright? We need to post bail as soon as possible to get Alex out of custody. The bail amount is $8,000, and they're requesting cash or wire transfer to expedite the process. Can you provide the bail amount?
+                    //-             li.speaker1(data-timecode="01:24") Grandpa: How about I write you a check? I can get that to you immediately.
+                    //-             li.speaker2(data-timecode="01:28") Scammer: I'm sorry, but we can't accept checks for this type of payment. Checks can take several days to be processed. However, we need to process the payment immediately to ensure your grandchild is released soon.
+                    //-             li.speaker1(data-timecode="01:44") Grandpa: I see, what should I do?
+                    //- .audio-player
+                    //-     .wrap
+                    //-         audio#audio.with-transcript(controls)
+                    //-             source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car3_Grandma.wav" type="audio/mpeg")
+                    //-             | Your browser does not support the audio element.
+                    //-         ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car3_Grandma.wav" style="max-height: 300px;")
+                    //-             li.speaker1.current(data-timecode="00:00") Grandma: Hello, who is this?
+                    //-             li.speaker2(data-timecode="00:01") Scammer: Hello, this is Olivia, Alex’s lawyer. I am calling about an urgent matter regarding your grandson, Alex. He mentioned that he had already briefly spoken to you.
+                    //-             li.speaker1(data-timecode="00:10") Grandma: Yes, he did. Can you tell me more?
+                    //-             li.speaker2(data-timecode="00:12") Scammer: Alex has been involved in a car accident and has been charged with DUI. He's currently in custody and needs to post bail to be released.
+                    //-             li.speaker1(data-timecode="00:20") Grandma: Is it that bad? What happened?
+                    //-             li.speaker2(data-timecode="00:22") Scammer: Alex was driving home from work when another car ran a red light and collided with his vehicle. He suffered minor injuries but was taken to the hospital as a precaution. The other driver was also injured but is in stable condition. Unfortunately, the police found alcohol in Alex's system, leading to the DUI charge.
+                    //-             li.speaker1(data-timecode="00:40") Grandma: Oh my god. Is Alex okay now?
+                    //-             li.speaker2(data-timecode="00:42") Scammer: Yes, he's okay, but shaken up by the accident. He's currently in custody, but we're working to get him released as soon as possible. Your assistance with the bail payment will greatly help in this process.
+                    //-             li.speaker1(data-timecode="00:50") Grandma: Is the other driver okay?
+                    //-             li.speaker2(data-timecode="00:52") Scammer: Yes, for now. But, let’s focus on Alex, alright? We need to post bail as soon as possible to get Alex out of custody. The bail amount is $8,000, and they're requesting cash or wire transfer to expedite the process. Can you provide the bail amount?
+                    //-             li.speaker1(data-timecode="01:10") Grandma: How about I write you a check? I can get that to you immediately.
+                    //-             li.speaker2(data-timecode="01:12") Scammer:  I'm sorry, but we can't accept checks for this type of payment. Checks can take several days to be processed. However, we need to process the payment immediately to ensure your grandchild is released soon.
+                    //-             li.speaker1(data-timecode="01:30") Grandma: I see, what should I do?
                 .eight.wide.column#content-column
                     .step1-activity3
                         p After listening to that conversation, what feelings best describe your reaction? Select all that apply.

@@ -1,5 +1,5 @@
 #activity.hidden
-    .ui.container(style="width: 90%;")
+    .ui.container(style="width: 90vw;")
         .limit(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
@@ -7,37 +7,38 @@
                     | Car Accident: Part 1/4
             .ui.centered.stackable.grid
                 .eight.wide.column
+                  #audio-container_car
                     //- div.ui.header
                     //-     i.phone.volume.icon
                     //-     | Audio Example
-                    if user.rolePlay === 'Grandma'
-                      .audio-player
-                          .wrap
-                              audio#audio.with-transcript(controls)
-                                  source(src=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandma.wav` type="audio/mpeg")
-                                  | Your browser does not support the audio element.
-                              ul#transcript(data-audio-file=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandma.wav` style="max-height: 300px;")
-                                  li.speaker1.current#num1(data-timecode="00:00") Scammer: Hey <span class="role-placeholder">Grandma</span>
-                                  li.speaker2#num2(data-timecode="00:01") <span class="role-placeholder">Grandma</span>: Who is this?
-                                  li.speaker1#num3(data-timecode="00:02") Scammer: <span class="role-placeholder">Grandma</span>, it is me, your favorite grandson.
-                                  li.speaker2#num4(data-timecode="00:04") <span class="role-placeholder">Grandma</span>: Alex?
-                                  li.speaker1#num5(data-timecode="00:05") Scammer: You got it, <span class="role-placeholder">Grandma</span>.
-                                  li.speaker2#num6(data-timecode="00:06") <span class="role-placeholder">Grandma</span>: Hey, Alex? You sound a little different. Are you okay?
-                                  li.speaker1#num7(data-timecode="00:10") Scammer: I am okay, but I’ve been sick, so my voice might sound a bit different. Hey grandma, I'm in a bit of trouble. I was in a car accident, and the police have charged me with DUI. I am currently in jail. I'm so embarrassed, and I didn't want to worry Mom and Dad, so I asked the police to call you. Can you please help me?
-                    else 
-                      .audio-player
-                          .wrap
-                              audio#audio.with-transcript(controls)
-                                  source(src=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandpa.wav` type="audio/mpeg")
-                                  | Your browser does not support the audio element.
-                              ul#transcript(data-audio-file=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandpa.wav` style="max-height: 300px;")
-                                  li.speaker1.current#num1(data-timecode="00:00") Scammer: Hey <span class="role-placeholder">Grandpa</span>
-                                  li.speaker2#num2(data-timecode="00:01") <span class="role-placeholder">Grandpa</span>: Who is this?
-                                  li.speaker1#num3(data-timecode="00:03") Scammer: <span class="role-placeholder">Grandpa</span>, it is me, your favorite grandson.
-                                  li.speaker2#num4(data-timecode="00:05") <span class="role-placeholder">Grandpa</span>: Alex?
-                                  li.speaker1#num5(data-timecode="00:06") Scammer: You got it, <span class="role-placeholder">Grandpa</span>.
-                                  li.speaker2#num6(data-timecode="00:08") <span class="role-placeholder">Grandpa</span>: Hey, Alex? You sound a little different. Are you okay?
-                                  li.speaker1#num7(data-timecode="00:12") Scammer: I am okay, but I’ve been sick, so my voice might sound a bit different. Hey grandpa, I'm in a bit of trouble. I was in a car accident, and the police have charged me with DUI. I am currently in jail. I'm so embarrassed, and I didn't want to worry Mom and Dad, so I asked the police to call you. Can you please help me?
+                    //- if user.rolePlay === 'Grandma'
+                    //-   .audio-player
+                    //-       .wrap
+                    //-           audio#audio.with-transcript(controls)
+                    //-               source(src=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandma.wav` type="audio/mpeg")
+                    //-               | Your browser does not support the audio element.
+                    //-           ul#transcript(data-audio-file=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandma.wav` style="max-height: 300px;")
+                    //-               li.speaker1.current#num1(data-timecode="00:00") Scammer: Hey Grandma
+                    //-               li.speaker2#num2(data-timecode="00:01") Grandma: Who is this?
+                    //-               li.speaker1#num3(data-timecode="00:02") Scammer: Grandma, it is me, your favorite grandson.
+                    //-               li.speaker2#num4(data-timecode="00:04") Grandma: Alex?
+                    //-               li.speaker1#num5(data-timecode="00:05") Scammer: You got it, Grandma.
+                    //-               li.speaker2#num6(data-timecode="00:06") Grandma: Hey, Alex? You sound a little different. Are you okay?
+                    //-               li.speaker1#num7(data-timecode="00:10") Scammer: I am okay, but I’ve been sick, so my voice might sound a bit different. Hey grandma, I'm in a bit of trouble. I was in a car accident, and the police have charged me with DUI. I am currently in jail. I'm so embarrassed, and I didn't want to worry Mom and Dad, so I asked the police to call you. Can you please help me?
+                    //- else 
+                    //-   .audio-player
+                    //-       .wrap
+                    //-           audio#audio.with-transcript(controls)
+                    //-               source(src=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandpa.wav` type="audio/mpeg")
+                    //-               | Your browser does not support the audio element.
+                    //-           ul#transcript(data-audio-file=`https://dart-store.s3.amazonaws.com/grandparent-audio/car_Grandpa.wav` style="max-height: 300px;")
+                    //-               li.speaker1.current#num1(data-timecode="00:00") Scammer: Hey Grandpa
+                    //-               li.speaker2#num2(data-timecode="00:01") Grandpa: Who is this?
+                    //-               li.speaker1#num3(data-timecode="00:03") Scammer: Grandpa, it is me, your favorite grandson.
+                    //-               li.speaker2#num4(data-timecode="00:05") Grandpa: Alex?
+                    //-               li.speaker1#num5(data-timecode="00:06") Scammer: You got it, Grandpa.
+                    //-               li.speaker2#num6(data-timecode="00:08") Grandpa: Hey, Alex? You sound a little different. Are you okay?
+                    //-               li.speaker1#num7(data-timecode="00:12") Scammer: I am okay, but I’ve been sick, so my voice might sound a bit different. Hey grandpa, I'm in a bit of trouble. I was in a car accident, and the police have charged me with DUI. I am currently in jail. I'm so embarrassed, and I didn't want to worry Mom and Dad, so I asked the police to call you. Can you please help me?
        
                 .eight.wide.column#content-column
                     .step1

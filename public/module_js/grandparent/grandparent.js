@@ -278,10 +278,6 @@ $(document).ready(function() {
             location.reload();
         }
 
-        if(section === 'practice' && nextPage === 'activity') {
-          initializeAudioPlayer();
-        }
-
         if(currentPage === 'certificate') {
             window.location.href = '/about/grandparent';
         }
@@ -784,14 +780,18 @@ function setLinks(currentPage) {
         backlink = baseurl + "introduction";
         nextlink = baseurl + "activity2";
 
-        // re-enable next button
-        // $('#nextButton').prop('disabled', false);
+        // add audio
+        addAudioPlayer("car", rolePlay);
       } else if (currentPage === "activity2") {
         backlink = baseurl + "activity";
         nextlink = baseurl + "activity3";
+
+        addAudioPlayer("car2", rolePlay);
       } else if (currentPage === "activity3") {
         backlink = baseurl + "activity2";
         nextlink = baseurl + "activity4";
+
+        addAudioPlayer("car3", rolePlay);
       } else if (currentPage === "activity4") {
         backlink = baseurl + "activity3";
         nextlink = baseurl + "takeaways";
@@ -1135,13 +1135,16 @@ function setIntroduction() {
       .then(response => {
         if (response.ok) {
           // Handle success
-          console.log('Roleplay updated successfully. The choise: ', choice);
+          console.log('Roleplay updated successfully. The choice: ', choice);
 
           // manually set the audio and text to be correct
           setGrandparentRole(choice, 'car');
 
           $('#nextButton').prop('disabled', false);
           $('#nextButton').click();
+          addAudioPlayer("car", choice);
+          addAudioPlayer("car2", choice);
+
         } else {
           console.error('Failed to update roleplay');
           // Handle errors
@@ -1160,4 +1163,17 @@ function setIntroduction() {
     });
   });              
 
+}
+
+function addAudioPlayer(file, choice) {
+  console.log("adding audio player for role play", rolePlay);
+  $.get("/quizPartials/grandparent/practice/" + file + "_" + choice + ".html", function(data) {
+    // 'data' contains the content of the Pug template
+    const audioContainer = $("#audio-container_" + file);
+    audioContainer.empty();
+    audioContainer.html(data);
+    initializeAudioPlayer();
+    $('#nextButton').prop('disabled', false);
+
+  });
 }

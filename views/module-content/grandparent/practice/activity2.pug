@@ -1,5 +1,5 @@
 #activity2.hidden
-    .ui.container(style="width: 90%;")
+    .ui.container(style="width: 90vw;")
         .limit(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
@@ -7,19 +7,34 @@
                     | Car Accident: Part 2/4
             .ui.centered.stackable.grid
                 .eight.wide.column
-                    .audio-player
-                        .wrap
-                            audio#audio.with-transcript(controls)
-                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car2.wav" type="audio/mpeg")
-                                | Your browser does not support the audio element.
-                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car2.wav" style="max-height: 300px;")
-                                li.speaker1.current(data-timecode="00:00") Grandma: Oh, my poor Alex. Of course, I’ll do anything to help you. What do you need me to do?
-                                li.speaker2(data-timecode="00:06") Scammer: I need you to help me post bail. The police say it's $8,000. Can you send it right away?
-                                li.speaker1(data-timecode="00:12") Grandma: $8,000. Yes. But how do I do it? Where do I send the money?
-                                li.speaker2(data-timecode="00:18") Scammer: Can you send it right away? The police are only letting me call you for a little bit. My lawyer is gonna call you to explain what you need to do next. Please don’t tell Mom and Dad about this, okay? I’ll be in big trouble if they find out.
-                                li.speaker1(data-timecode="00:32") Grandma: Yes, yes. I will make sure you are okay! I love you.
-                                li.speaker2(data-timecode="00:37") Scammer: Thank you grandma, I love you too! Please hurry, I just want to get out of here.
-                                li.speaker1(data-timecode="00:41") Grandma: Okay, Okay.
+                  #audio-container_car2
+                  //- .audio-player
+                  //-     .wrap
+                  //-         audio#audio.with-transcript(controls)
+                  //-             source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car2.wav" type="audio/mpeg")
+                  //-             | Your browser does not support the audio element.
+                  //-         ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car2.wav" style="max-height: 300px;")
+                  //-             li.speaker1.current(data-timecode="00:00") Grandma: Oh, my poor Alex. Of course, I’ll do anything to help you. What do you need me to do?
+                  //-             li.speaker2(data-timecode="00:06") Scammer: I need you to help me post bail. The police say it's $8,000. Can you send it right away?
+                  //-             li.speaker1(data-timecode="00:12") Grandma: $8,000. Yes. But how do I do it? Where do I send the money?
+                  //-             li.speaker2(data-timecode="00:18") Scammer: Can you send it right away? The police are only letting me call you for a little bit. My lawyer is gonna call you to explain what you need to do next. Please don’t tell Mom and Dad about this, okay? I’ll be in big trouble if they find out.
+                  //-             li.speaker1(data-timecode="00:32") Grandma: Yes, yes. I will make sure you are okay! I love you.
+                  //-             li.speaker2(data-timecode="00:37") Scammer: Thank you grandma, I love you too! Please hurry, I just want to get out of here.
+                  //-             li.speaker1(data-timecode="00:41") Grandma: Okay, Okay.
+                  //- .audio-player
+                  //-     .wrap
+                  //-         audio#audio.with-transcript(controls)
+                  //-             source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car2_Grandpa.wav" type="audio/mpeg")
+                  //-             | Your browser does not support the audio element.
+                  //-         ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car2_Grandpa.wav" style="max-height: 300px;")
+                  //-             li.speaker1.current(data-timecode="00:00") Grandpa: Oh, my poor Alex. Of course, I’ll do anything to help you. What do you need me to do?
+                  //-             li.speaker2(data-timecode="00:07") Scammer: I need you to help me post bail. The police say it's $8,000. Can you send it right away?
+                  //-             li.speaker1(data-timecode="00:12") Grandpa: $8,000. Yes. But how do I do it? Where do I send the money?
+                  //-             li.speaker2(data-timecode="00:19") Scammer: The police are only letting me call you for a little bit. My lawyer is gonna call you to explain what you need to do next. Please don’t tell Mom and Dad about this, okay? I’ll be in big trouble if they find out.
+                  //-             li.speaker1(data-timecode="00:30") Grandpa: Yes, yes. I will make sure you are okay! I love you.
+                  //-             li.speaker2(data-timecode="00:36") Scammer: Thank you grandma, I love you too! Please hurry, I just want to get out of here.
+                  //-             li.speaker1(data-timecode="00:41") Grandpa: Okay, Okay.
+
                 .eight.wide.column#content-column2
                     .step1-activity2
                         p After listening to that conversation, what feelings best describe your reaction? Select all that apply.

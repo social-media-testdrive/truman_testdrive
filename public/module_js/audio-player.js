@@ -19,7 +19,10 @@ $('audio.with-transcript').each(function() {
         // Add click event to take user to the specific timecode
         $(this).on('click', function() {
             let timeparts = timecode.split(':');
+            // console.log("timeparts: ", timeparts);
+
             let seconds = calc_seconds(timeparts);
+            // console.log("seconds: ", seconds);
             $audio_el[0].currentTime = seconds;
             $audio_el[0].play();
         });
@@ -74,20 +77,21 @@ function calc_seconds(array) {
     let sum = 0;
     switch(array.length) {
         case 1:
-            sum += array[0];
+            sum += parseInt(array[0], 10); // seconds
             break;
         case 2:
-            sum += (array[0]*60);
-            sum += array[1];
+            sum += parseInt(array[0], 10) * 60; // minutes to seconds
+            sum += parseInt(array[1], 10);      // seconds
             break;
         case 3:
-            sum += (array[0]*60*60);
-            sum += (array[1]*60);
-            sum += array[2];
+            sum += parseInt(array[0], 10) * 60 * 60; // hours to seconds
+            sum += parseInt(array[1], 10) * 60;      // minutes to seconds
+            sum += parseInt(array[2], 10);           // seconds
             break;
     }
     return sum;
 }
+
 
 
 
@@ -107,7 +111,7 @@ function initializeAudioPlayer() {
     
             // get timecode from data attribute
             let timecode = $(this).attr('data-timecode');
-            console.log("Beyonce timecode is: ", timecode);
+            // console.log("Beyonce timecode is: ", timecode);
     
             // build object of timecodes and element offsets
             timecodes[timecode] = {};

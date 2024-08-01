@@ -40,7 +40,10 @@ block scripts
         var module = "#{module}";
         var section = "#{section}";
         var startPage = "#{page}"; 
-        var total = parseInt(#{numPages});  
+        var total = parseInt(#{numPages}); 
+        //- for audio players added dynamically
+        var rolePlay = "#{user.rolePlay}";
+ 
     script(src='/module_js/grandparent/grandparent.js')  
 
     //- if page === 'activity'
