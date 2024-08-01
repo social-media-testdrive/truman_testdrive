@@ -5,6 +5,18 @@
                 .content
                     i.volume.up.icon
                     | Car Accident: Part 1/4
+                    //- | Car Accident: Part 1/4
+            .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                .content 
+                    p#narrate-2-intro-video 
+                      span You recieve a call from someone claiming to be your grandchild. Listen to the conversation by clicking the 
+                        i.play.icon(alt="play button")
+                        span button to the left. Then answer the questions that follow on the right based on what you heard.
+
+            //- p(style="max-width: 800px;") You recieve a call from someone claiming to be your grandchild. Listen to the conversation by clicking the 
+            //-   i.play.icon(alt="play button")
+            //-   span button to the left. Then answer the questions that follow.
             .ui.centered.stackable.grid
                 .eight.wide.column
                   #audio-container_car
@@ -66,7 +78,7 @@
                         button.ui.button.primary#second-submit-button Submit
                     .step4.hidden
                         p Great Job! In this conversation, the grandson begins with a 
-                          strong generic term "Hey <span class="role-placeholder">Grandpa</span>#{user.rolePlay}</span>"
+                          strong generic term "Hey <span class="role-placeholder">#{user.rolePlay}</span>"
                           span , doesn't provide a name, and waits for you to fill it in, suggesting he might be a scammer who knows you have a grandson but doesn't know the name. The 
                           strong voice doesn’t sound right
                           span , which the "grandson" explains by claiming illness, a potential red flag indicating impersonation. He describes an 

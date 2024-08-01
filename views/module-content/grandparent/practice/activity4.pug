@@ -1,5 +1,5 @@
 #activity4.hidden
-    .ui.container(style="width: 90%;")
+    .ui.container(style="width: 90vw;")
         .limit(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
@@ -7,21 +7,36 @@
                     | Car Accident: Part 4/4
             .ui.centered.stackable.grid
                 .eight.wide.column
-                    .audio-player
-                        .wrap
-                            audio#audio.with-transcript(controls)
-                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car4.wav" type="audio/mpeg")
-                                | Your browser does not support the audio element.
-                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car4.wav" style="max-height: 300px;")
-                                li.speaker1.current(data-timecode="00:00") Scammer: Can you please provide cash or make a wire transfer?
-                                li.speaker2(data-timecode="00:04") Grandma: Yes, but it is a lot of money, I need to withdraw money from my bank.
-                                li.speaker1(data-timecode="00:11") Scammer: Great! One more thing to keep in mind: we want to keep Alex's record clear. Any publicity could harm his case, so please don’t tell anyone about this. You wouldn’t want him to have a criminal record, right? Especially when you withdraw the money, the banker may ask why you are withdrawing it. Please keep it confidential and simply say it's for a personal matter. We want to avoid any unnecessary attention that could impact Alex's case.
-                                li.speaker2(data-timecode="00:37") Grandma: Okay, okay. Where do I send the money?
-                                li.speaker1(data-timecode="00:40") Scammer: You can mail it to us, or we can arrange for our courier service to pick up the money from you. We just want to expedite the process so we can get Alex out sooner.
-                                li.speaker2(data-timecode="00:49") Grandma: oh, okay. Then please send the courier, I will give cash. It would be the easiest for both of us.
-                                li.speaker1(data-timecode="00:58") Scammer: Great, please call me at this number once you get the money, I will send our courier to you. And, can you give me your home address?
+                  #audio-container_car4
+                    //- .audio-player
+                    //-     .wrap
+                    //-         audio#audio.with-transcript(controls)
+                    //-             source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car4_Grandpa.wav" type="audio/mpeg")
+                    //-             | Your browser does not support the audio element.
+                    //-         ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car4_Grandpa.wav" style="max-height: 300px;")
+                    //-             li.speaker1.current(data-timecode="00:00") Scammer: Can you please provide cash or make a wire transfer?
+                    //-             li.speaker2(data-timecode="00:03") Grandpa: Yes, but it is a lot of money, I need to withdraw money from my bank.
+                    //-             li.speaker1(data-timecode="00:08") Scammer: Right! One more thing to keep in mind: we want to keep Alex's record clear. Any publicity could harm his case, so please don’t tell anyone about this. You wouldn’t want him to have a criminal record, right? Especially when you withdraw the money, the banker may ask why you are withdrawing it. Please keep it confidential and simply say it's for a personal matter. We want to avoid any unnecessary attention that could impact Alex's case.
+                    //-             li.speaker2(data-timecode="00:39") Grandpa: Okay, okay. Where do I send the money?
+                    //-             li.speaker1(data-timecode="00:43") Scammer: You can mail it to us, or we can arrange for our courier service to pick up the money from you. We just want to expedite the process so we can get Alex out sooner.
+                    //-             li.speaker2(data-timecode="00:52") Grandpa: oh, okay. Then please send the courier, I will give cash. It would be the easiest for both of us.
+                    //-             li.speaker1(data-timecode="01:00") Scammer: Great, please call me at this number once you get the money, I will send our courier to you. And, can you give me your home address?
+
+                    //- .audio-player
+                    //-     .wrap
+                    //-         audio#audio.with-transcript(controls)
+                    //-             source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/car4_Grandma.wav" type="audio/mpeg")
+                    //-             | Your browser does not support the audio element.
+                    //-         ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/car4_Grandma.wav" style="max-height: 300px;")
+                    //-             li.speaker1.current(data-timecode="00:00") Scammer: Can you please provide cash or make a wire transfer?
+                    //-             li.speaker2(data-timecode="00:04") Grandma: Yes, but it is a lot of money, I need to withdraw money from my bank.
+                    //-             li.speaker1(data-timecode="00:11") Scammer: Great! One more thing to keep in mind: we want to keep Alex's record clear. Any publicity could harm his case, so please don’t tell anyone about this. You wouldn’t want him to have a criminal record, right? Especially when you withdraw the money, the banker may ask why you are withdrawing it. Please keep it confidential and simply say it's for a personal matter. We want to avoid any unnecessary attention that could impact Alex's case.
+                    //-             li.speaker2(data-timecode="00:37") Grandma: Okay, okay. Where do I send the money?
+                    //-             li.speaker1(data-timecode="00:40") Scammer: You can mail it to us, or we can arrange for our courier service to pick up the money from you. We just want to expedite the process so we can get Alex out sooner.
+                    //-             li.speaker2(data-timecode="00:49") Grandma: oh, okay. Then please send the courier, I will give cash. It would be the easiest for both of us.
+                    //-             li.speaker1(data-timecode="00:58") Scammer: Great, please call me at this number once you get the money, I will send our courier to you. And, can you give me your home address?
                 .eight.wide.column#content-column2
-                    .step1-activity2
+                    .step1-activity4
                         p After listening to that conversation, what feelings best describe your reaction? Select all that apply.
                         .ui.vertical.inverted.buttons
                             button.ui.button(data-value="concern2") Concern
@@ -31,9 +46,9 @@
                             button.ui.button(data-value="embarrassment2") Embarrassment
                             button.ui.button(data-value="empathy2") Empathy
                             button.ui.button(data-value="nothing2") I didn't feel anything
-                        button.ui.button.primary#submit-button2 Submit
-                    .step2-activity2.hidden
-                        .ui.icon.mini.message#instruction-text
+                        button.ui.button.primary#submit-button2-activity4 Submit
+                    .step2-activity4.hidden
+                        .ui.icon.mini.message#instruction-text2
                             i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
                             .content
                                 p#narrate-2-intro-video
@@ -43,17 +58,16 @@
                         .ui.grid
                             .sixteen.wide.column
                                 .ui.horizontal.list.draggable-options#adjust-width
-                                    .item.ui.card.draggable(data-value="create-urgent" draggable="true") Create an urgent scenario
+                                    .item.ui.card.draggable(data-value="fear-concern" draggable="true") Cause fear and concern
                                     .item.ui.card.draggable(data-value="request-secrecy" draggable="true") Request for secrecy
-                                    .item.ui.card.draggable(data-value="introduce-lawyer" draggable="true") Introduce a third role
                                     .item.ui.card.draggable(data-value="pressure-fast" draggable="true") Pressure to act quickly
                         .ui.grid
                             .sixteen.wide.column
-                                .quote-container.hidden
-                                    p#current-quote "I need you to help me post bail. The police say it's $8,000. Can you send it right away?"
+                                .quote-container#quotes-activity4.hidden
+                                    p#current-quote2 "I need you to help me post bail. The police say it's $8,000. Can you send it right away?"
                                     .droppable-area
-                                        .ui.segment.droppable-activity2#drop-text Drop Here
-                    .step3-activity2.hidden
+                                        .ui.segment.droppable-activity4#drop-text2 Drop Here
+                    .step3-activity4.hidden
                         .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
                             i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
                             .content
@@ -62,7 +76,7 @@
 script.
   document.addEventListener('DOMContentLoaded', function () {
     const selectedValues2 = new Set();
-    document.querySelectorAll('.step1-activity2 .ui.button').forEach(button => {
+    document.querySelectorAll('.step1-activity4 .ui.button').forEach(button => {
       button.addEventListener('click', function () {
         const value = this.getAttribute('data-value');
         if (selectedValues2.has(value)) {
@@ -75,31 +89,31 @@ script.
       });
     });
 
-    document.getElementById('submit-button2').addEventListener('click', function () {
-      document.querySelector('.step1-activity2').classList.add('hidden');
-      document.querySelector('.step2-activity2').classList.remove('hidden');
-      document.querySelector('.quote-container').classList.remove('hidden');
+    document.getElementById('submit-button2-activity4').addEventListener('click', function () {
+      console.log("show drop")
+      document.querySelector('.step1-activity4').classList.add('hidden');
+      document.querySelector('.step2-activity4').classList.remove('hidden');
+      document.querySelector('#quotes-activity4').classList.remove('hidden');
     });
 
     const draggables = document.querySelectorAll('.draggable');
-    const droppable = document.querySelector('.droppable-activity2');
+    const droppable = document.querySelector('.droppable-activity4');
     let draggedElement = null;
 
-    const quotes = [
-      { text: "1. \"I need you to help me post bail. The police say it's $8,000. Can you send it right away?\"", value: "create-urgent" },
-      { text: "2. \"Can you send it right away? The police are only letting me call you for a little bit.\"", value: "pressure-fast" },
-      { text: "3. \"Please don’t tell Mom and Dad about this, okay? I’ll be in big trouble if they find out.\"", value: "request-secrecy" },
-      { text: "4. \"My lawyer is gonna call you to explain what you need to do next.\"", value: "introduce-lawyer" }
+    const quotes2 = [
+      { text: "1. \"Any publicity could harm his case, so please don’t tell anyone about this.\"", value: "request-secrecy" },
+      { text: "2. \"We just want to expedite the process so we can get Alex out sooner.\"", value: "pressure-fast" },
+      { text: "3. \"You wouldn’t want him to have a criminal record, right?\"", value: "fear-concern" },
     ];
     let currentQuoteIndex = 0;
 
     function loadNextQuote() {
-      if (currentQuoteIndex < quotes.length) {
-        document.getElementById('current-quote').innerText = quotes[currentQuoteIndex].text;
-        droppable.setAttribute('data-expected', quotes[currentQuoteIndex].value);
+      if (currentQuoteIndex < quotes2.length) {
+        document.getElementById('current-quote2').innerText = quotes2[currentQuoteIndex].text;
+        droppable.setAttribute('data-expected', quotes2[currentQuoteIndex].value);
       } else {
-        document.querySelector('.step2-activity2').classList.add('hidden');
-        document.querySelector('.step3-activity2').classList.remove('hidden');
+        document.querySelector('.step2-activity4').classList.add('hidden');
+        document.querySelector('.step3-activity4').classList.remove('hidden');
       }
     }
 
@@ -132,7 +146,7 @@ script.
       this.classList.remove('hovered');
       const draggedValue = draggedElement.getAttribute('data-value');
       const expectedValue = this.getAttribute('data-expected');
-      const instructionText = document.getElementById('instruction-text');
+      const instructionText = document.getElementById('instruction-text2');
 
       if (draggedValue === expectedValue) {
         draggedElement.remove();

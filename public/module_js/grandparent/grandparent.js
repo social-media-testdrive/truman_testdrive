@@ -68,6 +68,17 @@ $(document).ready(function() {
         step: 0.25
         });
     ;
+
+    // if starting page in activity, add all the audios for practice grandparent
+    if(startPage === 'activity' || startPage === 'activity2' || startPage === 'activity3' || startPage === 'activity4') {
+        addAudioPlayer("car", rolePlay);
+        addAudioPlayer("car2", rolePlay);
+        addAudioPlayer("car3", rolePlay);
+        addAudioPlayer("car4", rolePlay);
+
+        // add click event to the roleplay choice buttons
+        // setIntroduction();
+    }
     // later make so check from db whether to play audio / highlight 
     setLinks(startPage);
     updateProgressBar();
@@ -402,6 +413,8 @@ $(document).ready(function() {
 
                 if(nextPage === 'introduction') {
                   setIntroduction();
+                    // disable next button, user needs to choose role
+                    $('#nextButton').prop('disabled', true);
                 }
 
 
@@ -795,8 +808,10 @@ function setLinks(currentPage) {
       } else if (currentPage === "activity4") {
         backlink = baseurl + "activity3";
         nextlink = baseurl + "takeaways";
+
+        addAudioPlayer("car4", rolePlay);
       } else if (currentPage === "takeaways") {
-        backlink = baseurl + "activity";
+        backlink = baseurl + "activity4";
         nextlink = "/course-player?module=grandparent&section=evaluation&page=intro";
 
         // complete module status to 100 manually since there is no quiz
@@ -1115,9 +1130,6 @@ function appendScriptWithVariables(filename, modID, page, section, nextLink, pro
 }
 
 function setIntroduction() {
-  // disable next button, user needs to choose role
-  $('#nextButton').prop('disabled', true);
-
   document.querySelectorAll('.ui.button[data-role]').forEach(button => {
     button.addEventListener('click', function () {
       const choice = this.getAttribute('data-role');
@@ -1144,6 +1156,8 @@ function setIntroduction() {
           $('#nextButton').click();
           addAudioPlayer("car", choice);
           addAudioPlayer("car2", choice);
+          addAudioPlayer("car3", choice);
+          addAudioPlayer("car4", choice);
 
         } else {
           console.error('Failed to update roleplay');
@@ -1174,6 +1188,12 @@ function addAudioPlayer(file, choice) {
     audioContainer.html(data);
     initializeAudioPlayer();
     $('#nextButton').prop('disabled', false);
+
+    if(choice === 'Grandma') {
+      document.querySelectorAll('.role-placeholder').forEach(el => el.textContent = 'Grandma');
+    } else {
+      document.querySelectorAll('.role-placeholder').forEach(el => el.textContent = 'Grandpa');
+    }
 
   });
 }
