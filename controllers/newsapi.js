@@ -7,7 +7,7 @@ const getNewsAPI = async (req, res) => {
     try {
         const currentDate = new Date();
         const toDate = currentDate.toISOString().split('T')[0];
-        const priorDate = new Date(currentDate.setDate(currentDate.getDate() - 14));
+        const priorDate = new Date(currentDate.setDate(currentDate.getDate() - 7));
         const fromDate = priorDate.toISOString().split('T')[0];
 
         let page = 1;
@@ -29,7 +29,7 @@ const getNewsAPI = async (req, res) => {
                     to: toDate,
                     // pageSize: 20,
                     page,
-                    // excludeDomains: 'foxnews.com'
+                    excludeDomains: 'yahoo.com, theregister.com'
                     // searchIn: 'title,content'
                     // country:'us'
                 }

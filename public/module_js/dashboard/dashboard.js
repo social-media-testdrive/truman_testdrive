@@ -124,18 +124,18 @@ $(window).ready(function () {
 
     data.forEach((article) => {
       let truncatedTitle = article.title.length > 90 ? article.title.slice(0, 90) + '...' : article.title;
-      let truncatedDescription = article.description.length > 300 ? article.description.slice(0, 300) + '...' : article.description;
+      let truncatedDescription = article.description.length > 220 ? article.description.slice(0, 220) + '...' : article.description;
 
       const articleHtml = `
       <a class="ui" href="${article.url}" alt="Read news article" target="_blank">
         <div class="ui raised segment" style="box-shadow: none !important; outline: none;">
           
             <div id="raised-content">
-                <div class="ui header hub-alert">
+                <div class="ui header hub-alert" style="height: 75px">
                     <i class="exclamation circle icon"></i>
                     ${truncatedTitle}
                 </div>
-                <p class="alert-info">${article.description}</p>
+                <p class="alert-info" style="height: 100px;">${truncatedDescription}</p>
                     <button class="ui huge button right floated alert-learn-more">
                         <span>Learn More →</span>
                     </button>
