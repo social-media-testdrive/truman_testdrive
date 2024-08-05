@@ -1,4 +1,5 @@
-$(window).ready(function () {
+$(window).ready(
+function () {
   $.post("/getModuleStatus", { email: user.email }, function (data) {
     console.log("Response data saved to info:");
     console.log(data);
@@ -10,15 +11,6 @@ $(window).ready(function () {
       console.log("user not enrolled in any missions");
       // Show a message to the user that they are not enrolled in any missions
       const progressBarsContainer = $("#progress-bars-container");
-
-      // <div class="ui fluid container" style="height: 200px;">
-      //   <div class="ui image banner">
-      //     <img src="/images/courses/empty-mission-banner.jpg">
-      //   </div>
-      // </div>
-      // <h3 class="ui header large home-mod-title">
-      //   No Missions Found
-      // </h3>
   
       const noModulesHtml = `
         <div >
@@ -171,29 +163,8 @@ $(window).ready(function () {
 
     });
 
-    // $("<style>")
-    // .prop("type", "text/css")
-    // .html(`
-    //   .slick-prev:before, .slick-next:before {
-    //     color: #3757A6 ;
-    //   }
-    // `)
-    // .appendTo("head");
-
   }).fail(function (error) {
     console.error("Error:", error);
   });
 });
 
-$(document).ready(function() {
-
-
-  // Apply styles to .ui.raised.segment
-  // $('.ui.raised.segment').css({
-  //     'margin': '0 auto',  // Centering the segment
-  //     'width': '100%',      // Full width of the carousel
-  //     'box-shadow': 'none !important',  /* Removes the shadow */
-  //     'outline': 'none !importany'
-  // });
-  
-});
