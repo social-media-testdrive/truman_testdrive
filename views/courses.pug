@@ -1,7 +1,7 @@
 extends ui_layout
 block content
-  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  -var path = isResearchVersion ? 'intro' : 'guest';
+  - var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  - var path = isResearchVersion ? 'intro' : 'guest';
 
   .ui.grid(style="margin-top: -50px;")
     .row#blue-upper
@@ -11,121 +11,10 @@ block content
           p#about 
             i.circular.info.pear.small.icon(style="position: relative; bottom: 2px; right: 5px; border: none !important; font-size: 0.8rem")
             | Click on a mission below to start learning.
-          //- button.ui.inverted.button(style="margin-right: 20px;")
-          //-   | Courses in Progress
-          //- button.ui.inverted.button
-          //-   | New Courses
-
 
     .row#white-lower
-
-      //- Alert Hub
       .ui.container
-        //- .limit.hub-container
-        //-   h2.ui.header#in-progress DART Alert Hub:
-        //-   a.ui(href=`#alert` alt="Begin identity theft module")
-        //-     .ui.raised.segment
-        //-       div#raised-content
-        //-         div.ui.header.hub-alert
-        //-           i.exclamation.circle.icon
-        //-           | Rise in Fake Gift Cards
-
-        //-         p.alert-info Gift cards are a fraudster’s favorite payment method. Since 2018, consumers have lost nearly $245 million to gift card scams
-        //-         button.ui.huge.button.right.floated.alert-learn-more 
-        //-           span Learn More →
-                  //- i.arrow.right.icon
-
-        //- Courses
-
-        .limit
-          //- h2.ui.header#in-progress Courses:
-          a.ui#theft-link(href='/about/tech' alt="Begin tech support scams module")
-            .ui.raised.segment
-              .ui.fluid.container(style="height: 200px;")
-                .ui.image.banner
-                  img(src="/images/courses/tech-scams-banner.jpg", alt="Tech Support Banner Image")
-
-                  #theft-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.identity.percent)
-                    .bar(style='border-radius: 0 !important;')
-                      .progress
-              #raised-content(style="padding-top: 20px;")
-                h3.ui.header.large.home-mod-title
-                  | Tech Support Scams
-                //- p(style="color:black") Description
-                button.ui.huge.blue.button.right.floated#nextButton
-                  | Learn Now
-                  i.arrow.right.icon
-        br
-        br
-
-        .limit
-          //- h2.ui.header#in-progress Courses:
-          a.ui#theft-link(href='/about/grandparent' alt="Begin grandparent scams module")
-            .ui.raised.segment
-              .ui.fluid.container(style="height: 200px;")
-                .ui.image.banner
-                  img(src="/images/courses/grandparent-scams-banner.jpg", alt="grandparent scams Banner Image")
-
-                  #theft-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.grandparent.percent)
-                    .bar(style='border-radius: 0 !important;')
-                      .progress
-              #raised-content(style="padding-top: 20px;")
-                h3.ui.header.large.home-mod-title
-                  | Grandparent Scams
-                //- p(style="color:black") Understand the consequences of grandparent scams and learn how to identify and take action against phishing scams on social media.
-                button.ui.huge.blue.button.right.floated#nextButton
-                  | Learn Now
-                  i.arrow.right.icon
-
-
-        br
-        br
-        .limit
-          //- h2.ui.header#in-progress Courses:
-          a.ui#theft-link(href='/about/romance' alt="Begin romance and friendship scams module")
-            .ui.raised.segment
-              .ui.fluid.container(style="height: 200px;")
-                .ui.image.banner
-                  img(src="/images/courses/romance-scams-banner.jpg", alt="Identity Theft Banner Image")
-
-                  #theft-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.identity.percent)
-                    .bar(style='border-radius: 0 !important;')
-                      .progress
-              #raised-content(style="padding-top: 20px;")
-                h3.ui.header.large.home-mod-title
-                  | Romance & Friendship Scams
-                //- p(style="color:black") Description
-                button.ui.huge.blue.button.right.floated#nextButton
-                  | Learn Now
-                  i.arrow.right.icon
-
-        br
-        br
-        .limit
-          //- h2.ui.header#in-progress Courses:
-          a.ui#theft-link(href='/about/identity' alt="Begin identity theft module")
-            .ui.raised.segment
-              .ui.fluid.container(style="height: 200px;")
-                .ui.image.banner
-                  img(src="/images/courses/identity-scams-banner.jpg", alt="Identity Theft Banner Image")
-
-                  #theft-progress.ui.bottom.small.progress(style='margin:0;padding:0;' data-percent=user.moduleProgress.identity.percent)
-                    .bar(style='border-radius: 0 !important;')
-                      .progress
-              #raised-content(style="padding-top: 20px;")
-                h3.ui.header.large.home-mod-title
-                  | Identity Theft
-                //- p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-                button.ui.huge.blue.button.right.floated#nextButton
-                  | Learn Now
-                  i.arrow.right.icon
-        br
-        br
-
-  script.
-    var progress = #{user.moduleProgress.identity.percent}
-  script(src='/js/setProgressBar.js')  
-
+        .ui.three.stackable.cards#courses-container
 
 block styles
   link(rel='stylesheet', href='/css/mods.css')
@@ -133,5 +22,4 @@ block styles
 block scripts  
   script(src="/module_js/courses/test.js")
   script(src="/module_js/courses/courses.js")
-
-            
+    
