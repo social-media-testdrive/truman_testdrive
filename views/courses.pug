@@ -1,25 +1,82 @@
 extends ui_layout
+
 block content
   - var cdn = "https://dhpd030vnpk29.cloudfront.net";
   - var path = isResearchVersion ? 'intro' : 'guest';
 
   .ui.grid(style="margin-top: -50px;")
-    .row#blue-upper
-      .ui.container
-        h1.ui.header.center.aligned Missions
-        .limit(style="padding-bottom: 20px; text-align: center;")
-          p#about 
-            i.circular.info.pear.small.icon(style="position: relative; bottom: 2px; right: 5px; border: none !important; font-size: 0.8rem")
-            | Click on a mission below to start learning.
+    .row#blue-upper 
+      .ui.text.container
+        .ui.flex.container
+          h1 Browse Courses
+          span 
+            .ui.search
+              .ui.icon.input
+                input.prompt(type="text" placeholder="Search countries...")
+                i.search.icon
+              .results
 
-    .row#white-lower
+    .two.wide.column
       .ui.container
-        .ui.three.stackable.cards#courses-container
+        .ui.accordion
+          .title
+            i.dropdown.icon
+            | Sort By
+          .content
+            .ui.list
+              .item
+                i.bullet.icon
+                .content Featured
+              .item
+                i.bullet.icon
+                .content Popular
+              .item
+                i.bullet.icon
+                .content Alphabetical
+              .item
+                i.bullet.icon
+                .content Latest
+          .title
+            i.dropdown.icon
+            | Subject
+          .content
+            .ui.list
+              .item
+                i.bullet.icon
+                .content Scams
+              .item
+                i.bullet.icon
+                .content Password Security
+              .item
+                i.bullet.icon
+                .content Data Privacy
+              .item
+                i.bullet.icon
+                .content Malware
+          .title
+            i.dropdown.icon
+            | Level
+          .content
+            .ui.list
+              .item
+                i.bullet.icon
+                .content Beginner
+              .item
+                i.bullet.icon
+                .content Intermediate
+              .item
+                i.bullet.icon
+                .content Advanced
+
+
+    .thirteen.wide.column
+      //- div(style="margin-left:-2%; margin-right:-2%")
+      .ui.three.stackable.cards#courses-container
 
 block styles
   link(rel='stylesheet', href='/css/mods.css')
+  link(rel='stylesheet', href='/css/courses/courses.css')
 
 block scripts  
   script(src="/module_js/courses/test.js")
   script(src="/module_js/courses/courses.js")
-    

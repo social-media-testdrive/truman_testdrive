@@ -41,6 +41,9 @@ $(document).ready(function () {
   });
 });
 
+$(document).ready(function() {
+  $('.ui.accordion').accordion();
+});
 
   [
     {
