@@ -14,6 +14,8 @@ const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 const mongoose = require("mongoose");
 const passport = require("passport");
+const lessonRoutes = require('./routes/lesson.routes');
+
 // const multer = require('multer');
 
 // const upload = multer({ dest: path.join(__dirname, 'uploads') });
@@ -98,6 +100,7 @@ app.set("port", process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.set("trust proxy", numberOfProxies);
+app.use('/api', lessonRoutes);
 app.use(flash());
 app.use(compression());
 app.use(logger("dev"));
