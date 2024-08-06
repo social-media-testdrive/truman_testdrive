@@ -12,9 +12,9 @@ block content
           span 
             .ui.search
               .ui.icon.input
-                input.prompt(type="text" placeholder="Search Courses...")
-                i.search.icon
-              .results
+                input#course-search.prompt(type="text" placeholder="Search Courses...")
+                i#search-icon.search.icon
+
 
     .two.wide.column
       .ui.container(style="margin-left:5%")
@@ -70,6 +70,7 @@ block content
 
 
     .fourteen.wide.column
+      br
       .ui.container
         .ui.three.stackable.cards#courses-container
 
@@ -80,3 +81,5 @@ block styles
 block scripts  
   script(src="/module_js/courses/test.js")
   script(src="/module_js/courses/courses.js")
+
+

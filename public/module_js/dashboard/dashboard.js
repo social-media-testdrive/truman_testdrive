@@ -167,4 +167,3 @@ $(window).ready(function () {
     console.error("Error:", error);
   });
 });
-
