@@ -12,15 +12,15 @@ block content
           span 
             .ui.search
               .ui.icon.input
-                input.prompt(type="text" placeholder="Search countries...")
+                input.prompt(type="text" placeholder="Search Courses...")
                 i.search.icon
               .results
 
     .two.wide.column
-      .ui.container
+      .ui.container(style="margin-left:5%")
         .ui.accordion
           .title
-            i.dropdown.icon
+            i.filter.icon
             | Sort By
           .content
             .ui.list
@@ -69,9 +69,9 @@ block content
                 .content Advanced
 
 
-    .thirteen.wide.column
-      //- div(style="margin-left:-2%; margin-right:-2%")
-      .ui.three.stackable.cards#courses-container
+    .fourteen.wide.column
+      .ui.container
+        .ui.three.stackable.cards#courses-container
 
 block styles
   link(rel='stylesheet', href='/css/mods.css')

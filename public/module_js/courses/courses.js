@@ -17,10 +17,10 @@ $(document).ready(function () {
               <img src="${item.imagelink}" alt="${item.title} Banner Image" style="width: 100%; height: 125px; object-fit: cover;">
             </div>
             <div class="content">
-              <div class="header">${item.title}</div>
-              <div class="meta">
-                <span class="date">Duration: ${item.duration} minutes</span>
+              <div class="meta" style="text-align: end;">
+                ${item.duration} min
               </div>
+              <div class="header">${item.title}</div>
               <div class="description">
                 ${item.subtitle}
               </div>
@@ -44,30 +44,3 @@ $(document).ready(function () {
 $(document).ready(function() {
   $('.ui.accordion').accordion();
 });
-
-  [
-    {
-        "_id": "66b16c7f2ccc5779eeb8ffac",
-        "title": "Identity Theft",
-        "subtitle": "Understand the consequences of identity theft and learn how to take action against these scams.",
-        "duration": 64,
-        "image": "base64 string",
-        "link": "/about/identity",
-        "imagelink": "/images/courses/identity-scams-banner.jpg",
-        "createdAt": "2024-08-06T00:21:19.871Z",
-        "updatedAt": "2024-08-06T00:21:19.871Z",
-        "__v": 0
-    },
-    {
-        "_id": "66b16d8d2ccc5779eeb8ffae",
-        "title": "Romance & Friendship Scams",
-        "subtitle": "Understand the consequences of romance & friendship scams and learn how to take action against these scams.",
-        "duration": 107,
-        "image": "base64 string",
-        "link": "/about/romance",
-        "imagelink": "/images/courses/romance-scams-banner.jpg",
-        "createdAt": "2024-08-06T00:25:49.802Z",
-        "updatedAt": "2024-08-06T00:25:49.802Z",
-        "__v": 0
-    }
-  ]

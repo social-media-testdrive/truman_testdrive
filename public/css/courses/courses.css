@@ -4,3 +4,15 @@
     justify-content: space-between;
   }
 
+.card.content {
+    padding: 0.5em !important;
+}
+
+.title{
+    color: #3757A6 !important;
+}
+
+/* .column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+} */
