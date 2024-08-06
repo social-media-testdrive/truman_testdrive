@@ -15,7 +15,6 @@ block content
                 input#course-search.prompt(type="text" placeholder="Search Courses...")
                 i#search-icon.search.icon
 
-
     .two.wide.column
       .ui.container(style="margin-left:5%")
         .ui.accordion
@@ -25,17 +24,28 @@ block content
           .content
             .ui.list
               .item
-                i.bullet.icon
-                .content Featured
+                .title
+                  i.bullet.icon
+                  | Featured
+                .content
               .item
-                i.bullet.icon
-                .content Popular
+                .title
+                  i.bullet.icon
+                  | Popular
+                .content 
               .item
-                i.bullet.icon
-                .content Alphabetical
+                .title
+                  i.bullet.icon
+                  | Alphabetical
+                .content   
+                  div(style="text-align:end; margin-right:auto; marging-left:100%")            
+                    div#ascend(style="cursor: pointer;") Ascend
+                    div#descend(style="cursor: pointer;") Descend
               .item
-                i.bullet.icon
-                .content Latest
+                .title
+                  i.bullet.icon
+                  | Latest
+                .content 
           .title
             i.dropdown.icon
             | Subject
@@ -68,7 +78,6 @@ block content
                 i.bullet.icon
                 .content Advanced
 
-
     .fourteen.wide.column
       br
       .ui.container
@@ -81,5 +90,3 @@ block styles
 block scripts  
   script(src="/module_js/courses/test.js")
   script(src="/module_js/courses/courses.js")
-
-

@@ -35,11 +35,22 @@ function renderCourses(data) {
 
 function filterCourses() {
   var searchTerm = $('#course-search').val().toLowerCase();
-  console.log("filtering", searchTerm)
+  console.log("filtering", searchTerm);
   var filteredCourses = courses.filter(function(course) {
     return course.title.toLowerCase().includes(searchTerm);
   });
   renderCourses(filteredCourses);
+}
+
+function sortCourses(order) {
+  courses.sort(function(a, b) {
+    if (order === 'ascend') {
+      return a.title.localeCompare(b.title);
+    } else if (order === 'descend') {
+      return b.title.localeCompare(a.title);
+    }
+  });
+  renderCourses(courses);
 }
 
 $(document).ready(function () {
@@ -56,8 +67,14 @@ $(document).ready(function () {
     console.log("API call failed.");
     $('#courses-container').append('<p>Failed to load courses. Please try again later.</p>');
   });
-});
 
-$(document).ready(function() {
   $('.ui.accordion').accordion();
+
+  $('#ascend').on('click', function() {
+    sortCourses('ascend');
+  });
+
+  $('#descend').on('click', function() {
+    sortCourses('descend');
+  });
 });
