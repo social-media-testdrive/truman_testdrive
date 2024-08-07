@@ -1,4 +1,5 @@
-extends ../ui_layout-esp
+extends ../ui_layout
+
 block content
 
   .ui.text.container.addBottomMargin
@@ -7,70 +8,68 @@ block content
       h3.ui.header
         i.book.blue.icon
         .content
-          | Learn
+          | Aprender
       hr
       .ui.basic.segment.removePadding
         .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
           i.down.arrow.icon
-          |   Next
+          |   Siguiente
       .ui.basic.segment.learnSegment.hidden
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            | <b>Cyberbullying</b> is when someone posts or shares negative things 
-            | about someone else online.
+            | <b>Ciberbullying</b> Es cuando alguien publica o comparte cosas negativas sobre otra persona en internet.
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            | The <b>bully</b> may use digital devices, sites, or apps. The bully 
-            | often does this again and again to the same person.  
+            | El <b>acosador</b> puede usar dispositivos digitales, sitios web o apps. 
+            | Este usualmente lo hará una y otra vez a la misma persona
         .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
-          |   Next
+          |   Siguiente
     
     .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
         i.key.blue.icon
-        .content Key Ideas
+        .content Vocabulario clave
       .sub.header 
         i.hand.pointer.icon.grayElement
-        span.grayElement Click on each word below to learn more
+        span.grayElement Selecciona cada palabra para aprender más
       br
       .ui.stackable.two.column.grid
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
-                span Bully
+                span Acosador
             span.hidden.keyTermDefinition  
-              | Someone who hurts a person or a group on purpose more than once.
+              | Alguien que lastima a una persona o un grupo a propósito más de una vez.
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
-                span Target
+                span Víctima
             span.hidden.keyTermDefinition 
-              | Someone who is being bullied
+              | Alguien que está siendo acosado
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
-                span Upstander
+                span Aliado
             span.hidden.keyTermDefinition 
-              | Someone who acts against bullying.
+              | Alguien que actúa contra el bullying.
               ul 
-                | An upstander might confront the bully or tell a trusted adult. 
-                | An upstander might support the person being bullied by 
-                | checking in with them or defending them.       
+                | Un aliado puede confrontar al acosador o decirle a un adulto de confianza. 
+                | También, puede apoyar a la persona que está siendo acosada conversando con ella o defendiendola.    
     
     
     .ui.warning.message#clickNextWarning
       .header
-       | Click "Next"
+       | Dale clic a “Siguiente”
     .ui.warning.message#clickLabelsWarning
      .header
-      | Click on each label to proceed   
+      | Dale clic a cada etiqueta para continuar
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
         .ui.labeled.icon.button
             i.rocket.icon
-            |   Got it!
+            |   Listo!
 
 block scripts
   script.

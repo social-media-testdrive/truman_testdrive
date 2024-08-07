@@ -258,6 +258,8 @@ function isValidModId(req, res, next) {
     'advancedlit',
     'advancedlit-esp',
     'cyberbullying',
+    'cyberbullying-esp',
+
     'digfoot',
     'digfoot-esp',
     'digital-literacy',
