@@ -10,6 +10,10 @@ header {
 /* override formantic ui margin on the menu to avoid weird gap between header and page-article */
 .ui.menu {
   margin: 0 !important;
+  a:hover, 
+  a.active {
+      border-bottom: 5px solid #7AC4E0 !important;
+  }
 }
 
 .tablet-and-computer {
