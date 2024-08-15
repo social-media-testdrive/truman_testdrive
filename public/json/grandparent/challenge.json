@@ -47,7 +47,7 @@
     "progress": 60,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "3. Which techniques are often used when a grandparent scammer impersonates your grandchild?  Select all that apply.",
+    "prompt": "3. Which techniques are often used when a grandparent scammer impersonates your grandchild? Select all that apply.",
     "choices": {
       "0": {
         "text": "A. Spoofed caller ID"
@@ -78,7 +78,7 @@
         "text": "B. The caller asks you to keep this call confidential"
       },
       "2": {
-        "text": "C. The caller  invites you to their graduation"
+        "text": "C. The caller invites you to their graduation"
       },
       "3": {
         "text": "D. The caller states that they are in big trouble"
@@ -91,7 +91,7 @@
     "progress": 95,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "5. Which of the following preventative measures can grandparents take to avoid falling into grandparent scams?  Select all that apply.",
+    "prompt": "5. Which of the following preventative measures can grandparents take to avoid falling into grandparent scams? Select all that apply.",
     "choices": {
       "0": {
         "text": "A. Avoid sharing personal information on social media platforms"

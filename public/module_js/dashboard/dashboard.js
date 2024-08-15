@@ -1,4 +1,5 @@
-$(window).ready(function () {
+$(window).ready(
+function () {
   $.post("/getModuleStatus", { email: user.email }, function (data) {
 
 
@@ -152,4 +153,3 @@ $(window).ready(function () {
     console.error("Error:", error);
   });
 });
-
