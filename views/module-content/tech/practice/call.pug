@@ -1,0 +1,121 @@
+#call.hidden
+    .ui.container(style="width: 90vw;")
+        .limit(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.volume.up.icon
+                    | Tech Support Call: Part 1/3
+                    //- | Car Accident: Part 1/4
+            .ui.icon.mini.message(style="padding: 5px; z-index: 99; margin-bottom: 5px;")
+                i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                .content 
+                    p#narrate-2-intro-video 
+                      span You call the number on the popup. Listen to the conversation by clicking the 
+                        i.play.icon(alt="play button")
+                        span button to the left. Then answer the questions that follow on the right based on what you heard.
+
+            .ui.centered.stackable.grid
+                .eight.wide.column
+                  #audio-container_car
+                    //- div.ui.header
+                    //-     i.phone.volume.icon
+                    //-     | Audio Example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src=`https://dart-store.s3.amazonaws.com/tech-audio/practice.WAV` type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file=`https://dart-store.s3.amazonaws.com/tech-audio/practice.WAV` style="max-height: 300px;")
+                                li.speaker1.current#num1(data-timecode="00:00") Scammer: Thank you for calling tech support. How can I assist you today?
+                                li.speaker2#num2(data-timecode="00:03") Target: Hi, I received a pop-up on my computer saying it's infected with a virus, and it won't go away. I'm really worried about my personal information being at risk.
+                                li.speaker1#num3(data-timecode="00:12") Scammer: I understand your concern. This is a serious issue, and we need to take immediate action to protect your computer and data.
+                                li.speaker2#num4(data-timecode="00:19") Target: Okay, what do I need to do?
+                                li.speaker1#num5(data-timecode="00:21") Scammer: First, I'll need you to provide me with remote access to your computer so that I can run a diagnostic scan and identify the problem.
+                .eight.wide.column#content-column
+                    //- .step1
+                    //-     p After listening to that conversation, what feelings best describe your reaction? Select all that apply.
+                    //-     .ui.vertical.inverted.buttons
+                    //-         button.ui.button(data-value="concern") Concern
+                    //-         button.ui.button(data-value="anxiety") Anxiety
+                    //-         button.ui.button(data-value="anger") Anger
+                    //-         button.ui.button(data-value="confusion") Confusion
+                    //-         button.ui.button(data-value="embarrassment") Embarrassment
+                    //-         button.ui.button(data-value="empathy") Empathy
+                    //-         button.ui.button(data-value="nothing") I didn't feel anything
+                    //-     button.ui.button.primary#submit-button Submit
+                    //- .step2.hidden
+                    //-     p#response-text
+                    //-     button.ui.big.teal.button#continue-button Continue
+                    .step1
+                        p Click the buttons below to identify the warning signs related to this part of the conversation
+                        .ui.vertical.inverted.buttons
+                            button.ui.button(data-value="contact") Unsolicited Contact
+                            button.ui.button(data-value="pressure") A Sense of Pressure and Urgency
+                            button.ui.button(data-value="secrecy") Request for Secrecy
+                            button.ui.button(data-value="verify") Lack of Verification
+                            button.ui.button(data-value="remote") Requests for Remote Access
+                        button.ui.button.primary#submit-button Submit
+                    .step2.hidden
+                        p Great Job! In this conversation, there are several warning signs to be aware of. First,
+                          strong  unsolicited contact
+                          span —the target receives a pop-up warning about a virus. Legitimate tech support companies won't contact you out of the blue asking to be called for help. The tech agent then creates a
+                          strong  sense of pressure and urgency 
+                          span making you feel like you must act immediately to protect your computer, which is a tactic to make you panic and follow their instructions without thinking. Next there is a 
+                          strong lack of verification
+                          span —the tech agent doesn’t confirm the actual problem or help troubleshoot before resorting to extreme measures of
+                          strong  requests for remote access.
+                          span  Once they obtain the remote access to your computer, they would have the ability to go anywhere and do anything on your computer without your knowledge or control.
+                        .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                            i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                            .content 
+                                p#narrate-2-intro-video 
+                                    span Click the "Next" button below to continue the conversation.
+
+                    //- .step1
+                    //-     p Click the buttons below to identify the warning signs related to this part of the conversation
+                    //-     .ui.vertical.inverted.buttons
+                    //-         button.ui.button(data-value="remote") Requests for Remote Access
+                    //-         button.ui.button(data-value="pressure") A Sense of Pressure and Urgency
+                    //-         button.ui.button(data-value="secrecy") Request for Secrecy
+                    //-         button.ui.button(data-value="contact") Unsolicited Contact
+                    //-         button.ui.button(data-value="verify") Lack of Verification
+                    //-     button.ui.button.primary#second-submit-button Submit
+                    //- .step2.hidden
+                    //-     p Great Job! In this conversation, the grandson begins with a 
+                    //-       strong generic term "Hey <span class="role-placeholder">#{user.rolePlay}</span>"
+                    //-       span , doesn't provide a name, and waits for you to fill it in, suggesting he might be a caller who knows you have a grandson but doesn't know the name. The 
+                    //-       strong voice doesn’t sound right
+                    //-       span , which the "grandson" explains by claiming illness, a potential red flag indicating impersonation. He describes an 
+                    //-       strong urgent and fear-inducing scenario 
+                    //-       span involving a car accident and jail with a distressed tone to manipulate emotions and compel compliance. Additionally, the "grandson" insists on 
+                    //-       strong secrecy from his parents 
+                    //-       span to prevent you from verifying the situation with others, raising another red flag. 
+                    //-       //- span However, there is no mention of detailed family member information, so this cannot be considered a warning sign in this case.
+                    //-     //- p In this conversation, the grandson begins with a generic greeting, addressing you as Grandma/Grandpa rather than using a personal name. Furthermore, when you ask who is calling, he doesn’t provide a name, but instead waits for you to fill that in. In such an emergency situation, he shouldn't have had that casual attitude. Therefore, the grandson in this conversation could be a scammer who knows you have a grandson but doesn’t know the name.
+                    //-     .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                    //-         i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    //-         .content 
+                    //-             p#narrate-2-intro-video 
+                    //-                 span Click the "Next" button below to move on to the next part of the conversation.
+
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const selectedValues = new Set();
+    document.querySelectorAll('.step1 .ui.button').forEach(button => {
+      button.addEventListener('click', function () {
+        const value = this.getAttribute('data-value');
+        if (selectedValues.has(value)) {
+          selectedValues.delete(value);
+          this.classList.remove('active');
+        } else {
+          selectedValues.add(value);
+          this.classList.add('active');
+        }
+      });
+    });
+    document.getElementById('submit-button').addEventListener('click', function () {
+      document.querySelector('.step1').classList.add('hidden');
+      document.querySelector('.step2').classList.remove('hidden');
+    });
+  });

@@ -9,14 +9,15 @@ block content
             .ui.active.blue.large.elastic.loader 
             h1 Loading...
     .display-page.hidden
+        include practice/objectives.pug
+        include practice/arrive.pug
+
         include practice/introduction.pug
         include practice/activity.pug
         include practice/activity2.pug
         include practice/activity3.pug
         include practice/activity4.pug
 
-        include practice/objectives.pug
-        include practice/arrive.pug
         include practice/reflection.pug
         include practice/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")

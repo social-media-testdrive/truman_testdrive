@@ -1,14 +1,9 @@
 $(window).ready(
 function () {
   $.post("/getModuleStatus", { email: user.email }, function (data) {
-    console.log("Response data saved to info:");
-    console.log(data);
-    console.log(user.name);
-    console.log(user.id);
-    console.log(user.email);
+
 
     if(data.length === 0) {
-      console.log("user not enrolled in any missions");
       // Show a message to the user that they are not enrolled in any missions
       const progressBarsContainer = $("#progress-bars-container");
   
@@ -111,23 +106,22 @@ function () {
 
 $(window).ready(function () {
   $.get("/newsapi", function (data) {
-    console.log(data);
     const newsContainer = $("#news-container");
 
     data.forEach((article) => {
       let truncatedTitle = article.title.length > 90 ? article.title.slice(0, 90) + '...' : article.title;
-      let truncatedDescription = article.description.length > 300 ? article.description.slice(0, 300) + '...' : article.description;
+      let truncatedDescription = article.description.length > 220 ? article.description.slice(0, 220) + '...' : article.description;
 
       const articleHtml = `
       <a class="ui" href="${article.url}" alt="Read news article" target="_blank">
         <div class="ui raised segment" style="box-shadow: none !important; outline: none;">
           
             <div id="raised-content">
-                <div class="ui header hub-alert">
+                <div class="ui header hub-alert" style="height: 75px">
                     <i class="exclamation circle icon"></i>
                     ${truncatedTitle}
                 </div>
-                <p class="alert-info">${article.description}</p>
+                <p class="alert-info" style="height: 100px;">${truncatedDescription}</p>
                     <button class="ui huge button right floated alert-learn-more">
                         <span>Learn More →</span>
                     </button>
@@ -142,14 +136,6 @@ $(window).ready(function () {
 
     // Initialize Slick on the newsContainer after all articles are appended
     $("#news-container").slick({
-      // infinite: true,
-      // slidesToShow: 1,
-      // slidesToScroll: 1,
-      // adaptiveHeight: true,
-      // speed: 300,
-      // autoplay: true,
-      // autoplaySpeed: 2000,
-      // dots: true,
       dots: true,
       arrows: true,
       infinite: true,

@@ -9,6 +9,10 @@ $(document).ready(function() {
         $('#volume-button').hide();
     }
 
+    if(section === 'practice') {
+      setIntroduction();
+    }
+
     // Check if the video element exists before initializing Video.js
     if ($('#my_video_1').length > 0) {
         // Initialize Video.js and make it so when user clicks on the video, stop the voiceover narration and highlighting
@@ -412,9 +416,9 @@ $(document).ready(function() {
                 }   
 
                 if(nextPage === 'introduction') {
-                  setIntroduction();
-                    // disable next button, user needs to choose role
-                    $('#nextButton').prop('disabled', true);
+                  // setIntroduction();
+                  // disable next button, user needs to choose role
+                  $('#nextButton').prop('disabled', true);
                 }
 
 
@@ -782,7 +786,7 @@ function setLinks(currentPage) {
         nextlink = baseurl + "activity";
 
         // disable next button, user needs to choose role
-        setIntroduction();
+        // setIntroduction();
         // $('#nextButton').prop('disabled', true);
 
 
@@ -807,11 +811,14 @@ function setLinks(currentPage) {
         addAudioPlayer("car3", rolePlay);
       } else if (currentPage === "activity4") {
         backlink = baseurl + "activity3";
-        nextlink = baseurl + "takeaways";
+        nextlink = baseurl + "reflection";
 
         addAudioPlayer("car4", rolePlay);
-      } else if (currentPage === "takeaways") {
+      } else if (currentPage === "reflection") {
         backlink = baseurl + "activity4";
+        nextlink = baseurl + "takeaways";
+      } else if (currentPage === "takeaways") {
+        backlink = baseurl + "reflection";
         nextlink = "/course-player?module=grandparent&section=evaluation&page=intro";
 
         // complete module status to 100 manually since there is no quiz
@@ -1063,26 +1070,18 @@ function setLinks(currentPage) {
         progress = 0;
       } else if (pageParam === "arrive") {
         progress = (1 / total) * 100;
-      } else if (pageParam === "conversation") {
+      } else if (pageParam === "introduction") {
         progress = (2 / total) * 100;
-      } else if (pageParam === "conversation2") {
+      } else if (pageParam === "activity") {
         progress = (3 / total) * 100;
-      } else if (pageParam === "conversation3") {
+      } else if (pageParam === "activity2") {
         progress = (4 / total) * 100;
-      } else if (pageParam === "conversation4") {
+      } else if (pageParam === "activity3") {
         progress = (5 / total) * 100;
-      } else if (pageParam === "conversation5") {
+      } else if (pageParam === "activity4") {
         progress = (6 / total) * 100;
-      } else if (pageParam === "conversation6") {
+      } else if (pageParam === "reflection") {
         progress = (7 / total) * 100;
-      } else if (pageParam === "conversation7") {
-        progress = (8 / total) * 100;
-      } else if (pageParam === "conversation8") {
-        progress = (9 / total) * 100;
-      } else if (pageParam === "ending") {
-        progress = (10 / total) * 100;
-      } else if (pageParam === "results") {
-        progress = (11 / total) * 100;
       } else if (pageParam === "takeaways") {
         progress = 100;
       }
