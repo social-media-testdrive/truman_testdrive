@@ -9,9 +9,19 @@ block content
             .ui.active.blue.large.elastic.loader 
             h1 Loading...
     .display-page.hidden
-        include practice/activity.pug
         include practice/objectives.pug
-        include practice/arrive.pug
+        include practice/introduction.pug
+        include practice/activity.pug
+
+        //- Path 1, call the number on the popup
+        include practice/call.pug
+        include practice/call2.pug
+        include practice/call3.pug
+
+        include practice/close.pug
+        include practice/friends.pug
+        include practice/search.pug
+
         include practice/reflection.pug
         include practice/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
@@ -21,7 +31,8 @@ block styles
     link(rel='stylesheet', href='/css/identity-theft.css')
     link(rel='stylesheet', href='/css/learning-targets.css')
     link(rel='stylesheet', href='/css/middle-aligned-layout.css')
-    link(rel='stylesheet', href='/css/identity_theft_explore.css')  
+    link(rel='stylesheet', href='/css/tech/practice.css')
+    link(rel='stylesheet', href='/css/grandparent/practice.css')
 
 
 block scripts     
@@ -36,7 +47,8 @@ block scripts
         var section = "#{section}";
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});  
-    script(src='/module_js/identity/identity-theft-practice.js', emailData=emails) 
+    script(src='/module_js/tech/tech.js')  
+    script(src='/module_js/tech/practice.js')  
 
     //- if page === 'activity'
     //-     script(src='/module_js/identity_theft_explore.js', emailData=emails)

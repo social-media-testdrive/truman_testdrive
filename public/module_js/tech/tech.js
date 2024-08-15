@@ -672,70 +672,46 @@ function setLinks(currentPage) {
     
         if (currentPage === "objectives") {
           backlink = "/course-player?module=tech&section=signs&page=objectives";
-  
-          //- check if they have completed the practice module, then show results page
-          //- console.log("Checking if practice module is completed. Their score is: "  + scoreTotal);
-          if(scoreTotal > 0) {
-            nextlink = baseurl + "results";
-          } else {
-            nextlink = baseurl + "arrive";
-          }
-        } else if (currentPage === "arrive") {
-          $('.ui.modal').modal('hide');
+          nextlink = baseurl + "introduction";
+        } else if (currentPage === "introduction") {
           backlink = baseurl + "objectives";
-          nextlink = baseurl + "conversation";
-        } else if (currentPage === "conversation") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "arrive";
-    
-          var conversationChoice = localStorage.getItem('conversation_choice');
-  
-          if (conversationChoice === 'yes') {
-            nextlink = baseurl + "conversation2";
-          } else if (conversationChoice === 'no') {
-              nextlink = baseurl + "conversation3";
-          } else {
-              console.log('Skipping');
-              nextlink = baseurl + "takeaways";
-          }      
-        } else if (currentPage === "conversation2") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "conversation";
-            nextlink = baseurl + "conversation3";
-        } else if (currentPage === "conversation3") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "conversation";
-          nextlink = baseurl + "conversation4";
-        } else if (currentPage === "conversation4") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "conversation3";
-          nextlink = baseurl + "conversation5";
-        } else if (currentPage === "conversation5") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "conversation4";
-          nextlink = baseurl + "conversation6";
-        } else if (currentPage === "conversation6") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "conversation5";
-          nextlink = baseurl + "conversation7";
-        } else if (currentPage === "conversation7") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "conversation6";
-          nextlink = baseurl + "conversation8";
-        } else if (currentPage === "conversation8") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "conversation7";
-          nextlink = baseurl + "ending";
-        } else if (currentPage === "ending") {
-          $('.ui.modal').modal('hide');
-          backlink = baseurl + "conversation8";
-          nextlink = baseurl + "results";
-        } else if (currentPage === "results") {
-          backlink = baseurl + "objectives";
+          nextlink = baseurl + "activity";
+        } else if (currentPage === "activity") {
+          backlink = baseurl + "introduction";
+          nextlink = baseurl + "call";
+        } else if (currentPage === "call") {
+          backlink = baseurl + "activity";
+          nextlink = baseurl + "call2";
+        } else if (currentPage === "call2") {
+          backlink = baseurl + "call";
+          nextlink = baseurl + "call3";
+        } else if (currentPage === "call3") {
+          backlink = baseurl + "call2";
+          nextlink = baseurl + "reflection";
+        } else if (currentPage === "close") {
+          backlink = baseurl + "call2";
+          nextlink = baseurl + "friends";
+        } else if (currentPage === "friends") {
+          backlink = baseurl + "close";
+          nextlink = baseurl + "search";
+        } else if (currentPage === "search") {
+          backlink = baseurl + "friends";
+          nextlink = baseurl + "reflection";
+        }else if (currentPage === "reflection") {
+          backlink = baseurl + "search";
           nextlink = baseurl + "takeaways";
-  
-        
         } else if (currentPage === "takeaways") {
+          backlink = baseurl + "reflection";
+          nextlink = "/course-player?module=grandparent&section=evaluation&page=intro";
+  
+          // complete module status to 100 manually since there is no quiz
+          console.log("HEY Posting to complete practice module status");
+          $.post('/completeModuleStatus', {
+              modId: 'grandparent',
+              section: 'practice'
+          });
+        }
+      } else if (currentPage === "takeaways") {
           backlink = baseurl + "results";
           nextlink = "/course-player?module=tech&section=evaluation&page=intro";
   
@@ -744,8 +720,8 @@ function setLinks(currentPage) {
           $.post('/completeModuleStatus', {
               modId: 'romance',
               section: 'practice'
-          });
-        }
+        });
+        
       } else if (section === "evaluation") {
         let baseurl = "/course-player?module=tech&section=evaluation&page=";
     

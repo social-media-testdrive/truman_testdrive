@@ -1,0 +1,120 @@
+#call2.hidden
+    .ui.container(style="width: 90vw;")
+        .limit(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.volume.up.icon
+                    | Tech Support Call: Part 2/3
+                    //- | Car Accident: Part 1/4
+            //- .ui.icon.mini.message(style="padding: 5px; z-index: 99; margin-bottom: 5px;")
+            //-     i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+            //-     .content 
+            //-         p#narrate-2-intro-video 
+            //-           span You call the number on the popup. Listen to the conversation by clicking the 
+            //-             i.play.icon(alt="play button")
+            //-             span button to the left. Then answer the questions that follow on the right based on what you heard.
+
+            .ui.centered.stackable.grid
+                .eight.wide.column
+                  #audio-container_car
+                    //- div.ui.header
+                    //-     i.phone.volume.icon
+                    //-     | Audio Example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src=`https://dart-store.s3.amazonaws.com/tech-audio/practice-2.WAV` type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file=`https://dart-store.s3.amazonaws.com/tech-audio/practice-2.WAV` style="max-height: 300px;")
+                                li.speaker1.current#num1(data-timecode="00:00") Scammer: Great, I'm now connected to your computer. I see the pop-up window you mentioned. This is indeed a serious virus. It's a good thing you contacted us. Let me run a quick scan.
+                                li.speaker2#num2(data-timecode="00:12") Target: okay, wow, oh no...
+                                li.speaker1#num3(data-timecode="00:15") Scammer: As I suspected, your computer is heavily infected. To remove these threats, we need to install premium security software. The cost for this service is $299.99. Can I have your credit card information to proceed?
+                                li.speaker2#num4(data-timecode="00:32") Target: Uh, $299.99? That's quite a lot. Is there any other way to fix this?
+                                li.speaker1#num5(data-timecode="00:39") Scammer: Unfortunately, this is the only way to ensure your computer is fully protected. If you don't act now, you risk losing all your personal data and having your identity stolen. It's a small price to pay for your peace of mind.
+                .eight.wide.column#content-column
+                    //- .step1
+                    //-     p After listening to that conversation, what feelings best describe your reaction? Select all that apply.
+                    //-     .ui.vertical.inverted.buttons
+                    //-         button.ui.button(data-value="concern") Concern
+                    //-         button.ui.button(data-value="anxiety") Anxiety
+                    //-         button.ui.button(data-value="anger") Anger
+                    //-         button.ui.button(data-value="confusion") Confusion
+                    //-         button.ui.button(data-value="embarrassment") Embarrassment
+                    //-         button.ui.button(data-value="empathy") Empathy
+                    //-         button.ui.button(data-value="nothing") I didn't feel anything
+                    //-     button.ui.button.primary#submit-button Submit
+                    //- .step2.hidden
+                    //-     p#response-text
+                    //-     button.ui.big.teal.button#continue-button Continue
+                    .step1-2
+                        p If you give your credit card information to the caller in this conversation, what potential consequences could happen? Select all that apply.
+                        .ui.vertical.inverted.buttons
+                            button.ui.button(data-value="contact") Lose approximately $300
+                            button.ui.button(data-value="pressure") Risk losing more money in the future
+                            button.ui.button(data-value="secrecy") Your identity could be stolen
+                            button.ui.button(data-value="verify") Your computer may become infected
+                            button.ui.button(data-value="remote") Your computer will be protected, as you paid for the services
+                        button.ui.button.primary#second-submit-button Submit
+                    .step2-2.hidden
+                        p If you provide your credit card information to the scammer posing as a "tech support specialist", they could use that information to 
+                          strong commit identity theft and make unauthorized charges or purchases. 
+                          span This puts your personal and financial information at risk. 
+                        p As the remote access was granted to the scammer, they could 
+                          strong install malware on your computer, 
+                          span potentially causing a real virus this time. 
+                        p As for the option "Your computer will be protected, as you pay for the services", this is highly unlikely to be true. Legitimate companies do not get customers this way. The scammers are not providing any legitimate services, and paying them does not guarantee protection for your computer.
+
+                        .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                            i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                            .content 
+                                p#narrate-2-intro-video 
+                                    span Click the "Next" button below to continue the conversation.
+
+                    //- .step1
+                    //-     p Click the buttons below to identify the warning signs related to this part of the conversation
+                    //-     .ui.vertical.inverted.buttons
+                    //-         button.ui.button(data-value="remote") Requests for Remote Access
+                    //-         button.ui.button(data-value="pressure") A Sense of Pressure and Urgency
+                    //-         button.ui.button(data-value="secrecy") Request for Secrecy
+                    //-         button.ui.button(data-value="contact") Unsolicited Contact
+                    //-         button.ui.button(data-value="verify") Lack of Verification
+                    //-     button.ui.button.primary#second-submit-button Submit
+                    //- .step2.hidden
+                    //-     p Great Job! In this conversation, the grandson begins with a 
+                    //-       strong generic term "Hey <span class="role-placeholder">#{user.rolePlay}</span>"
+                    //-       span , doesn't provide a name, and waits for you to fill it in, suggesting he might be a caller who knows you have a grandson but doesn't know the name. The 
+                    //-       strong voice doesn’t sound right
+                    //-       span , which the "grandson" explains by claiming illness, a potential red flag indicating impersonation. He describes an 
+                    //-       strong urgent and fear-inducing scenario 
+                    //-       span involving a car accident and jail with a distressed tone to manipulate emotions and compel compliance. Additionally, the "grandson" insists on 
+                    //-       strong secrecy from his parents 
+                    //-       span to prevent you from verifying the situation with others, raising another red flag. 
+                    //-       //- span However, there is no mention of detailed family member information, so this cannot be considered a warning sign in this case.
+                    //-     //- p In this conversation, the grandson begins with a generic greeting, addressing you as Grandma/Grandpa rather than using a personal name. Furthermore, when you ask who is calling, he doesn’t provide a name, but instead waits for you to fill that in. In such an emergency situation, he shouldn't have had that casual attitude. Therefore, the grandson in this conversation could be a scammer who knows you have a grandson but doesn’t know the name.
+                    //-     .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                    //-         i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    //-         .content 
+                    //-             p#narrate-2-intro-video 
+                    //-                 span Click the "Next" button below to move on to the next part of the conversation.
+
+script.
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const selectedValues = new Set();
+    document.querySelectorAll('.step1-2 .ui.button').forEach(button => {
+      button.addEventListener('click', function () {
+        const value = this.getAttribute('data-value');
+        if (selectedValues.has(value)) {
+          selectedValues.delete(value);
+          this.classList.remove('active');
+        } else {
+          selectedValues.add(value);
+          this.classList.add('active');
+        }
+      });
+    });
+    document.getElementById('second-submit-button').addEventListener('click', function () {
+      document.querySelector('.step1-2').classList.add('hidden');
+      document.querySelector('.step2-2').classList.remove('hidden');
+    });
+  });

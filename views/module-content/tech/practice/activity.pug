@@ -1,25 +1,39 @@
 #activity.hidden
-    .ui.container#raised-container
-        .limit
-            .emailSimContainer#emailsim(style="margin-top: -15px;")
-                .showOpenEmailAnimation.hidden
-                    img(src='/images/cursor.png')
-                //- .showReturnToInboxAnimation.hidden
-                //-     img(src='/images/cursor.png')
+    #scam-simulation
 
-                .emailHeader(style="padding: 5px; padding-left: 20px;")
-                    i.inbox.big.icon(style="font-size: 2.5em;")
-                    span  Inbox
-                .emailListContainer
-                    each email, index in emails
-                        a(onclick=`showEmail(${index})`)    
-                            .ui.vertical.segment(id=`email-${index}`)
-                                .ui.grid
-                                    .row
-                                        .one.wide.column
-                                            i.envelope.outline.large.icon
-                                        .eleven.wide.column
-                                            h3= email.sender
-                                                span.subject= " - " + email.subject
-                                        .four.wide.column.right.aligned
-                                            p= email.date
+        .ui.container(style="width: 90vw;")
+            .limit(style="padding: 0;")
+                // Loader screen with inverted dimmer and elastic loader
+                .loading-screen-container.hidden(id="loadingScreen") 
+                    .ui.active.inverted.dimmer
+                        .ui.active.blue.massive.elastic.loader 
+                        h1#loader-text Loading Practice...
+
+                // Scam Popup Modal (Initially hidden)
+                .ui.modal#scam-popup
+                    .blue.header
+                        i.windows.icon
+                        | Microsoft Windows
+                    .center.aligned.content
+                        h1#warning WARNING!
+                        h2#infected YOUR COMPUTER IS INFECTED
+                        p System detected <strong>17</strong> potentially malicious viruses. Your personal information is NOT SAFE.<br>To Remove Viruses, Call the Microsoft Tech Support Team now:
+                        h2.ui.black.header.fake-phone-number 1-800-123-4567 (TOLL-FREE)
+                        p Do not close the window or shut down your computer!
+                    //- p
+                    //-     em Select what you would do in this situation:
+                    .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                        i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                        .content 
+                            p Select what you would do in this situation:
+                    .actions
+                        .ui.grid
+                            .four.column.row
+                                .column
+                                    .ui.green.button#call-number(data-choice="call") Call the number on the pop-up.
+                                .column
+                                    .ui.red.button#close-browser(data-choice="close") Close the browser and restart.
+                                .column
+                                    .ui.orange.button#call-family(data-choice="friends") Call family or trusted friends.
+                                .column
+                                    .ui.blue.button#search-official(data-choice="search") Search for the official site and call the number listed there.

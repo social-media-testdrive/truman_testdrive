@@ -1,0 +1,128 @@
+#loadingScreen .ui.active.inverted.dimmer {
+    margin-top: -50px;
+}
+
+#loader-text {
+    margin-top: 200px !important;
+    font-size: 2.5rem;
+}
+
+/* .ui.ui.red.elastic.loader::before {
+    font-size: 50px;
+} */
+
+.ui.massive.loader::after, .ui.massive.loader::before{
+    font-size: 50px;
+    width: 6rem;
+    height: 6rem;
+    /* width: 4.57142857rem;
+    height: 4.57142857rem; */
+}
+
+#loader-text.red {
+    text-shadow: 
+    -1px -1px 0 black,  /* Top-left shadow */
+    1px -1px 0 black,   /* Top-right shadow */
+    -1px 1px 0 black,   /* Bottom-left shadow */
+    1px 1px 0 black;    /* Bottom-right shadow */
+    font-weight: bold;
+    color: red;
+    font-size: 3rem;
+}
+
+#scam-simulation .ad {
+    width: 10rem;
+    height: 5rem;
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-align: center;
+    /* font-family: stolzl, helvetica nueue, heltvetica, sans-serif !important; */
+    background: red;
+    color: white;
+    border: 0.25rem solid black;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    /* animation-name: enter;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1; */
+
+    animation-name: enter;
+    animation-duration: 800ms;
+    animation-iteration-count: 5;
+    appearance: alternate-reverse;
+  
+    opacity: 0;  /* Start invisible and fade in */
+    z-index: 1000;
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* #scam-simulation .ad:nth-child(1) { top: 5%; right: 5%; }
+#scam-simulation .ad:nth-child(2) { top: 20%; right: 20%; }
+#scam-simulation .ad:nth-child(3) { top: 25%; right: 25%; }
+#scam-simulation .ad:nth-child(4) { top: 30%; right: 30%; }
+#scam-simulation .ad:nth-child(5) { top: 50%; right: 50%; }
+#scam-simulation .ad:nth-child(6) { top: 60%; right: 60%; }
+#scam-simulation .ad:nth-child(7) { top: 70%; right: 20%; }
+#scam-simulation .ad:nth-child(8) { top: 80%; right: 80%; }
+#scam-simulation .ad:nth-child(9) { top: 25%; right: 80%; }
+#scam-simulation .ad:nth-child(10) { top: 5%; right: 60%; } */
+
+/* #scam-simulation .ad:nth-child(1) { top: 10%; left: 10%; }
+#scam-simulation .ad:nth-child(2) { top: 20%; right: 15%; }
+#scam-simulation .ad:nth-child(3) { top: 30%; left: 20%; }
+#scam-simulation .ad:nth-child(4) { top: 40%; right: 25%; }
+#scam-simulation .ad:nth-child(5) { top: 50%; left: 30%; }
+#scam-simulation .ad:nth-child(6) { top: 60%; right: 35%; }
+#scam-simulation .ad:nth-child(7) { top: 70%; left: 40%; }
+#scam-simulation .ad:nth-child(8) { top: 80%; right: 45%; }
+#scam-simulation .ad:nth-child(9) { top: 90%; left: 50%; }
+#scam-simulation .ad:nth-child(10) { top: 15%; right: 50%; } */
+
+
+
+#scam-popup .blue.header {
+    background: #0077D6;
+    color: white;
+    padding: 10px;
+    margin-top: -15px;
+}
+
+#scam-popup #warning {
+    margin-top: -10px;
+    font-weight: 900 !important;
+    font-size: 2.5rem;
+    color: red;
+}
+
+#scam-popup #infected {
+    margin-top: -5px;
+    font-weight: 400 !important;
+    font-size: 1.5rem;
+    color: red;
+}
+
+.ui.icon.mini.message {
+    margin: 0px;
+    margin-top: -15px;
+}
+
+i.info.circle.blue.icon {
+    margin-left: 15px;
+}
+
+#search-official {
+    font-size: 0.8rem;
+    padding: 9px;
+}
