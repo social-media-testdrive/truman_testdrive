@@ -4,7 +4,7 @@ header.ui.borderless.menu.tablet-and-computer
             a.item(href='/')
                 img.ui.small.image.dart-logo(src='/images/dart-logo.svg' alt='dart logo')
         if user
-            .right.menu
+            .right.menu#navbar-header
                 a.item(href='/').dart-blue
                     | Home
                 a.item(href='/courses').dart-blue
@@ -17,100 +17,36 @@ header.ui.borderless.menu.tablet-and-computer
                     | Log out
         else 
             .right.menu
-                button.ui.blue.huge.button(href='/getGuest' style="display: none; margin-top: 10px; margin-bottom: 10px;"  onclick="window.location.href='/getGuest';")
+                button.ui.blue.huge.button(href='/getGuest' style="display: none; margin-top: 10px; margin-bottom: 10px;" onclick="window.location.href='/getGuest';")
                     | Get Started
                 a.item(href='/login' style="color: #3757A6;").dart-blue
                     | Log in
                 a.item(href='/signup').dart-blue
                     | Sign up
+
 header.mobile-only(style="z-index: auto !important;")
-  .ui.fluid.top.two.item.menu
-    a.item(href='/')
-      img.ui.small.image.dart-logo(src='/images/dart-logo.svg', id='cell_logo')
-    .item
-        .menu.headerDropdownMenu
-            if user
-                .ui.simple.dropdown.item
-                    if isResearchVersion
-                        span= user.name || user.id
-                    else 
-                        span= user.name || user.id
-                    i.dropdown.icon
-                    .menu
-                        a.item(href='/') Home
-                        a.item(href='/account') Profile
-                        a.item(href='/logout') Log out
-            else 
-                a.item(href='/login').dart-blue
-                    | Log in
+    .ui.fluid.top.two.item.menu
+        a.item(href='/')
+            img.ui.small.image.dart-logo(src='/images/dart-logo.svg' id='cell_logo')
+        .item
+            .menu.headerDropdownMenu
+                if user
+                    .ui.simple.dropdown.item
+                        if isResearchVersion
+                            span= user.name || user.id
+                        else 
+                            span= user.name || user.id
+                        i.dropdown.icon
+                        .menu
+                            a.item(href='/') Home
+                            a.item(href='/account') Profile
+                            a.item(href='/logout') Log out
+                else 
+                    a.item(href='/login').dart-blue
+                        | Log in
 
-//- .ui.top.small.borderless.menu(style="height: 4rem")
-//-   .ui.grid.container
-//-     .three.wide.column
-//-         a.item(href='/')
-//-             img.ui.small.image(src='/images/dart-logo.svg', id='logo')
-//-     .seven.wide.column
-//-     .two.wide.column
-//-         a.item(href='/').dart-blue
-//-             | Home
-//-     .two.wide.column
-//-         a.item(href='/account').dart-blue
-//-             | Profile
-//-     .two.wide.column
-//-         a.item(href='/logout')
-//-             | Logout
+block styles
+    //- link(rel='stylesheet', href='/css/NavBar/nav-header.css')
 
-
-
-//- header.ui.fixed.menu
-//-   .ui.container
-//-     .ui.grid
-//-       .row
-//-         .six.wide.column
-//-           img.logo(src="logo.png")
-//-         .right.aligned.ten.wide.column
-//-           .ui.buttons
-//-             a.ui.button Home
-//-             a.ui.button Profile
-//-             a.ui.button Logout
-//- -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-//- -var isResearchVersion = process.env.isResearchVersion === 'true';
-//- -var enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
-//- .computer.only.tablet.only.row.testdriveHeaderRow 
-//-   #outer-header.ui.borderless.fixed.menu.testDriveHeader.not-fixed-header
-//-     #inner-header.ui.menu   
-//-       a.item(href='/')
-//-         img.ui.small.image(src='/images/dart-logo.svg', id='logo')
-//-       .right.menu
-//-         a.item(href='/').dart-blue
-//-           | Home
-//-         a.item(href='/account').dart-blue
-//-           | Profile
-//-         a.item(href='/logout')
-//-           | Logout
-//- .mobile.only.row
-//-   .ui.fluid.top.fixed.two.item.menu.testDriveHeader
-//-     a.item(href='/')
-//-       img.ui.small.image(src='/images/dart-logo.svg', id='cell_logo')
-//-     if isResearchVersion
-//-         if user
-//-           //- a.item.newpost.float.right
-//-           //-   i.big.plus.icon
-//-           .item
-//-             .right.menu.headerDropdownMenu
-//-               .ui.simple.dropdown.item
-//-                 if isResearchVersion
-//-                   span= user.username || user.profile.name || user.id
-//-                 else 
-//-                   span= user.profile.name || user.username || user.id
-//-                 i.dropdown.icon
-//-                 .menu
-//-                   if user.isInstructor
-//-                     a.item(href='/classManagement') View Dashboard
-//-                   if (user.isStudent && enableLearnerDashboard)
-//-                     a.item(href='/learningAchievement') My Dashboard
-//-                   a.item(href='/') Module Page
-//-                   a.item(href='/account') Profile Page
-//-                   a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
-//-                   a.item(href='/logout') Logout
-          
+block scripts
+    //- script(src='/module_js/navbar/nav-header.js')
