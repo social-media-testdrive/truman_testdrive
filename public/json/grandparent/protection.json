@@ -74,7 +74,7 @@
         "explanation": "Choice A is incorrect. It's understandable to feel happy when receiving a call from a grandchild. However, if they address you generically, it's safer to have them state their name first. Given the prevalence of grandparent scams, instruct your grandchildren to proactively identify themselves when calling, instead of prompting you to guess their name. Therefore, if someone asks you to guess their identity, it should raise an alert."
       },
       "1": {
-        "text": "B. Do not mention any of your grandchild’s names; wait for the caller to state the name themselves.",
+        "text": "B. Do not mention any of your grandchildren’s names; wait for the caller to state the name themselves.",
         "explanation": "Choice B is correct. This generic greeting could be a reg flag for grandparent scams, so do not tell them your grandchild name; wait for the caller to give the name."
       },
       "2": {
@@ -119,7 +119,7 @@
     "progress": 86,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "6. If you suspect the caller is not your loved one, and the caller asks money from you, what should you do? Select all that apply.",
+    "prompt": "6. If you suspect the caller is not your loved one, and the caller asks you for money, what should you do? Select all that apply.",
     "choices": {
       "0": {
         "text": "A. Stop talking with the caller immediately and report him",

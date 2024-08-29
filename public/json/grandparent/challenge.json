@@ -3,7 +3,7 @@
     "progress": 20,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "1. In grandparent scams, who does the scammer typically pretend to be a be? Select all that apply.",
+    "prompt": "1. In grandparent scams, who does the scammer typically pretend to be? Select all that apply.",
     "choices": {
       "0": {
         "text": "A. Grandchild"
@@ -25,7 +25,7 @@
     "progress": 40,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "2. Which of the following are consequences of falling victim to a grandparent scams? Select all that apply.",
+    "prompt": "2. Which of the following are consequences of falling victim to a grandparent scam? Select all that apply.",
     "choices": {
       "0": {
         "text": "A. Financial gain"

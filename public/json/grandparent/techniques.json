@@ -3,7 +3,7 @@
     "progress": 66,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "1. In grandparent scams, what information scammers try to find online? Select all that apply.",
+    "prompt": "1. In grandparent scams, what information do scammers try to find online? Select all that apply.",
     "choices": {
       "0": {
         "text": "A. Personal details about the target",
@@ -36,7 +36,7 @@
         "explanation": "Choice A is correct. Grandparent scammers often manipulate grandparents' emotions by creating fake emergency situations to trick them into sending money. Common stories they use include fabricated car accidents, being falsely arrested in a foreign country, experiencing a medical crisis, or being kidnapped while traveling abroad. If you receive a call with such a frightening and urgent story, it's likely a scam. On the other hand, having a party with friends is not an emergency or fear-inducing situation, so it is usually not a part of scammers' deceptive stories."
       },
       "1": {
-        "text": "B. They are arrested in a foreign county",
+        "text": "B. They are arrested in a foreign country",
         "explanation": "Choice B is correct. This is also an example of a fake emergency story."
       },
       "2": {
@@ -44,7 +44,7 @@
         "explanation": "Choice C is correct. This is also an example of a fake emergency story."
       },
       "3": {
-        "text": "D. They have a party with friends",
+        "text": "D. They are having a party with friends",
         "explanation": "Choice D is incorrect. This is not an emergency story."
       }
     },
