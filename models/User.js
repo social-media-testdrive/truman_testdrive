@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
   avatar: { type: String, default: "Daring" },
-  avatarImgnp: { type: String, default: "/images/agent-daring.png" },
+  avatarImg: { type: String, default: "/images/agent-daring.png" },
   rolePlay: String,
   password: String,
   passwordResetToken: String,
