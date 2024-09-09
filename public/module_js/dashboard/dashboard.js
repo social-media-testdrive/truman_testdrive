@@ -27,15 +27,16 @@ function () {
       
     } else {
       const progressBarsContainer = $("#progress-bars-container");
-
+      console.log('public jobs 2')
+      console.log(resources)
+      // console.log(`${public_resources}/images/missions/` )
       data.forEach((module) => {
         const progressBarHtml = `
           <a  class="ui" href="/about/${module.moduleName}"> 
           <div class="ui raised segment">
               <div class="ui fluid container" style="height: 200px;">
                   <div class="ui image banner">
-                      <img src="/images/courses/${module.moduleName
-          }-scams-banner.jpg">
+                      <img src="${resources}/images/missions/${module.moduleName}-scams-banner.jpg">
   
                       <div class="ui bottom small progress" id="${module.moduleName}-progress" data-percent="${(module.progress / module.total) * 100
           }" style="margin:0;padding:0;">
