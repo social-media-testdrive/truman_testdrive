@@ -44,7 +44,7 @@ block content
           each badge in badges
             .ui.small.card
               .image
-                img.ui.small.centered.image(src=badge.imageUrl alt=badge.name)
+                img.ui.small.centered.image(src= public_resources + badge.imageUrl alt=badge.name)
               .content
                 .header= badge.name
       else
