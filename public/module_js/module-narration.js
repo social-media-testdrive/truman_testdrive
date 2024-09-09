@@ -1031,11 +1031,11 @@ function updateAvatar(avatarName) {
     avatar = avatarName.toLowerCase();
 
     if(avatarName === 'Intrepid'){
-        avatarImg = '/images/agent-intrepid.png';
+        avatarImg = `${public_resources}/images/shared_sources/agent-intrepid.png`;
     } else if (avatarName === 'Daring') {
-        avatarImg = '/images/agent-daring.png';
+        avatarImg = `${public_resources}/images/shared_sources/agent-daring.png`;
     } else {
-        avatarImg = '/images/agent-valiant.png';
+        avatarImg = `${public_resources}/images/shared_sources/agent-valiant.png`;
     }
 
     var userData = {
