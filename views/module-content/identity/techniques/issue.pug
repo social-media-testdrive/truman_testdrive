@@ -18,25 +18,10 @@
                     .limit-example-email
                         .htmlImageExample#netflix-email
                             .ui.raised.segments
-                                //- .metadata
-                                //-     .ui.basic.segment
-                                //-         p
-                                //-             strong From: 
-                                //-             | Netflix.com &lt;
-                                //-             span no-reply@ripnet.com
-                                //-             | &gt;
-                                //-         p
-                                //-             strong To: 
-                                //-             | #{user.email}
-                                //-         p
-                                //-             strong Date: 
-                                //-             | #{currentDate}
-                                //-         p
-                                //-             strong Subject: 
-                                //-             | Account on hold
+
                                 .content 
                                     .image-container#narrate-image-issue(style="background: #F3F4F5; margin: 0; padding: 2px;")
-                                        img.ui.small.image#netflix-logo(src='/images/netflix-logo.png' alt='Netflix logo' style="width: 150px;")
+                                        img.ui.small.image#netflix-logo(src=`${public_resources}/images/shared_sources/netflix-logo.png` alt='Netflix logo' style="width: 150px;")
                                     .ui.basic.segment.limit-content
                                         h2.bold-message#narrate-2-issue
                                             span Please update your payment details

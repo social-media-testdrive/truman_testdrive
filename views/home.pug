@@ -128,7 +128,7 @@ block content
                 span.sapphire protect the people you care about 
                 | from online fraud.
             .eight.wide.column
-              img(src=public_resources + "/images/home/keep-safe-bulb.png" alt="Protect the people in your community" style="width: 100%")
+              img(src=`${public_resources}/images/home/keep-safe-bulb.png` alt="Protect the people in your community" style="width: 100%")
 
 
 
@@ -221,6 +221,8 @@ block scripts
   script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
   script(src='/js/header-transition.js')
   script.
+    var resources = "#{public_resources}";
+    
     function startJiggle() {
       $('video-js')
         .transition({

@@ -46,49 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
         skipped = true;
     });
     
-    // console.log("DOM loaded and parsed!");
-    
-    // intro2.setOptions({
-    //     steps: [
-    //         {
-    //             element: document.querySelector('.emailSimContainer'),
-    //             position: 'auto',
-    //             intro: "This is your email inbox. Here you will find all the emails you've received.<br><br>Click the 'Next' button below to continue. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
-    //         },
-    //         {
-    //             myBeforeChangeFunction: function() { 
-    //                 $('#email-0').css('pointer-events', 'auto');  
-    //                 setTimeout(function() {
-    //                     $('.showOpenEmailAnimation').removeClass('hidden');
-    //                 }, 5000);
-    //             },
-    //             element: document.querySelector('#email-0'),
-    //             position: 'right',
-    //             intro: "Each email header contains the sender's name, subject line, and the date. These details offer valuable insights right from the start.<br><br>When you're ready, click on the email to open it and learn more. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
-    //         },
-    //         ],
-    //     'hidePrev': true,
-    //     'hideNext': true,
-    //     'exitOnOverlayClick': false,
-    //     'exitOnEsc': false,
-    //     'showStepNumbers': false,
-    //     'showBullets': false,
-    //     'scrollToElement': true,
-    //     'doneLabel': 'Done &#10003',
-    //     tooltipClass: 'customWideTooltip',
-    // })
-    // .onbeforechange(function() {
-    //      // check to see if there is a function on this step
-    //     if(this._introItems[this._currentStep].myBeforeChangeFunction){
-    //         //if so, execute it.
-    //         this._introItems[this._currentStep].myBeforeChangeFunction();
-    //     }
-    //     }).onchange(function() {  //intro.js built in onchange function
-    //     if (this._introItems[this._currentStep].myChangeFunction){
-    //         this._introItems[this._currentStep].myChangeFunction();
-    //     }
-    //  })
-    // .start();
 });
 
 
@@ -165,12 +122,7 @@ function showEmail(index) {
     var senderInfo = $('<div>', { class: 'content senderInfo' });
     var senderHeader = $('<div>', { class: 'header' }).text(email.sender);
     var fromEmail = $('<span>', { class: 'fromEmail' }).text(email.from);
-    // var fromEmail = $('<span>', { 
-    //     class: 'fromEmail', 
-    //     'data-hint': 'This email comes from walmart@gmail.com. Companies usually have their own email domain, such as @walmart.com. Another big sign of an email being a scam are misspellings and inconsistencies in names. This email misspells the name of the company its pretending to be as Walmrt, instead of Walmart, which it says in their email address.', 
-    //     'data-hint-position': 'bottom-middle',
-    //     text: email.from 
-    // });
+
 
 
     senderHeader.append(fromEmail);
@@ -263,7 +215,7 @@ function showEmail(index) {
     // add cursor close email animation for tutorial
     if(openEmailTutorialDone === false) {
         var closeEmailAnimation = $('<div>').addClass('showReturnToInboxAnimation hidden')
-            .append($('<img>').attr('src', '/images/cursor.png'));
+            .append($('<img>').attr('src', `${resources}/images/shared_sources/cursor.png`));
         emailSegment.append(closeEmailAnimation); 
     }
 
@@ -401,7 +353,7 @@ function showEmail(index) {
                     },
                     element: document.querySelector('.openEmailContainer .ui.padded.segment'),
                     position: 'right',
-                    intro: "An opened email reveals the sender's information and message content. From here you can reply, report, block, or delete it. Let's explore these options. <br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                    intro: `An opened email reveals the sender's information and message content. From here you can reply, report, block, or delete it. Let's explore these options. <br><img src='${resources}/images/shared_sources/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>`,
                 },
                 {
                     element: document.querySelector('.left.arrow.big.icon'),
@@ -439,7 +391,7 @@ function showEmail(index) {
                     },
                     element: document.querySelector('.ui.padded.segment'),
                     position: 'right',
-                    intro: "This concludes the tutorial for the email inbox. You now know everything you need to know to begin managing your emails and dealing with spam.<br><br>Click the top left arrow button to return to your inbox and begin exploring.<br><img src='/images/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>",
+                    intro: `This concludes the tutorial for the email inbox. You now know everything you need to know to begin managing your emails and dealing with spam.<br><br>Click the top left arrow button to return to your inbox and begin exploring.<br><img src='${resources}/images/shared_sources/chat-head.png' alt='age intrepid profile picture' width='125px' style='display: block; margin: 0 auto;margin-top:20px;'>`,
                 },
                 ],
             'hidePrev': true,
