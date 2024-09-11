@@ -13,5 +13,7 @@
   "bugs": {
     "url": "https://github.com/fomantic/Fomantic-UI/issues"
   },
-  "devDependencies": {}
+  "dependencies": {
+    "fomantic": "file:"
+  }
 }
