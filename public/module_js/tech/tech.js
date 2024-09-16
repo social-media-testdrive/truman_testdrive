@@ -466,8 +466,7 @@ function setLinks(currentPage) {
           nextlink = baseurl + "badge";
         } else if (currentPage === "badge") {
           backlink = baseurl + "quiz";
-          nextlink =
-            "/course-player?module=tech&section=concepts&page=objectives";
+          nextlink ="/course-player?module=tech&section=concepts&page=objectives";
         }
       } else if (section === "concepts") {
         let baseurl = "/course-player?module=tech&section=concepts&page=";
@@ -510,8 +509,7 @@ function setLinks(currentPage) {
         let baseurl = "/course-player?module=tech&section=consequences&page=";
     
         if (currentPage === "objectives") {
-          backlink =
-            "/course-player?module=tech&section=concepts&page=objectives";
+          backlink ="/course-player?module=tech&section=concepts&page=objectives";
           nextlink = baseurl + "financial";
         } else if (currentPage === "financial") {
           backlink = baseurl + "objectives";
@@ -542,8 +540,7 @@ function setLinks(currentPage) {
         let baseurl = "/course-player?module=tech&section=techniques&page=";
     
         if (currentPage === "objectives") {
-          backlink =
-            "/course-player?module=tech&section=consequences&page=objectives";
+          backlink = "/course-player?module=tech&section=consequences&page=objectives";
           nextlink = baseurl + "intro-video";
         } else if (currentPage === "intro-video") {
           backlink = baseurl + "objectives";
@@ -577,12 +574,54 @@ function setLinks(currentPage) {
           nextlink =
             "/course-player?module=tech&section=signs&page=objectives";
         }
-      } else if (section === "protection") {
+      } else if (section === "signs") {
+        let baseurl = "/course-player?module=tech&section=signs&page=";
+    
+        if (currentPage === "objectives") {
+          backlink = "/course-player?module=tech&section=techniques&page=objectives";
+          nextlink = baseurl + "sign-1";
+        } else if (currentPage === "sign-1") {
+          backlink = baseurl + "objectives";
+          nextlink = baseurl + "sign-2";
+        } else if (currentPage === "sign-2") {
+          backlink = baseurl + "sign-1";
+          nextlink = baseurl + "sign-3";
+        } else if (currentPage === "sign-3") {
+          backlink = baseurl + "sign-2";
+          nextlink = baseurl + "sign-4";
+        } else if (currentPage === "sign-4") {
+          backlink = baseurl + "sign-3";
+          nextlink = baseurl + "sign-5";
+        } else if (currentPage === "sign-5") {
+          backlink = baseurl + "sign-4";
+          nextlink = baseurl + "sign-6";
+        } else if (currentPage === "sign-6") {
+          backlink = baseurl + "sign-5";
+          nextlink = baseurl + "sign-7";
+        } else if (currentPage === "sign-7") {
+          backlink = baseurl + "sign-6";
+          nextlink = baseurl + "activity";
+        } else if (currentPage === "activity") {
+          backlink = baseurl + "sign-7";
+          nextlink = baseurl + "quiz";
+        } else if (currentPage === "quiz") {
+          backlink = baseurl + "activity";
+          nextlink = baseurl + "reflection";
+        } else if (currentPage === "reflection") {
+          backlink = baseurl + "quiz";
+          nextlink = baseurl + "takeaways";
+        } 
+        
+         else if (currentPage === "takeaways") {
+          backlink = baseurl + "quiz";
+          nextlink =
+            "/course-player?module=tech&section=protection&page=objectives";
+        }
+      }else if (section === "protection") {
         let baseurl = "/course-player?module=tech&section=protection&page=";
     
         if (currentPage === "objectives") {
-          backlink =
-            "/course-player?module=tech&section=signs&page=objectives";
+          backlink = "/course-player?module=tech&section=signs&page=objectives";
           nextlink = baseurl + "protect-video";
         } else if (currentPage === "protect-video") {
           backlink = baseurl + "objectives";
@@ -622,56 +661,13 @@ function setLinks(currentPage) {
         } else if (currentPage === "takeaways") {
           backlink = baseurl + "reflection";
           nextlink =
-            "/course-player?module=tech&section=signs&page=objectives";
-        }
-      } else if (section === "signs") {
-        let baseurl = "/course-player?module=tech&section=signs&page=";
-    
-        if (currentPage === "objectives") {
-          backlink = "/course-player?module=tech&section=protection&page=objectives";
-          nextlink = baseurl + "sign-1";
-        } else if (currentPage === "sign-1") {
-          backlink = baseurl + "objectives";
-          nextlink = baseurl + "sign-2";
-        } else if (currentPage === "sign-2") {
-          backlink = baseurl + "sign-1";
-          nextlink = baseurl + "sign-3";
-        } else if (currentPage === "sign-3") {
-          backlink = baseurl + "sign-2";
-          nextlink = baseurl + "sign-4";
-        } else if (currentPage === "sign-4") {
-          backlink = baseurl + "sign-3";
-          nextlink = baseurl + "sign-5";
-        } else if (currentPage === "sign-5") {
-          backlink = baseurl + "sign-4";
-          nextlink = baseurl + "sign-6";
-        } else if (currentPage === "sign-6") {
-          backlink = baseurl + "sign-5";
-          nextlink = baseurl + "sign-7";
-        } else if (currentPage === "sign-7") {
-          backlink = baseurl + "sign-6";
-          nextlink = baseurl + "activity";
-        } else if (currentPage === "activity") {
-          backlink = baseurl + "sign-7";
-          nextlink = baseurl + "quiz";
-        } else if (currentPage === "quiz") {
-          backlink = baseurl + "activity";
-          nextlink = baseurl + "reflection";
-        } else if (currentPage === "reflection") {
-          backlink = baseurl + "quiz";
-          nextlink = baseurl + "takeaways";
-        } 
-        
-         else if (currentPage === "takeaways") {
-          backlink = baseurl + "quiz";
-          nextlink =
             "/course-player?module=tech&section=practice&page=objectives";
         }
       } else if (section === "practice") {
         let baseurl = "/course-player?module=tech&section=practice&page=";
     
         if (currentPage === "objectives") {
-          backlink = "/course-player?module=tech&section=signs&page=objectives";
+          backlink = "/course-player?module=tech&section=protection&page=objectives";
           nextlink = baseurl + "introduction";
         } else if (currentPage === "introduction") {
           backlink = baseurl + "objectives";
@@ -726,8 +722,7 @@ function setLinks(currentPage) {
         let baseurl = "/course-player?module=tech&section=evaluation&page=";
     
         if (currentPage === "intro") {
-          backlink =
-            "/course-player?module=tech&section=practice&page=objectives";
+          backlink ="/course-player?module=tech&section=practice&page=objectives";
           nextlink = baseurl + "quiz";
         } else if (currentPage === "quiz") {
           backlink = baseurl + "intro";
