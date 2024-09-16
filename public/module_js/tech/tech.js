@@ -702,12 +702,12 @@ function setLinks(currentPage) {
           nextlink = baseurl + "takeaways";
         } else if (currentPage === "takeaways") {
           backlink = baseurl + "reflection";
-          nextlink = "/course-player?module=grandparent&section=evaluation&page=intro";
+          nextlink = "/course-player?module=tech&section=evaluation&page=intro";
   
           // complete module status to 100 manually since there is no quiz
           console.log("HEY Posting to complete practice module status");
           $.post('/completeModuleStatus', {
-              modId: 'grandparent',
+              modId: 'tech',
               section: 'practice'
           });
         }
