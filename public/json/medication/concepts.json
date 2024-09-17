@@ -1,54 +1,61 @@
-{   
+{
     "1": {
-      "progress": 77,
+      "progress": 20,
       "type": "multi_select",
       "partial": "none",
-      "prompt": "1. How do scammers gather information about potential targets in grandparent scams? Select all that apply.",
-      "choices": { 
+      "prompt": "1. Which of the following are examples of medication scams? Select all that apply:",
+      "choices": {
         "0": {
-            "text": "A. Searching people on social media",
-            "explanation": "Choice A is correct. Scammers often use social media platforms to gather personal information about potential targets. They may look for information such as names, family relationships, or recent activities to craft convincing stories."
+          "text": "A. A licensed online pharmacy selling over-the-counter medications and vitamins.",
+          "explanation": "Choice A is not an example of medication scams. Licensed online pharmacies can legally sell and deliver over-the-counter medications and vitamins to consumers."
         },
         "1": {
-            "text": "B. Searching through obituaries",
-            "explanation": "Choice B is correct. Scammers might check recent obituaries to find information about deceased individuals and their family members. They will target families that have recently lost a loved one and take advantage of their emotional vulnerability. For example, scammers may contact the surviving spouse and impersonate one of the grandchildren listed in the obituary."
+          "text": "B. An individual selling Apetamin for figure enhancement, through social media or online stores.",
+          "explanation": "Choice B is an example of medication scams. Apetamin contains a powerful antihistamine requiring a prescription in the U.S., but it is not FDA approved and often made overseas and sold illegally. Apetamin has dangerous side effects such as sedation, cognitive impairment, low blood pressure, and even death."
         },
         "2": {
-          "text": "C. Searching people on online platforms",
-          "explanation": "Choice C is correct. Scammers may use online platforms, such as dating sites, to gather personal details about potential targets. For example, scammers may pose as potential romantic interests and manipulate individuals into sharing sensitive information, enabling them to create more convincing narratives."
+          "text": "C. A company or individual marketing medications with false or misleading claims about the products' ability to cure, treat, or prevent disease.",
+          "explanation": "Choice C is an example of medication scams. This involves deception (false claims) that targets vulnerable individuals seeking treatment, misrepresents efficacy, and risks people's health by promoting unproven treatments."
         },
         "3": {
-          "text": "D. Visiting people’s homes",
-          "explanation": "Choice D is incorrect. In grandparent scams, scammers usually do not visit people’s homes to gather personal information about potential targets. Scammers avoid direct interaction before the initial contact to minimize the risk of detection. Instead, they will exploit online sources for anonymity and efficiency. However, scammers may visit homes after the initial contact to collect money in person."
+          "text": "D. An insurance company providing coverage for prescription drugs.",
+          "explanation": "Choice D is not an example of medication scams. Health insurance companies offer plans to cover drug costs for covered prescriptions."
         }
+      },
+      "correctResponse": ["1", "2"],
+      "theAnswers": "B, C"
     },
-    "correctResponse": ["0", "1", "2"],
-    "theAnswers": "A, B, C"
-},
     "2": {
-        "progress": 88,
-        "type": "multi_select",
-        "partial": "none",
-        "prompt": "2. In grandparent scams, which of the following roles might the scammer pretend to be? Select all that apply.",
-        "choices": {
-            "0": {
-                "text": "A. The grandchild or a friend of the grandchild",
-                "explanation": "Choice A is correct."
-            },
-            "1": {
-                "text": "B. A lawyer or bail bondsman",
-                "explanation": "Choice B is correct."
-            },
-            "2": {
-                "text": "C. A doctor or hospital staff (nurse)",
-                "explanation": "Choice C is correct."
-            },
-            "3": {
-              "text": "D. A police officer or government official",
-              "explanation": "Choice D is correct."
-            }
+      "progress": 40,
+      "type": "yes_no",
+      "partial": "none",
+      "prompt": "2. TRUE or FALSE: Dietary supplements, such as herbal blends, vitamins, and minerals, are scientifically proven to treat opioid addiction and dependence.",
+      "choices": {
+        "yes": {
+          "text": "True"
         },
-        "correctResponse": ["0", "1", "2", "3"],
-        "theAnswers": "A, B, C, D"
-}
-}
+        "no": {
+          "text": "False"
+        }
+      },
+      "explanation": "<h1>The correct answer is False.</h1> <p> There are no scientifically proven dietary supplements for treating opioid addiction and dependence. Only drugs can be legally marketed as treatments for conditions like addiction.</p>",
+      "correctResponse": "no"
+    },
+    "3": {
+      "progress": 60,
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "3. ‘VitoBlend is a safe, plant-based dietary supplement that has been proven to treat chronic pain related to a number of medical conditions, including arthritis, diabetes, and various cancers.’ According to FDA regulations, based on this claim, should VitoBlend be regulated as a dietary supplement or a drug?",
+      "choices": {
+        "a": {
+          "text": "A. A dietary supplement. Because it is marketed as a dietary supplement."
+        },
+        "b": {
+          "text": "B. A drug. Because the claim indicates it is intended to cure, treat, or prevent diseases."
+        }
+      },
+      "explanation": "<h1>The correct answer is B.</h1> <p> Products intended to cure, treat, or prevent diseases are classified as drugs under the Food, Drug & Cosmetic Act, regardless of how they are marketed.</p>",
+      "correctResponse": "b"
+    }
+  }
+  
