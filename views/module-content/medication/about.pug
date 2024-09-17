@@ -8,9 +8,9 @@ block content
       i.right.angle.icon.divider
       a.section(href="/courses") Missions
       i.right.angle.icon.divider
-      .active.section Grandparent Scams
+      .active.section Medication Scams
     br
-    h1.ui.header.red#mod-title(style="font-weight: bold !important;") Grandparent Scams
+    h1.ui.header.red#mod-title(style="font-weight: bold !important;") Medication Scams
     .ui.top.attached.fluid.segment
       .ui.grid 
         .row
@@ -24,12 +24,12 @@ block content
       .ui.grid 
         .row 
           .twelve.wide.column
-            p Sarah needs your help! She’s fallen victim to a cunning grandparent scam.
+            p Sarah needs your help! She’s fallen victim to a cunning medication scam.
             p Uncover how scammers pose as distressed grandchildren to manipulate their targets into sending money. You'll learn how these scams work, how to spot them, and how to protect yourself and others.
-            if user.moduleProgress.grandparent.link === "/course-player?module=grandparent&section=challenge&page=intro" 
-              button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Start Mission
+            if user.moduleProgress.grandparent.link === "/course-player?module=medication&section=challenge&page=intro" 
+              button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.medication.link") Start Mission
             else 
-              button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Continue Mission
+              button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.medication.link") Continue Mission
 
           .four.wide.column 
             img(src=`${public_resources}/images/shared_sources/johnson.png`)
@@ -53,7 +53,7 @@ block content
               .nine.wide.column
                 h3 Challenge
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=challenge&page=intro'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=challenge&page=intro'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
@@ -66,7 +66,7 @@ block content
               .nine.wide.column
                 h3 Concepts
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=concepts&page=objectives'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=concepts&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
@@ -79,7 +79,7 @@ block content
               .nine.wide.column
                 h3 Consequences
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=consequences&page=objectives'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=consequences&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
@@ -92,7 +92,7 @@ block content
               .nine.wide.column
                 h3 Recognize Techniques
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=techniques&page=objectives'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=techniques&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
@@ -105,7 +105,7 @@ block content
               .nine.wide.column
                 h3 Warning Signs
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=signs&page=objectives'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=signs&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
@@ -118,7 +118,7 @@ block content
               .nine.wide.column
                 h3 Methods of Protection
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=protection&page=objectives'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=protection&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
@@ -131,7 +131,7 @@ block content
               .nine.wide.column
                 h3 Practice
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=practice&page=objectives'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=practice&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
           .ui.grid
@@ -144,7 +144,7 @@ block content
               .nine.wide.column
                 h3 Evaluation
               .five.wide.right.aligned.column
-                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=evaluation&page=intro'") Start
+                .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=evaluation&page=intro'") Start
         .ui.divider
         //- .ui.basic.segment
         //-   .ui.grid
@@ -154,7 +154,7 @@ block content
         //-       .nine.wide.column
         //-         h3 Reflection
         //-       .five.wide.right.aligned.column
-        //-         .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=grandparent&section=reflection&page=intro'") Start
+        //-         .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=reflection&page=intro'") Start
         //- .ui.divider
 
       h2.ui.header.centered(style="margin-top: 40px; margin-bottom: 40px;") 
@@ -186,7 +186,7 @@ block content
         .sixteen.wide.column
           .speech-div
             .centerme
-              if user.moduleProgress.grandparent.link === "/course-player?module=grandparent&section=challenge&page=intro" 
+              if user.moduleProgress.grandparent.link === "/course-player?module=medication&section=challenge&page=intro" 
                 button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Start Mission
               else 
                 button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Continue Mission
@@ -194,14 +194,14 @@ block content
             img.dart_image.ui.medium.image(src=user.avatarImg)
 
             .ui.large.label.blue-pointing#speechBubble
-              if user.moduleProgress.grandparent.link === "/course-player?module=grandparent&section=challenge&page=intro" 
+              if user.moduleProgress.grandparent.link === "/course-player?module=medication&section=challenge&page=intro" 
                 p#speechText
                   | Sarah is counting on you! Click 'Start Mission' to begin. 
               else 
                 p#speechText
                   | Welcome back! Click 'Continue Mission' to pick up where you left off.
     .ui.centered.grid.mobile.only
-      if user.moduleProgress.grandparent.link === "/course-player?module=grandparent&section=challenge&page=intro" 
+      if user.moduleProgress.grandparent.link === "/course-player?module=medication&section=challenge&page=intro" 
         button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
       else 
         button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission

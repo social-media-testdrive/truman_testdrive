@@ -1,0 +1,31 @@
+{
+  "1": {
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. When you have your identity stolen, what should you do? Select all that apply:",
+      "choices": {
+          "0": {
+              "text": "A. Notify your bank or financial institution",
+              "explanation": "Informing your bank or financial institution is important to protect your financial accounts."
+          },
+          "1": {
+              "text": "B. Report identity theft to the Federal Trade Commission",
+              "explanation": "Reporting identity theft to the FTC is the first step  to start the recovery process. "
+          },
+          "2": {
+              "text": "C. Keep it a secret to avoid embarrassment",
+              "explanation": "Staying silent won't help and may put you or others at risk for future scams from the same scammers. There's no need to feel ashamed; identity theft can happen to anyone and doesn’t mean you are unfit to handle your finances."
+          },
+          "3": {
+              "text": "D. Change passwords for other accounts",
+              "explanation": "Changing passwords for other accounts can prevent further unauthorized access."
+          },
+          "4": {
+              "text": "E. Contact your local police department",
+              "explanation": "Reporting to local authorities helps with the legal aspects of identity theft."
+          }
+      },
+      "correctResponse": ["0", "1", "3", "4"],
+      "theAnswers": "A, C, E, F"
+  }
+}

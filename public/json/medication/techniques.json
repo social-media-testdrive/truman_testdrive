@@ -1,0 +1,76 @@
+{
+  "1": {
+    "progress": 66,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. In grandparent scams, what information do scammers try to find online? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Personal details about the target",
+        "explanation": "Choice A is correct. Personal information about the target, such as their name, age and address, is the most basic information used by scammers in grandparent scams."
+      },
+      "1": {
+        "text": "B. Target’s social security number",
+        "explanation": "Choice B is incorrect. In grandparent scams, the scammer tends to use information about the target or the target’s family relationships to construct convincing narratives. Although social security numbers count as sensitive information and are often used in identity theft or other types of fraud, they are not typically used in grandparent scams."
+      },
+      "2": {
+        "text": "C. Target’s recent life events",
+        "explanation": "Choice C is correct. In grandparent scams, scammers often use information about the target or their family relationships to craft convincing stories. Incorporating details about the target's recent life events can add credibility and foster more trust in the targets."
+      },
+      "3": {
+        "text": "D. Grandchild’s name",
+        "explanation": "Choice D is correct. Scammers may find out the name of the target’s grandchild. By using the grandchild's name, scammers can more convincingly pose as the target’s grandchild or a trusted family member, increasing the emotional impact on the target."
+      }
+    },
+    "correctResponse": ["0", "2", "3"],
+    "theAnswers": "A, C, D"
+  },
+  "2": {
+    "progress": 75,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "2. What are some common stories that scammers tell? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. They have been involved in a car accident",
+        "explanation": "Choice A is correct. Grandparent scammers often manipulate grandparents' emotions by creating fake emergency situations to trick them into sending money. Common stories they use include fabricated car accidents, being falsely arrested in a foreign country, experiencing a medical crisis, or being kidnapped while traveling abroad. If you receive a call with such a frightening and urgent story, it's likely a scam. On the other hand, having a party with friends is not an emergency or fear-inducing situation, so it is usually not a part of scammers' deceptive stories."
+      },
+      "1": {
+        "text": "B. They are arrested in a foreign country",
+        "explanation": "Choice B is correct. This is also an example of a fake emergency story."
+      },
+      "2": {
+        "text": "C. They have a medical emergency",
+        "explanation": "Choice C is correct. This is also an example of a fake emergency story."
+      },
+      "3": {
+        "text": "D. They are having a party with friends",
+        "explanation": "Choice D is incorrect. This is not an emergency story."
+      }
+    },
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, C"
+  },
+  "3": {
+    "progress": 83,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "3. What is Caller ID Spoofing?",
+    "choices": {
+      "a": {
+        "text": "A. A special code that shows an email is safe to open."
+      },
+      "b": {
+        "text": "B. A trick scammers use to pretend to be someone else."
+      },
+      "c": {
+        "text": "C. A way to keep your online purchases secure."
+      },
+      "d": {
+        "text": "D. A tool to stop hackers from getting into your computer."
+      }
+    },
+    "explanation": "<h1>B is correct</h1><p>Caller ID spoofing is a technology that scammers use to hide their real phone numbers and make it seem like they are calling from a different number. They often impersonate trusted sources like banks or people known to the victim, aiming to deceive and trick individuals.</p>",
+    "correctResponse": "b"
+  }
+}

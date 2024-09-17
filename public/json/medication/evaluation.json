@@ -1,0 +1,252 @@
+{
+  "1": {
+      "progress": 10,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. When you receive a call, which scenarios could indicate a potential scam call? Select all that apply.",
+      "choices": {
+          "0": {
+              "text": "A. An unknown number"
+          },
+          "1": {
+              "text": "B. Call appears to be from the Police Department"
+          },
+          "2": {
+              "text": "C. Call appears to be from a law enforcement agency"
+          },
+          "3": {
+              "text": "D. Call appears to be from your grandchild"
+          }
+      },
+      "explanation": "<p>Due to the advanced technique of using caller ID spoofing, any call-even from familiar numbers–could be fake. Therefore, do not trust the caller solely based on the appearance of a valid number.</p>",
+      "correctResponse": ["0", "1", "2", "3"],
+      "theAnswers": "A, B, C, D"
+  },
+  "2": {
+      "progress": 20,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "2. What are some common techniques scammers use to pressure targets into sending them money? Select all that apply.",
+      "choices": {
+          "0": {
+              "text": "A. Crying and begging for help",
+              "explanation": "Choice A is correct. Scammers often use emotional manipulation to pressure the target into sending money right away. Scammers might cry and beg for help to make the target think their grandchild or loved one is in pain or in a terrible situation, exploiting the target’s fear and desire to help."
+          },
+          "1": {
+              "text": "B. Promising rewards or prizes if you send money immediately",
+              "explanation": "Choice B is incorrect. In grandparent scams, scammers will not try to entice you into sending money by promising fake rewards or prizes."
+          },
+          "2": {
+              "text": "C. Sounding frightened and in an urgent situation",
+              "explanation": "Choice C is correct. Scammers often attempt to create a sense of urgency and fear in their victims to coerce them into sending money. Sounding frightened and in an urgent situation is another commonly used technique of emotional manipulation."
+          },
+          "3": {
+              "text": "D. Threatening that your grandchild will face serious charges.",
+              "explanation": "Choice D is correct. To pressure you to act fast, scammers attempt to manipulate your emotion by making threats. This technique aims to instill fear, leaving you with little time to think clearly so that you comply with their demands. Therefore, the more scared you feel, the more you need to stay calm and composed."
+          }
+      },
+      "correctResponse": ["0", "2", "3"],
+      "theAnswers": "A, C, D"
+  },
+  "3": {
+      "progress": 30,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "3. When are individuals most vulnerable to being targeted by grandparent scammers? Select all that apply.",
+      "choices": {
+          "0": {
+              "text": "A. Late at night",
+              "explanation": "Choice A is correct. The initial contact from the scammer will often come late at night when people may be disoriented or less alert, making them more vulnerable to being confused or misled."
+          },
+          "1": {
+              "text": "B. During typical working hours",
+              "explanation": "Choice B is incorrect. Scammers are less likely to contact potential victims during working hours when people are more likely to be active, alert, and busy. Nevertheless, it’s important to remain cautious as some scammers might contact potential victims during the day."
+          },
+          "2": {
+              "text": "C. During family gatherings or celebrations",
+              "explanation": "Choice C is incorrect. Scammers will often choose moments when people are more likely to be vulnerable, tired, or distressed, rather than when they are distracted by festivities and surrounded by other people."
+          },
+          "3": {
+              "text": "D. During times of natural disasters or adverse weather",
+              "explanation": "Choice D is correct. Scammers are likely to contact potential victims during times of crises, such as natural disasters or bad weather, when people are already in a heightened state of worry for their loved ones’ safety and therefore more likely to fall for the scammer’s claims and stories."
+          }
+      },
+      "correctResponse": ["0", "3"],
+      "theAnswers": "A, D"
+  },
+  "4": {
+      "progress": 40,
+      "type": "abcd",
+      "partial": "q4.html",
+      "prompt": "4. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?",
+      "choices": {
+          "a": {
+              "text": "A. Inaccurate Family Details"
+          },
+          "b": {
+              "text": "B. Pressure to Act Fast and Deter Questions"
+          },
+          "c": {
+              "text": "C. Demand for Secrecy"
+          },
+          "d": {
+              "text": "D. Request for Untraceable Payment Methods"
+          }
+      },
+      "explanation": "<h1>The correct answer is C.</h1><p>In this conversation, the scammer strongly emphasizes \"don't tell the parents\" with the excuse of \"don't want to worry them.\" By explicitly instructing the grandparent not to inform the parents/family, the scammer is demanding secrecy. This tactic isolates the victim from others who may identify it as a scam if the circumstances were discussed. Therefore, the correct answer is C. Demand for Secrecy.</p>",
+      "correctResponse": "c"
+  },
+  "5": {
+      "progress": 50,
+      "type": "multi_select",
+      "partial": "audio_q5.html",
+      "prompt": "5. According to this conversation, what red flags did you notice that can indicate the caller is a scammer? Select all that apply.",
+      "choices": {
+          "0": {
+              "text": "A. A Fear Inducing and Urgent Scenario",
+              "explanation": "Choice A is correct. The scammer creates a fearful and urgent scenario about hitting a pregnant woman and potentially going to jail to evoke an emotional reaction from the grandparent."
+          },
+          "1": {
+              "text": "B. Voice sounding Different",
+              "explanation": "Choice B is correct. When the grandparent says \"Brandon, it doesn't sound like you\", it indicates the voice sounds unnatural or different than expected."
+          },
+          "2": {
+              "text": "C. Demand for Secrecy",
+              "explanation": "Choice C is correct. The scammer explicitly states, \"Please don't call my mom and dad, because I don't want them to know,\" demanding secrecy from the grandparents. This reduces the chance of the grandparents verifying the information with other family members."
+          },
+          "3": {
+              "text": "D. Pressure to Act Fast and Deter Questions",
+              "explanation": "Choice D is correct. By claiming there is an urgent need to take legal action through a \"friend's attorney\", the scammer is pressuring the grandparent to act fast without questioning the story further."
+          }
+      },
+      "correctResponse": ["0", "1", "2", "3"],
+      "theAnswers": "A, B, C, D"
+  },
+  "6": {
+    "progress": 60,
+    "type": "multi_select",
+    "partial": "audio_q6.html",
+    "prompt": "6. According to this conversation, what red flags did you notice that can indicate the caller is a scammer? Select all that apply.",
+    "choices": {
+        "0": {
+            "text": "A. Inaccurate Family Details",
+            "explanation": "Choice A is incorrect. In this conversation, there is no mention of the detailed family information, so this recording doesn’t exhibit this warning sign."
+        },
+        "1": {
+            "text": "B. Voice Sounding Different",
+            "explanation": "Choice B is incorrect. In this conversation, there is no mention of the voice sounding unusual or different, so this recording doesn’t exhibit this warning sign."
+        },
+        "2": {
+            "text": "C. Pressure to Act Fast and Deter Questions",
+            "explanation": "Choice C is correct. In this conversation, the caller says \"I need you to send the money quickly\" which creates a sense of urgency and pressure to act fast without properly considering the situation."
+        },
+        "3": {
+            "text": "D. Request for Untraceable Payment Methods",
+            "explanation": "Choice D is correct. The caller asks the grandparent to send money through cryptocurrency, specifically mentioning to download the \"CryptoWallet\" app. Cryptocurrency transactions are an untraceable payment method favored by scammers."
+        }
+    },
+    "correctResponse": ["2", "3"],
+    "theAnswers": "C, D"
+  },
+  "7": {
+    "progress": 70,
+    "type": "multi_select",
+    "partial": "audio_q7.html",
+    "prompt": "7. According to this conversation, what red flags did you notice that can indicate the caller is a scammer? Select all that apply.",
+    "choices": {
+        "0": {
+            "text": "A. Inaccurate Family Details"
+        },
+        "1": {
+            "text": "B. Voice Sounding Different"
+        },
+        "2": {
+            "text": "C. Pressure to Act Fast and Deter Questions"
+        },
+        "3": {
+            "text": "D. Request for Untraceable Payment Methods"
+        }
+    },
+    "explanation": "<p>In this conversation, the scammer says “I need you to send the money to me now so it doesn't get sold out.” This creates a sense of urgency and pressures the grandparent to act quickly. By claiming there is only “one left” at this “great deal” price, the scammer is trying to deter the grandparent from taking time to verify the story or ask more questions that could expose the scam. Therefore, the correct answer is C. Pressure to Act Fast and Deter Questions.</p>",
+    "correctResponse": ["2"],
+    "theAnswers": "C"
+  },
+  "8": {
+    "progress": 80,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "8. Which of the following payment methods are untraceable and therefore frequently used by scammers in grandparent scams? Select all that apply.",
+    "choices": {
+        "0": {
+            "text": "A. Cryptocurrency",
+            "explanation": " Choice A is correct. Scammers like to use cryptocurrencies, like Bitcoin, because they don’t have the same legal protections as credit or debit cards, and payments usually cannot be reversed."
+        },
+        "1": {
+            "text": "B. Gift cards",
+            "explanation": "Choice B is correct. Gift cards are frequently used in scams because they cannot be refunded, traced, or disputed."
+        },
+        "2": {
+            "text": "C. Checks",
+            "explanation": "Choice C is incorrect. Checks are an example of a traceable method. That is why scammers never ask you to send them a check."
+        },
+        "3": {
+            "text": "D. Cash",
+            "explanation": "Choice D is correct. Cash transactions are usually hard to trace as they do not leave a digital trail, making it difficult to track the movement of funds. Scammers often request the victim to hand over cash to a courier or runner at a predetermined time and location."
+        }
+    },
+    "correctResponse": ["0", "1", "3"],
+    "theAnswers": "A, B, D"
+  },
+  "9": {
+    "progress": 90,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "9. To prevent potential grandparent scams, what should you do? Select all that apply.",
+    "choices": {
+        "0": {
+            "text": "A. Set your social media account to private",
+            "explanation": "Choice A is correct. Setting your accounts to private helps control who can see your personal information, such as posts, photos, and other content. This reduces the risk of scammers using the detailed information you shared to specifically target you."
+        },
+        "1": {
+            "text": "B. Post details about your family",
+            "explanation": "Choice B is incorrect. You should never post details about your family members online. Scammers could use this information to impersonate your family members and attempt to deceive you or other relatives through scams like the grandparent scam. Also, oversharing information about your family, especially children or grandchildren, can potentially expose them to risks like stalking, harassment."
+        },
+        "2": {
+            "text": "C. Do not answer calls from numbers that you do not recognize",
+            "explanation": "Choice C is correct. Scammers often use unfamiliar numbers in an attempt to trick you into answering and engaging with their fraudulent schemes, such as the grandparent scam. However, there's no need to worry about missing an important call. If it is genuinely important, the caller will leave a voicemail, which you can then respond to at a later time."
+        },
+        "3": {
+            "text": "D. Learn about scams and how to prevent them",
+            "explanation": "Choice C is correct. Understanding the tactics and methods used by scammers will help you more easily recognize potential scam attempts when you encounter them. This awareness can prevent you from falling victim. Also, learning about new and emerging scams allows you to stay informed about current threats. By educating yourself, you can not only avoid being scammed personally, but also help warn and prevent your family members and loved ones from falling prey to scams."
+        }
+    },
+    "correctResponse": ["0", "2", "3"],
+    "theAnswers": "A, C, D"
+  },
+  "10": {
+    "progress": 100,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "10. What is a recommended course of action for grandparents who suspect they are being targeted by a grandparent scam? Select all that apply.",
+    "choices": {
+        "0": {
+            "text": "A. Hang up the phone immediately and ignore any further attempts at contact",
+            "explanation": "Choice A is correct. By hanging up, you prevent the scammer from continuing their script, making requests for money/payment, or trying to further manipulate you emotionally. Also, hanging up puts you in control of the situation and allows you to remove yourself from the scammer's influence. Scammers would highly likely try to contact you repeatedly. Ignoring them can make it clear to the scammers that you will not be deceived, discouraging future targeting."
+        },
+        "1": {
+            "text": "B. Engage in lengthy conversations to gather more information about the scammer",
+            "explanation": "Choice B is incorrect. Scammers are skilled at prolonging conversations to manipulate victims. The more you engage, the higher the risk that you will be manipulated or persuaded to provide personal information or money."
+        },
+        "2": {
+            "text": "C. Contact other family members or authorities on a separate call to verify the legitimacy of the call",
+            "explanation": "Choice C is correct. You should always verify the person’s identity through a separate call. It helps confirm whether the call is legitimate or a scam. Other family members or authorities can provide additional information or context that can help you make an informed decision. Also, it provides peace of mind knowing that you have taken the necessary steps to protect yourself and your family from potential scams."
+        },
+        "3": {
+            "text": "D. Send money as requested to prevent any potential harm to the supposed grandchild",
+            "explanation": "Choice D is incorrect. Never give money to someone you already suspect."
+        }
+    },
+    "correctResponse": ["0", "2"],
+    "theAnswers": "A, C"
+  }
+}

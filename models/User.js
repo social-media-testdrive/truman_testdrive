@@ -287,7 +287,60 @@ const userSchema = new mongoose.Schema({
             questionScores: [{ type: Number }],
             questionChoices: Schema.Types.Mixed,
         }],
-    },             
+    },
+    medication: {
+        percent: { type: Number, default: 0 }, // percent complete
+        link: { type: String, default: '/course-player?module=medication&section=challenge&page=intro' }, // link to the last page the user was on in module
+        challengeAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        conceptsAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        consequencesAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        techniquesAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        protectionAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        signsAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+        evaluationAttempts: [{
+            timestamp: { type: Date, default: Date.now },
+            scoreTotal: { type: Number, default: 0 },
+            correctAnswers: { type: Number, default: 0 },
+            questionScores: [{ type: Number }],
+            questionChoices: Schema.Types.Mixed,
+        }],
+    },               
 
     phishing: {
         percent: { type: Number, default: 0 }, // percent complete

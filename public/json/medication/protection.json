@@ -1,0 +1,144 @@
+{
+  "1": {
+    "progress": 53,
+    "type": "yes_no",
+    "partial": "q1.html",
+    "prompt": "1. Is it important to be careful about sharing your family’s information, including names, on social media?",
+    "choices": {
+      "yes": {
+        "text": "Yes"
+      },
+      "no": {
+        "text": "No"
+      }
+    },
+    "explanation": "<h1>Yes you should be careful when sharing these information.</h1><p>Being careful about sharing your family's information, like names, on social media helps protect your family's privacy and security. Scammers can use publicly available information to craft more believable stories and potentially target your family members.</p>",
+    "correctResponse": "yes"
+  },
+  "2": {
+    "progress": 60,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "2. What is a recommended action to help protect yourself from scammers using information from your social media accounts?",
+    "choices": {
+      "a": {
+        "text": "A. Share your family's information, including names, on social media to keep your profile engaging."
+      },
+      "b": {
+        "text": "B. Set your social media to private and be cautious about what information you share online."
+      },
+      "c": {
+        "text": "C. Share your personal details openly to connect with more people on social media."
+      },
+      "d": {
+        "text": "D. Ignore privacy settings on social media to ensure your account is accessible to everyone."
+      }
+    },
+    "explanation": "<h1>B is correct</h1><p>Setting your social media accounts to private limits who can see your posts and personal information, reducing the amount of information scammers can access to craft their stories. Being cautious about what information you share online also helps prevent scammers from using your personal details against you.</p>",
+    "correctResponse": "b"
+  },
+  "3": {
+    "progress": 67,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "3. Which are recommended strategies to verify the identity of a caller claiming to be your grandchild? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Ask them to provide their social media profile information.",
+        "explanation": "Choice A is incorrect. Knowing the unknown caller’s social media profile information cannot verify the caller’s identity as the social media profile itself can be fake as well."
+      },
+      "1": {
+        "text": "B. Share personal information about your family to confirm their identity.",
+        "explanation": "Choice B is incorrect. Do not share any of your or your family's personal information with the caller. Doing so will only provide more information to the scammer, which could be used against you."
+      },
+      "2": {
+        "text": "C. Contact your grandchild or their parents through a known method to confirm they called you.",
+        "explanation": "Choice C is correct. This strategy allows you to bypass the potentially spoofed phone number and contact your grandchild or their parents directly through a separate verified method (like their known personal phone number, email, etc.). Also,  you can double-check if your grandchild genuinely tried to call you and was truly in need of help as the caller claimed. Therefore, do not take any action until you have confirmed the caller's identity with a separate method."
+      },
+      "3": {
+        "text": "D. Establish a secret word or question that only your grandchild would know the answer to.",
+        "explanation": "Choice D is correct. Establishing a secret word or question provides a secure method of verification that only your actual grandchild would be able to answer correctly. It helps to prevent falling victim to impostors who may claim to be your grandchild over the phone."
+      }
+    },
+    "correctResponse": ["2", "3"],
+    "theAnswers": "C, D"
+  },
+  "4": {
+    "progress": 73,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "4. When answering a call, the caller addresses you as grandpa/grandma, what should you do? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Feel happy and provide your grandchild's name, assuming they want you to guess it.",
+        "explanation": "Choice A is incorrect. It's understandable to feel happy when receiving a call from a grandchild. However, if they address you generically, it's safer to have them state their name first. Given the prevalence of grandparent scams, instruct your grandchildren to proactively identify themselves when calling, instead of prompting you to guess their name. Therefore, if someone asks you to guess their identity, it should raise an alert."
+      },
+      "1": {
+        "text": "B. Do not mention any of your grandchildren’s names; wait for the caller to state the name themselves.",
+        "explanation": "Choice B is correct. This generic greeting could be a reg flag for grandparent scams, so do not tell them your grandchild name; wait for the caller to give the name."
+      },
+      "2": {
+        "text": "C. If they respond as “your favorite grandson/granddaughter” without stating their name, wait for them to provide it themselves",
+        "explanation": "Choice C is correct. The caller first used a generic greeting, and If you ask their name and they still don’t give it, responding something like “I am your favorite grandson”, or asking you to guess, do not give any names! This is a major red flag of a grandparent scam."
+      },
+      "3": {
+        "text": "D. Using your pre-established secret codeword to verify the caller’s identity, if you have one.",
+        "explanation": "Choice D is correct. Using a secret codeword or question is an efficient way to verify the caller’s identity. Even with plenty of your personal information, it is highly unlikely the scammers would know your secret word or the answers to a specific question known only to your grandchild. If you don’t have one yet, create one now."
+      }
+    },
+    "correctResponse": ["1", "2", "3"],
+    "theAnswers": "B, C, D"
+  },
+  "5": {
+    "progress": 80,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "5. If a caller claims to be an official from the police department, how should you respond? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Ask for their identification number",
+        "explanation": "Choice A is incorrect. Asking for their identification number alone does not guarantee the caller is legitimate, as scammers can easily provide fake or misleading information over the phone."
+      },
+      "1": {
+        "text": "B. Follow the caller’s request as they claim they are a police officer",
+        "explanation": "Choice B is incorrect. Blindly following the caller's request, even if they claim to be a police officer, can be extremely risky. Scammers often impersonate authority figures to increase perceived legitimacy and pressure targets into compliance. It's important to verify the caller's identity by initiating a separate call to confirm their legitimacy."
+      },
+      "2": {
+        "text": "C. Initiate a separate call to the police department to verify the caller’s identity",
+        "explanation": "Choice C is correct. You should always verify the person’s identity through a separate call. Also, do not use the number provided by the caller; instead, find the official number from a reliable source such as their official website. Contacting the police department directly is a reliable method."
+      },
+      "3": {
+        "text": "D. Discuss the situation with your family member before you make any decisions",
+        "explanation": "Choice D is correct. In addition to contacting the police department directly, you should also talk to your family members. They can not only help you confirm whether the caller's claim is true or a scam, but also help you avoid making impulsive decisions in response to a potentially urgent or distressing situation."
+      }
+    },
+    "correctResponse": ["2", "3"],
+    "theAnswers": "C, D"
+  },
+  "6": {
+    "progress": 86,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "6. If you suspect the caller is not your loved one, and the caller asks you for money, what should you do? Select all that apply.",
+    "choices": {
+      "0": {
+        "text": "A. Stop talking with the caller immediately and report him",
+        "explanation": "Choice A is correct. If you have any suspicions about the caller, you should end the conversation immediately. You should also report the caller and inform your family members about this incident to ensure your safety."
+      },
+      "1": {
+        "text": "B. Stop talking with the caller immediately and call your family member to verify the incident",
+        "explanation": "Choice B is correct. If you have any suspicions about the caller, you should end the conversation immediately. You should also report the caller and inform your family members about this incident to ensure your safety."
+      },
+      "2": {
+        "text": "C. Keep talking with the caller to find out what happened.",
+        "explanation": "Choice C is incorrect. If you are already suspicious of this caller, it is important to end the conversation. You can then contact your family members to find out what happened. Scammers can be very persuasive, so it is crucial not to risk your safety."
+      },
+      "3": {
+        "text": "D. Give the money to the caller if you think it is necessary.",
+        "explanation": "Choice D is incorrect. Never give money to someone you already suspect."
+      }
+    },
+    "correctResponse": ["0", "1"],
+    "theAnswers": "A, B"
+  }
+}

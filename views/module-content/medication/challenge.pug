@@ -26,9 +26,9 @@ block styles
 block scripts      
     script.
         //- send as json with all avatars speech marks
-        var speechData = !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
+        var speechData = 'none' // quizData is passed to pug file via render function in app.js
 
-        //- var speechData= !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
+        //- var speechData= 'none' // quizData is passed to pug file via render function in app.js
         var avatar = "#{user.avatar.toLowerCase()}";
         var module = "#{module}";
         var section = "#{section}";
