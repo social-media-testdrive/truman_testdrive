@@ -1,76 +1,80 @@
 {
   "1": {
-    "progress": 66,
+    "progress": 20,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "1. In grandparent scams, what information do scammers try to find online? Select all that apply.",
+    "prompt": "1. How do scammers make their products seem safe and trustworthy? Select all that apply:",
     "choices": {
       "0": {
-        "text": "A. Personal details about the target",
-        "explanation": "Choice A is correct. Personal information about the target, such as their name, age and address, is the most basic information used by scammers in grandparent scams."
+        "text": "A. By using terms like 'FDA registered' or 'FDA certified'",
+        "explanation": "Choice A is correct. Scammers often use FDA regulatory terms like 'FDA registered' or 'FDA certified' to make products seem official and legitimate. However, these terms do not denote FDA approval nor guarantee the safety, efficacy, and quality of the product."
       },
       "1": {
-        "text": "B. Target’s social security number",
-        "explanation": "Choice B is incorrect. In grandparent scams, the scammer tends to use information about the target or the target’s family relationships to construct convincing narratives. Although social security numbers count as sensitive information and are often used in identity theft or other types of fraud, they are not typically used in grandparent scams."
+        "text": "B. By providing clinical trial data or third-party testing results",
+        "explanation": "Choice B is incorrect. Scammers rarely provide genuine clinical evidence to support their claims. They may make claims that their product is 'clinically tested' or 'clinically proven,' even when this is not true. Even if they do provide some evidence, it is usually fake or altered."
       },
       "2": {
-        "text": "C. Target’s recent life events",
-        "explanation": "Choice C is correct. In grandparent scams, scammers often use information about the target or their family relationships to craft convincing stories. Incorporating details about the target's recent life events can add credibility and foster more trust in the targets."
+        "text": "C. By offering free consultation with state-licensed physicians or pharmacists",
+        "explanation": "Choice C is incorrect. Although scammers may offer free consultations, it’s likely that these individuals are not actually licensed to give legitimate medical advice."
       },
       "3": {
-        "text": "D. Grandchild’s name",
-        "explanation": "Choice D is correct. Scammers may find out the name of the target’s grandchild. By using the grandchild's name, scammers can more convincingly pose as the target’s grandchild or a trusted family member, increasing the emotional impact on the target."
+        "text": "D. By featuring fake testimonials from supposed past buyers or healthcare providers",
+        "explanation": "Choice D is correct. Scammers often use fake testimonials to mislead consumers into believing the product is effective and reputable."
       }
     },
-    "correctResponse": ["0", "2", "3"],
-    "theAnswers": "A, C, D"
+    "correctResponse": ["0", "3"],
+    "theAnswers": "A, D"
   },
   "2": {
-    "progress": 75,
+    "progress": 40,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "2. What are some common stories that scammers tell? Select all that apply.",
+    "prompt": "2. In this ad, what techniques are being used to mislead people? Select all that apply:",
     "choices": {
       "0": {
-        "text": "A. They have been involved in a car accident",
-        "explanation": "Choice A is correct. Grandparent scammers often manipulate grandparents' emotions by creating fake emergency situations to trick them into sending money. Common stories they use include fabricated car accidents, being falsely arrested in a foreign country, experiencing a medical crisis, or being kidnapped while traveling abroad. If you receive a call with such a frightening and urgent story, it's likely a scam. On the other hand, having a party with friends is not an emergency or fear-inducing situation, so it is usually not a part of scammers' deceptive stories."
+        "text": "A. The term 'all-natural' is used to suggest the product is automatically safe",
+        "explanation": "Choice A is correct. Scammers often exploit 'natural' to grab attention. This doesn't guarantee safety. Even deadly mushrooms are natural."
       },
       "1": {
-        "text": "B. They are arrested in a foreign country",
-        "explanation": "Choice B is correct. This is also an example of a fake emergency story."
+        "text": "B. The claim of 'zero side effects' is unrealistic and unverifiable",
+        "explanation": "Choice B is correct. It is unrealistic to guarantee that any supplement will have no side effects for everyone, as individual reactions to supplements can vary."
       },
       "2": {
-        "text": "C. They have a medical emergency",
-        "explanation": "Choice C is correct. This is also an example of a fake emergency story."
+        "text": "C. The term 'plant-based' is used to imply the product is inherently safer",
+        "explanation": "Choice C is correct. While plant-based supplements might be perceived as safer, they are not necessarily safer than synthetic ones. Scammers often use this perception to create a false sense of security."
       },
       "3": {
-        "text": "D. They are having a party with friends",
-        "explanation": "Choice D is incorrect. This is not an emergency story."
+        "text": "D. The advertisement makes an unrealistic promise of improved health and vitality for everyone.",
+        "explanation": "Choice D is correct. Promising guaranteed health improvements for all people is unrealistic and misleading, as individual responses to supplements can vary significantly."
       }
     },
-    "correctResponse": ["0", "1", "2"],
-    "theAnswers": "A, B, C"
+    "correctResponse": ["0", "1", "2", "3"],
+    "theAnswers": "A, B, C, D"
   },
   "3": {
-    "progress": 83,
-    "type": "abcd",
+    "progress": 60,
+    "type": "multi_select",
     "partial": "none",
-    "prompt": "3. What is Caller ID Spoofing?",
+    "prompt": "3. How do scammers exploit the placebo effect in medication scams?",
     "choices": {
-      "a": {
-        "text": "A. A special code that shows an email is safe to open."
+      "0": {
+        "text": "A. By including real effective ingredients that actually work",
+        "explanation": "Choice A is incorrect. Products used in medication scams rarely contain ingredients that provide real benefits. Instead, scammers make deceptive claims and exaggerated promises to induce the placebo effect."
       },
-      "b": {
-        "text": "B. A trick scammers use to pretend to be someone else."
+      "1": {
+        "text": "B. By encouraging you to research and verify their product claims",
+        "explanation": "Choice B is incorrect. Scammers typically discourage verification to keep their false claims from being exposed."
       },
-      "c": {
-        "text": "C. A way to keep your online purchases secure."
+      "2": {
+        "text": "C. By claiming their products have immediate and miraculous effects",
+        "explanation": "Choice C is correct. Scammers often make exaggerated claims about their products to persuade consumers of their effectiveness, even when they are not."
       },
-      "d": {
-        "text": "D. A tool to stop hackers from getting into your computer."
+      "3": {
+        "text": "D. By providing testimonials written by alleged doctors and scientists",
+        "explanation": "Choice D is correct. Scammers use fake testimonials from doctors and scientists to create a false sense of legitimacy, amplifying the placebo effect."
       }
     },
-    "explanation": "<h1>B is correct</h1><p>Caller ID spoofing is a technology that scammers use to hide their real phone numbers and make it seem like they are calling from a different number. They often impersonate trusted sources like banks or people known to the victim, aiming to deceive and trick individuals.</p>",
-    "correctResponse": "b"
+    "correctResponse": ["2", "3"],
+    "theAnswers": "C, D"
   }
 }

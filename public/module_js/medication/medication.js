@@ -640,49 +640,41 @@ function setLinks(currentPage) {
           backlink = baseurl + "reflection";
           nextlink = "/course-player?module=medication&section=techniques&page=objectives";
       }
-  } else if (section === "techniques") {
-      let baseurl = "/course-player?module=medication&section=techniques&page=";
-  
-      if (currentPage === "objectives") {
-        backlink =
-          "/course-player?module=medication&section=consequences&page=objectives";
-        nextlink = baseurl + "intro-video";
-      } else if (currentPage === "intro-video") {
+  } else if (section === "techniques") { 
+    let baseurl = "/course-player?module=medication&section=techniques&page=";
+
+    if (currentPage === "objectives") {
+        backlink = "/course-player?module=medication&section=consequences&page=objectives";
+        nextlink = baseurl + "emotion";
+    } else if (currentPage === "emotion") {
         backlink = baseurl + "objectives";
-        nextlink = baseurl + "data";
-      } else if (currentPage === "data") {
-        backlink = baseurl + "intro-video";
-        nextlink = baseurl + "avatar";
-      } else if (currentPage === "avatar") {
-        backlink = baseurl + "data";
-        nextlink = baseurl + "types";
-      } else if (currentPage === "types") {
-        backlink = baseurl + "avatar";
-        nextlink = baseurl + "grandchild";
-      } else if (currentPage === "grandchild") {
-        // pause audio player
-        $('audio.with-transcript').get(0).pause();
-
-        backlink = baseurl + "types";
-        nextlink = baseurl + "authority";
-      } else if (currentPage === "authority") {
-        // pause audio player
-        $('audio.with-transcript').get(1).pause();
-
-        backlink = baseurl + "grandchild";
-        nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
-        backlink = baseurl + "authority";
+        nextlink = baseurl + "misleading";
+    } else if (currentPage === "misleading") {
+        backlink = baseurl + "emotion";
+        nextlink = baseurl + "terminology";
+    } else if (currentPage === "terminology") {
+        backlink = baseurl + "misleading";
+        nextlink = baseurl + "activity";
+    } else if (currentPage === "activity") {
+        backlink = baseurl + "terminology";
+        nextlink = baseurl + "testimonial";
+    } else if (currentPage === "testimonial") {
+        backlink = baseurl + "activity";
+        nextlink = baseurl + "placebo";
+    } else if (currentPage === "placebo") {
+        backlink = baseurl + "testimonial";
         nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "reflection";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
+    } else if (currentPage === "quiz") {
+        backlink = baseurl + "placebo";
+        nextlink = baseurl + "reflection";
+    } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
-        nextlink =
-          "/course-player?module=medication&section=signs&page=objectives";
-      }
-    }else if (section === "signs") {
+        nextlink = baseurl + "takeaways";
+    } else if (currentPage === "takeaways") {
+        backlink = baseurl + "reflection";
+        nextlink = "/course-player?module=medication&section=signs&page=objectives";
+    }
+  }else if (section === "signs") {
       let baseurl = "/course-player?module=medication&section=signs&page=";
   
       if (currentPage === "objectives") {
