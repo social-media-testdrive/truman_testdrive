@@ -619,29 +619,28 @@ function setLinks(currentPage) {
       let baseurl = "/course-player?module=medication&section=consequences&page=";
   
       if (currentPage === "objectives") {
-        backlink =
-          "/course-player?module=medication&section=concepts&page=objectives";
-        nextlink = baseurl + "financial";
+          backlink = "/course-player?module=medication&section=concepts&page=objectives";
+          nextlink = baseurl + "financial";
       } else if (currentPage === "financial") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "emotional";
-      } else if (currentPage === "emotional") {
-        backlink = baseurl + "financial";
-        nextlink = baseurl + "targeted";
-      } else if (currentPage === "targeted") {
-        backlink = baseurl + "emotional";
-        nextlink = baseurl + "quiz";
+          backlink = baseurl + "objectives";
+          nextlink = baseurl + "health";
+      } else if (currentPage === "health") {
+          backlink = baseurl + "financial";
+          nextlink = baseurl + "targets";
+      } else if (currentPage === "targets") {
+          backlink = baseurl + "health";
+          nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
-        backlink = baseurl + "targeted";
-        nextlink = baseurl + "reflection";
+          backlink = baseurl + "targets";
+          nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
-        backlink = baseurl + "quiz";
-        nextlink = baseurl + "takeaways";
+          backlink = baseurl + "quiz";
+          nextlink = baseurl + "takeaways";
       } else if (currentPage === "takeaways") {
-        backlink = baseurl + "reflection";
-        nextlink = "/course-player?module=medication&section=techniques&page=objectives";
+          backlink = baseurl + "reflection";
+          nextlink = "/course-player?module=medication&section=techniques&page=objectives";
       }
-    } else if (section === "techniques") {
+  } else if (section === "techniques") {
       let baseurl = "/course-player?module=medication&section=techniques&page=";
   
       if (currentPage === "objectives") {

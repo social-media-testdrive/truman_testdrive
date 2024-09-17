@@ -11,11 +11,10 @@ block content
     .display-page.hidden
         include consequences/objectives.pug
         include consequences/financial.pug
-        include consequences/emotional.pug
-        include consequences/targeted.pug
-        //- include consequences/activity.pug
-        include consequences/reflection.pug
+        include consequences/health.pug
+        include consequences/targets.pug
         include consequences/quiz.pug
+        include consequences/reflection.pug
         include consequences/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/grandparent-narration/${section}/${page}_${user && user.avatar ? user.avatar.toLowerCase() : ''}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
 
