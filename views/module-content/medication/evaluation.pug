@@ -1,0 +1,190 @@
+extends ../../module_player_layout
+
+
+block content
+    //- button.ui.icon.button.m.left.right#volume-up-button
+    //-     i.volume.up.icon
+    .loading-screen-container(id="loadingScreen") 
+        .ui.active.inverted.dimmer
+            .ui.active.blue.large.elastic.loader 
+            h1 Loading...
+    .display-page.hidden
+        include evaluation/intro.pug
+        include evaluation/quiz.pug
+        include evaluation/badge.pug
+        include evaluation/reflection.pug
+        include evaluation/certificate.pug
+    audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
+
+
+block styles 
+    link(rel='stylesheet', href='/css/identity-theft.css')
+    link(rel='stylesheet', href='/css/learning-targets.css')
+    link(rel='stylesheet', href='/css/middle-aligned-layout.css')
+    link(rel='stylesheet', href='/css/dart_quiz.css')  
+    link(rel='stylesheet', href='/css/certificate.css')  
+    link(rel='stylesheet', href='/css/exampleEmail.css')  
+
+
+block scripts       
+    script.
+        var speechData = !{JSON.stringify(speechMarks)}; // quizData is passed to pug file via render function in app.js
+
+    //- script(src='/js/text2speech.js')  
+    script.
+        window.addEventListener('load', function() {
+            // Simulate a delayed loading process for demonstration
+            //- setTimeout(function() {
+                var loadingScreen = document.getElementById('loadingScreen');
+                //- if (loadingScreen) {
+                //-     loadingScreen.remove(); // Completely remove the loader when everything is loaded
+                //- }
+                loadingScreen.style.display = 'none'; // Hide the loader when everything is loaded
+
+                var revealMe = document.querySelector('.display-page');
+                revealMe.classList.remove('hidden'); // Show the content when everything is loaded
+                pageLoaded = true;
+            //- }, 6000); 
+        });
+    
+    script. 
+        var avatar = "#{user.avatar.toLowerCase()}";
+        var module = "#{module}";
+        var section = "#{section}";
+        var startPage = "#{page}"; 
+        var total = parseInt(#{numPages});
+    script.
+        //- for quiz
+        var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js
+        var currentTime = "#{currentTime}";
+        var currentDate = "#{currentDate}";
+        //- var futureDate = "#{futureDate}"; 
+        var email = "#{user.email}";
+        var username = "#{user.name}";
+        var current_percent = 10;
+        var link = "/course-player?module=identity&section=evaluate&page=badge";
+    script(src='/module_js/module-narration.js')    
+    script(src='/module_js/grandparent/medication.js')  
+
+
+    script(src='/module_js/module_quiz.js', mod-id=module, page=page, current-section=section, next-link=link, progress=progress)
+    script.
+        let accept_sending = false;
+        let final_response_number = 0;
+
+        $(document).ready(function() {
+            $('#send-button').click(function() {
+                if(accept_sending) {
+                    var userResponse = $('input#message-input').val();
+                    var messageText = document.getElementById("sent_message");
+                    messageText.innerHTML = userResponse;
+
+                    if (final_response_number == 1) {
+                        document.getElementById("experience_reply").style.display = "";
+                    } else if (final_response_number == 2) {
+                        document.getElementById("sus_reply").style.display = "";
+                    }
+
+                    // Scroll the chat container to the bottom
+                    $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+
+                    $('input#message-input').val('');        
+                }
+
+                // disable sending messages after the user has sent a message
+                accept_sending = false;
+            });
+        });
+
+        // event listener to the input field submitting via enter key
+        document.getElementById('message-input').addEventListener('keypress', function(event) {
+            // Check if the enter key is pressed (key code 13)
+            if (event.keyCode === 13 && accept_sending) {
+                // Get the input value
+                var inputValue = this.value;
+
+                var messageText = document.getElementById("sent_message");
+                messageText.innerHTML = inputValue;
+
+                if (final_response_number == 1) {
+                    document.getElementById("experience_reply").style.display = "";
+                } else if (final_response_number == 2) {
+                    document.getElementById("sus_reply").style.display = "";
+                }
+
+                // Scroll the chat container to the bottom
+                $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+
+                // Clear the input field
+                this.value = '';
+
+                // disable sending messages after the user has sent a message
+                accept_sending = false;
+            }
+        });
+
+        function showTopic(name){
+            var showMe = document.getElementById("encounter_text");
+            showMe.innerHTML = name;
+            document.getElementById("encounter_label").style.display = "flex";
+
+            var hideMe = document.getElementById("encounter_response");
+            hideMe.style.visibility = "hidden";
+
+            if (name == "No") {
+                document.getElementById("no_reply").style.display = "";
+            }
+
+            if (name == "Yes") {
+                document.getElementById("yes_reply").style.display = "";
+                document.getElementById("final_label").style.display = "flex";
+                accept_sending = true;
+                final_response_number = 1;
+            }
+
+            if (name == "I'm not sure") {
+                document.getElementById("sure_reply").style.display = "";
+                document.getElementById("final_label").style.display = "flex";
+                accept_sending = true;
+                final_response_number = 2;
+            }
+
+            // Scroll the chat container to the bottom
+            $('.chat-container').scrollTop($('.chat-container')[0].scrollHeight);
+        }
+    script.
+        const formattedDate = formatDate(currentDate);
+
+        $("#date").html(formattedDate);
+        //- var button = document.getElementById("download-button");
+        //- var makepdf = document.getElementById("cert");
+
+        //- button.addEventListener("click", function () {
+        //-     html2pdf().from(makepdf).save();
+        //- });
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            return new Date(date).toLocaleDateString('en-US', options);
+        }
+        function createPDF() {
+            // can only create one cert, so hide creation button now that one is being made
+            $('#completeContainer').css('display', 'none');
+
+            // generate the certificate, filling in name, date, and time html
+            //- userInput = document.getElementById("inputName").value;
+            //- document.getElementById("cert-name").innerHTML = userInput;
+
+
+            let fileName = "Grandparent Scams Certificate.pdf" 
+
+            // download a pdf of the certificate
+            var makepdf = document.getElementById("cert");
+            var opt = {
+                margin:       1,
+                filename:     fileName.replaceAll(" ", "_"),
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'landscape' }
+            };
+            html2pdf().set(opt).from(makepdf).save();
+        }

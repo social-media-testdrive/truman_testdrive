@@ -1,0 +1,29 @@
+#takeaways.hidden
+    .ui.container#reflection-read
+        .limit#learn-target(style="padding: 0;")
+            .ui.stackable.grid.middle.aligned
+                .ten.wide.column
+                    h1.ui.header.large#learn-title
+                        .content#great-job
+                            i.award.icon
+                            span#narrate-title-takeaways Congratulations!
+                    #text
+                        p#narrate-1-takeaways 
+                            span You've completed "Techniques" and earned a bronze badge!  
+                        p#narrate-2-takeaways 
+                            span You now know:
+                        .ui.bulleted.list
+                            .item#narrate-3-takeaways(style="line-height: 1rem;")
+                                span Fabricated emergencies scammers use to pressure victims
+                            .item#narrate-4-takeaways(style="line-height: 1rem;")
+                                span How scammers manipulate victims into sending money
+                            .item#narrate-5-takeaways(style="line-height: 1rem;")
+                                span Techniques scammers use to impersonate loved ones 
+                        p#narrate-6-takeaways 
+                            span This knowledge will help you keep yourself and others safe from grandparent scams.
+                .six.wide.center.aligned.column
+                    img.ui.small.centered.image#earned_badge(src= public_resources + '/badges/identity/trained_tactician.svg' onmouseenter="animateBadge()" style="margin-bottom: -10px; width: 125px;")
+                    h3 <strong>Trained</strong>
+                        br
+                        | <strong>Tactician</strong>
+            audio(id="unlockBadge", src="/sound/unlock.wav", preload="auto")

@@ -1,0 +1,46 @@
+#voice.hidden
+    .ui.container
+        .limit(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.book.icon
+                    span#narrate-title-voice Voice Sounding Different
+            .ui.centered.stackable.grid
+                .eight.wide.column
+                    p
+                        span#narrate-1-voice 
+                            span When you answer the phone, if you feel their voice does not sound the same as it usually does, 
+                        strong#narrate-2-voice 
+                            span be alert!!
+                    p 
+                        strong#narrate-3-voice  
+                            span They may claim that: 
+
+                    .ui.bulleted.list
+                        .item#narrate-4-voice  
+                            span They are sick. 
+                        .item#narrate-5-voice  
+                            span Their phone line quality is poor.
+                        .item#narrate-6-voice  
+                            span They need to talk quietly because they are hiding and trying to disguise themselves or not be heard by others.
+
+                .eight.wide.column
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/sick.mp3" type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/sick.mp3")
+                                li.speaker1.current(data-timecode="00:00") Scammer: *sneeze* *sneeze*
+                                li.speaker2(data-timecode="00:03") Grandparent: Hello?
+                                li.speaker1(data-timecode="00:04") Scammer: Grandma, is that you?
+                                li.speaker2(data-timecode="00:06") Grandparent: Yes, who is this?
+                                li.speaker1(data-timecode="00:08") Scammer: It's me, Grandma—your granddaughter.
+                                li.speaker2(data-timecode="00:11") Grandparent: Oh my dear, you sound terrible. What's happened?
+                                li.speaker1(data-timecode="00:14") Scammer: I'm sorry, Grandma. I'm in the hospital. I've been really sick, and it’s hard to talk.
+
+
+
