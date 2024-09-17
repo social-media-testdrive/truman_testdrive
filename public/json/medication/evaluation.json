@@ -22,58 +22,6 @@
       "correctResponse": ["0", "1", "2", "3"],
       "theAnswers": "A, B, C, D"
   },
-  "2": {
-      "progress": 20,
-      "type": "multi_select",
-      "partial": "none",
-      "prompt": "2. What are some common techniques scammers use to pressure targets into sending them money? Select all that apply.",
-      "choices": {
-          "0": {
-              "text": "A. Crying and begging for help",
-              "explanation": "Choice A is correct. Scammers often use emotional manipulation to pressure the target into sending money right away. Scammers might cry and beg for help to make the target think their grandchild or loved one is in pain or in a terrible situation, exploiting the target’s fear and desire to help."
-          },
-          "1": {
-              "text": "B. Promising rewards or prizes if you send money immediately",
-              "explanation": "Choice B is incorrect. In grandparent scams, scammers will not try to entice you into sending money by promising fake rewards or prizes."
-          },
-          "2": {
-              "text": "C. Sounding frightened and in an urgent situation",
-              "explanation": "Choice C is correct. Scammers often attempt to create a sense of urgency and fear in their victims to coerce them into sending money. Sounding frightened and in an urgent situation is another commonly used technique of emotional manipulation."
-          },
-          "3": {
-              "text": "D. Threatening that your grandchild will face serious charges.",
-              "explanation": "Choice D is correct. To pressure you to act fast, scammers attempt to manipulate your emotion by making threats. This technique aims to instill fear, leaving you with little time to think clearly so that you comply with their demands. Therefore, the more scared you feel, the more you need to stay calm and composed."
-          }
-      },
-      "correctResponse": ["0", "2", "3"],
-      "theAnswers": "A, C, D"
-  },
-  "3": {
-      "progress": 30,
-      "type": "multi_select",
-      "partial": "none",
-      "prompt": "3. When are individuals most vulnerable to being targeted by grandparent scammers? Select all that apply.",
-      "choices": {
-          "0": {
-              "text": "A. Late at night",
-              "explanation": "Choice A is correct. The initial contact from the scammer will often come late at night when people may be disoriented or less alert, making them more vulnerable to being confused or misled."
-          },
-          "1": {
-              "text": "B. During typical working hours",
-              "explanation": "Choice B is incorrect. Scammers are less likely to contact potential victims during working hours when people are more likely to be active, alert, and busy. Nevertheless, it’s important to remain cautious as some scammers might contact potential victims during the day."
-          },
-          "2": {
-              "text": "C. During family gatherings or celebrations",
-              "explanation": "Choice C is incorrect. Scammers will often choose moments when people are more likely to be vulnerable, tired, or distressed, rather than when they are distracted by festivities and surrounded by other people."
-          },
-          "3": {
-              "text": "D. During times of natural disasters or adverse weather",
-              "explanation": "Choice D is correct. Scammers are likely to contact potential victims during times of crises, such as natural disasters or bad weather, when people are already in a heightened state of worry for their loved ones’ safety and therefore more likely to fall for the scammer’s claims and stories."
-          }
-      },
-      "correctResponse": ["0", "3"],
-      "theAnswers": "A, D"
-  },
   "4": {
       "progress": 40,
       "type": "abcd",
@@ -95,32 +43,6 @@
       },
       "explanation": "<h1>The correct answer is C.</h1><p>In this conversation, the scammer strongly emphasizes \"don't tell the parents\" with the excuse of \"don't want to worry them.\" By explicitly instructing the grandparent not to inform the parents/family, the scammer is demanding secrecy. This tactic isolates the victim from others who may identify it as a scam if the circumstances were discussed. Therefore, the correct answer is C. Demand for Secrecy.</p>",
       "correctResponse": "c"
-  },
-  "5": {
-      "progress": 50,
-      "type": "multi_select",
-      "partial": "audio_q5.html",
-      "prompt": "5. According to this conversation, what red flags did you notice that can indicate the caller is a scammer? Select all that apply.",
-      "choices": {
-          "0": {
-              "text": "A. A Fear Inducing and Urgent Scenario",
-              "explanation": "Choice A is correct. The scammer creates a fearful and urgent scenario about hitting a pregnant woman and potentially going to jail to evoke an emotional reaction from the grandparent."
-          },
-          "1": {
-              "text": "B. Voice sounding Different",
-              "explanation": "Choice B is correct. When the grandparent says \"Brandon, it doesn't sound like you\", it indicates the voice sounds unnatural or different than expected."
-          },
-          "2": {
-              "text": "C. Demand for Secrecy",
-              "explanation": "Choice C is correct. The scammer explicitly states, \"Please don't call my mom and dad, because I don't want them to know,\" demanding secrecy from the grandparents. This reduces the chance of the grandparents verifying the information with other family members."
-          },
-          "3": {
-              "text": "D. Pressure to Act Fast and Deter Questions",
-              "explanation": "Choice D is correct. By claiming there is an urgent need to take legal action through a \"friend's attorney\", the scammer is pressuring the grandparent to act fast without questioning the story further."
-          }
-      },
-      "correctResponse": ["0", "1", "2", "3"],
-      "theAnswers": "A, B, C, D"
   },
   "6": {
     "progress": 60,

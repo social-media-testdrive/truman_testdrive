@@ -1,0 +1,64 @@
+{
+    "1": {
+        "progress": 20,
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "1. When you receive a call, which scenarios could indicate a potential scam call? Select all that apply.",
+        "choices": {
+            "0": {
+                "text": "A. An unknown number"
+            },
+            "1": {
+                "text": "B. Call appears to be from the Police Department"
+            },
+            "2": {
+                "text": "C. Call appears to be from a law enforcement agency"
+            },
+            "3": {
+                "text": "D. Call appears to be from your grandchild"
+            }
+        },
+        "explanation": "<p>Due to the advanced technique of using caller ID spoofing, any call-even from familiar numbers–could be fake. Therefore, do not trust the caller solely based on the appearance of a valid number.</p>",
+        "correctResponse": ["0", "1", "2", "3"],
+        "theAnswers": "A, B, C, D"
+    },
+    "2":{
+      "progress": 40,
+      "type": "yes_no",
+      "partial": "q1.html",
+      "prompt": "1. Is it important to be careful about sharing your family’s information, including names, on social media?",
+      "choices": {
+        "yes": {
+          "text": "Yes"
+        },
+        "no": {
+          "text": "No"
+        }
+      },
+      "explanation": "<h1>Yes you should be careful when sharing these information.</h1><p>Being careful about sharing your family's information, like names, on social media helps protect your family's privacy and security. Scammers can use publicly available information to craft more believable stories and potentially target your family members.</p>",
+      "correctResponse": "yes"
+    },  
+    "3":{
+      "progress": 40,
+      "type": "abcd",
+      "partial": "q4.html",
+      "prompt": "4. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?",
+      "choices": {
+          "a": {
+              "text": "A. Inaccurate Family Details"
+          },
+          "b": {
+              "text": "B. Pressure to Act Fast and Deter Questions"
+          },
+          "c": {
+              "text": "C. Demand for Secrecy"
+          },
+          "d": {
+              "text": "D. Request for Untraceable Payment Methods"
+          }
+      },
+      "explanation": "<h1>The correct answer is C.</h1><p>In this conversation, the scammer strongly emphasizes \"don't tell the parents\" with the excuse of \"don't want to worry them.\" By explicitly instructing the grandparent not to inform the parents/family, the scammer is demanding secrecy. This tactic isolates the victim from others who may identify it as a scam if the circumstances were discussed. Therefore, the correct answer is C. Demand for Secrecy.</p>",
+      "correctResponse": "c"
+    }
+  
+  }
