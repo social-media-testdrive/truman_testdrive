@@ -1,55 +1,29 @@
 #prescription.hidden
-    .ui.container(style="width: 75%;")
+    .ui.container
         .limit(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
                     i.book.icon
-                    span#narrate-title-prescription Urgent Scenarios
+                    span#narrate-title-prescription Warning Sign 5: Prescription-Free Medications
             .ui.centered.stackable.grid
                 .eight.wide.column
-                    p#narrate-1-prescription  
-                        span Grandparent scammers often create a false sense of urgency to manipulate grandparents' emotions, making them feel extremely worried and compelled to take immediate action.
+                    p
+                        span#narrate-1-prescription  
+                            span If a website (or online pharmacy) claims that 
+                        b
+                            span#narrate-2-prescription 
+                                span you can purchase a prescription-only medicine without a doctor’s prescription, 
 
-                    .ui.bulleted.list
-                        .item
-                            span#narrate-2-prescription  
-                                span They'll try to make it 
-                            b#narrate-3-prescription   
-                                span sound extremely frightening and urgent.
-                        .item
-                            span#narrate-4-prescription   
-                                span The scammer may 
-                            b#narrate-5-prescription   
-                                span act very upset, cry, and beg for help.
+                        span#narrate-3-prescription  
+                            span it’s most likely a scam [18]. A properly licensed online pharmacy will never sell prescription medicines without a valid prescription. 
 
-
-                    p#narrate-6-prescription 
-                        span If a phone call instills an acute feeling of prescription or urgency, it could be a warning sign of grandparent scams.
-                    em#narrate-7-prescription 
-                        span Hang up immediately, then make separate phone calls to other family members to verify the information.
 
 
                 .eight.wide.column
+                        img.ui.image(src=public_resources+'/images/shared_sources/filler.png')
 
-                        
-                    div.ui.header
-                        i.phone.volume.icon
-                        | Audio Example
-                    .audio-player
-                        .wrap
-                            audio#audio.with-transcript(controls)
-                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/prescription.mp3" type="audio/mpeg")
-                                | Your browser does not support the audio element.
-                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/prescription.mp3")
-                                li.speaker1.current(data-timecode="00:00") Grandparent: Hello
-                                li.speaker2(data-timecode="00:01") Scammer: Hello?
-                                li.speaker1(data-timecode="00:02") Grandparent: Yeah?
-                                li.speaker2(data-timecode="00:03") Scammer: Yes, is this Mrs. Smith?
-                                li.speaker1(data-timecode="00:04") Grandparent: It is
-                                li.speaker2(data-timecode="00:05") Scammer: I am David Pelzer, I am calling on behalf of the Legal Aid Society. I am the attorney that is assigned to your relative’s case
-                                li.speaker1(data-timecode="00:12") Grandparent: Okay
-                                li.speaker2(data-timecode="00:13") Scammer: Pretty much as Jimmy informed you, he was involved in a car accident. He has a fractured nose.
-                                li.speaker1(data-timecode="00:18") Grandparent: He told me he was okay
-                                li.speaker2(data-timecode="00:20") Scammer: Yeah he is, I mean he has a fractured nose. The lady in the other vehicle got injured, and she was released from the hospital which is obviously good news. Now, when the authorities arrive on an accident scene, they perform what is called a breathalyzer test, that he failed. Jimmy had an alcohol content of .10. The legal limit is .08.
-                                li.speaker1(data-timecode="00:38") Grandparent: He was drinking and driving?
-                                li.speaker2(data-timecode="00:39") Scammer: Yes. But I spoke to the judge handling the matter. Because Jimmy has a clean record, if we are able to post his bond, the judge will dismiss his reckless endangerment charge.
+        br
+        br
+        br
+        i.source(style="position: relative; top: -50px;") [18] Considering an Online Pharmacy?. Food and Drug Administration (FDA). 
+            a(href='https://www.fda.gov/drugs/besaferx-your-source-online-pharmacy-information/considering-online-pharmacy' target='_blank') https://www.fda.gov/drugs/besaferx-your-source-online-pharmacy-information/considering-online-pharmacy 

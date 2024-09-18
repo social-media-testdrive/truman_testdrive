@@ -651,13 +651,9 @@ function setLinks(currentPage) {
         backlink = baseurl + "satisfaction";
         nextlink = baseurl + "prescription";
     } else if (currentPage === "prescription") {
-        $('audio.with-transcript').get(0).pause();
-
         backlink = baseurl + "promotion";
         nextlink = baseurl + "payment";
     } else if (currentPage === "payment") {
-        $('audio.with-transcript').get(1).pause();
-
         backlink = baseurl + "prescription";
         nextlink = baseurl + "quiz";
     } else if (currentPage === "quiz") {
@@ -671,47 +667,46 @@ function setLinks(currentPage) {
         nextlink = "/course-player?module=medication&section=protection&page=objectives";
     }
 }else if (section === "protection") {
-      let baseurl = "/course-player?module=medication&section=protection&page=";
-  
-      if (currentPage === "objectives") {
-        backlink =
-          "/course-player?module=medication&section=signs&page=objectives";
-        nextlink = baseurl + "intro-video";
-      } else if (currentPage === "intro-video") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "fundamental-measures";
-      } else if (currentPage === "fundamental-measures") {
-        backlink = baseurl + "intro-video";
-        nextlink = baseurl + "contacted";
-      }
-      else if (currentPage === "contacted") {
-        backlink = baseurl + "fundamental-measures";
+  let baseurl = "/course-player?module=medication&section=protection&page=";
 
-        nextlink = baseurl + "reactive";
-      } else if (currentPage === "reactive") {
-        backlink = baseurl + "contacted";
-        nextlink = baseurl + "accident";
-      } else if (currentPage === "accident") {
-        backlink = baseurl + "reactive";
-        nextlink = baseurl + "post-actions";
-      } else if (currentPage === "post-actions") {
-        backlink = baseurl + "accident";
-        nextlink = baseurl + "activity";
-      } else if (currentPage === "activity") {
-        backlink = baseurl + "post-actions";
-        nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "activity";
-        nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
-        backlink = baseurl + "quiz";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
-        backlink = baseurl + "reflection";
-        nextlink =
-          "/course-player?module=medication&section=practice&page=objectives";
-      }
-    } else if (section === "practice") {
+  if (currentPage === "objectives") {
+      backlink = "/course-player?module=medication&section=signs&page=objectives";
+      nextlink = baseurl + "methods";
+  } else if (currentPage === "methods") {
+      backlink = baseurl + "objectives";
+      nextlink = baseurl + "sources";
+  } else if (currentPage === "sources") {
+      backlink = baseurl + "methods";
+      nextlink = baseurl + "types";
+  } else if (currentPage === "types") {
+      backlink = baseurl + "sources";
+      nextlink = baseurl + "verify1";
+  } else if (currentPage === "verify1") {
+      backlink = baseurl + "types";
+      nextlink = baseurl + "verify2";
+  } else if (currentPage === "verify2") {
+      backlink = baseurl + "verify1";
+      nextlink = baseurl + "doctor";
+  } else if (currentPage === "doctor") {
+      backlink = baseurl + "verify2";
+      nextlink = baseurl + "postScam";
+  } else if (currentPage === "postScam") {
+      backlink = baseurl + "doctor";
+      nextlink = baseurl + "report";
+  } else if (currentPage === "report") {
+      backlink = baseurl + "postScam";
+      nextlink = baseurl + "quiz";
+  } else if (currentPage === "quiz") {
+      backlink = baseurl + "report";
+      nextlink = baseurl + "reflection";
+  } else if (currentPage === "reflection") {
+      backlink = baseurl + "quiz";
+      nextlink = baseurl + "takeaways";
+  } else if (currentPage === "takeaways") {
+      backlink = baseurl + "reflection";
+      nextlink = "/course-player?module=medication&section=practice&page=objectives";
+  }
+}else if (section === "practice") {
       let baseurl = "/course-player?module=medication&section=practice&page=";
   
       if (currentPage === "objectives") {

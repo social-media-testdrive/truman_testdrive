@@ -1,55 +1,45 @@
 #payment.hidden
-    .ui.container(style="width: 70%;")
+    .ui.container
         .limit(style="padding: 0;")
             h1.ui.header.large#learn-title
                 .content
                     i.book.icon
-                    span#narrate-title-payment Request for Untraceable Payment Methods
+                    span#narrate-title-payment Warning Sign 6: Untraceable Payment Methods
             .ui.centered.stackable.grid
-                .ten.wide.column
-                    p 
-                        span#narrate-1-payment 
-                            span When the caller demands payment 
-                        strong#narrate-2-payment  
-                            span via cash, gift cards, wire transfers, or even cryptocurrency, 
+                .eight.wide.column
+                    p
+                        span#narrate-1-payment  
+                            span If the 
+                        b
+                            span#narrate-2-payment 
+                                span website only accepts cryptocurrency 
+
                         span#narrate-3-payment  
-                            span it is a warning sign for a grandparent scam. 
-                    p 
-                        span#narrate-4-payment  
-                            span The scammer may claim these untraceable payment methods allow for faster transfers than checks. 
-                        span#narrate-5-payment  
-                            span However, this excuse creates a false sense of urgency to pressure you into sending money quickly. 
-                        em#narrate-6-payment  
-                            span Do not use any untraceable payment methods they suggest.
+                            span (e.g., bitcoin) or transactions through 
+                        b#narrate-4-payment
+                            span peer-to-peer (P2P) payment apps
+                        span#narrate-5-payment 
+                            span (e.g., Venmo, Cash App, Zelle), or 
+                        b#narrate-6-payment
+                            span offer discounts on purchases made using these payment methods. 
+                        span#narrate-7-payment
+                            span Be alert! [21]
+                    p#narrate-8-payment 
+                        span Scammers prefer these payment methods because these transactions are often immediate, irreversible, and untraceable. 
 
-                    .callout
-                        .dark-blue-square
-                            img(src=user.avatarImg, alt='avatar picture')
-                        .light-blue-content
-                            h3.call-header#narrate-7-payment  
-                                span Important
-                            p#narrate-8-payment  
-                                span The real reason scammers demand these methods is that:
-                            .ui.bulleted.list
-                                .item(style="margin-top: -10px;")#narrate-9-payment  
-                                    span The money cannot be reversed or recovered once sent 
-                                .item#narrate-10-payment  
-                                    span Anonymous payments make it easier for scammers to avoid being traced or caught
+                    p
+                        span#narrate-9-payment
+                            span Some scammers provide a seemingly real credit card option. 
+                        span#narrate-10-payment
+                            span However, it always displays an error, then forcing you to use a sketchier payment method. Do not pay through it.
 
-                .six.wide.column
-                    div.ui.header
-                        i.phone.volume.icon
-                        | Audio Example
-                    .audio-player
-                        .wrap
-                            audio#audio.with-transcript(controls)
-                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/untrace.mp3" type="audio/mpeg")
-                                | Your browser does not support the audio element.
-                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/untrace.mp3" style="max-height: 200px;")
-                                li.speaker1.current(data-timecode="00:00") Scammer: I'm at the store, Grandpa. They have the phone I need, but I can't pay for it.
-                                li.speaker2(data-timecode="00:05") Grandpa: What do I need to do?
-                                li.speaker1(data-timecode="00:06") Scammer: Grandpa, I need you to buy a gift card for me. Can you do it?
-                                li.speaker2(data-timecode="00:09") Grandpa: A gift card? Why?
-                                li.speaker1(data-timecode="00:12") Scammer: Yes, Grandpa. Buy an iTunes gift card for $500. I'll use it to purchase the phone online.
-                                li.speaker2(data-timecode="00:18") Grandpa: Alright, I'll try. How do I do that?
-                                li.speaker1(data-timecode="00:21") Scammer: Just go to the store and ask for an iTunes gift card. Once you have it, scratch off the back to reveal the code, and then text me the code. I'll take care of the rest.
+
+
+                .eight.wide.column
+                        img.ui.image(src=public_resources+'/images/shared_sources/filler.png')
+
+        br
+        br
+        br
+        i.source(style="position: relative; top: -50px;") [18] Considering an Online Pharmacy? Food and Drug Administration (FDA). 
+            a(href='https://www.fda.gov/drugs/besaferx-your-source-online-pharmacy-information/considering-online-pharmacy' target='_blank') https://www.fda.gov/drugs/besaferx-your-source-online-pharmacy-information/considering-online-pharmacy 
