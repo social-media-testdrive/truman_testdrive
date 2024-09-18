@@ -1,9 +1,83 @@
 {
   "1": {
-    "progress": 53,
+    "progress": 20,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. How can you avoid medication scams? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. Always try new treatments as soon as they become available on the market.",
+        "explanation": "Choice A is incorrect. Trying new treatments without thorough research and consultation can be risky and may expose you to scams."
+      },
+      "1": {
+        "text": "B. Speak with your healthcare provider before trying new treatments.",
+        "explanation": "Choice B is correct. Consulting your healthcare provider helps ensure the safety and effectiveness of new treatments and reduces the risk of falling victim to scams."
+      },
+      "2": {
+        "text": "C. Ask yourself, 'Does this claim sound too good to be true?'",
+        "explanation": "Choice C is correct. If a claim sounds too good to be true, it often is. Being skeptical can help you identify and avoid potential scams."
+      },
+      "3": {
+        "text": "D. Trust treatments endorsed by celebrities.",
+        "explanation": "Choice D is incorrect. Celebrity endorsements do not guarantee the safety and effectiveness of a treatment."
+      }
+    },
+    "correctResponse": ["1", "2"],
+    "theAnswers": "B, C"
+  },
+  "2": {
+    "progress": 40,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "2. How can you verify if a drug claiming to be FDA-approved is actually FDA-approved?",
+    "choices": {
+      "a": {
+        "text": "A. Search for the drug’s name in FDA’s public database, Drugs@FDA"
+      },
+      "b": {
+        "text": "B. Look for FDA regulatory terms like FDA-cleared, FDA-listed, or FDA-registered"
+      },
+      "c": {
+        "text": "C. Check the drug’s marketing status (prescription, over-the-counter, or discontinued)"
+      },
+      "d": {
+        "text": "D. Check if the drug manufacturer adheres to cGMP (current good manufacturing practices) regulations"
+      }
+    },
+    "explanation": "<h1>The correct answer is A.</h1><p>Drugs@FDA is a public database that contains information about drug products approved by the FDA since 1939.</p>",
+    "correctResponse": "a"
+  },
+  "3": {
+    "progress": 60,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "3. Which of the following are green flags that an online pharmacy is legitimate and safe? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. The pharmacy is licensed in the state where it operates, as well as in the state from which you are ordering, if they are different.",
+        "explanation": "Choice A is correct. Licensing ensures that the pharmacy complies with state regulations and standards, protecting consumers from counterfeit or unsafe medications."
+      },
+      "1": {
+        "text": "B. A licensed pharmacist is available to answer questions or concerns",
+        "explanation": "Choice B is correct. Legitimate online pharmacies have a licensed pharmacist on staff to provide guidance and ensure that patients receive safe and appropriate advice."
+      },
+      "2": {
+        "text": "C. A valid prescription from a licensed healthcare provider is required to purchase prescription medicines",
+        "explanation": "Choice C is correct. Requiring a valid prescription ensures that medications are dispensed based on a healthcare provider’s assessment, ensuring safety and appropriateness."
+      },
+      "3": {
+        "text": "D. The pharmacy has a verifiable physical address and phone number within the United States",
+        "explanation": "Choice D is correct. A physical address and phone number indicate that the pharmacy is operating within U.S. jurisdiction and subject to U.S. regulations."
+      }
+    },
+    "correctResponse": ["0", "1", "2", "3"],
+    "theAnswers": "A, B, C, D"
+  },
+  "4": {
+    "progress": 80,
     "type": "yes_no",
-    "partial": "q1.html",
-    "prompt": "1. Is it important to be careful about sharing your family’s information, including names, on social media?",
+    "partial": "none",
+    "prompt": "4. Jason found a website that sells dietary supplements that help relieve back and joint pain. The website claims that the product is FDA-approved. Should Jason trust this claim?",
     "choices": {
       "yes": {
         "text": "Yes"
@@ -12,133 +86,59 @@
         "text": "No"
       }
     },
-    "explanation": "<h1>Yes you should be careful when sharing these information.</h1><p>Being careful about sharing your family's information, like names, on social media helps protect your family's privacy and security. Scammers can use publicly available information to craft more believable stories and potentially target your family members.</p>",
-    "correctResponse": "yes"
+    "explanation": "<h1>The correct answer is No.</h1><p>Jason should not trust the claim that the product is FDA-approved because the FDA does not approve dietary supplements for safety or effectiveness.</p>",
+    "correctResponse": "no"
   },
-  "2": {
-    "progress": 60,
-    "type": "abcd",
-    "partial": "none",
-    "prompt": "2. What is a recommended action to help protect yourself from scammers using information from your social media accounts?",
-    "choices": {
-      "a": {
-        "text": "A. Share your family's information, including names, on social media to keep your profile engaging."
-      },
-      "b": {
-        "text": "B. Set your social media to private and be cautious about what information you share online."
-      },
-      "c": {
-        "text": "C. Share your personal details openly to connect with more people on social media."
-      },
-      "d": {
-        "text": "D. Ignore privacy settings on social media to ensure your account is accessible to everyone."
-      }
-    },
-    "explanation": "<h1>B is correct</h1><p>Setting your social media accounts to private limits who can see your posts and personal information, reducing the amount of information scammers can access to craft their stories. Being cautious about what information you share online also helps prevent scammers from using your personal details against you.</p>",
-    "correctResponse": "b"
-  },
-  "3": {
-    "progress": 67,
+  "5": {
+    "progress": 100,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "3. Which are recommended strategies to verify the identity of a caller claiming to be your grandchild? Select all that apply.",
+    "prompt": "5. What should you do if you realize you’ve been scammed after paying for a fraudulent product? Select all that apply:",
     "choices": {
       "0": {
-        "text": "A. Ask them to provide their social media profile information.",
-        "explanation": "Choice A is incorrect. Knowing the unknown caller’s social media profile information cannot verify the caller’s identity as the social media profile itself can be fake as well."
+        "text": "A. Ignore the situation and hope it resolves itself.",
+        "explanation": "Choice A is incorrect. Ignoring the situation is not advisable. It’s important to take appropriate steps to protect your financial information and prevent further loss."
       },
       "1": {
-        "text": "B. Share personal information about your family to confirm their identity.",
-        "explanation": "Choice B is incorrect. Do not share any of your or your family's personal information with the caller. Doing so will only provide more information to the scammer, which could be used against you."
+        "text": "B. Contact your credit card company or bank immediately.",
+        "explanation": "Choice B is correct. Your bank or credit card company may be able to reverse the transaction and refund your money, though this isn’t guaranteed."
       },
       "2": {
-        "text": "C. Contact your grandchild or their parents through a known method to confirm they called you.",
-        "explanation": "Choice C is correct. This strategy allows you to bypass the potentially spoofed phone number and contact your grandchild or their parents directly through a separate verified method (like their known personal phone number, email, etc.). Also,  you can double-check if your grandchild genuinely tried to call you and was truly in need of help as the caller claimed. Therefore, do not take any action until you have confirmed the caller's identity with a separate method."
+        "text": "C. Change your bank account password immediately.",
+        "explanation": "Choice C is correct. Changing your bank account password helps prevent scammers from making additional unauthorized charges to your account."
       },
       "3": {
-        "text": "D. Establish a secret word or question that only your grandchild would know the answer to.",
-        "explanation": "Choice D is correct. Establishing a secret word or question provides a secure method of verification that only your actual grandchild would be able to answer correctly. It helps to prevent falling victim to impostors who may claim to be your grandchild over the phone."
-      }
-    },
-    "correctResponse": ["2", "3"],
-    "theAnswers": "C, D"
-  },
-  "4": {
-    "progress": 73,
-    "type": "multi_select",
-    "partial": "none",
-    "prompt": "4. When answering a call, the caller addresses you as grandpa/grandma, what should you do? Select all that apply.",
-    "choices": {
-      "0": {
-        "text": "A. Feel happy and provide your grandchild's name, assuming they want you to guess it.",
-        "explanation": "Choice A is incorrect. It's understandable to feel happy when receiving a call from a grandchild. However, if they address you generically, it's safer to have them state their name first. Given the prevalence of grandparent scams, instruct your grandchildren to proactively identify themselves when calling, instead of prompting you to guess their name. Therefore, if someone asks you to guess their identity, it should raise an alert."
-      },
-      "1": {
-        "text": "B. Do not mention any of your grandchildren’s names; wait for the caller to state the name themselves.",
-        "explanation": "Choice B is correct. This generic greeting could be a reg flag for grandparent scams, so do not tell them your grandchild name; wait for the caller to give the name."
-      },
-      "2": {
-        "text": "C. If they respond as “your favorite grandson/granddaughter” without stating their name, wait for them to provide it themselves",
-        "explanation": "Choice C is correct. The caller first used a generic greeting, and If you ask their name and they still don’t give it, responding something like “I am your favorite grandson”, or asking you to guess, do not give any names! This is a major red flag of a grandparent scam."
-      },
-      "3": {
-        "text": "D. Using your pre-established secret codeword to verify the caller’s identity, if you have one.",
-        "explanation": "Choice D is correct. Using a secret codeword or question is an efficient way to verify the caller’s identity. Even with plenty of your personal information, it is highly unlikely the scammers would know your secret word or the answers to a specific question known only to your grandchild. If you don’t have one yet, create one now."
+        "text": "D. Report the scam to the FTC at ReportFraud.ftc.gov.",
+        "explanation": "Choice D is correct. Reporting the scam to the FTC helps them gather important information about scams and take action to prevent them."
       }
     },
     "correctResponse": ["1", "2", "3"],
     "theAnswers": "B, C, D"
   },
-  "5": {
-    "progress": 80,
-    "type": "multi_select",
-    "partial": "none",
-    "prompt": "5. If a caller claims to be an official from the police department, how should you respond? Select all that apply.",
-    "choices": {
-      "0": {
-        "text": "A. Ask for their identification number",
-        "explanation": "Choice A is incorrect. Asking for their identification number alone does not guarantee the caller is legitimate, as scammers can easily provide fake or misleading information over the phone."
-      },
-      "1": {
-        "text": "B. Follow the caller’s request as they claim they are a police officer",
-        "explanation": "Choice B is incorrect. Blindly following the caller's request, even if they claim to be a police officer, can be extremely risky. Scammers often impersonate authority figures to increase perceived legitimacy and pressure targets into compliance. It's important to verify the caller's identity by initiating a separate call to confirm their legitimacy."
-      },
-      "2": {
-        "text": "C. Initiate a separate call to the police department to verify the caller’s identity",
-        "explanation": "Choice C is correct. You should always verify the person’s identity through a separate call. Also, do not use the number provided by the caller; instead, find the official number from a reliable source such as their official website. Contacting the police department directly is a reliable method."
-      },
-      "3": {
-        "text": "D. Discuss the situation with your family member before you make any decisions",
-        "explanation": "Choice D is correct. In addition to contacting the police department directly, you should also talk to your family members. They can not only help you confirm whether the caller's claim is true or a scam, but also help you avoid making impulsive decisions in response to a potentially urgent or distressing situation."
-      }
-    },
-    "correctResponse": ["2", "3"],
-    "theAnswers": "C, D"
-  },
   "6": {
-    "progress": 86,
+    "progress": 120,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "6. If you suspect the caller is not your loved one, and the caller asks you for money, what should you do? Select all that apply.",
+    "prompt": "6. What questions should you ask your doctor before taking dietary supplements? Select all that apply:",
     "choices": {
       "0": {
-        "text": "A. Stop talking with the caller immediately and report him",
-        "explanation": "Choice A is correct. If you have any suspicions about the caller, you should end the conversation immediately. You should also report the caller and inform your family members about this incident to ensure your safety."
+        "text": "A. Is there scientific evidence supporting its effectiveness?",
+        "explanation": "Choice A is correct. It’s important to understand if the dietary supplement has been proven effective through scientific research."
       },
       "1": {
-        "text": "B. Stop talking with the caller immediately and call your family member to verify the incident",
-        "explanation": "Choice B is correct. If you have any suspicions about the caller, you should end the conversation immediately. You should also report the caller and inform your family members about this incident to ensure your safety."
+        "text": "B. What are the potential side effects?",
+        "explanation": "Choice B is correct. Knowing the potential side effects helps you weigh the risks and benefits of taking the supplement."
       },
       "2": {
-        "text": "C. Keep talking with the caller to find out what happened.",
-        "explanation": "Choice C is incorrect. If you are already suspicious of this caller, it is important to end the conversation. You can then contact your family members to find out what happened. Scammers can be very persuasive, so it is crucial not to risk your safety."
+        "text": "C. What is the appropriate dosage for me?",
+        "explanation": "Choice C is correct. The appropriate dosage can vary based on individual health conditions, age, and other factors. Your doctor can provide guidance."
       },
       "3": {
-        "text": "D. Give the money to the caller if you think it is necessary.",
-        "explanation": "Choice D is incorrect. Never give money to someone you already suspect."
+        "text": "D. How much do dietary supplements cost compared to regular food?",
+        "explanation": "Choice D is incorrect. While cost is a practical consideration, it is not as critical as understanding the supplement’s safety and efficacy."
       }
     },
-    "correctResponse": ["0", "1"],
-    "theAnswers": "A, B"
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, C"
   }
 }
