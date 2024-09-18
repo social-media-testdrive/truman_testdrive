@@ -106,8 +106,6 @@ $(document).ready(function() {
                 startHighlightingWords();
             });
         } 
-        // } else if(page === 'types') {
-        // want event added to types page from wherever the submodule is loaded into as well, not just when it loads in from the types page directly. So include in else instead of else if
         else  {
             // add event listener for types slideshow pages to play correct audio for the current slide
             $('#steps-slider').on('afterChange', function(event, slick, currentSlide){
@@ -198,9 +196,6 @@ $(document).ready(function() {
         } 
         // instead have it so only if they press the back button on the first page of the module, it will reload the page
         else if(currentPage != 'intro-video' && (backPage === 'objectives' || backPage === 'intro') ) {
-            // console.log("page reloaded just now!!!!!!!!!!!!!!!")
-            // console.log("current page is just now: " + currentPage)
-            // console.log("back page is just now: " + backPage)
             location.reload();
         } 
         else {
@@ -214,26 +209,12 @@ $(document).ready(function() {
                         $('#image-slider').slick("refresh");
                     } 
 
-                    // if(section === 'techniques' && currentPage === 'activity') {
-                    //     var introDiv = document.getElementsByClassName("introjs-hints")[0];
-                    //     introDiv.parentNode.removeChild(introDiv);
-                    // }
-
                     $('#' + backPage).transition({
                         animation: 'fade in',
                         duration: 200,
                     });
 
-                    // if(section === "techniques" && backPage === 'activity') {
-                    //     introJs().addHints();
-                    // }
-
-                    // if(section === 'practice' && backPage === 'activity') {
-                    //     setupPractice();
-                    // }
-
                     if(speechData !== "none") {
-                        // console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
                         if(pastAttempts  && backPage === 'quiz') {
                             const urlParams = new URLSearchParams(window.location.search);
                             backPage = "quiz-results";
@@ -246,13 +227,6 @@ $(document).ready(function() {
                         toggleHighlighting();
                         startHighlightingWords();
                     }
-
-                    // if(backPage === 'quiz') {
-                    //     console.log("Page is quiz so pause");
-                    //     var audio = document.getElementById('narration-audio');
-                    //     audio.pause();
-                    //     stopHighlighting();
-                    // }
 
 
                     }
@@ -416,16 +390,8 @@ $(document).ready(function() {
                 }   
 
                 if(nextPage === 'introduction') {
-                  // setIntroduction();
-                  // disable next button, user needs to choose role
                   $('#nextButton').prop('disabled', true);
                 }
-
-
-                // if(section === 'techniques' && currentPage === 'activity') {
-                //     var introDiv = document.getElementsByClassName("introjs-hints")[0];
-                //     introDiv.parentNode.removeChild(introDiv);
-                // }
 
                 $('#' + nextPage).transition({
                     animation: 'fade in',
@@ -456,14 +422,6 @@ $(document).ready(function() {
                     toggleHighlighting();
                     startHighlightingWords();
                 }
-
-                // if(nextPage === 'quiz') {
-                //     console.log("Page is quiz so pause");
-                //     var audio = document.getElementById('narration-audio');
-                //     audio.pause();
-                //     stopHighlighting();
-                // }
-
 
             }
         });
@@ -675,71 +633,44 @@ function setLinks(currentPage) {
         nextlink = "/course-player?module=medication&section=signs&page=objectives";
     }
   }else if (section === "signs") {
-      let baseurl = "/course-player?module=medication&section=signs&page=";
-  
-      if (currentPage === "objectives") {
-        backlink = "/course-player?module=medication&section=protection&page=objectives";
-        nextlink = baseurl + "titles";
-      } 
-      
-      else if (currentPage === "titles") {
+    let baseurl = "/course-player?module=medication&section=signs&page=";
+
+    if (currentPage === "objectives") {
+        backlink = "/course-player?module=medication&section=techniques&page=objectives";
+        nextlink = baseurl + "types";
+    } else if (currentPage === "types") {
         backlink = baseurl + "objectives";
-        nextlink = baseurl + "responses";
-      } else if (currentPage === "responses") {
-        backlink = baseurl + "titles";
-        nextlink = baseurl + "family";
-      } else if (currentPage === "family") {
-        backlink = baseurl + "responses";
-        nextlink = baseurl + "voice";
-      } else if (currentPage === "voice") {
+        nextlink = baseurl + "testimonial";
+    } else if (currentPage === "testimonial") {
+        backlink = baseurl + "types";
+        nextlink = baseurl + "satisfaction";
+    } else if (currentPage === "satisfaction") {
+        backlink = baseurl + "testimonial";
+        nextlink = baseurl + "promotion";
+    } else if (currentPage === "promotion") {
+        backlink = baseurl + "satisfaction";
+        nextlink = baseurl + "prescription";
+    } else if (currentPage === "prescription") {
         $('audio.with-transcript').get(0).pause();
 
-        backlink = baseurl + "family";
-        nextlink = baseurl + "fear";
-      } else if (currentPage === "fear") {
+        backlink = baseurl + "promotion";
+        nextlink = baseurl + "payment";
+    } else if (currentPage === "payment") {
         $('audio.with-transcript').get(1).pause();
 
-        backlink = baseurl + "voice";
-        nextlink = baseurl + "pressure";
-      } else if (currentPage === "pressure") {
-        $('audio.with-transcript').get(2).pause();
-
-        backlink = baseurl + "fear";
-        nextlink = baseurl + "secrecy1";
-      } else if (currentPage === "secrecy1") {
-        backlink = baseurl + "pressure";
-        nextlink = baseurl + "secrecy2";
-      } else if (currentPage === "secrecy2") {
-        backlink = baseurl + "secrecy1";
-        nextlink = baseurl + "payment";
-      } else if (currentPage === "payment") {
-        $('audio.with-transcript').get(3).pause();
-
-        backlink = baseurl + "secrecy2";
-        nextlink = baseurl + "money";
-      } else if (currentPage === "money") {
-        backlink = baseurl + "payment";
-        nextlink = baseurl + "activity1";
-      } else if (currentPage === "activity1") {
-        backlink = baseurl + "money";
-        nextlink = baseurl + "activity2";
-      } else if (currentPage === "activity2") {
-        backlink = baseurl + "activity1";
+        backlink = baseurl + "prescription";
         nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "activity2";
+    } else if (currentPage === "quiz") {
+        backlink = baseurl + "payment";
         nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
+    } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
         nextlink = baseurl + "takeaways";
-      } 
-      
-       else if (currentPage === "takeaways") {
-        backlink = baseurl + "quiz";
-        nextlink =
-          "/course-player?module=medication&section=protection&page=objectives";
-      }
-    } else if (section === "protection") {
+    } else if (currentPage === "takeaways") {
+        backlink = baseurl + "reflection";
+        nextlink = "/course-player?module=medication&section=protection&page=objectives";
+    }
+}else if (section === "protection") {
       let baseurl = "/course-player?module=medication&section=protection&page=";
   
       if (currentPage === "objectives") {

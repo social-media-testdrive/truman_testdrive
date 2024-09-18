@@ -10,18 +10,12 @@ block content
             h1 Loading...
     .display-page.hidden
         include signs/objectives.pug
-        include signs/titles.pug
-        include signs/responses.pug
-        include signs/family.pug
-        include signs/voice.pug
-        include signs/fear.pug
-        include signs/pressure.pug
-        include signs/secrecy1.pug
-        include signs/secrecy2.pug
-        include signs/payment.pug
-        include signs/money.pug
-        include signs/activity1.pug
-        include signs/activity2.pug     
+        include signs/types.pug
+        include signs/testimonial.pug
+        include signs/satisfaction.pug
+        include signs/promotion.pug
+        include signs/prescription.pug
+
         include signs/quiz.pug 
         include signs/reflection.pug 
         include signs/takeaways.pug
@@ -58,30 +52,31 @@ block scripts
         var section = "#{section}";
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});
-    //- script.
+    script.
 
-    //-     //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
-    //-     $('#steps-slider').slick({
-    //-         asNavFor:"#image-slider",
-    //-         dots: true,
-    //-         arrows: true,
-    //-         infinite: false,
-    //-         speed: 800,
-    //-         slidesToShow: 1,
-    //-         slidesToScroll: 1,
-    //-         customPaging : function(slider, index) { 
-    //-             var num = index + 1;
-    //-             return '<span class="dot">'+ num +'</span>';
-    //-         }
-    //-     });
+        //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
+        $('#steps-slider').slick({
+            asNavFor:"#image-slider",
+            dots: true,
+            arrows: true,
+            infinite: false,
+            speed: 800,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            customPaging : function(slider, index) { 
+                var num = index + 1;
+                return '<span class="dot">'+ num +'</span>';
+            }
+        });
 
-    //-     $('#image-slider').slick({
-    //-             draggable: false,
-    //-             infinite: false,
-    //-             arrows: false,
-    //-             fade: true,
-    //-             cssEase: 'linear'
-    //-     });
+        $('#image-slider').slick({
+                draggable: false,
+                infinite: false,
+                arrows: false,
+                fade: true,
+                cssEase: 'linear'
+        });
+        
     script.
         //- for quiz
         var questionData = !{JSON.stringify(quizData)}; // quizData is passed to pug file via render function in app.js

@@ -673,7 +673,7 @@ function setLinks(currentPage) {
       let baseurl = "/course-player?module=grandparent&section=signs&page=";
   
       if (currentPage === "objectives") {
-        backlink = "/course-player?module=grandparent&section=protection&page=objectives";
+        backlink = "/course-player?module=grandparent&section=techniques&page=objectives";
         nextlink = baseurl + "titles";
       } 
       
