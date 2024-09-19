@@ -543,6 +543,8 @@ function setLinks(currentPage) {
           backlink = "/course-player?module=tech&section=consequences&page=objectives";
           nextlink = baseurl + "intro-video";
         } else if (currentPage === "intro-video") {
+            $("#my_video_1")[0].player.pause();
+
           backlink = baseurl + "objectives";
           nextlink = baseurl + "spoofing";
         } else if (currentPage === "spoofing") {
@@ -622,12 +624,14 @@ function setLinks(currentPage) {
     
         if (currentPage === "objectives") {
           backlink = "/course-player?module=tech&section=signs&page=objectives";
-          nextlink = baseurl + "protect-video";
-        } else if (currentPage === "protect-video") {
+          nextlink = baseurl + "intro-video";
+        } else if (currentPage === "intro-video") {
+            $("#my_video_1")[0].player.pause();
+
           backlink = baseurl + "objectives";
           nextlink = baseurl + "contact-methods";
         } else if (currentPage === "contact-methods") {
-          backlink = baseurl + "protect-video";
+          backlink = baseurl + "intro-video";
           nextlink = baseurl + "fundamental-measures";
         }
         else if (currentPage === "fundamental-measures") {

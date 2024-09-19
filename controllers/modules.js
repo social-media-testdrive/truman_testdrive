@@ -108,14 +108,9 @@ exports.getModule = async (req, res) => {
 
     // make it for all sections array json object later
     const narration_data = await fs.readFileAsync(`${__dirname}/../public/json/` +  module + `/narration.json`);
-    // console.log("*******narration_data: " + narration_data.toString());
-    // console.log("the section is: " + section)
     const fullJson = JSON.parse(narration_data.toString());
     // provide speech marks for complete single page app module section 
     speechMarks = fullJson[section];
-    console.log("!!! THe module is: " + module + " and the section is: " + section + " and the page is: " + page);
-    console.log("The speech marks are: " + JSON.stringify(speechMarks));
-    // console.log("***The speech marks are: " + speechMarks);
 
     if(section === 'practice'){
       console.log("YOOO This is the practice section")

@@ -6,23 +6,13 @@
                     .content#narrate-1-intro-video
                         i.video.icon
                         span Showcase of a Tech Support Scam
-                //- p Click the image to start the video
                 .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
                     i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
                     .content 
-                        p#narrate-2-intro-video 
+                        p#narrate-1-intro-video
                             span Click the image to start the video
             br
             #video-container
                 video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' 
-                data-setup=`{ "poster":"${public_resources}/images/shared_sources/warning-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }`)
-                    source(src='https://dart-store.s3.amazonaws.com/identity-warning.mp4' type='video/mp4')
-        //- script.
-        //-     var module = "#{module}";
-        //-     var section = "#{section}";
-        //-     var page = "#{page}"; 
-
-        //-     let total = parseInt(#{numPages});
-        //-     let progress = 2 / total;
-        //-     console.log(progress);
-        //-     updateProgressBar(progress);
+                data-setup=`{ "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }`)
+                    source(src=`${public_resources}/videos/tech_concepts.mov` type='video/mp4')

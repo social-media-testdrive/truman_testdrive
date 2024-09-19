@@ -6,30 +6,16 @@
                     .content#narrate-1-intro-video
                         i.video.icon
                         span Techniques of Grandparent Scams
-                //- p Click the image to start the video
                 .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
                     i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
                     .content 
-                        p#narrate-2-intro-video 
-                            span Video coming soon
-                            //- span Click the image to start the video
+                        p#narrate-1-intro-video
+                            span Click the image to start the video
             br
-            p A DART Agent sits behind her desk, typing on her computer before looking up toward the camera.
-            p Narrator/DART Agent (Informative): I'm here to help you navigate the world of online deception, specifically the grandparent scam.
-            p An older woman, Sarah, is answering a scam email at her computer and thinking thoughtfully to herself about what to do/say.
-            p Narrator/DART Agent (Informative): Scammers may call, text, or email, pretending to be a grandchild who is in trouble and needs money urgently.
-            p Separate shot, Sarah gets a call from a “doctor” looking at the phone and the caller ID. Separate Shot, She answers and starts looking concerned as she listens to the phone call.
-            p Narrator/DART Agent (Informative): They may also pretend to be someone like a doctor or a lawyer contacting you on behalf of your grandchild.
-            p She pulls back the phone to look at the caller ID then decides to hang up.
-            p Narrator/DART Agent (Informative): They may even try to trick you by using a fake caller ID or email address to get you to respond.
-            p Separate shot, Sarah is talking on the phone with someone passionately and a look of confusion crosses her face.
-            p Narrator/DART Agent (Informative): After opening a line of communication, scammers may keep the details vague and have you fill in the gaps, such as your grandchild’s name and location. Some scammers will use voice changing technology or lie that they are sick or injured to explain why their voice sounds different than your grandchild’s.
-            p Separate shot, Sarah paces the room with a look of concern and panic on her face before taking a moment to close her eyes and think before talking a little bit more on the phone and hanging up.
-            p Narrator/DART Agent (Informative): Their primary tactic is to emphasize the urgency and danger. They want to play on your emotions and pressure you to act without thinking through the situation.
-            p The Agent stands from her desk and moves around to the front of it speaking to the camera.
-            p Narrator/DART Agent (Informative): Remember, you're in control here. It's okay to double-check and take your time. Stay informed, stay sharp, and share this with your people.
-
-
+            #video-container
+                video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' 
+                data-setup=`{ "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }`)
+                    source(src=`${public_resources}/videos/grandparent_techniques.mov` type='video/mp4')
 
 
          

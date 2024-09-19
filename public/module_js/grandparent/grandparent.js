@@ -578,7 +578,7 @@ function setLinks(currentPage) {
         nextlink = baseurl + "intro-video";
       } else if (currentPage === "intro-video") {
         // pause video
-        // $("#my_video_1")[0].player.pause();
+        $("#my_video_1")[0].player.pause();
   
         backlink = baseurl + "objectives";
         nextlink = baseurl + "definitions";
@@ -635,6 +635,8 @@ function setLinks(currentPage) {
           "/course-player?module=grandparent&section=consequences&page=objectives";
         nextlink = baseurl + "intro-video";
       } else if (currentPage === "intro-video") {
+        $("#my_video_1")[0].player.pause();
+
         backlink = baseurl + "objectives";
         nextlink = baseurl + "data";
       } else if (currentPage === "data") {
@@ -742,6 +744,8 @@ function setLinks(currentPage) {
           "/course-player?module=grandparent&section=signs&page=objectives";
         nextlink = baseurl + "intro-video";
       } else if (currentPage === "intro-video") {
+        $("#my_video_1")[0].player.pause();
+
         backlink = baseurl + "objectives";
         nextlink = baseurl + "fundamental-measures";
       } else if (currentPage === "fundamental-measures") {
