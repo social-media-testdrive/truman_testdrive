@@ -704,60 +704,8 @@ function setLinks(currentPage) {
       nextlink = baseurl + "takeaways";
   } else if (currentPage === "takeaways") {
       backlink = baseurl + "reflection";
-      nextlink = "/course-player?module=medication&section=practice&page=objectives";
-  }
-}else if (section === "practice") {
-      let baseurl = "/course-player?module=medication&section=practice&page=";
-  
-      if (currentPage === "objectives") {
-        backlink = "/course-player?module=medication&section=signs&page=objectives";
-        nextlink = baseurl + "introduction";
-      } else if (currentPage === "introduction") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "activity";
+      nextlink = "/course-player?module=medication&section=evaluation&page=intro";
 
-        // disable next button, user needs to choose role
-        // setIntroduction();
-        // $('#nextButton').prop('disabled', true);
-
-
-
-
-      } else if (currentPage === "activity") {
-
-        backlink = baseurl + "introduction";
-        nextlink = baseurl + "activity2";
-
-        // add audio
-        addAudioPlayer("car", rolePlay);
-      } else if (currentPage === "activity2") {
-        backlink = baseurl + "activity";
-        nextlink = baseurl + "activity3";
-
-        addAudioPlayer("car2", rolePlay);
-      } else if (currentPage === "activity3") {
-        backlink = baseurl + "activity2";
-        nextlink = baseurl + "activity4";
-
-        addAudioPlayer("car3", rolePlay);
-      } else if (currentPage === "activity4") {
-        backlink = baseurl + "activity3";
-        nextlink = baseurl + "reflection";
-
-        addAudioPlayer("car4", rolePlay);
-      } else if (currentPage === "reflection") {
-        backlink = baseurl + "activity4";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
-        backlink = baseurl + "reflection";
-        nextlink = "/course-player?module=medication&section=evaluation&page=intro";
-
-        // complete module status to 100 manually since there is no quiz
-        console.log("HEY Posting to complete practice module status");
-        $.post('/completeModuleStatus', {
-            modId: 'medication',
-            section: 'practice'
-        });
       }
     } else if (section === "evaluation") {
       let baseurl = "/course-player?module=medication&section=evaluation&page=";
