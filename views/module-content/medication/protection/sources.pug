@@ -1,27 +1,27 @@
 #sources.hidden
-    .ui.container#raised-container.center-layout
+    .ui.container(style="width: 100%;")
         .limit
-            #sources-read
-                h1.ui.header.large#learn-title
+            #contacted-read
+                h1.ui.header.large#learn-title(style="margin-top: 10px;")
                     .content
-                        i.video.icon
-                        span#narrate-title-protect-video Methods of Protection
-                //- p Click the image to start the video
-                .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
-                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
-                    .content 
-                        p#narrate-1-protect-video 
-                            //- span Click the image to start the video
-                            span Video coming soon
-            br
-            p A DART Agent is looking at a chalkboard that says “Grandparent Scams” on it and turns to the camera as it fades in.
-            p Narrator/DART Agent (Informative): Let’s talk about tools to protect yourself from grandparent scams.
-            p An older woman, Sarah, looks like she is talking with someone on the phone with an intense look on her face. She takes a moment, pauses, and breathes before returning to conversation thoughtfully.
-            p Narrator/DART Agent (Informative): Tool one: Be cautious. Scammers may catch you off guard by claiming to be a grandchild in distress. Pause, breathe, and ask questions only your real grandchild would know.
-            p Separate shot, Sarah starts writing out a check in haste but stops suddenly and thinks before pulling out her phone to make a call.
-            p Narrator/DART Agent (Informative): Tool two: Take your time. Scammers love creating urgency, making you think you need to act right away. Take your time to think. If you feel rushed or pressured, step back.
-            p Separate shot, Sarah is at her computer looking at an email, the email name says “FBI” but the email address is a clearly suspicious one. She examines it and thinks to herself before reporting it.
-            p Narrator/DART Agent (Informative): Tool three: Don't trust caller IDs and emails blindly. Scammers can change the name that shows up on a phone call or email. Make sure you’re talking to the right person before giving up money or personal information.
-            p The DART Agent stands in front of the chalkboard and moves behind her desk before sitting down.
-            p Narrator/DART Agent (Informative): Armed with these tools, you've got the power to outsmart these scammers. If you’re ever in doubt, don’t be afraid to reach out to other loved ones for a second opinion. Stay informed, stay empowered.
+                        i.book.icon
+                        span#narrate-title-sources Reliable Sources
+            .ui.stackable.grid(style="margin-top: 0px;")
+                .ten.wide.column
+                    p
+                        span#narrate-1-sources
+                            span "To find reliable sources of information about diseases and their treatments, visit MedlinePlus.gov, a site operated by the National Institutes of Health (NIH) and Healthfinder.gov.
+                    p 
+                        span#narrate-2-sources
+                            span Information about alternative and complementary medicine is available through the
+                        u#narrate-3-sources
+                            span National Center for Complementary and Integrative Health 
+                        span 
+                            span [2]."
 
+                .six.wide.column
+                    img.ui.big.image(src=`${public_resources}/images/shared_sources/filler.png`)
+
+            br
+            i.source [2] Common Health Scams. Federal Trade Commision (FTC) 
+                a(href='https://consumer.ftc.gov/articles/common-health-scams' target='_blank') https://consumer.ftc.gov/articles/common-health-scams
