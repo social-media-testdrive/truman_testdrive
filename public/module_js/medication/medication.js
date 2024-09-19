@@ -106,8 +106,6 @@ $(document).ready(function() {
                 startHighlightingWords();
             });
         } 
-        // } else if(page === 'types') {
-        // want event added to types page from wherever the submodule is loaded into as well, not just when it loads in from the types page directly. So include in else instead of else if
         else  {
             // add event listener for types slideshow pages to play correct audio for the current slide
             $('#steps-slider').on('afterChange', function(event, slick, currentSlide){
@@ -190,7 +188,7 @@ $(document).ready(function() {
         let backPage = backParams.get('page');
 
         var audio = document.getElementById('narration-audio');
-        audio.src = `https://dart-store.s3.amazonaws.com/grandparent-narration/${section}/${backPage}_${avatar}.mp3`;
+        audio.src = `https://dart-store.s3.amazonaws.com/medication-narration/${section}/${backPage}_${avatar}.mp3`;
         audio.load(); // Reload the audio to apply the new source
         
         if(backPage === null) {
@@ -198,9 +196,6 @@ $(document).ready(function() {
         } 
         // instead have it so only if they press the back button on the first page of the module, it will reload the page
         else if(currentPage != 'intro-video' && (backPage === 'objectives' || backPage === 'intro') ) {
-            // console.log("page reloaded just now!!!!!!!!!!!!!!!")
-            // console.log("current page is just now: " + currentPage)
-            // console.log("back page is just now: " + backPage)
             location.reload();
         } 
         else {
@@ -214,26 +209,12 @@ $(document).ready(function() {
                         $('#image-slider').slick("refresh");
                     } 
 
-                    // if(section === 'techniques' && currentPage === 'activity') {
-                    //     var introDiv = document.getElementsByClassName("introjs-hints")[0];
-                    //     introDiv.parentNode.removeChild(introDiv);
-                    // }
-
                     $('#' + backPage).transition({
                         animation: 'fade in',
                         duration: 200,
                     });
 
-                    // if(section === "techniques" && backPage === 'activity') {
-                    //     introJs().addHints();
-                    // }
-
-                    // if(section === 'practice' && backPage === 'activity') {
-                    //     setupPractice();
-                    // }
-
                     if(speechData !== "none") {
-                        // console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
                         if(pastAttempts  && backPage === 'quiz') {
                             const urlParams = new URLSearchParams(window.location.search);
                             backPage = "quiz-results";
@@ -246,13 +227,6 @@ $(document).ready(function() {
                         toggleHighlighting();
                         startHighlightingWords();
                     }
-
-                    // if(backPage === 'quiz') {
-                    //     console.log("Page is quiz so pause");
-                    //     var audio = document.getElementById('narration-audio');
-                    //     audio.pause();
-                    //     stopHighlighting();
-                    // }
 
 
                     }
@@ -294,7 +268,7 @@ $(document).ready(function() {
         }
 
         if(currentPage === 'certificate') {
-            window.location.href = '/about/grandparent';
+            window.location.href = '/about/medication';
         }
 
         // fade out current page, then fade in next page. at half duration each, 400ms total
@@ -314,7 +288,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Grandparent Scams", "Challenge", "Bronze", "Challenge Conqueror", "/badges/identity/challenge_conqueror.svg");
+                        postBadge("Medication Scams", "Challenge", "Bronze", "Challenge Conqueror", "/badges/identity/challenge_conqueror.svg");
 
                         badgeEarned = true;
                     } else if(section === 'concepts') {
@@ -327,7 +301,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Grandparent Scams", "Concepts", "Bronze", "Foundation Acheivers", "/badges/identity/foundation_acheivers.svg");
+                        postBadge("Medication Scams", "Concepts", "Bronze", "Foundation Acheivers", "/badges/identity/foundation_acheivers.svg");
 
                         badgeEarned = true;
                     } else if(section === 'consequences') {
@@ -340,7 +314,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Grandparent Scams", "Consequences", "Bronze", "Aftermath Ace", "/badges/identity/aftermath_ace.svg");
+                        postBadge("Medication Scams", "Consequences", "Bronze", "Aftermath Ace", "/badges/identity/aftermath_ace.svg");
 
                         badgeEarned = true;                    
                     } else if(section === 'techniques') {
@@ -353,7 +327,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Grandparent Scams", "Techniques", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
+                        postBadge("Medication Scams", "Techniques", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
 
                         badgeEarned = true;                    
                     } else if(section === 'protection') {
@@ -366,7 +340,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Grandparent Scams", "Protection", "Silver", "Prodigy Protector", "/badges/identity/prodigy_protector.svg");
+                        postBadge("Medication Scams", "Protection", "Silver", "Prodigy Protector", "/badges/identity/prodigy_protector.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'reporting') {
@@ -379,7 +353,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Grandparent Scams", "Reporting", "Gold", "Alert Advocate", "/badges/identity/alert_advocate.svg");
+                        postBadge("Medication Scams", "Reporting", "Gold", "Alert Advocate", "/badges/identity/alert_advocate.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'practice') {
@@ -392,7 +366,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Grandparent Scams", "Practice", "Gold", "Scam Spotter", "/badges/identity/scam_spotter.svg");
+                        postBadge("Medication Scams", "Practice", "Gold", "Scam Spotter", "/badges/identity/scam_spotter.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'evaluation') {
@@ -405,7 +379,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Grandparent", "Evaluation", "Platinum", "Champion of Completion", "/badges/identity/champion_of_completion.svg");
+                        postBadge("Medication Scams", "Evaluation", "Platinum", "Champion of Completion", "/badges/identity/champion_of_completion.svg");
 
                         badgeEarned = true;                             
                     }
@@ -416,16 +390,8 @@ $(document).ready(function() {
                 }   
 
                 if(nextPage === 'introduction') {
-                  // setIntroduction();
-                  // disable next button, user needs to choose role
                   $('#nextButton').prop('disabled', true);
                 }
-
-
-                // if(section === 'techniques' && currentPage === 'activity') {
-                //     var introDiv = document.getElementsByClassName("introjs-hints")[0];
-                //     introDiv.parentNode.removeChild(introDiv);
-                // }
 
                 $('#' + nextPage).transition({
                     animation: 'fade in',
@@ -457,14 +423,6 @@ $(document).ready(function() {
                     startHighlightingWords();
                 }
 
-                // if(nextPage === 'quiz') {
-                //     console.log("Page is quiz so pause");
-                //     var audio = document.getElementById('narration-audio');
-                //     audio.pause();
-                //     stopHighlighting();
-                // }
-
-
             }
         });
 
@@ -481,7 +439,7 @@ function setGrandparentRole(role, file) {
   // print out check
   console.log("the audio element before is:", audioElement);
   if (audioElement) {
-    const newSrc = `https://dart-store.s3.amazonaws.com/grandparent-audio/${file}_${role}.wav`;
+    const newSrc = `https://dart-store.s3.amazonaws.com/medication-audio/${file}_${role}.wav`;
     audioElement.src = newSrc; // Update the src of the audio element
     audioElement.load();
   }
@@ -490,7 +448,7 @@ function setGrandparentRole(role, file) {
   // Update the transcript data file
   let transcriptElement = document.getElementById('transcript');
   if (transcriptElement) {
-    transcriptElement.setAttribute('data-audio-file', `https://dart-store.s3.amazonaws.com/grandparent-audio/${file}_${role}.wav`);
+    transcriptElement.setAttribute('data-audio-file', `https://dart-store.s3.amazonaws.com/medication-audio/${file}_${role}.wav`);
   }
 
   // Update the transcript times
@@ -557,282 +515,203 @@ function setLinks(currentPage) {
     // }
 
     if (section === "challenge") {
-      let baseurl = "/course-player?module=grandparent&section=challenge&page=";
-  
-      if (currentPage === "intro") {
-        backlink = "/about/grandparent";
-        nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "intro";
-        nextlink = baseurl + "badge";
-      } else if (currentPage === "badge") {
-        backlink = baseurl + "quiz";
-        nextlink =
-          "/course-player?module=grandparent&section=concepts&page=objectives";
-      }
+        let baseurl = "/course-player?module=medication&section=challenge&page=";
+    
+        if (currentPage === "intro") {
+          backlink = "/about/medication";
+          nextlink = baseurl + "quiz";
+        } else if (currentPage === "quiz") {
+          backlink = baseurl + "intro";
+          nextlink = baseurl + "badge";
+        } else if (currentPage === "badge") {
+          backlink = baseurl + "quiz";
+          nextlink =
+            "/course-player?module=medication&section=concepts&page=objectives";
+        }
     } else if (section === "concepts") {
-      let baseurl = "/course-player?module=grandparent&section=concepts&page=";
-  
-      if (currentPage === "objectives") {
-        backlink = "/course-player?module=grandparent&section=challenge&page=intro";
-        nextlink = baseurl + "intro-video";
-      } else if (currentPage === "intro-video") {
-        // pause video
-        // $("#my_video_1")[0].player.pause();
-  
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "definitions";
-      } else if (currentPage === "definitions") {
-        backlink = baseurl + "intro-video";
-        nextlink = baseurl + "types";
-      } else if (currentPage === "types") {
-        backlink = baseurl + "definitions";
-        nextlink = baseurl + "avatar";
-      } else if (currentPage === "avatar") {
-        backlink = baseurl + "types";
-        nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "avatar";
-        nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
-        backlink = baseurl + "quiz";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
-        backlink = baseurl + "reflection";
-        nextlink ="/course-player?module=grandparent&section=consequences&page=objectives";
-      }
+        let baseurl = "/course-player?module=medication&section=concepts&page=";
+    
+        if (currentPage === "objectives") {
+          backlink = "/course-player?module=medication&section=challenge&page=intro";
+          nextlink = baseurl + "intro-video";
+        } else if (currentPage === "intro-video") {
+          // pause video
+          // $("#my_video_1")[0].player.pause();
+          backlink = baseurl + "objectives";
+          nextlink = baseurl + "definitions";
+        } else if (currentPage === "definitions") {
+          backlink = baseurl + "intro-video";
+          nextlink = baseurl + "types";
+        } else if (currentPage === "types") {
+          backlink = baseurl + "definitions";
+          nextlink = baseurl + "work";
+        } else if (currentPage === "work") {
+          backlink = baseurl + "types";
+//___________________
+          nextlink = baseurl + "supplements";
+        } else if (currentPage === "supplements") {
+          backlink = baseurl + "work";
+          nextlink = baseurl + "drugs";
+        } else if (currentPage === "drugs") {
+          backlink = baseurl + "supplements";
+// --------------------------------
+          nextlink = baseurl + "dietary";
+        } else if (currentPage === "dietary") {
+          backlink = baseurl + "drugs";
+          nextlink = baseurl + "activity";
+        } else if (currentPage === "activity") {
+          backlink = baseurl + "dietary";
+//_______________________
+          nextlink = baseurl + "quiz";
+        } else if (currentPage === "quiz") {
+          backlink = baseurl + "activity";
+          nextlink = baseurl + "reflection";
+        } else if (currentPage === "reflection") {
+          backlink = baseurl + "quiz";
+          nextlink = baseurl + "takeaways";
+        } else if (currentPage === "takeaways") {
+          backlink = baseurl + "reflection";
+          nextlink ="/course-player?module=medication&section=consequences&page=objectives";
+        }
     } else if (section === "consequences") {
-      let baseurl = "/course-player?module=grandparent&section=consequences&page=";
+      let baseurl = "/course-player?module=medication&section=consequences&page=";
   
       if (currentPage === "objectives") {
-        backlink =
-          "/course-player?module=grandparent&section=concepts&page=objectives";
-        nextlink = baseurl + "financial";
+          backlink = "/course-player?module=medication&section=concepts&page=objectives";
+          nextlink = baseurl + "financial";
       } else if (currentPage === "financial") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "emotional";
-      } else if (currentPage === "emotional") {
-        backlink = baseurl + "financial";
-        nextlink = baseurl + "targeted";
-      } else if (currentPage === "targeted") {
-        backlink = baseurl + "emotional";
-        nextlink = baseurl + "quiz";
+          backlink = baseurl + "objectives";
+          nextlink = baseurl + "health";
+      } else if (currentPage === "health") {
+          backlink = baseurl + "financial";
+          nextlink = baseurl + "targets";
+      } else if (currentPage === "targets") {
+          backlink = baseurl + "health";
+          nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
-        backlink = baseurl + "targeted";
-        nextlink = baseurl + "reflection";
+          backlink = baseurl + "targets";
+          nextlink = baseurl + "reflection";
       } else if (currentPage === "reflection") {
+          backlink = baseurl + "quiz";
+          nextlink = baseurl + "takeaways";
+      } else if (currentPage === "takeaways") {
+          backlink = baseurl + "reflection";
+          nextlink = "/course-player?module=medication&section=techniques&page=objectives";
+      }
+  } else if (section === "techniques") { 
+    let baseurl = "/course-player?module=medication&section=techniques&page=";
+
+    if (currentPage === "objectives") {
+        backlink = "/course-player?module=medication&section=consequences&page=objectives";
+        nextlink = baseurl + "emotion";
+    } else if (currentPage === "emotion") {
+        backlink = baseurl + "objectives";
+        nextlink = baseurl + "misleading";
+    } else if (currentPage === "misleading") {
+        backlink = baseurl + "emotion";
+        nextlink = baseurl + "terminology";
+    } else if (currentPage === "terminology") {
+        backlink = baseurl + "misleading";
+        nextlink = baseurl + "activity";
+    } else if (currentPage === "activity") {
+        backlink = baseurl + "terminology";
+        nextlink = baseurl + "testimonial";
+    } else if (currentPage === "testimonial") {
+        backlink = baseurl + "activity";
+        nextlink = baseurl + "placebo";
+    } else if (currentPage === "placebo") {
+        backlink = baseurl + "testimonial";
+        nextlink = baseurl + "quiz";
+    } else if (currentPage === "quiz") {
+        backlink = baseurl + "placebo";
+        nextlink = baseurl + "reflection";
+    } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
         nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
+    } else if (currentPage === "takeaways") {
         backlink = baseurl + "reflection";
-        nextlink = "/course-player?module=grandparent&section=techniques&page=objectives";
-      }
-    } else if (section === "techniques") {
-      let baseurl = "/course-player?module=grandparent&section=techniques&page=";
-  
-      if (currentPage === "objectives") {
-        backlink =
-          "/course-player?module=grandparent&section=consequences&page=objectives";
-        nextlink = baseurl + "intro-video";
-      } else if (currentPage === "intro-video") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "data";
-      } else if (currentPage === "data") {
-        backlink = baseurl + "intro-video";
-        nextlink = baseurl + "avatar";
-      } else if (currentPage === "avatar") {
-        backlink = baseurl + "data";
+        nextlink = "/course-player?module=medication&section=signs&page=objectives";
+    }
+  }else if (section === "signs") {
+    let baseurl = "/course-player?module=medication&section=signs&page=";
+
+    if (currentPage === "objectives") {
+        backlink = "/course-player?module=medication&section=techniques&page=objectives";
         nextlink = baseurl + "types";
-      } else if (currentPage === "types") {
-        backlink = baseurl + "avatar";
-        nextlink = baseurl + "grandchild";
-      } else if (currentPage === "grandchild") {
-        // pause audio player
-        $('audio.with-transcript').get(0).pause();
-
+    } else if (currentPage === "types") {
+        backlink = baseurl + "objectives";
+        nextlink = baseurl + "testimonial";
+    } else if (currentPage === "testimonial") {
         backlink = baseurl + "types";
-        nextlink = baseurl + "authority";
-      } else if (currentPage === "authority") {
-        // pause audio player
-        $('audio.with-transcript').get(1).pause();
-
-        backlink = baseurl + "grandchild";
-        nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
-        backlink = baseurl + "authority";
-        nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "reflection";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
-        backlink = baseurl + "quiz";
-        nextlink =
-          "/course-player?module=grandparent&section=signs&page=objectives";
-      }
-    }else if (section === "signs") {
-      let baseurl = "/course-player?module=grandparent&section=signs&page=";
-  
-      if (currentPage === "objectives") {
-        backlink = "/course-player?module=grandparent&section=techniques&page=objectives";
-        nextlink = baseurl + "titles";
-      } 
-      
-      else if (currentPage === "titles") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "responses";
-      } else if (currentPage === "responses") {
-        backlink = baseurl + "titles";
-        nextlink = baseurl + "family";
-      } else if (currentPage === "family") {
-        backlink = baseurl + "responses";
-        nextlink = baseurl + "voice";
-      } else if (currentPage === "voice") {
-        $('audio.with-transcript').get(0).pause();
-
-        backlink = baseurl + "family";
-        nextlink = baseurl + "fear";
-      } else if (currentPage === "fear") {
-        $('audio.with-transcript').get(1).pause();
-
-        backlink = baseurl + "voice";
-        nextlink = baseurl + "pressure";
-      } else if (currentPage === "pressure") {
-        $('audio.with-transcript').get(2).pause();
-
-        backlink = baseurl + "fear";
-        nextlink = baseurl + "secrecy1";
-      } else if (currentPage === "secrecy1") {
-        backlink = baseurl + "pressure";
-        nextlink = baseurl + "secrecy2";
-      } else if (currentPage === "secrecy2") {
-        backlink = baseurl + "secrecy1";
+        nextlink = baseurl + "satisfaction";
+    } else if (currentPage === "satisfaction") {
+        backlink = baseurl + "testimonial";
+        nextlink = baseurl + "promotion";
+    } else if (currentPage === "promotion") {
+        backlink = baseurl + "satisfaction";
+        nextlink = baseurl + "prescription";
+    } else if (currentPage === "prescription") {
+        backlink = baseurl + "promotion";
         nextlink = baseurl + "payment";
-      } else if (currentPage === "payment") {
-        $('audio.with-transcript').get(3).pause();
-
-        backlink = baseurl + "secrecy2";
-        nextlink = baseurl + "money";
-      } else if (currentPage === "money") {
+    } else if (currentPage === "payment") {
+        backlink = baseurl + "prescription";
+        nextlink = baseurl + "quiz";
+    } else if (currentPage === "quiz") {
         backlink = baseurl + "payment";
-        nextlink = baseurl + "activity1";
-      } else if (currentPage === "activity1") {
-        backlink = baseurl + "money";
-        nextlink = baseurl + "activity2";
-      } else if (currentPage === "activity2") {
-        backlink = baseurl + "activity1";
-        nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "activity2";
         nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
+    } else if (currentPage === "reflection") {
         backlink = baseurl + "quiz";
         nextlink = baseurl + "takeaways";
-      } 
-      
-       else if (currentPage === "takeaways") {
-        backlink = baseurl + "quiz";
-        nextlink =
-          "/course-player?module=grandparent&section=protection&page=objectives";
-      }
-    } else if (section === "protection") {
-      let baseurl = "/course-player?module=grandparent&section=protection&page=";
-  
-      if (currentPage === "objectives") {
-        backlink =
-          "/course-player?module=grandparent&section=signs&page=objectives";
-        nextlink = baseurl + "intro-video";
-      } else if (currentPage === "intro-video") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "fundamental-measures";
-      } else if (currentPage === "fundamental-measures") {
-        backlink = baseurl + "intro-video";
-        nextlink = baseurl + "contacted";
-      }
-      else if (currentPage === "contacted") {
-        backlink = baseurl + "fundamental-measures";
-
-        nextlink = baseurl + "reactive";
-      } else if (currentPage === "reactive") {
-        backlink = baseurl + "contacted";
-        nextlink = baseurl + "accident";
-      } else if (currentPage === "accident") {
-        backlink = baseurl + "reactive";
-        nextlink = baseurl + "post-actions";
-      } else if (currentPage === "post-actions") {
-        backlink = baseurl + "accident";
-        nextlink = baseurl + "activity";
-      } else if (currentPage === "activity") {
-        backlink = baseurl + "post-actions";
-        nextlink = baseurl + "quiz";
-      } else if (currentPage === "quiz") {
-        backlink = baseurl + "activity";
-        nextlink = baseurl + "reflection";
-      } else if (currentPage === "reflection") {
-        backlink = baseurl + "quiz";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
+    } else if (currentPage === "takeaways") {
         backlink = baseurl + "reflection";
-        nextlink =
-          "/course-player?module=grandparent&section=practice&page=objectives";
-      }
-    } else if (section === "practice") {
-      let baseurl = "/course-player?module=grandparent&section=practice&page=";
-  
-      if (currentPage === "objectives") {
-        backlink = "/course-player?module=grandparent&section=signs&page=objectives";
-        nextlink = baseurl + "introduction";
-      } else if (currentPage === "introduction") {
-        backlink = baseurl + "objectives";
-        nextlink = baseurl + "activity";
+        nextlink = "/course-player?module=medication&section=protection&page=objectives";
+    }
+}else if (section === "protection") {
+  let baseurl = "/course-player?module=medication&section=protection&page=";
 
-        // disable next button, user needs to choose role
-        // setIntroduction();
-        // $('#nextButton').prop('disabled', true);
+  if (currentPage === "objectives") {
+      backlink = "/course-player?module=medication&section=signs&page=objectives";
+      nextlink = baseurl + "methods";
+  } else if (currentPage === "methods") {
+      backlink = baseurl + "objectives";
+      nextlink = baseurl + "sources";
+  } else if (currentPage === "sources") {
+      backlink = baseurl + "methods";
+      nextlink = baseurl + "types";
+  } else if (currentPage === "types") {
+      backlink = baseurl + "sources";
+      nextlink = baseurl + "verify1";
+  } else if (currentPage === "verify1") {
+      backlink = baseurl + "types";
+      nextlink = baseurl + "verify2";
+  } else if (currentPage === "verify2") {
+      backlink = baseurl + "verify1";
+      nextlink = baseurl + "doctor";
+  } else if (currentPage === "doctor") {
+      backlink = baseurl + "verify2";
+      nextlink = baseurl + "postScam";
+  } else if (currentPage === "postScam") {
+      backlink = baseurl + "doctor";
+      nextlink = baseurl + "report";
+  } else if (currentPage === "report") {
+      backlink = baseurl + "postScam";
+      nextlink = baseurl + "quiz";
+  } else if (currentPage === "quiz") {
+      backlink = baseurl + "report";
+      nextlink = baseurl + "reflection";
+  } else if (currentPage === "reflection") {
+      backlink = baseurl + "quiz";
+      nextlink = baseurl + "takeaways";
+  } else if (currentPage === "takeaways") {
+      backlink = baseurl + "reflection";
+      nextlink = "/course-player?module=medication&section=evaluation&page=intro";
 
-
-
-
-      } else if (currentPage === "activity") {
-
-        backlink = baseurl + "introduction";
-        nextlink = baseurl + "activity2";
-
-        // add audio
-        addAudioPlayer("car", rolePlay);
-      } else if (currentPage === "activity2") {
-        backlink = baseurl + "activity";
-        nextlink = baseurl + "activity3";
-
-        addAudioPlayer("car2", rolePlay);
-      } else if (currentPage === "activity3") {
-        backlink = baseurl + "activity2";
-        nextlink = baseurl + "activity4";
-
-        addAudioPlayer("car3", rolePlay);
-      } else if (currentPage === "activity4") {
-        backlink = baseurl + "activity3";
-        nextlink = baseurl + "reflection";
-
-        addAudioPlayer("car4", rolePlay);
-      } else if (currentPage === "reflection") {
-        backlink = baseurl + "activity4";
-        nextlink = baseurl + "takeaways";
-      } else if (currentPage === "takeaways") {
-        backlink = baseurl + "reflection";
-        nextlink = "/course-player?module=grandparent&section=evaluation&page=intro";
-
-        // complete module status to 100 manually since there is no quiz
-        console.log("HEY Posting to complete practice module status");
-        $.post('/completeModuleStatus', {
-            modId: 'grandparent',
-            section: 'practice'
-        });
       }
     } else if (section === "evaluation") {
-      let baseurl = "/course-player?module=grandparent&section=evaluation&page=";
+      let baseurl = "/course-player?module=medication&section=evaluation&page=";
   
       if (currentPage === "intro") {
-        backlink = "/course-player?module=grandparent&section=practice&page=objectives";
+        backlink = "/course-player?module=medication&section=protection&page=objectives";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
         backlink = baseurl + "intro";
@@ -842,7 +721,7 @@ function setLinks(currentPage) {
         nextlink = baseurl + "certificate";
       } else if (currentPage === "certificate") {
         backlink = baseurl + "badge";
-        nextlink = "/about/grandparent";
+        nextlink = "/about/medication";
       }
     }
   
@@ -1180,7 +1059,7 @@ function setIntroduction() {
 
 function addAudioPlayer(file, choice) {
   console.log("adding audio player for role play", rolePlay);
-  $.get("/quizPartials/grandparent/practice/" + file + "_" + choice + ".html", function(data) {
+  $.get("/quizPartials/medication/practice/" + file + "_" + choice + ".html", function(data) {
     // 'data' contains the content of the Pug template
     const audioContainer = $("#audio-container_" + file);
     audioContainer.empty();

@@ -1,0 +1,76 @@
+{
+  "1": {
+    "progress": 20,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "1. Which of the following statements about medication scams is TRUE?",
+    "choices": {
+      "a": {
+        "text": "A. Miracle products can cure many diseases effectively"
+      },
+      "b": {
+        "text": "B. Different illnesses often require different treatments."
+      },
+      "c": {
+        "text": "C. Scammers offer reliable products with verified benefits"
+      },
+      "d": {
+        "text": "D. Most health products sold online are thoroughly tested and safe to use without doctor’s supervision"
+      }
+    },
+    "explanation": "<h1>The correct answer is B.</h1><p>Different illnesses require different treatments. Even people with the same condition may need personalized approaches; no single medication can cure everything.</p>",
+    "correctResponse": "b"
+  },
+  "2": {
+    "progress": 40,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "2. Which of the following are warning signs of medication scams? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. Money-back guarantee",
+        "explanation": "Choice A is correct. Scammers often offer money-back guarantees to lure buyers, but they rarely follow through with refunds."
+      },
+      "1": {
+        "text": "B. No side effects",
+        "explanation": "Choice B is correct. Scammers often use 'No Side Effects' claims to make their product appear safe, but potent medicines often have side effects."
+      },
+      "2": {
+        "text": "C. Recommended by your healthcare provider",
+        "explanation": "Choice C is incorrect. A recommendation from a legitimate healthcare provider is usually a reliable source of information."
+      },
+      "3": {
+        "text": "D. Heavy use of emotional language",
+        "explanation": "Choice D is correct. Scammers use emotional appeals to target vulnerable consumers seeking immediate relief."
+      }
+    },
+    "correctResponse": ["0", "1", "3"],
+    "theAnswers": "A, B, D"
+  },
+  "3": {
+    "progress": 60,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "3. 'Still suffering from arthritis? Our new pill is designed to get rid of all types of arthritis in just 5 days, clinically proven to not only relieve joint damage, inflammation, redness, and swelling but also stop symptoms from returning permanently!' Identify the warning signs used in this advertisement. Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. Offering prices that are too good to be true",
+        "explanation": "Choice A is incorrect. Although scammers often offer discounts, this warning sign is not present in this advertisement."
+      },
+      "1": {
+        "text": "B. Promising fast and immediate results",
+        "explanation": "Choice B is correct. The advertisement claims to cure arthritis in just 5 days, which is an exaggerated promise."
+      },
+      "2": {
+        "text": "C. Offering treatment to all types of arthritis",
+        "explanation": "Choice C is correct. Treatments vary by arthritis type, so a claim that a pill treats all types is suspicious."
+      },
+      "3": {
+        "text": "D. Offering a permanent solution",
+        "explanation": "Choice D is correct. The claim that the pill can permanently stop symptoms is unrealistic, as rheumatoid arthritis has no permanent cure."
+      }
+    },
+    "correctResponse": ["1", "2", "3"],
+    "theAnswers": "B, C, D"
+  }
+}

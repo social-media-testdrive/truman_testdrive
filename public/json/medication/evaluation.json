@@ -1,0 +1,239 @@
+{
+    "1": {
+      "progress": 20,
+      "type": "abcd",
+      "partial": "none",
+      "prompt": "1. What is a medication scam?",
+      "choices": {
+        "a": {
+          "text": "A. Selling discounted medications to help people in need."
+        },
+        "b": {
+          "text": "B. Requiring a prescription before selling prescription medications."
+        },
+        "c": {
+          "text": "C. Selling fake or potentially harmful medications with misleading claims."
+        },
+        "d": {
+          "text": "D. Delivering medication directly to patients for convenience."
+        }
+      },
+      "explanation": "<h1>The correct answer is C.</h1><p>Choice C accurately describes a medication scam, which involves deception and the sale of harmful or ineffective products. Other choices describe legitimate practices and do not represent a medication scam.</p>",
+      "correctResponse": "c"
+    },
+    "2": {
+      "progress": 20,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "2. What tactics do scammers use in medication scams? Select all that apply.",
+      "choices": {
+        "0": {
+          "text": "A. Advertising a product as a 'miracle drug' that cures multiple health conditions.",
+          "explanation": "Choice A is correct. Scammers often use exaggerated claims about a product’s effectiveness to attract attention and convince people to buy."
+        },
+        "1": {
+          "text": "B. Promising unrealistic or exaggerated results.",
+          "explanation": "Choice B is correct. Medication scams frequently promise results that are too good to be true. These exaggerated claims are designed to entice people into purchasing the product under false pretenses."
+        },
+        "2": {
+          "text": "C. Using testimonials from alleged past buyers or experts.",
+          "explanation": "Choice C is correct. Scammers often use fake testimonials or endorsements from supposed buyers or experts to create a false sense of credibility and persuade consumers that the product is effective and trustworthy."
+        },
+        "3": {
+          "text": "D. Requiring a prescription from a licensed healthcare provider.",
+          "explanation": "Choice D is incorrect. Requiring a prescription from a licensed healthcare provider is a standard safety measure to ensure that medications are used appropriately and safely."
+        }
+      },
+      "correctResponse": ["0", "1", "2"],
+      "theAnswers": "A, B, C"
+    },
+    "3": {
+      "progress": 30,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "3. What are the warning signs that an online pharmacy might be a scam? Select all that apply.",
+      "choices": {
+        "0": {
+          "text": "A. Asking for a prescription before selling prescription medications.",
+          "explanation": "Choice A is not a scam. Licensed online pharmacies require a valid prescription before selling prescription medications."
+        },
+        "1": {
+          "text": "B. Offering medications at unreasonably cheap prices compared to reputable pharmacies or established drug retailers.",
+          "explanation": "Choice B could be a scam. If a price seems too good to be true, it may be a scam."
+        },
+        "2": {
+          "text": "C. Not having a licensed pharmacist on hand to answer your questions.",
+          "explanation": "Choice C could be a scam. Licensed online pharmacies will have a licensed pharmacist on hand to answer your questions."
+        },
+        "3": {
+          "text": "D. Being listed in the state’s board of pharmacy license database.",
+          "explanation": "Choice D is not a scam. Being listed on the state’s board of pharmacy license database is usually a sign of legitimacy."
+        }
+      },
+      "correctResponse": ["1", "2"],
+      "theAnswers": "B, C"
+    },
+    "4": {
+      "progress": 40,
+      "type": "yes_no",
+      "partial": "none",
+      "prompt": "4. Is it legal for dietary supplements to claim they can treat or prevent diseases?",
+      "choices": {
+        "yes": {
+          "text": "Yes"
+        },
+        "no": {
+          "text": "No"
+        }
+      },
+      "explanation": "<h1>The correct answer is No</h1><p>It’s illegal for companies to make claims that dietary supplements can cure, treat, or prevent diseases. Only drugs can legally make such claims.</p>",
+      "correctResponse": "no"
+    },
+    "5": {
+      "progress": 50,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "5. In this ad, what red flags did you identify? Select all that apply.",
+      "choices": {
+        "0": {
+          "text": "A. 'Too good to be true' claims.",
+          "explanation": "Choice A is a red flag. The supplement’s claim of reducing LDL cholesterol by 30% in 3 months with no side effects is unrealistic and likely false."
+        },
+        "1": {
+          "text": "B. Suspicious promotional offer.",
+          "explanation": "Choice B is a red flag. The limited-time offer with a 50% discount creates a sense of urgency, which is a common tactic used by scammers to pressure potential buyers."
+        },
+        "2": {
+          "text": "C. Money-back guarantee.",
+          "explanation": "Choice C is a red flag. Scammers often use money-back guarantees to lure customers, creating a false sense of security. However, scammers rarely provide refunds."
+        },
+        "3": {
+          "text": "D. Website includes an FAQ section.",
+          "explanation": "Choice D is NOT a red flag. An FAQ section by itself doesn’t indicate whether a product is a scam."
+        }
+      },
+      "correctResponse": ["0", "1", "2"],
+      "theAnswers": "A, B, C"
+    },
+    "6": {
+      "progress": 120,
+      "type": "yes_no",
+      "partial": "none",
+      "prompt": "6. TRUE or FALSE: The FDA reviews and approves dietary supplements for safety and effectiveness before they can be sold to the public.",
+      "choices": {
+        "yes": {
+          "text": "True"
+        },
+        "no": {
+          "text": "False"
+        }
+      },
+      "explanation": "<h1>The correct answer is False.</h1><p>Dietary supplements are regulated as foods, not drugs, which means they can be sold to the public without FDA approval. It is the responsibility of the manufacturer to ensure their dietary supplement products meet safety and quality standards.</p>",
+      "correctResponse": "false"
+    },
+    "7": {
+      "progress": 70,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "7. What should you ask your doctor before taking dietary supplements? Select all that apply.",
+      "choices": {
+        "0": {
+          "text": "A. What are the potential side effects?",
+          "explanation": "Choice A is correct. Understanding potential side effects is crucial for your safety and well-being."
+        },
+        "1": {
+          "text": "B. How will it interact with my existing medications?",
+          "explanation": "Choice B is correct. It’s important to know if the dietary supplement will affect how your current medications work or if there could be any harmful interactions."
+        },
+        "2": {
+          "text": "C. What is the return policy?",
+          "explanation": "Choice C is incorrect. While this is a practical concern, it is not directly related to your health and safety."
+        },
+        "3": {
+          "text": "D. What is the right dosage for me?",
+          "explanation": "Choice D is correct. Knowing the appropriate dosage ensures that you use the supplement safely and effectively."
+        }
+      },
+      "correctResponse": ["0", "1", "3"],
+      "theAnswers": "A, B, D"
+    },
+    "8": {
+      "progress": 80,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "8. What should you do if you realize you’ve been scammed after paying for a fraudulent product? Select all that apply.",
+      "choices": {
+        "0": {
+          "text": "A. Contact your credit card company or bank immediately.",
+          "explanation": "Choice A is correct. Your bank or credit card company may be able to reverse the transaction and refund your money."
+        },
+        "1": {
+          "text": "B. Ignore the situation and hope it resolves itself.",
+          "explanation": "Choice B is incorrect. Ignoring the situation is not advisable. It’s important to take the appropriate steps to protect your financial information."
+        },
+        "2": {
+          "text": "C. Talk to your family and friends.",
+          "explanation": "Choice C is correct. Sharing your story can help others protect themselves from potential scammers."
+        },
+        "3": {
+          "text": "D. Report the scam to the FDA by calling 1-800-FDA-1088 (1-800-332-1088).",
+          "explanation": "Choice D is correct. Reporting the scams to the FDA helps them gather important information about scams."
+        }
+      },
+      "correctResponse": ["0", "2", "3"],
+      "theAnswers": "A, C, D"
+    },
+    "9": {
+      "progress": 90,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "9. Which of the following are potential consequences of a medication scam? Select all that apply.",
+      "choices": {
+        "0": {
+          "text": "A. Breach of bank account or credit card information.",
+          "explanation": "Choice A is correct. Scammers often steal and misuse buyers’ credit card or bank account information during the purchase."
+        },
+        "1": {
+          "text": "B. Health and safety risks.",
+          "explanation": "Choice B is correct. Products involved in medication scams are often of poor quality and may contain harmful substances."
+        },
+        "2": {
+          "text": "C. Failure to receive the product you paid for.",
+          "explanation": "Choice C is correct. In some cases, consumers may pay for a product and never receive it."
+        },
+        "3": {
+          "text": "D. Face judgment from family and friends for falling for the scam.",
+          "explanation": "Choice D is incorrect. Victims should not be blamed or judged by family and friends. The fault lies with the scammer, not the victim."
+        }
+      },
+      "correctResponse": ["0", "1", "2"],
+      "theAnswers": "A, B, C"
+    },
+    "10": {
+      "progress": 100,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "10. Which are the key characteristics of medication scams? Select all that apply.",
+      "choices": {
+        "0": {
+          "text": "A. Providing detailed scientific studies and clinical trial data.",
+          "explanation": "Choice A is incorrect. Providing detailed, legitimate scientific studies and clinical trial data is actually a characteristic of reputable medication providers, not scammers."
+        },
+        "1": {
+          "text": "B. Making exaggerated promises about the product’s effectiveness.",
+          "explanation": "Choice B is correct. Scammers often make exaggerated or unrealistic promises about their products."
+        },
+        "2": {
+          "text": "C. Using fake testimonials from alleged past customers.",
+          "explanation": "Choice C is correct. Fake testimonials are a common tactic in medication scams."
+        },
+        "3": {
+          "text": "D. Presenting unverified claims from supposed doctors and scientists.",
+          "explanation": "Choice D is correct. Scammers frequently use unverified claims from supposed medical professionals to lend an air of legitimacy."
+        }
+      },
+      "correctResponse": ["1", "2", "3"],
+      "theAnswers": "B, C, D"
+    }
+  }
+  

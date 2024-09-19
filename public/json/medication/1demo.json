@@ -1,0 +1,67 @@
+{
+   "1": {
+        "progress": 20,
+        "type": "multi_select",
+        "partial": "none",
+        "prompt": "1. Which of the following are consequences of being a victim of grandparent scams? Select all that apply:",
+        "choices": {
+        "0": {
+            "text": "A. Financial gain",
+            "explanation": "Choice A is incorrect. Grandparent scams do not lead to financial gain. Scammers deceive targets by claiming that a grandchild or loved one is in serious trouble and urgently needs money to resolve the situation."
+        },
+        "1": {
+            "text": "B. Emotional distress",
+            "explanation": "Choice B is correct. Victims of grandparent scams often suffer significant  emotional distress because of the fake emergencies scammers describe. When scammers call pretending that their grandchild or loved ones are in serious trouble or a life-threatening situation, grandparents can experience intense fear and anxiety. This emotional toll can leave them feeling drained and vulnerable, even after realizing they have been deceived."
+        },
+        "2": {
+            "text": "C. Financial Loss",
+            "explanation": "Choice C is correct. Financial loss is a major consequence of grandparent scams. Scammers pressure victims into sending urgent payments, claiming it’s to help a grandchild or loved one in distress. This urgency leaves them with little time to verify the legitimacy of the request or seek assistance from other family members. Additionally, scammers often request payment through untraceable methods like gift cards, cryptocurrency, or wire transfers, making it nearly impossible for victims to recover lost funds.          "
+        },
+        "3": {
+            "text": "D. Feelings of embarrassment and guilt",
+            "explanation": "Choice D is correct. Victims of grandparent scams frequently experience feelings of embarrassment and self-blame. They may feel ashamed for falling for the scam leading to a reluctance in seeking support or reporting the scam. This reluctance can exacerbate the emotional toll of the experience."
+        }
+    },
+    "correctResponse": ["1", "2", "3"],
+    "theAnswers": "B, C, D"
+    },
+    "2":{
+      "progress": 40,
+      "type": "yes_no",
+      "partial": "q1.html",
+      "prompt": "1. Is it important to be careful about sharing your family’s information, including names, on social media?",
+      "choices": {
+        "yes": {
+          "text": "Yes"
+        },
+        "no": {
+          "text": "No"
+        }
+      },
+      "explanation": "<h1>Yes you should be careful when sharing these information.</h1><p>Being careful about sharing your family's information, like names, on social media helps protect your family's privacy and security. Scammers can use publicly available information to craft more believable stories and potentially target your family members.</p>",
+      "correctResponse": "yes"
+    },  
+    "3":{
+      "progress": 40,
+      "type": "abcd",
+      "partial": "q4.html",
+      "prompt": "4. According to this conversation, what red flags did you notice that can indicate the caller is a scammer?",
+      "choices": {
+          "a": {
+              "text": "A. Inaccurate Family Details"
+          },
+          "b": {
+              "text": "B. Pressure to Act Fast and Deter Questions"
+          },
+          "c": {
+              "text": "C. Demand for Secrecy"
+          },
+          "d": {
+              "text": "D. Request for Untraceable Payment Methods"
+          }
+      },
+      "explanation": "<h1>The correct answer is C.</h1><p>In this conversation, the scammer strongly emphasizes \"don't tell the parents\" with the excuse of \"don't want to worry them.\" By explicitly instructing the grandparent not to inform the parents/family, the scammer is demanding secrecy. This tactic isolates the victim from others who may identify it as a scam if the circumstances were discussed. Therefore, the correct answer is C. Demand for Secrecy.</p>",
+      "correctResponse": "c"
+    }
+  
+  }

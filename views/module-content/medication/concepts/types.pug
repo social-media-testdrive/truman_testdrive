@@ -1,0 +1,70 @@
+#types.hidden
+    .ui.container#targeted-read
+        .limit#learn-target(style="padding: 0;")
+            .ui.stackable.grid
+                .row
+                    .sixteen.wide.column
+                        h1.ui.header.large#learn-title
+                            .content
+                                i.book.icon
+                                span#narrate-title-types Types
+                .row
+                    .sixteen.wide.column
+                        p#narrate-1-types(style="margin-top: -10px;") 
+                            span The most common types of medication scams include:
+                .row
+                    .sixteen.wide.column
+                        .ui.icon.mini.message(style="padding: 5px; z-index: 99; margin-top: -15px;")
+                            i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                            .content
+                                p Click the arrow to learn more.
+
+        .ui.stackable.middle.aligned.grid#double-slider(style="margin-top: 20px;")
+            .column.five.wide.computer.only.sixteen.wide.tablet.only
+                #image-slider(style="margin: 0 auto;")
+                    img(src=public_resources+'/images/shared_sources/filler.png' alt='Computer image' )
+                    img(src=public_resources+'/images/shared_sources/filler.png' alt='Passport image' )
+                    img(src=public_resources+'/images/shared_sources/filler.png' alt='Villian in cast' style="max-width: 250px !important; margin-left: 40px;")
+                    img(src=public_resources+'/images/shared_sources/filler.png' alt='Ringing phone' style="max-width: 300px; margin-left: 70px;padding-top: 20px;")
+
+            .column.eleven.wide.computer.only.sixteen.wide.tablet.only(style="max-height:0%")
+                #steps-slider
+                    //- Card 1
+                    .ui.basic.card
+                        .content
+                            h2#narrate-2-types 
+                                span Addiction Treatments
+                            p#narrate-3-types 
+                                span Scammers claim to sell products that quickly cure addictions, most commonly, opioid addiction and dependence. 
+                            p#narrate-4-types
+                                span These products can include “herbal blends”, “vitamin/mineral blends”, or Kratom, which have not been scientifically proven to ease withdrawal symptoms or treating opioid addiction [2]
+
+                    //- Card 2 
+                    .ui.basic.card
+                        .content
+                            h2#narrate-1-types-2
+                                span Dementia and Memory Loss Treatments
+                            p#narrate-2-types-2 
+                                span Scammers claim that their products can reverse the effects of Dementia or Alzheimer’s Disease or cure memory loss completely. Currently, scientific research has indicated that no treatment can cure memory loss or related diseases [2].
+
+                    //- Card 3
+                    .ui.basic.card
+                        .content
+                            //- h2 Step 3: Fabricate an Emergency Story
+                            h2#narrate-1-types-3 
+                                span Arthritis Treatments
+                            p#narrate-2-types-3  
+                                span Scammers claim that their supplements or treatments can cure arthritis. However, there is no known cure for arthritis [2].                            
+                    //- Card 4
+                    .ui.basic.card
+                        .content
+                            h2#narrate-1-types-4 
+                                span Anti-aging Products
+                            p#narrate-2-types-4  
+                                span Scammers claim that their supplements or creams can “slow” or “reverse the effects of aging” although no scientific research has supported their claims [2].
+                          
+            i.source [2] Common Health Scams. Federal Trade Commision (FTC)&nbsp;
+                a(href='https://consumer.ftc.gov/articles/common-health-scams' target='_blank') https://consumer.ftc.gov/articles/common-health-scams
+                //- | [3] Don’t open your door to grandparent scams. FTC. 
+                //- a(href='https://consumer.ftc.gov/consumer-alerts/2021/04/dont-open-your-door-grandparent-scams' target='_blank')  https://consumer.ftc.gov/consumer-alerts/2021/04/dont-open-your-door-grandparent-scams
+                    

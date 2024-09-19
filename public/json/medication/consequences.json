@@ -1,0 +1,55 @@
+{
+    "1": {
+      "progress": 20,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "1. What risks do buyers face when purchasing from scammers? Select all that apply:",
+      "choices": {
+        "0": {
+          "text": "A. Your credit card number or bank information could be stolen and misused.",
+          "explanation": "Choice A is correct. Scammers often steal and misuse buyers’ credit card or bank account information during the purchase. This stolen information can then be used in fraudulent activities, leading to financial loss."
+        },
+        "1": {
+          "text": "B. You might not receive the product you paid for.",
+          "explanation": "Choice B is correct. Scammers often take upfront payment and never deliver the product. In this case, it’s likely the advertised product never even existed; the goal was simply to collect money."
+        },
+        "2": {
+          "text": "C. You could receive harmful products that lead to more medical expenses.",
+          "explanation": "Choice C is correct. Products involved in medication scams are often of poor quality and may contain harmful substances. Using these products can result in health issues, requiring consumers to seek legitimate medical treatment and incur additional expenses."
+        },
+        "3": {
+          "text": "D. You could get a refund once you apply for it.",
+          "explanation": "Choice D is incorrect. Scammers rob victims of their money, period. Refunds don't happen. Scammers vanish or ignore complaints, leaving buyers with empty wallets and zero recourse."
+        }
+      },
+      "correctResponse": ["0", "1", "2"],
+      "theAnswers": "A, B, C"
+    },
+    "2": {
+      "progress": 40,
+      "type": "multi_select",
+      "partial": "none",
+      "prompt": "2. Why are counterfeit medications dangerous? Select all that apply:",
+      "choices": {
+        "0": {
+          "text": "A. They might have too much or too little of the active ingredient that treats your condition.",
+          "explanation": "Choice A is correct. Having too much or too little of the active ingredient can render medications ineffective or even harmful."
+        },
+        "1": {
+          "text": "B. They could contain harmful ingredients that interact badly with your other medications.",
+          "explanation": "Choice B is correct. Taking multiple medications or supplements at once can be risky. Their ingredients might interact in ways that damage your health. Counterfeit medicines are even more dangerous because they often don't list all their ingredients on the package."
+        },
+        "2": {
+          "text": "C. They are easier to find online.",
+          "explanation": "Choice C is incorrect. Just because counterfeit medications are easy to find online doesn’t mean they are dangerous or safe. The safety of medications depends on their ingredients, quality, and approval by health authorities, not how easily they can be bought."
+        },
+        "3": {
+          "text": "D. They might cause serious side effects or health problems, such as allergic reactions.",
+          "explanation": "Choice D is correct. Counterfeit medications might contain hidden, harmful ingredients that can potentially cause serious health problems."
+        }
+      },
+      "correctResponse": ["0", "1", "3"],
+      "theAnswers": "A, B, D"
+    }
+  }
+  
