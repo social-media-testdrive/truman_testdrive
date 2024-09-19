@@ -1,0 +1,144 @@
+{
+  "1": {
+    "progress": 20,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. How can you avoid medication scams? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. Always try new treatments as soon as they become available on the market.",
+        "explanation": "Choice A is incorrect. Trying new treatments without thorough research and consultation can be risky and may expose you to scams."
+      },
+      "1": {
+        "text": "B. Speak with your healthcare provider before trying new treatments.",
+        "explanation": "Choice B is correct. Consulting your healthcare provider helps ensure the safety and effectiveness of new treatments and reduces the risk of falling victim to scams."
+      },
+      "2": {
+        "text": "C. Ask yourself, 'Does this claim sound too good to be true?'",
+        "explanation": "Choice C is correct. If a claim sounds too good to be true, it often is. Being skeptical can help you identify and avoid potential scams."
+      },
+      "3": {
+        "text": "D. Trust treatments endorsed by celebrities.",
+        "explanation": "Choice D is incorrect. Celebrity endorsements do not guarantee the safety and effectiveness of a treatment."
+      }
+    },
+    "correctResponse": ["1", "2"],
+    "theAnswers": "B, C"
+  },
+  "2": {
+    "progress": 40,
+    "type": "abcd",
+    "partial": "none",
+    "prompt": "2. How can you verify if a drug claiming to be FDA-approved is actually FDA-approved?",
+    "choices": {
+      "a": {
+        "text": "A. Search for the drug’s name in FDA’s public database, Drugs@FDA"
+      },
+      "b": {
+        "text": "B. Look for FDA regulatory terms like FDA-cleared, FDA-listed, or FDA-registered"
+      },
+      "c": {
+        "text": "C. Check the drug’s marketing status (prescription, over-the-counter, or discontinued)"
+      },
+      "d": {
+        "text": "D. Check if the drug manufacturer adheres to cGMP (current good manufacturing practices) regulations"
+      }
+    },
+    "explanation": "<h1>The correct answer is A.</h1><p>Drugs@FDA is a public database that contains information about drug products approved by the FDA since 1939.</p>",
+    "correctResponse": "a"
+  },
+  "3": {
+    "progress": 60,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "3. Which of the following are green flags that an online pharmacy is legitimate and safe? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. The pharmacy is licensed in the state where it operates, as well as in the state from which you are ordering, if they are different.",
+        "explanation": "Choice A is correct. Licensing ensures that the pharmacy complies with state regulations and standards, protecting consumers from counterfeit or unsafe medications."
+      },
+      "1": {
+        "text": "B. A licensed pharmacist is available to answer questions or concerns",
+        "explanation": "Choice B is correct. Legitimate online pharmacies have a licensed pharmacist on staff to provide guidance and ensure that patients receive safe and appropriate advice."
+      },
+      "2": {
+        "text": "C. A valid prescription from a licensed healthcare provider is required to purchase prescription medicines",
+        "explanation": "Choice C is correct. Requiring a valid prescription ensures that medications are dispensed based on a healthcare provider’s assessment, ensuring safety and appropriateness."
+      },
+      "3": {
+        "text": "D. The pharmacy has a verifiable physical address and phone number within the United States",
+        "explanation": "Choice D is correct. A physical address and phone number indicate that the pharmacy is operating within U.S. jurisdiction and subject to U.S. regulations."
+      }
+    },
+    "correctResponse": ["0", "1", "2", "3"],
+    "theAnswers": "A, B, C, D"
+  },
+  "4": {
+    "progress": 80,
+    "type": "yes_no",
+    "partial": "none",
+    "prompt": "4. Jason found a website that sells dietary supplements that help relieve back and joint pain. The website claims that the product is FDA-approved. Should Jason trust this claim?",
+    "choices": {
+      "yes": {
+        "text": "Yes"
+      },
+      "no": {
+        "text": "No"
+      }
+    },
+    "explanation": "<h1>The correct answer is No.</h1><p>Jason should not trust the claim that the product is FDA-approved because the FDA does not approve dietary supplements for safety or effectiveness.</p>",
+    "correctResponse": "no"
+  },
+  "5": {
+    "progress": 100,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "5. What should you do if you realize you’ve been scammed after paying for a fraudulent product? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. Ignore the situation and hope it resolves itself.",
+        "explanation": "Choice A is incorrect. Ignoring the situation is not advisable. It’s important to take appropriate steps to protect your financial information and prevent further loss."
+      },
+      "1": {
+        "text": "B. Contact your credit card company or bank immediately.",
+        "explanation": "Choice B is correct. Your bank or credit card company may be able to reverse the transaction and refund your money, though this isn’t guaranteed."
+      },
+      "2": {
+        "text": "C. Change your bank account password immediately.",
+        "explanation": "Choice C is correct. Changing your bank account password helps prevent scammers from making additional unauthorized charges to your account."
+      },
+      "3": {
+        "text": "D. Report the scam to the FTC at ReportFraud.ftc.gov.",
+        "explanation": "Choice D is correct. Reporting the scam to the FTC helps them gather important information about scams and take action to prevent them."
+      }
+    },
+    "correctResponse": ["1", "2", "3"],
+    "theAnswers": "B, C, D"
+  },
+  "6": {
+    "progress": 120,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "6. What questions should you ask your doctor before taking dietary supplements? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. Is there scientific evidence supporting its effectiveness?",
+        "explanation": "Choice A is correct. It’s important to understand if the dietary supplement has been proven effective through scientific research."
+      },
+      "1": {
+        "text": "B. What are the potential side effects?",
+        "explanation": "Choice B is correct. Knowing the potential side effects helps you weigh the risks and benefits of taking the supplement."
+      },
+      "2": {
+        "text": "C. What is the appropriate dosage for me?",
+        "explanation": "Choice C is correct. The appropriate dosage can vary based on individual health conditions, age, and other factors. Your doctor can provide guidance."
+      },
+      "3": {
+        "text": "D. How much do dietary supplements cost compared to regular food?",
+        "explanation": "Choice D is incorrect. While cost is a practical consideration, it is not as critical as understanding the supplement’s safety and efficacy."
+      }
+    },
+    "correctResponse": ["0", "1", "2"],
+    "theAnswers": "A, B, C"
+  }
+}

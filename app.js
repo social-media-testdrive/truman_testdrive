@@ -367,7 +367,7 @@ app.post("/postPracticeChoice", userController.postPracticeChoice);
 app.post("/getPracticeChoices", userController.getPracticeChoices);
 
 function isValidModId(req, res, next) {
-  const modIds = ["identity", "romance", "grandparent", "tech"];
+  const modIds = ["identity", "romance", "grandparent", "tech", "medication"];
   if (modIds.includes(req.params.modId)) {
     next();
   } else {

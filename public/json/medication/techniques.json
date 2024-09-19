@@ -1,0 +1,80 @@
+{
+  "1": {
+    "progress": 20,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. How do scammers make their products seem safe and trustworthy? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. By using terms like 'FDA registered' or 'FDA certified'",
+        "explanation": "Choice A is correct. Scammers often use FDA regulatory terms like 'FDA registered' or 'FDA certified' to make products seem official and legitimate. However, these terms do not denote FDA approval nor guarantee the safety, efficacy, and quality of the product."
+      },
+      "1": {
+        "text": "B. By providing clinical trial data or third-party testing results",
+        "explanation": "Choice B is incorrect. Scammers rarely provide genuine clinical evidence to support their claims. They may make claims that their product is 'clinically tested' or 'clinically proven,' even when this is not true. Even if they do provide some evidence, it is usually fake or altered."
+      },
+      "2": {
+        "text": "C. By offering free consultation with state-licensed physicians or pharmacists",
+        "explanation": "Choice C is incorrect. Although scammers may offer free consultations, it’s likely that these individuals are not actually licensed to give legitimate medical advice."
+      },
+      "3": {
+        "text": "D. By featuring fake testimonials from supposed past buyers or healthcare providers",
+        "explanation": "Choice D is correct. Scammers often use fake testimonials to mislead consumers into believing the product is effective and reputable."
+      }
+    },
+    "correctResponse": ["0", "3"],
+    "theAnswers": "A, D"
+  },
+  "2": {
+    "progress": 40,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "2. In this ad, what techniques are being used to mislead people? Select all that apply:",
+    "choices": {
+      "0": {
+        "text": "A. The term 'all-natural' is used to suggest the product is automatically safe",
+        "explanation": "Choice A is correct. Scammers often exploit 'natural' to grab attention. This doesn't guarantee safety. Even deadly mushrooms are natural."
+      },
+      "1": {
+        "text": "B. The claim of 'zero side effects' is unrealistic and unverifiable",
+        "explanation": "Choice B is correct. It is unrealistic to guarantee that any supplement will have no side effects for everyone, as individual reactions to supplements can vary."
+      },
+      "2": {
+        "text": "C. The term 'plant-based' is used to imply the product is inherently safer",
+        "explanation": "Choice C is correct. While plant-based supplements might be perceived as safer, they are not necessarily safer than synthetic ones. Scammers often use this perception to create a false sense of security."
+      },
+      "3": {
+        "text": "D. The advertisement makes an unrealistic promise of improved health and vitality for everyone.",
+        "explanation": "Choice D is correct. Promising guaranteed health improvements for all people is unrealistic and misleading, as individual responses to supplements can vary significantly."
+      }
+    },
+    "correctResponse": ["0", "1", "2", "3"],
+    "theAnswers": "A, B, C, D"
+  },
+  "3": {
+    "progress": 60,
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "3. How do scammers exploit the placebo effect in medication scams?",
+    "choices": {
+      "0": {
+        "text": "A. By including real effective ingredients that actually work",
+        "explanation": "Choice A is incorrect. Products used in medication scams rarely contain ingredients that provide real benefits. Instead, scammers make deceptive claims and exaggerated promises to induce the placebo effect."
+      },
+      "1": {
+        "text": "B. By encouraging you to research and verify their product claims",
+        "explanation": "Choice B is incorrect. Scammers typically discourage verification to keep their false claims from being exposed."
+      },
+      "2": {
+        "text": "C. By claiming their products have immediate and miraculous effects",
+        "explanation": "Choice C is correct. Scammers often make exaggerated claims about their products to persuade consumers of their effectiveness, even when they are not."
+      },
+      "3": {
+        "text": "D. By providing testimonials written by alleged doctors and scientists",
+        "explanation": "Choice D is correct. Scammers use fake testimonials from doctors and scientists to create a false sense of legitimacy, amplifying the placebo effect."
+      }
+    },
+    "correctResponse": ["2", "3"],
+    "theAnswers": "C, D"
+  }
+}

@@ -1,0 +1,76 @@
+#certificate.hidden
+    .ui.container#certificate-read(style="width: 90%;")
+        .ui.grid.middle.aligned
+            .sixteen.wide.mobile.sixteen.wide.tablet.eight.wide.computer.column
+                h1.ui.header.large#learn-title
+                    .content
+                        i.trophy.icon
+                        | Congratulations!
+                //- h1 Congratulations! 
+                //- p We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
+                .certificate-outer-border#cert
+                    .certificate-inner-border
+                        .ui.basic.segment
+                            h2.ui.header.centered
+                                | Certificate of Completion
+                                .ui.sub.header.centered(style="margin-top: 10px; margin-bottom: -10px;")
+                                    | This is to certify that
+                            h2.ui.header.centered
+                                | #{user.name}
+                            .ui.divider#underline-field
+                            h2.ui.header(style="margin-top: 20px;")
+                                .ui.sub.header.centered
+                                    | has successfully completed the mission
+                            h2.ui.header.centered(style="margin-top: 10px;")
+                                | Medication Scams
+                            .ui.grid
+                                .three.column.row.middle.aligned
+                                    .column
+                                        h3#date 
+                                        .ui.divider.short-underline-field
+                                        p Date Awarded
+                                    .column
+                                        img.ui.massive.centered.image(src=`${public_resources}/images/shared_sources/dart-logo.svg`, alt='dart logo')
+                                    .column
+                                        h3 Intrepid
+                                        .ui.divider.short-underline-field
+                                        p Tutor
+                .ui.two.column.tablet.only.mobile.only.grid(style="margin-top: 10px;")
+                    .left.aligned.column
+                        a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
+                            i.download.icon
+                            | Download
+                    .right.aligned.column
+                        a.ui.button.huge.blue.rounded-cert-button#share-button
+                            i.share.icon
+                            | Share
+                //- .ui.two.column.grid(style="margin-top: 10px;")
+                //-     .left.aligned.column
+                //-         a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
+                //-             i.download.icon
+                //-             | Download Certificate
+                //-     .right.aligned.column
+                //-         a.ui.button.huge.blue.rounded-cert-button#share-button
+                //-             i.share.icon
+                //-             | Share Certificate
+            .sixteen.wide.mobile.sixteen.wide.tablet.eight.wide.computer.column
+                h2.ui.header You have learned:
+                .ui.bulleted.list 
+                    .item Themes of Grandparent Scams and how they harm people.
+                    .item The methods scammers use.
+                    .item Effective strategies to protect against Grandparent Scams.
+                    //- .item The key concepts of identity theft that are introduced in this model.
+                    //- .item Understanding the potential consequences when their identity is stolen.
+                    //- .item Recognizing different types of identity theft and how they are perpetrated.
+                    //- .item Identifying the common warning signs of identity theft.
+                    //- .item Using strategies to protect themselves from becoming a victim of identity theft.
+                //- p We hope you found this course to be exciting and informative. Here is your certificate, feel free to share it with your friends and enjoy this special moment.
+                .ui.two.column.computer.only.grid(style="margin-top: 10px;")
+                    .left.aligned.column
+                        a.ui.button.huge.basic.blue.rounded-cert-button#download-button(onclick="createPDF()")
+                            i.download.icon
+                            | Download
+                    .right.aligned.column
+                        a.ui.button.huge.blue.rounded-cert-button#share-button
+                            i.share.icon
+                            | Share

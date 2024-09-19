@@ -1,0 +1,27 @@
+#takeaways.hidden
+    .ui.container#reflection-read
+        .limit#learn-target(style="padding: 0;")
+            .ui.stackable.grid.middle.aligned
+                .ten.wide.column
+                    h1.ui.header.large#learn-title
+                        .content#great-job
+                            i.award.icon
+                            span#narrate-title-takeaways Congratulations!
+                    #text
+                        p#narrate-1-takeaways  
+                            span You've completed "Consequences" and earned a bronze badge!  
+                        p#narrate-2-takeaways 
+                            span You now know:
+                        .ui.bulleted.list
+                            .item#narrate-3-takeaways(style="line-height: 1rem;")
+                                span The potential consequences of Medication scams
+                            .item#narrate-4-takeaways(style="line-height: 1rem;")
+                                span How scammers select their targets
+                        p#narrate-5-takeaways 
+                            span This knowledge will help you keep yourself and others safe from Medication scams.
+                .six.wide.center.aligned.column
+                    img.ui.small.centered.image#earned_badge(src= public_resources + '/badges/identity/aftermath_ace.svg' onmouseenter="animateBadge()" style="margin-bottom: -10px; width: 125px;")
+                    h3 <strong>Aftermath</strong>
+                        br
+                        | <strong>Ace</strong>
+            audio(id="unlockBadge", src="/sound/unlock.wav", preload="auto")
