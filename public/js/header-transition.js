@@ -54,7 +54,7 @@ $(document).ready(function() {
             dartBlueItems.css('color', 'white');
             dartGrayItems.css('color', 'white');
 
-            dartLogo.attr('src', '/images/dart-white.svg');
+            dartLogo.attr('src', `${resources}/images/shared_sources/dart-white.svg`);
         } else if (currentScrollTop > ($(window).height() - buffer)) {
             header.css('background-color', 'white');
             loginItem.hide();
@@ -62,7 +62,7 @@ $(document).ready(function() {
             getStartedItem.show();
             dartBlueItems.css('color', '#3757A6');
             dartGrayItems.css('color', '#7D7C7C');
-            dartLogo.attr('src', '/images/dart-logo.svg');
+            dartLogo.attr('src', `${resources}/images/shared_sources/dart-logo.svg`);
         }
 
         // Check if scrolling up or down

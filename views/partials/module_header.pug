@@ -22,11 +22,7 @@ header(style="z-index: 1000 !important;")
                                 .active.section#header-section #{section.charAt(0).toUpperCase()}#{section.slice(1)}
                             else 
                                 .active.section#header-section Challenge
-                //- .ui.container(style="position: absolute;  left: 25%; top: 100%; width: 200px;")
-                //-     h1 Challenge
-            //- .left.menu
-            //-     .item
-            //-         h2 Chapter 1
+
             .right.menu
                 .item.ui.dropdown#volume-button
                     i.volume.off.big.icon#volume-icon(style="padding-left: 5px;")
@@ -79,43 +75,12 @@ header(style="z-index: 1000 !important;")
                             input(type="checkbox" id="highlight-sentences-checkbox" onchange="postNarrationSetting('sentence', this.checked)")
                             label
 
-                        //- .ui.labeled.ticked.slider.item#speed-control(style="font-size: 0.05rem;")
-                        //-     //- input(type="range" min="0.5" max="2" step="0.1" value="1" oninput="changeSpeed(this.value)" onclick="stopPropagation(event)")
-                        //-     input(onclick="stopPropagation(event)")
-                        //-     //- label Speed
-
-
-                        //- .item(data-value='0') Mute me now
-                        //- .item(data-value='1') 10%
-                        //- .item(data-value='2') 20%
-                        //- .item(data-value='3') 30%
-                        //- .item(data-value='4') 40%
-                        //- .item(data-value='5') 50%
-                        //- .item(data-value='6') 60%
-                        //- .item(data-value='7') 70%
-                        //- .item(data-value='8') 80%
-                        //- .item(data-value='9') 90%
-                        //- .item(data-value='10') 100%
-                    //- .menu
-                    //-     a.item#mute-button
-                    //-         i.volume.off.icon
-                    //-     a.item#exit-button
-                    //-         i.home.large.icon
 
                 a.item#exit-button
                     i.home.large.icon
 
-    //- #theft-progress.ui.small.bottom.progress(style='z-index: -1; position: absolute; top: 70px; width: 100%;' data-percent='33')
     #theft-progress.ui.small.bottom.progress
         .bar(style='border-radius: 0 !important;')
-
-    //- .progress-bar__wrapper
-    //-     label.progress-bar__value(htmlfor='progress-bar')
-    //-     progress#progress-bar(value='0' max='100')
-
-
-            //- .progress
-            //-  have the progress bar transition bigger and show percent number when hovering
 
 //- Modal
 .ui.modal#exit-modal(style="z-index: 999999; width: 400px;")
@@ -125,89 +90,3 @@ header(style="z-index: 1000 !important;")
     .actions(style="text-align: center;")
         .ui.negative.huge.button#no-button No
         .ui.positive.huge.button#yes-button Yes
-
-    //- .ui.fluid.progress(data-percent='75', style="position: absolute; top: 70px; width: 100%")
-    //-     .bar(style='width: 75%;')
-    //-         | 75% Complete
-
-//- .ui.container
-//-     #theft-progress.ui.bottom.attatched.small.progress(style='' data-percent='7')
-//-         .bar(style='border-radius: 0 !important;')
-//-             .progress
-            //- a.item(href='/studentLogin').dart-blue
-            //-     | Courses
-            //- a.item(href='/studentLogin').dart-blue
-            //-     | Log in
-            //- a.item(href='/createStudent').dart-blue
-            //-     | Sign up
-
-//- .ui.top.small.borderless.menu(style="height: 4rem")
-//-   .ui.grid.container
-//-     .three.wide.column
-//-         a.item(href='/')
-//-             img.ui.small.image(src='/images/dart-logo.svg', id='logo')
-//-     .seven.wide.column
-//-     .two.wide.column
-//-         a.item(href='/').dart-blue
-//-             | Home
-//-     .two.wide.column
-//-         a.item(href='/account').dart-blue
-//-             | Profile
-//-     .two.wide.column
-//-         a.item(href='/logout')
-//-             | Logout
-
-
-
-//- header.ui.fixed.menu
-//-   .ui.container
-//-     .ui.grid
-//-       .row
-//-         .six.wide.column
-//-           img.logo(src="logo.png")
-//-         .right.aligned.ten.wide.column
-//-           .ui.buttons
-//-             a.ui.button Home
-//-             a.ui.button Profile
-//-             a.ui.button Logout
-//- -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-//- -var isResearchVersion = process.env.isResearchVersion === 'true';
-//- -var enableLearnerDashboard = process.env.enableLearnerDashboard === 'true';
-//- .computer.only.tablet.only.row.testdriveHeaderRow 
-//-   #outer-header.ui.borderless.fixed.menu.testDriveHeader.not-fixed-header
-//-     #inner-header.ui.menu   
-//-       a.item(href='/')
-//-         img.ui.small.image(src='/images/dart-logo.svg', id='logo')
-//-       .right.menu
-//-         a.item(href='/').dart-blue
-//-           | Home
-//-         a.item(href='/account').dart-blue
-//-           | Profile
-//-         a.item(href='/logout')
-//-           | Logout
-//- .mobile.only.row
-//-   .ui.fluid.top.fixed.two.item.menu.testDriveHeader
-//-     a.item(href='/')
-//-       img.ui.small.image(src='/images/dart-logo.svg', id='cell_logo')
-//-     if isResearchVersion
-//-         if user
-//-           //- a.item.newpost.float.right
-//-           //-   i.big.plus.icon
-//-           .item
-//-             .right.menu.headerDropdownMenu
-//-               .ui.simple.dropdown.item
-//-                 if isResearchVersion
-//-                   span= user.username || user.profile.name || user.id
-//-                 else 
-//-                   span= user.profile.name || user.username || user.id
-//-                 i.dropdown.icon
-//-                 .menu
-//-                   if user.isInstructor
-//-                     a.item(href='/classManagement') View Dashboard
-//-                   if (user.isStudent && enableLearnerDashboard)
-//-                     a.item(href='/learningAchievement') My Dashboard
-//-                   a.item(href='/') Module Page
-//-                   a.item(href='/account') Profile Page
-//-                   a.item(href='mailto:socialmediatestdrive@gmail.com') Contact Us
-//-                   a.item(href='/logout') Logout
-          

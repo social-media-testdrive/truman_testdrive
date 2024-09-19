@@ -13,55 +13,52 @@ block content
           .ui.stackable.grid 
             .row.middle.aligned
               .ten.wide.column
-                img(src="/images/dart-bullet.svg", alt="Bullet Point")
+                img(src=public_resources + "/images/shared_sources/dart-bullet.svg", alt="Bullet Point")
                 span.target  Your Target: 
                 p
                 p(style="margin-left: 65px;") The Society for Covert Attacks and Mass Manipulation (SCAMM), a notorious group of scammers led by Walter Fang.
               .six.wide.center.aligned.column
-                img(src="/images/scamm.png", alt="Group of Scammers" style="width: 225px;")
+                img(src= public_resources + "/images/selection/scamm.png", alt="Group of Scammers" style="width: 225px;")
             .row.middle.aligned
               .ten.wide.column
-                img(src="/images/dart-bullet.svg", alt="Bullet Point")
+                img(src=public_resources + "/images/shared_sources/dart-bullet.svg", alt="Bullet Point")
                 span.target  Mission Brief: 
                 p
                 p(style="margin-left: 65px;") Learn how SCAMM works by going "deep cover." This means you'll work hands-on to uncover their tricks.
               .six.wide.center.aligned.column
-                img(src="/images/deepcover.png", alt="Deepcover mission badge labeled: exposing scam and protecting the people" style="width: 175px;")
+                img(src=public_resources + "/images/selection/deepcover.png", alt="Deepcover mission badge labeled: exposing scam and protecting the people" style="width: 175px;")
             .row.middle.aligned
               .sixteen.wide.column
-                img(src="/images/dart-bullet.svg", alt="Bullet Point")
+                img(src=public_resources + "/images/shared_sources/dart-bullet.svg", alt="Bullet Point")
                 span.target  Your Team: 
                 p
                 p(style="margin-left: 65px;") Choose from Valiant, Daring, and Intrepid — skilled agents ready to assist you!
 
-          //- h2 Your Team:
-          //- img(src="/images/dart-bullet.svg", alt="Bullet Point")
-          //- p Choose from Valiant, Daring, Intrepid, and Dartie — skilled agents ready to assist in this operation.
         br
         h1 Choose Your Guide:
         .ui.stackable.three.column.grid
             .column
-                .ui.card(onclick='updateAvatar("Daring", "/images/agent-daring.png")')
+                .ui.card(onclick=`updateAvatar("Daring", "${public_resources}/images/shared_sources/agent-daring.png")`)
                     .ui.small.centered.image
-                        img.daring(src='/images/agent-daring.png')
+                        img.daring(src=`${public_resources}/images/shared_sources/agent-daring.png`)
                     .content
                         a.header Daring
                         .meta
                           p.descriptors Bold, Fearless, Confident
                     button.ui.fluid.blue.huge.button Select
             .column
-                .ui.card(onclick='updateAvatar("Valiant", "/images/agent-valiant.png")') 
+                .ui.card(onclick=`updateAvatar("Valiant", "${public_resources}/images/shared_sources/agent-valiant.png")`) 
                     .ui.small.centered.image
-                        img.valiant(src='/images/agent-valiant.png')
+                        img.valiant(src=`${public_resources}/images/shared_sources/agent-valiant.png`)
                     .content
                         a.header Valiant
                         .meta
                           p.descriptors Courageous, Heroic, Noble &nbsp;
                     button.ui.fluid.blue.huge.button Select
             .column
-                .ui.card(onclick='updateAvatar("Intrepid", "/images/agent-intrepid.png")')
+                .ui.card(onclick=`updateAvatar("Intrepid", "${public_resources}/images/shared_sources/agent-intrepid.png")`)
                     .ui.small.centered.image
-                        img.intrepid(src='/images/agent-intrepid.png')
+                        img.intrepid(src=`${public_resources}/images/shared_sources/agent-intrepid.png`)
                     .content
                         a.header Intrepid
                         .meta

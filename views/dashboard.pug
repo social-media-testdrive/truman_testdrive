@@ -38,10 +38,12 @@ block content
         br
         br
         br
-
+ 
 block styles
   link(rel='stylesheet', href='/css/mods.css')
 
 block scripts  
+  script.
+    var resources = "#{public_resources}";
   script(src='/module_js/dashboard/dashboard.js')   
   script(src="/module_js/dashboard/streaks.js")

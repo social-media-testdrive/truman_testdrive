@@ -2,7 +2,7 @@ header.ui.borderless.menu.tablet-and-computer
     .ui.container
         #logo
             a.item(href='/')
-                img.ui.small.image.dart-logo(src='/images/dart-logo.svg' alt='dart logo')
+                img.ui.small.image.dart-logo(src=`${public_resources}/images/shared_sources/dart-logo.svg` alt='dart logo')
         if user
             .right.menu#navbar-header
                 a.item(href='/').dart-blue
@@ -27,7 +27,7 @@ header.ui.borderless.menu.tablet-and-computer
 header.mobile-only(style="z-index: auto !important;")
     .ui.fluid.top.two.item.menu
         a.item(href='/')
-            img.ui.small.image.dart-logo(src='/images/dart-logo.svg' id='cell_logo')
+            img.ui.small.image.dart-logo(src=`${public_resources}/images/shared_sources/dart-logo.svg` id='cell_logo')
         .item
             .menu.headerDropdownMenu
                 if user

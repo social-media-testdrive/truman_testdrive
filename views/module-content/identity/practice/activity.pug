@@ -3,9 +3,7 @@
         .limit
             .emailSimContainer#emailsim(style="margin-top: -15px;")
                 .showOpenEmailAnimation.hidden
-                    img(src='/images/cursor.png')
-                //- .showReturnToInboxAnimation.hidden
-                //-     img(src='/images/cursor.png')
+                    img(src=`${public_resources}/images/shared_sources/cursor.png`)
 
                 .emailHeader(style="padding: 5px; padding-left: 20px;")
                     i.inbox.big.icon(style="font-size: 2.5em;")
@@ -23,3 +21,6 @@
                                                 span.subject= " - " + email.subject
                                         .four.wide.column.right.aligned
                                             p= email.date
+block scripts  
+  script.
+    var resources = "#{public_resources}";

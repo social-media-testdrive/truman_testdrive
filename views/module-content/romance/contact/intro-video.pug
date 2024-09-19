@@ -19,7 +19,8 @@
             p Warning: Never give money to people you don’t know online, especially under pressure! Heidi Mylie: "I can’t believe you’re not willing to help me. I thought we had something special." (You) "I’m sorry, but I can’t send money to someone I’ve never met in person. It’s not safe." Heidi Mylie concludes, "Forget it! You’re just like all the others, heartless and selfish. I can’t believe I wasted my time on you."
             br
             #video-container(style="display:none;")
-                video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' data-setup='{ "poster":"/images/warning-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }')
+                video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' 
+                data-setup=`{ "poster":"${public_resources}/images/shared_sources/warning-poster.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }`)
                     source(src='https://dart-store.s3.amazonaws.com/identity-warning.mp4' type='video/mp4')
         //- script.
         //-     var module = "#{module}";

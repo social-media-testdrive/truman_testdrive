@@ -23,36 +23,27 @@ block content
                 button.ui.huge.cta.button.header-font(onclick="location.href='/login';" )
                   | I’m a Returning User
             .six.wide.column
-              img(src="/images/learning-together.png", alt="Illustration of older adults safely navigating the online world" style="width: 100%;")
+              img(src= public_resources + "/images/home/learning-together.png", alt="Illustration of older adults safely navigating the online world" style="width: 100%;")
       #testimonials-container
         .ui.container
           #testimonials
             //- Card 1
             .ui.basic.card
               .content
-                //- .center.aligned.header Jenny Hess
                 .left.aligned.description
                   i.icon.quote.left
                   p#myquote The content is relevant and easy to follow. I can trust it."
                     span  - Name, PA
-                  //- p "Learning to outsmart scams keeps me on my toes! And I feel less vulnerable."
-                  //- p "I now feel less vulnerable to online scams.""
-              //- .extra.content
-              //-   .center.aligned.author
-              //-     p Jenny, NC      
             //- Card 2 
             .ui.basic.card
               .content
-                //- .center.aligned.header Jenny Hess
                 .left.aligned.description
                   i.icon.quote.left
                   p Learning to outsmart scams keeps me on my toes!"
                     span  - Name, PA
-                  //- p "Watch out scammers, we're fighting back!"
             //- Card 4
             .ui.basic.card
               .content
-                //- .center.aligned.header Jenny Hess
                 .left.aligned.description
                   i.icon.quote.left
                   p Excellent way for people to gain confidence online."
@@ -61,7 +52,6 @@ block content
             //- Card 4
             .ui.basic.card
               .content
-                //- .center.aligned.header Jenny Hess
                 .left.aligned.description
                   i.icon.quote.left
                   p Retired from work, but never from learning. Thanks DART!"
@@ -70,12 +60,10 @@ block content
             //- Card 5
             .ui.basic.card
               .content
-                //- .center.aligned.header Jenny Hess
                 .left.aligned.description
                   i.icon.quote.left
                   p Watch out scammers, we're fighting back!"
                     span  - Name, PA
-                  //- p "The content is relevant and easy to follow. I can trust it."
 
             //- Card 6
             .ui.basic.card
@@ -85,127 +73,11 @@ block content
                   i.icon.quote.left
                   p I can now help my friends and family avoid getting scammed."
                     span  - Name, PA
-    //- .ui.container(style="background: red;")
-    //-   .testimonial-container(style="position: absolute; bottom: 20%; left: 50%; transform: translatex(-50%); width: 100%; max-width: 1127px")
-    //-     #testimonials(style="position: absolute; width: 100%;")
-    //-       //- Card 1
-    //-       .ui.basic.card
-    //-         .content
-    //-           //- .center.aligned.header Jenny Hess
-    //-           .left.aligned.description
-    //-             p "The content is relevant and easy to follow."
-    //-         //- .extra.content
-    //-         //-   .center.aligned.author
-    //-         //-     p Jenny, NC      
-    //-       //- Card 2
-    //-       .ui.basic.card
-    //-         .content
-    //-           //- .center.aligned.header Jenny Hess
-    //-           .left.aligned.description
-    //-             p "The content is relevant and easy to follow."
 
-    //-       //- Card 2
-    //-       .ui.basic.card
-    //-         .content
-    //-           //- .center.aligned.header Jenny Hess
-    //-           .left.aligned.description
-    //-             p "The content is relevant and easy to follow."
-
-    //-       //- Card 2
-    //-       .ui.basic.card
-    //-         .content
-    //-           //- .center.aligned.header Jenny Hess
-    //-           .left.aligned.description
-    //-             p "The content is relevant and easy to follow."
-    //-       //- Card 2
-    //-       .ui.basic.card
-    //-         .content
-    //-           //- .center.aligned.header Jenny Hess
-    //-           .left.aligned.description
-    //-             p "The content is relevant and easy to follow."
-
-    //-       //- Card 2
-    //-       .ui.basic.card
-    //-         .content
-    //-           //- .center.aligned.header Jenny Hess
-    //-           .left.aligned.description
-    //-             p "The content is relevant and easy to follow."
-        //- h1.ui.header.center.aligned Learn to spot online deception and stay scam-free
-        //- .limit(style="padding-bottom: 10px;")
-        //-   .home-img-container(style="text-align: center;")
-        //-     img(src="/images/dart-home.png", alt="Illustration of older adults safely navigating the online world" style="width: 70%;")
-        //-   p#aim(style="margin-top: 15px; width: 108%;") The Deception Awareness and Resilience Training (DART) learning platform offers easy-to-understand resources and training to help you spot false information and avoid scams. 
-
-        //-   //- p#about A platform that aims to help senior people navigate the online world. It offers easy-to-understand resources and training to help you spot false information and avoid scams. 
-        //-   .user-actions(style="margin-top: -50px; justify-content: center; display: flex; flex-direction: row; ")
-        //-     button.ui.blue.huge.button(onclick="location.href='/getGuest';" )
-        //-       | Learn Now
-        //-     //- button.ui.blue.huge.button(style="margin-right: 20px;")
-        //-     //-   | Sign up 
-        //-     //- button.ui.inverted.huge.button
-        //-     //-   | View Video
-
-    //- .row#video-overlay(style="background: transparent;")
-    //-   .inner-video
-    //-     iframe#intro-video(type='text/html' width='600px' height='340px' src='videos/dart_intro.mp4' frameborder='0')
     .row#white-lower
-      //- .ui.fluid.container(style="margin: 0; margin-left: 100px; margin-right: 100px; padding: 0;")
-      //-   .ui.stackable.three.column.grid
-      //-     .column
-      //-       .ui.fluid.card
-      //-         .content.about-card-header
-      //-           h2.info-header Securely engage online
-      //-         .image
-      //-           img(src="/images/online-world.png" alt="Image description")
-      //-         .content
-      //-           p While the internet can improve our lives, it also presents risks. The 
-      //-             span.sapphire Deception Awareness and Resilience Training (DART) 
-      //-             | platform offers training to help you spot false information and avoid scams.
-      //-             //- | platform offers training to help you spot false information and avoid scams. Learn to securely navigate your email inbox, text messages, social media, and more
-      //-     .column
-      //-       .ui.fluid.card
-      //-         .content.about-card-header
-      //-           h2.info-header Interactive & Gamified
-      //-         .image
-      //-           img(src="/images/online-world.png" alt="Image description")
-      //-         .content
-      //-           p Advance through challenges, unlock badges, and immerse in 
-      //-             span.sapphire realistic simulated digital scenarios. 
-      //-             | Master secure navigation across email, texts, social media, online shopping, banking, and beyond.
-      //-     .column
-      //-       .ui.fluid.card
-      //-         .content.about-card-header
-      //-           h2.info-header Gain insider insight
-      //-           //- h2.info-header Keep others safe
-      //-         .image
-      //-           img(src="/images/online-world.png" alt="Image description")
-      //-         .content
-      //-           p
-      //-             span.sapphire Uncover the inner workings 
-      //-             | of online deceit. Knowledge of scammers' tricks and tactics empowers you to 
-      //-             span.sapphire protect the people you care about 
-      //-             | from online fraud.
-
-                //- p Explore how scams work behind the scenes, unveiling their tricks and tactics.  This knowledge empowers you to 
-                //-   span.sapphire protect the people you care about 
-                //-   | from online fraud.
-                //- Uncover the inner workings of online deceit
-                //- p Gain an insider's view into scammers' operations by uncovering the tricks and tactics scammers use to deceive. Your knowledge will enable you to 
-                //-   span.sapphire protect the people you care about 
-                //-   | from online scams and deception.
-
-                //- p Gain an insider's understanding by uncovering the tricks and tactics scammers use to deceive. This knowledge empowers you to protect the people you care about from online scams and deception.
-
-                //- p Explore how scams work behind the scenes, unveiling their tricks and tactics. 
-
-
-
-
 
       .ui.container
-        //- h2.ui.header.center.aligned#our-mission Our Mission 
         .ui.stackable.grid
-          //- First section with text on the left and image on the right
 
 
 
@@ -219,10 +91,10 @@ block content
                     span.sapphire Deception Awareness and Resilience Training (DART) 
                     | platform offers training to help you spot false information and avoid scams.
             .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;")
-              img(src="/images/securely-engage2.png" alt="Image description" style="width: 90%;margin-left: 50px;")
+              img(src=public_resources + "/images/home/securely-engage2.png" alt="Image description" style="width: 90%;margin-left: 50px;")
           .row.mobile.only.vertically-center
             .eight.wide.column(style="margin: 0; padding: 0; display: flex; align-items: center;padding-bottom: 15px;")
-              img(src="/images/securely-engage2.png" alt="Image description" style="width: 90%;margin-left: 50px;")
+              img(src=public_resources + "/images/home/securely-engage2.png" alt="Image description" style="width: 90%;margin-left: 50px;")
             .eight.wide.column
               h2.info-header
                 i.circular.globe.inverted.small.icon
@@ -235,7 +107,7 @@ block content
           //- Second section with image on the right and text on the left
           .row(style="margin-top: 10vh;").vertically-center
             .eight.wide.column
-              img(src="/images/interactive-gamified3.png" alt="Image description" style="width: 100%; margin-left: -10px;")
+              img(src=public_resources + "/images/home/interactive-gamified3.png" alt="Image description" style="width: 100%; margin-left: -10px;")
             .eight.wide.column(style="padding-left: 50px;")
               h2.info-header
                 i.circular.dice.inverted.small.icon
@@ -256,7 +128,7 @@ block content
                 span.sapphire protect the people you care about 
                 | from online fraud.
             .eight.wide.column
-              img(src="/images/keep-safe-bulb.png" alt="Protect the people in your community" style="width: 100%")
+              img(src=`${public_resources}/images/home/keep-safe-bulb.png` alt="Protect the people in your community" style="width: 100%")
 
 
 
@@ -268,169 +140,17 @@ block content
             //- h2.ui.header.center.aligned#our-mission Our Mission 
             .ui.stackable.grid
 
-              //- Popular courses gallery for computer 
-              //- .row.computer.only(style="margin-top: 15vh; margin-bottom: 15vh;")
-              //-   h2.ui.header#in-progress Popular Courses:
-
-              //-   //- Referenced Source: https://codepen.io/dannyarty/pen/JjKrPOL 
-              //-   .wrap
-              //-       .slider
-              //-           .item
-              //-             .border
-              //-               .ui.in-slider
-              //-                 img(src='/images/courses/identity-scams-banner.jpg' alt='')
-              //-                 hr
-              //-                 .slider-module-text-container
-              //-                   .raised-content
-              //-                     h3.ui.header.large.popular-course-title
-              //-                       | Identity Theft
-              //-                     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              //-                 .learn-now-container
-              //-                   button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
-              //-                     | Learn Now
-              //-                     i.arrow.right.icon
-              //-                   br
-              //-           .item
-              //-             .border
-              //-               .ui.in-slider
-              //-                 img(src='/images/courses/romance-scams-banner.jpg' alt='')
-              //-                 hr
-              //-                 .slider-module-text-container
-              //-                   .raised-content
-              //-                     h3.ui.header.large.popular-course-title
-              //-                       | Romance Scams
-              //-                     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              //-                 .learn-now-container
-              //-                   button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
-              //-                     | Learn Now
-              //-                     i.arrow.right.icon
-              //-                   br
-              //-           .item
-              //-             .border
-              //-               .ui.in-slider
-              //-                 img(src='/images/phishing-scam.jpg' alt='')
-              //-                 hr
-              //-                 .slider-module-text-container
-              //-                   .raised-content
-              //-                     h3.ui.header.large.popular-course-title
-              //-                       | Phishing
-              //-                     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              //-                 .learn-now-container
-              //-                   button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
-              //-                     | Learn Now
-              //-                     i.arrow.right.icon
-              //-                   br
-              //-           .item
-              //-             .border
-              //-               .ui.in-slider
-              //-                 img(src='/images/sales-scam.jpg' alt='')
-              //-                 hr
-              //-                 .slider-module-text-container
-              //-                   .raised-content
-              //-                     h3.ui.header.large.popular-course-title
-              //-                       | Sales Scam
-              //-                     p Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              //-                 .learn-now-container
-              //-                   button.ui.huge.blue.button.right.floated.round-learn-now(onclick="location.href='/getGuest';" )
-              //-                     | Learn Now
-              //-                     i.arrow.right.icon
-              //-                   br
-              //- //- Popular courses without gallery for tablet and mobile
-              //- .row.tablet.only.mobile.only(style="margin-top: 15vh;")
-              //-   h2.ui.header#in-progress Popular Courses:
-              //-   .ui.container
-              //-     a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
-              //-       .ui.raised.segment
-              //-         .ui.fluid.container(style="height: 200px;")
-              //-           .ui.image.banner
-              //-             img(src="/images/courses/identity-scams-banner.jpg", alt="Identity Theft Banner Image")
-
-              //-             //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-              //-             //-   .bar(style='border-radius: 0 !important;')
-              //-             //-     .progress
-              //-         hr
-              //-         #raised-content(style="padding-top: 20px;")
-              //-           h3.ui.header.large.home-mod-title
-              //-             | Identity Theft
-              //-           p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              //-           button.ui.huge.blue.button.right.floated#nextButton
-              //-             | Learn Now
-              //-             i.arrow.right.icon
-              //-     br
-              //-     br
-              //-     br
-              //-     a.ui#romance-link(href=`/intro/identity` alt="Begin identity theft module")
-              //-       .ui.raised.segment
-              //-         .ui.fluid.container(style="height: 200px;")
-              //-           .ui.image.banner
-              //-             img(src="/images/courses/romance-scams-banner.jpg", alt="Identity Theft Banner Image")
-
-              //-             //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-              //-             //-   .bar(style='border-radius: 0 !important;')
-              //-             //-     .progress
-              //-         hr
-              //-         #raised-content(style="padding-top: 20px;")
-              //-           h3.ui.header.large.home-mod-title
-              //-             | Romance Scams
-              //-           p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              //-           button.ui.huge.blue.button.right.floated#nextButton
-              //-             | Learn Now
-              //-             i.arrow.right.icon
-              //-     br
-              //-     br
-              //-     br
-              //-     a.ui#phishing-link(href=`/intro/identity` alt="Begin identity theft module")
-              //-       .ui.raised.segment
-              //-         .ui.fluid.container(style="height: 200px;")
-              //-           .ui.image.banner
-              //-             img(src="/images/phishing-scam.jpg", alt="Identity Theft Banner Image")
-
-              //-             //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-              //-             //-   .bar(style='border-radius: 0 !important;')
-              //-             //-     .progress
-              //-         hr
-              //-         #raised-content(style="padding-top: 20px;")
-              //-           h3.ui.header.large.home-mod-title
-              //-             | Phishing
-              //-           p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              //-           button.ui.huge.blue.button.right.floated#nextButton
-              //-             | Learn Now
-              //-             i.arrow.right.icon
-
-              //-     br
-              //-     br
-              //-     br
-              //-     a.ui#theft-link(href=`/intro/identity` alt="Begin identity theft module")
-              //-       .ui.raised.segment
-              //-         .ui.fluid.container(style="height: 200px;")
-              //-           .ui.image.banner
-              //-             img(src="/images/sales-scam.jpg", alt="Identity Theft Banner Image")
-
-              //-             //- #theft-progress.ui.bottom.attached.small.progress(style='margin:0;padding:0;' data-percent='33')
-              //-             //-   .bar(style='border-radius: 0 !important;')
-              //-             //-     .progress
-              //-         hr
-              //-         #raised-content(style="padding-top: 20px;")
-              //-           h3.ui.header.large.home-mod-title
-              //-             | Sales Scam
-              //-           p(style="color:black") Understand the consequences of identity theft and learn how to identify and take action against phishing scams on social media.
-              //-           button.ui.huge.blue.button.right.floated#nextButton
-              //-             | Learn Now
-              //-             i.arrow.right.icon
-
-
-
-
-
 
     .row(style="background: #E7F3F8; margin-top: 10vh;")
       .ui.container(style="padding-top: 5vh; padding-bottom: 5vh;")
         .ui.stackable.grid(style="height: 119%;")
           .six.wide.column.computer.only
-            video-js.my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='800px' height='800px' controls='' preload='none' data-setup='{ "poster":"/images/deepcover-poster.png", "aspectRatio":"1:1", "controlBar": {"pictureInPictureToggle": false}}')
+            video-js.my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='800px' height='800px' controls='' preload='none' 
+            data-setup=`{ "poster": "${public_resources}/images/home/deepcover-poster.png", "aspectRatio":"1:1", "controlBar": {"pictureInPictureToggle": false}}`)
               source(src='https://dart-store.s3.amazonaws.com/deepcover-intro.mp4' type='video/mp4')
           .eight.wide.column.centered.tablet.only.mobile.only
-            video-js.my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='800px' height='800px' controls='' preload='none' data-setup='{ "poster":"/images/deepcover-poster.png", "aspectRatio":"1:1", "controlBar": {"pictureInPictureToggle": false}}')
+            video-js.my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='800px' height='800px' controls='' preload='none' 
+            data-setup=`{ "poster": "${public_resources}/images/home/deepcover-poster.png", "aspectRatio":"1:1", "controlBar": {"pictureInPictureToggle": false}}`)
               source(src='https://dart-store.s3.amazonaws.com/deepcover-intro.mp4' type='video/mp4')
 
 
@@ -441,64 +161,59 @@ block content
               p Deepcover reinforces the concepts from DART Learn, helping you solidify your knowledge while having a great time!
               p Start your Deepcover adventure today, available on Google Play and the Apple App Store!
               a(href="https://apps.apple.com/us/app/deepcover/id6468587995", target="_blank", rel="noreferrer noopener" style="margin-right: 25px;")
-                img(src="/images/download-app-store.svg", alt="Download on App Store", style="width: 200px; height: auto;")
+                img(src=public_resources + "/images/home/download-app-store.svg", alt="Download on App Store", style="width: 200px; height: auto;")
               a(href="https://play.google.com/store/apps/details?id=com.whitethorngames.dartgame&hl=en_US&gl=US", target="_blank", rel="noreferrer noopener")
-                img(src="/images/download-google-play.svg", alt="Download on Google Play", style="width: 200px; height: auto;")
+                img(src=public_resources + "/images/home/download-google-play.svg", alt="Download on Google Play", style="width: 200px; height: auto;")
               br
               br
               br
-        //- img(src="/images/partners/partners.png" alt="Image description" style="width: 100%;")
+        //- img(src=public_resources + "/images/home/partners/partners.png" alt="Image description" style="width: 100%;")
     .row(style="background-color: white;")
       .ui.container(style="padding-top: 5vh; padding-bottom: 2vh; background-color: white;")
         h2.ui.header#partners Partners
         p Interested in partnering with us? Please visit our
-          a(href="https://dartcollective.net/partners/" target="_blank")  company website
+          a(href="https://dartcollective.net/home/partners/" target="_blank")  company website
           |  for more information.
         br
         .ui.grid.middle.aligned
           .four.wide.column.centered
             a(href="https://www.buffalo.edu/" target="_blank")
-              img(src="/images/partners/UniBuffaloLogo.svg" alt="University at Buffalo partner logo" style="width: 100%;")
+              img(src=public_resources + "/images/home/partners/UniBuffaloLogo.svg" alt="University at Buffalo partner logo" style="width: 100%;")
           .four.wide.column.centered
             a(href="https://www2.lehigh.edu/" target="_blank")
-              img(src="/images/partners/lehigh-logo.png" alt="Lehigh University partner logo" style="width: 100%;")
+              img(src=public_resources + "/images/home/partners/lehigh-logo.png" alt="Lehigh University partner logo" style="width: 100%;")
           .four.wide.column.centered
             a(href="https://www.cornell.edu/" target="_blank")
-              img(src="/images/partners/cornell-logo.svg" alt="Cornell University partner logo" style="width: 100%;")
+              img(src=public_resources + "/images/home/partners/cornell-logo.svg" alt="Cornell University partner logo" style="width: 100%;")
           .four.wide.column.centered
             a(href="https://illinois.edu/" target="_blank")
-              img(src="/images/partners/UniIllinoisLogo.png" alt="University of Illinois partner logo" style="width: 100%;")          
+              img(src=public_resources + "/images/home/partners/UniIllinoisLogo.png" alt="University of Illinois partner logo" style="width: 100%;")          
           .four.wide.column.centered
             a(href="https://www.clemson.edu/" target="_blank")
-              img(src="/images/partners/ClemsonUniLogo.png" alt="Clemson University partner logo" style="width: 100%;")
+              img(src=public_resources + "/images/home/partners/ClemsonUniLogo.png" alt="Clemson University partner logo" style="width: 100%;")
           .four.wide.column.centered
             a(href="https://www.clemson.edu/centers-institutes/aging/" target="_blank")
-              img(src="/images/partners/InstituteforEngagedAgingLogo.png" alt="Clemson University Institute for Engaged Aging partner logo" style="width: 100%;")
+              img(src=public_resources + "/images/home/partners/InstituteforEngagedAgingLogo.png" alt="Clemson University Institute for Engaged Aging partner logo" style="width: 100%;")
           .four.wide.column.centered(style="text-align: center;")
             a(href="https://www.amherstcenterforseniorservices.com/" target="_blank")
-              img(src="/images/partners/AmherstLogo_enhanced.png" alt="Amherst Center for Senior Services partner logo" style="width: 80%;")
+              img(src=public_resources + "/images/home/partners/AmherstLogo_enhanced.png" alt="Amherst Center for Senior Services partner logo" style="width: 80%;")
           .four.wide.column(style="text-align: center;")
             a(href="https://socialmediatestdrive.org/" target="_blank")
-              img(src="/images/partners/testDriveLogo.svg" alt="Social Media Test Drive partner logo" style="width: 80%;")
+              img(src=public_resources + "/images/home/partners/testDriveLogo.svg" alt="Social Media Test Drive partner logo" style="width: 80%;")
           .row(style="margin-top: -20px;")
             .two.wide.column
             .four.wide.column.centered
               a(href="https://www.nsf.gov/" target="_blank")
-                img(src="/images/partners/NaturalSciFoundLogo.svg" alt="National Science Foundation partner logo" style="width: 100%;")
+                img(src=public_resources + "/images/home/partners/NaturalSciFoundLogo.svg" alt="National Science Foundation partner logo" style="width: 100%;")
             .four.wide.column.centered
               a(href="https://whitethorngames.com/" target="_blank")
-                img(src="/images/partners/WhitethornGamesLogo.png" alt="Whitethorn Games partner logo" style="width: 100%;")
+                img(src=public_resources + "/images/home/partners/WhitethornGamesLogo.png" alt="Whitethorn Games partner logo" style="width: 100%;")
             .four.wide.column.centered
               a(href="https://renouncreative.com/" target="_blank")
-                img(src="/images/partners/renoun-creative-logo.svg" alt="Renoun Creative partner logo" style="width: 100%;")
+                img(src=public_resources + "/images/home/partners/renoun-creative-logo.svg" alt="Renoun Creative partner logo" style="width: 100%;")
             .two.wide.column
 
 
-        //- p(style="padding-top:30px") To stay up-to-date on the latest scam cases and keep track of what you're learning, click the button below to create an account.
-        //- .ui.basic.segment(style="text-align: center; margin-top: -15px;")
-        //-   button.ui.huge.blue.button#sign-up-button(onclick="location.href='/createStudent';")
-        //-     | Sign Up Now
-        //-     i.arrow.right.icon
         br
   button#scrollToTop.ui.massive.blue.icon.button(onclick="window.scrollTo(0,0);")
       i.arrow.up.icon
@@ -506,6 +221,8 @@ block scripts
   script(src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js')
   script(src='/js/header-transition.js')
   script.
+    var resources = "#{public_resources}";
+    
     function startJiggle() {
       $('video-js')
         .transition({
@@ -531,24 +248,6 @@ block scripts
             ;
         })
 
-
-          //- for app demo slider
-        //- $('.single-item').slick({
-        //-     slidesToShow: 1,
-        //-     slidesToScroll: 1,
-        //-     dots: false,
-        //-     arrows: false,
-        //-     infinite: true,
-        //-     autoplay: true,
-        //-     autoplaySpeed: 3000 // milliseconds
-        //- });
-
-
-        //- $('#testimonials').slick({
-        //-   infinite: true,
-        //-   slidesToShow: 3,
-        //-   slidesToScroll: 3
-        //- });
 
 
         $('#testimonials').slick({

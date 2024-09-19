@@ -44,7 +44,7 @@ block content
           each badge in badges
             .ui.small.card
               .image
-                img.ui.small.centered.image(src=badge.imageUrl alt=badge.name)
+                img.ui.small.centered.image(src= public_resources + badge.imageUrl alt=badge.name)
               .content
                 .header= badge.name
       else
@@ -105,7 +105,7 @@ block content
           .field
               a.ui.big.button(href='/account/unlink/google')   
                   span
-                      img(src='/images/google-logo.png', alt="Google logo")#google-logo
+                      img(src= public_resources + '/images/profile/google-logo.png', alt="Google logo")#google-logo
                       span#google-text Unlink your Google account
         else
           //- .field
@@ -113,7 +113,7 @@ block content
           .field
               a.ui.big.button(href='/auth/google')   
                   span
-                      img(src='/images/google-logo.png', alt="Google logo")#google-logo
+                      img(src= public_resources + '/images/profile/google-logo.png', alt="Google logo")#google-logo
                       span#google-text Link your Google account
 
 

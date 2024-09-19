@@ -134,6 +134,7 @@ app.use(lusca.xssProtection(true));
 app.disable("x-powered-by");
 app.use((req, res, next) => {
   res.locals.user = req.user;
+  res.locals.public_resources = 'https://dart-public-resources.s3.amazonaws.com'
   next();
 });
 app.use((req, res, next) => {
