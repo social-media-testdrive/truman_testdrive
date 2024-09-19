@@ -711,7 +711,7 @@ function setLinks(currentPage) {
       let baseurl = "/course-player?module=medication&section=evaluation&page=";
   
       if (currentPage === "intro") {
-        backlink = "/course-player?module=medication&section=practice&page=objectives";
+        backlink = "/course-player?module=medication&section=protection&page=objectives";
         nextlink = baseurl + "quiz";
       } else if (currentPage === "quiz") {
         backlink = baseurl + "intro";
