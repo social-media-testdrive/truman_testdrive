@@ -1,25 +1,25 @@
 #sources.hidden
-    .ui.container(style="width: 100%;")
+    .ui.container
         .limit
-            #contacted-read
+            .ui.stackable.grid
                 h1.ui.header.large#learn-title(style="margin-top: 10px;")
                     .content
                         i.book.icon
                         span#narrate-title-sources Reliable Sources
             .ui.stackable.grid(style="margin-top: 0px;")
-                .ten.wide.column
+                .ten.wide.computer.sixteen.wide.tablet.column
                     p
                         span#narrate-1-sources
                             span "To find reliable sources of information about diseases and their treatments, visit MedlinePlus.gov, a site operated by the National Institutes of Health (NIH) and Healthfinder.gov.
                     p 
                         span#narrate-2-sources
-                            span Information about alternative and complementary medicine is available through the
+                            span Information about alternative and complementary medicine is available through the 
                         u#narrate-3-sources
                             span National Center for Complementary and Integrative Health 
                         span 
                             span [2]."
 
-                .six.wide.column
+                .six.wide.computer.sixteen.wide.tablet.column
                     img.ui.big.image(src=`${public_resources}/images/shared_sources/filler.png`)
 
             br

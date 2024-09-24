@@ -3,11 +3,20 @@
         .limit
             #intro-video-read
                 h1.ui.header.large#learn-title
-                    .content#narrate-1-intro-video
+                    .content
                         i.video.icon
-                        span Showcase of a Medication Scam
-
+                        span#narrate-title-intro-video Showcase of a Medication Scam
+                .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                    i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                    .content 
+                        p#narrate-2-intro-video 
+                            span Click the image to start the video
             br
-            //- iframe(width="100%", height="400", src="https://www.youtube.com/embed/KsPlwKbGxE8", title="Health Fraud Scams -- Be Smart, Be Aware, Be Careful Video", frameborder="0", allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share", referrerpolicy="strict-origin-when-cross-origin", allowfullscreen)
-
-
+            #video-container
+                video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' 
+                data-setup=`{ "poster": "${public_resources}/videos/health_fraud_scam.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }`)
+                    source(src=`${public_resources}/videos/health_fraud_scam.mp4` type='video/mp4')
+            br
+            i.source [4] Health Fraud Scams – Be Smart, Be Aware, Be careful. U.S. Food & Drug Administration ( FDA). 
+            br
+            a(href='https://www.youtube.com/watch?v=KsPlwKbGxE8' target='_blank')  https://www.youtube.com/watch?v=KsPlwKbGxE8
