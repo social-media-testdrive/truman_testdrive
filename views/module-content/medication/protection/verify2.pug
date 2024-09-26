@@ -12,3 +12,13 @@
                     p#narrate-2-verify2 
                         span Therefore, it is important to exercise caution and ask questions before taking any supplements. 
                                                                                     
+            .ui.stackable.grid
+                .row 
+                    div(style='width: 480px; height: 270px; margin-right:auto; margin-left:auto')
+                        video-js#my_video_1.video-js.vjs-default-skin.vjs-show-big-play-button-on-pause(width='640px' height='360px' controls='' preload='none' 
+                        data-setup=`{ "poster": "${public_resources}/videos/dietary_supplements.png", "aspectRatio":"16:9", "playbackRates": [0.5, 0.75, 1, 1.5, 2] }`)
+                            source(src=`${public_resources}/videos/dietary_supplements.mp4` type='video/mp4')
+            br
+            i.source [15] Dietary Supplements: Questions To Ask. Federal Trade Commission (FTC). 
+            br
+            a(href='https://www.youtube.com/watch?app=desktop&v=CSP07ivTbLs' target='_blank')  https://www.youtube.com/watch?app=desktop&v=CSP07ivTbLs
