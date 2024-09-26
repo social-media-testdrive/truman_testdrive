@@ -79,7 +79,7 @@ exports.getModule = async (req, res) => {
       numPages = 19
 
         if(module === 'tech') {
-            numPages = 15;
+            numPages = 14;
         }
     } else if(section === 'protection') {
       if(module === 'identity') {

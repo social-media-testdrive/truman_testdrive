@@ -12,8 +12,17 @@
 
 
                 .eight.wide.column
-                    h3 Audio Example
-                    p Target: I am on TeamViewer.com right now. 
-                    p Scammer: Okay, now sir I need you to move your arrow to the download button. Don’t click there, once your arrow is there, you have to download the previous version (version 7.x). And sir, whatever comes up you have to let me know. 
-                    p Target: It’s asking me to download TeamViewer
-                    p Scammer: Okay, just give that a double click. 
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src=`${public_resources}/audio/tech-audio/warning-5.WAV`  type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file=`${public_resources}/audio/tech-audio/warning-5.WAV`)
+                                li.speaker1.current(data-timecode="00:00") Target: I am on TeamViewer.com right now. 
+                                li.speaker2(data-timecode="00:02") Scammer: Okay, now sir I need you to move your arrow to the download button. Don’t click there, once your arrow is there, you have to download the previous version (version 7.x). And sir, whatever comes up you have to let me know.
+                                li.speaker1(data-timecode="00:16") Target: It’s asking me to download TeamViewer.
+                                li.speaker2(data-timecode="00:18") Scammer: Okay, just give that a double click.

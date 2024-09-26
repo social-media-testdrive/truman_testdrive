@@ -11,5 +11,14 @@
                     h3 Remain calm and composed. Then refer to the methods outlined in Chapter 5 to properly handle the situation.
 
                 .eight.wide.column
-                    h3 Audio Example
-                    p Scammer: My good luck, madam. It would be my humble request to help you, please do not try to click on any of them okay? Because that’s of the malicious online infections I was speaking of okay? Once you click on any of them, your computer might even stop responding at any point of time. So be very careful okay?
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src=`${public_resources}/audio/tech-audio/warning-7.mp3`  type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file=`${public_resources}/audio/tech-audio/warning-7.mp3` style="max-height:225px;")
+                                li.speaker1.current(data-timecode="00:00") Scammer: My good luck, madam. It would be my humble request to help you, please do not try to click on any of them okay? Because that’s of the malicious online infections I was speaking of okay? Once you click on any of them, your computer might even stop responding at any point of time. So be very careful okay?

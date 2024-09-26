@@ -13,12 +13,21 @@
 
 
                 .eight.wide.column
-                    h3 Audio Example
-                    p Scammer: Hello, this is John from Apple Support. We have detected some suspicious activity on your Apple ID and your account has been compromised.
-                    p Target: Oh no, what should I do?
-                    p Scammer: Don't worry, I can help you secure your account. First, I need you to verify your identity. Can you please provide me with your Apple ID and password?
-                    p Target: Sure, my Apple ID is DART@gmail.com and my password is Dartantiscam1@.
-                    p Scammer: Thank you. Now, we need to run a security check on your device. Please go to your computer and download a remote access tool called AnyDesk. Once it's installed, give me the access code so I can help you.
-                    p Target: Okay, I have downloaded it. The access code is 746213.
-                    p Scammer: Great. Now I have access to your system. I see the issue here; your computer is indeed infected. I will need to clean this up for you. This service will cost $200, and you can pay using Apple gift cards. Please purchase them and provide me with the codes.
-                    p Target: Alright, I'll get the gift cards and give you the codes.
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src=`${public_resources}/audio/tech-audio/warning-6.WAV`  type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file=`${public_resources}/audio/tech-audio/warning-6.WAV` style="max-height:225px;")
+                                li.speaker2.current(data-timecode="00:00") Hello, this is John from Apple Support. We have detected some suspicious activity on your Apple ID and your account has been compromised.
+                                li.speaker1(data-timecode="00:08") Target: Oh no, what should I do?
+                                li.speaker2(data-timecode="00:09") Scammer: Don't worry, I can help you secure your account. First, I need you to verify your identity. Can you please provide me with your Apple ID and password?
+                                li.speaker1(data-timecode="00:18") Target: Sure, my Apple ID is DART@gmail.com and my password is Dartantiscam1@.
+                                li.speaker2(data-timecode="00:26") Scammer: Thank you. Now we need to run a security check on your device. Please go to your computer and download a remote access tool called AnyDesk. Once it's installed, give me the access code so I can help you.
+                                li.speaker1(data-timecode="00:40") Target: Okay, I have downloaded it. The access code is 746213.
+                                li.speaker2(data-timecode="00:45") Scammer: Great. Now I have access to your system. I see the issue here; your computer is indeed infected. I will need to clean this up for you. This service will cost $200, and you can pay using Apple gift cards. Please purchase them and provide me with the codes.
+                                li.speaker1(data-timecode="01:02") Target: Alright, I'll get the gift cards and give you the codes.

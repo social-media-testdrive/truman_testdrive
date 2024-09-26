@@ -12,7 +12,18 @@
 
 
                 .eight.wide.column
-                    h3 Audio Example
-                    p Scammer: Hello, this is Sam from Microsoft Support. I’m calling to inform you that your new computer has some critical security vulnerabilities that need immediate attention.
-                    p Target: That’s strange; I just bought this computer. What do I need to do?
-                    p Scammer: Yes, unfortunately, many new computers can have pre-existing security issues. Don’t worry, we can fix this. We offer a special security package that will protect your computer and personal data. It’s a one-time fee of $299.99 for complete protection.
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src=`${public_resources}/audio/tech-audio/warning-2.WAV`  type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file=`${public_resources}/audio/tech-audio/warning-2.WAV`)
+                                li.speaker1.current(data-timecode="00:00") Scammer: Hello, this is Sam from Microsoft Support.
+                                li.speaker1(data-timecode="00:03") Scammer: I’m calling to inform you that your new computer has some critical security vulnerabilities that need immediate attention.
+                                li.speaker2(data-timecode="00:09") Target: That’s strange; I just bought this computer. What do I need to do?
+                                li.speaker1(data-timecode="00:13") Scammer: Yes, unfortunately, many new computers can have pre-existing security issues. Don’t worry, we can fix this. We offer a special security package that will protect your computer and personal data. It’s a one-time fee of $299.99 for complete protection.
+                                

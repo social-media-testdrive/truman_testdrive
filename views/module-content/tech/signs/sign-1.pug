@@ -12,5 +12,19 @@
 
 
                 .eight.wide.column
-                    h3 Audio Example
-                    p Before using any devices or going online, please contact Apple Support Advisor. Press 1 to connect to Apple Support Advisor. Press 2 to listen to this again. Thank you.
+                    div.ui.header
+                        i.phone.volume.icon
+                        | Audio Example
+                    //- a(href='https://dart-store.s3.amazonaws.com/grandparent-audio/randy.mp3' target='_blank') Listen to the audio example
+                    .audio-player
+                        .wrap
+                            audio#audio.with-transcript(controls)
+                                source(src=`${public_resources}/audio/tech-audio/warning-robotic.mp3`  type="audio/mpeg")
+                                | Your browser does not support the audio element.
+                            ul#transcript(data-audio-file=`${public_resources}/audio/tech-audio/warning-robotic.mp3`)
+                                li.speaker1.current(data-timecode="00:00") Scammer: Hello, this is OmniTech Support regarding your tech support subscription.
+                                li.speaker1(data-timecode="00:04") Scammer: We are calling to inform you that due to a recent audit, you are eligible for a refund of $299.99 for a service you were incorrectly charged for. 
+                                li.speaker1(data-timecode="00:14") Scammer: To process your refund, please press 0 to speak with a representative.
+                                li.speaker1(data-timecode="00:18") Scammer: If you do not act now, you may forfeit your refund. Press 0 now to claim your refund.
+
+
