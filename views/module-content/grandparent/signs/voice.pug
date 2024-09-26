@@ -31,9 +31,9 @@
                     .audio-player
                         .wrap
                             audio#audio.with-transcript(controls)
-                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/sick.mp3" type="audio/mpeg")
+                                source(src=`${public_resources}/audio/grandparent-audio/sick.mp3` type="audio/mpeg")
                                 | Your browser does not support the audio element.
-                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/sick.mp3")
+                            ul#transcript(data-audio-file=`${public_resources}/audio/grandparent-audio/sick.mp3`)
                                 li.speaker1.current(data-timecode="00:00") Scammer: *sneeze* *sneeze*
                                 li.speaker2(data-timecode="00:03") Grandparent: Hello?
                                 li.speaker1(data-timecode="00:04") Scammer: Grandma, is that you?

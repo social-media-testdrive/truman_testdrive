@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 100,
+    "progress": 69,
     "type": "multi_select",
     "partial": "none",
     "prompt": "1. Which techniques are often used in tech support scams? Select all that apply.",
@@ -26,7 +26,7 @@
     "theAnswers": "A, B, C"
   },
   "2": {
-    "progress": 100,
+    "progress": 77,
     "type": "multi_select",
     "partial": "none",
     "prompt": "2. Scammers often create a sense of urgency to pressure you into quick action. Which of the following fake scenarios could they use?  Select all that apply.",
@@ -52,7 +52,7 @@
     "theAnswers": "A, B, C, D"
   },
   "3": {
-    "progress": 100,
+    "progress": 85,
     "type": "abcd",
     "partial": "none",
     "prompt": "3. What is Caller ID Spoofing?",

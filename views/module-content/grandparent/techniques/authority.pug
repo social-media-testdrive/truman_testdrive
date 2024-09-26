@@ -38,9 +38,9 @@
                 .audio-player
                     .wrap
                         audio#audio.with-transcript(controls)
-                            source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/authority.WAV" type="audio/mpeg")
+                            source(src=`${public_resources}/audio/grandparent-audio/authority.WAV` type="audio/mpeg")
                             | Your browser does not support the audio element.
-                        ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/authority.WAV")
+                        ul#transcript(data-audio-file=`${public_resources}/audio/grandparent-audio/authority.WAV`)
                             li.speaker1.current(data-timecode="00:00") Grandparent: Hello?
                             li.speaker2(data-timecode="00:01") Scammer: Hello, is this Mrs. Johnson?
                             li.speaker1(data-timecode="00:03") Grandparent: Yes, speaking. Who is this?

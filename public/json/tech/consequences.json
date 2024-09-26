@@ -1,6 +1,6 @@
 {   
 "1": {
-    "progress": 100,
+    "progress": 70,
     "type": "abcd",
     "partial": "none",
     "prompt": "1. What is a potential consequence of a tech support scam?",
@@ -22,7 +22,7 @@
     "correctResponse": "c"
     },
 "2": {
-    "progress": 100,
+    "progress": 80,
     "type": "abcd",
     "partial": "none",
     "prompt": "2. What long-term consequences could result from falling victim to a tech support scam?",

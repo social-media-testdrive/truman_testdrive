@@ -24,15 +24,15 @@ block content
       .ui.grid 
         .row 
           .twelve.wide.column
-            p Sarah needs your help! She’s fallen victim to a cunning tech support scam.
-            p Uncover how scammers pose as distressed grandchildren to manipulate their targets into sending money. You'll learn how these scams work, how to spot them, and how to protect yourself and others.
+            p Robert needs your help! He's fallen victim to a deceptive tech support scam.
+            p Uncover how scammers impersonate tech support, exploiting trust to steal money. You'll learn how these scams work, how to spot them, and how to protect yourself and others.
             if user.moduleProgress && user.moduleProgress.tech && user.moduleProgress.tech.link === "/course-player?module=tech&section=challenge&page=intro" 
               button.ui.huge.blue.button(onclick=`window.location='${user.moduleProgress.tech.link}'`) Start Mission
             else if user.moduleProgress && user.moduleProgress.tech
               button.ui.huge.blue.button(onclick=`window.location='${user.moduleProgress.tech.link}'`) Continue Mission
 
           .four.wide.column 
-            img(src=`${public_resources}/images/shared_sources/johnson.png`)
+            img(src=`${public_resources}/images/missions/help-tech.png` style="margin-top:-10px;")
       br
 
       hr
@@ -196,7 +196,7 @@ block content
             .ui.large.label.blue-pointing#speechBubble
               if user.moduleProgress && user.moduleProgress.tech && user.moduleProgress.tech.link === "/course-player?module=tech&section=challenge&page=intro" 
                 p#speechText
-                  | The Johnsons are counting on you! Click 'Start Mission' to begin. 
+                  | Robert is counting on you! Click 'Start Mission' to begin. 
               else if user.moduleProgress && user.moduleProgress.tech
                 p#speechText
                   | Welcome back! Click 'Continue Mission' to pick up where you left off.

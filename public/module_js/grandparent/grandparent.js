@@ -480,8 +480,8 @@ function setGrandparentRole(role, file) {
   let audioElement = document.getElementById('audio');
   // print out check
   console.log("the audio element before is:", audioElement);
-  if (audioElement) {
-    const newSrc = `https://dart-store.s3.amazonaws.com/grandparent-audio/${file}_${role}.wav`;
+  if (audioElement) { 
+    const newSrc = `${public_resources}/audio/grandparent-audio/${file}_${role}.wav`;
     audioElement.src = newSrc; // Update the src of the audio element
     audioElement.load();
   }
@@ -490,7 +490,7 @@ function setGrandparentRole(role, file) {
   // Update the transcript data file
   let transcriptElement = document.getElementById('transcript');
   if (transcriptElement) {
-    transcriptElement.setAttribute('data-audio-file', `https://dart-store.s3.amazonaws.com/grandparent-audio/${file}_${role}.wav`);
+    transcriptElement.setAttribute('data-audio-file', `${public_resources}/audio/grandparent-audio/${file}_${role}.wav`);
   }
 
   // Update the transcript times

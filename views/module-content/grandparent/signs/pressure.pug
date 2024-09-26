@@ -28,9 +28,9 @@
                     .audio-player
                         .wrap
                             audio#audio.with-transcript(controls)
-                                source(src="https://dart-store.s3.amazonaws.com/grandparent-audio/pressure.mp3" type="audio/mpeg")
+                                source(src=`${public_resources}/audio/grandparent-audio/pressure.mp3` type="audio/mpeg")
                                 | Your browser does not support the audio element.
-                            ul#transcript(data-audio-file="https://dart-store.s3.amazonaws.com/grandparent-audio/pressure.mp3")
+                            ul#transcript(data-audio-file=`${public_resources}/audio/grandparent-audio/pressure.mp3`)
                                 li.speaker1.current(data-timecode="00:00") Scammer: Grandma, I'm in the hospital. I've been in a terrible accident. I need surgery urgently, but they won't proceed without payment.
                                 li.speaker2(data-timecode="00:08") Grandparent: Oh no, sweetheart, are you okay? Where are you? What is going on?
                                 li.speaker1(data-timecode="00:13") Scammer: I’m in the ICU, Grandma. I'm scared. Can you please help me with the funds for the surgery? I don't know what to do. I’m afraid I won’t make it if they can’t operate quickly enough!

@@ -1,6 +1,6 @@
 {   
     "1": {
-      "progress": 100,
+      "progress": 75,
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. Which of the following are types of tech support scams? Select all that apply.",
@@ -26,7 +26,7 @@
     "theAnswers": "A, B"
 },
     "2": {
-        "progress": 100,
+        "progress": 82,
         "type": "multi_select",
         "partial": "none",
         "prompt": "2. How do pop-up warning scams normally operate?  Select all that apply.",

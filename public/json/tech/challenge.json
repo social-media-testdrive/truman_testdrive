@@ -66,7 +66,7 @@
     "theAnswers": "A, B, D"
   }, 
   "4": {
-    "progress": 40,
+    "progress": 80,
     "type": "abcd",
     "partial": "q4.html",
     "prompt": "4. You receive an unexpected call from someone claiming to be a tech support agent. The caller alerts you that your computer has a virus and immediate action is needed to prevent data loss. After searching the phone number on the internet, you find that it matches the computer company’s official customer support number. What is the most appropriate action to take in this situation?",

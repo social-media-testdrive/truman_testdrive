@@ -18,8 +18,8 @@
             .column.five.wide.computer.only.sixteen.wide.tablet.only
                 #image-slider(style="margin: 0 auto;")
                     img(src=public_resources + '/images/modules/tech/types-calls.svg' alt='Computer image' )
-                    img(src=public_resources + '/images/modules/tech/types-popup.svg' alt='Computer image' )
-                    img(src=public_resources + '/images/modules/tech/filler.png' alt='Computer image' )
+                    img(src=public_resources + '/images/modules/tech/types-popup.svg' alt='Computer image')
+                    img(src=public_resources + '/images/modules/tech/search-result.png' alt='Computer image' )
                     img(src=public_resources + '/images/modules/tech/types-refund.svg' alt='Computer image' )
 
             .column.eleven.wide.computer.only.sixteen.wide.tablet.only(style="max-height:0%")
@@ -29,8 +29,23 @@
                         .content
                             h2 Unsolicited Phone Calls
                             p An unsolicited phone call occurs when a scammer is pretending to be a representative of a well-known company, like Apple or Microsoft. They usually claim there’s a serious problem with your device that only they can help solve. 
-                            //- p Scammers first target potential victims by searching social media, obituaries, or other online platforms. They look for people already in distress from losing a loved one or who have posted enough information online for the scammer to create a convincing story [2].
-
+                            div.ui.header
+                                i.phone.volume.icon
+                                | Audio Example
+                            .audio-player
+                                .wrap
+                                    audio#audio.with-transcript(controls)
+                                        source(src=`${public_resources}/audio/tech-audio/concepts-unsolicited.mp3`  type="audio/mpeg")
+                                        | Your browser does not support the audio element.
+                                    //- ul#transcript(data-audio-file=`${public_resources}/audio/grandparent-audio/randy.mp3`)
+                                    //-     li.speaker1.current(data-timecode="00:00") Scammer: Hi Grandpa.
+                                    //-     li.speaker2(data-timecode="00:01") Grandpa: What?
+                                    //-     li.speaker1(data-timecode="00:02") Scammer: Do you know who this is?
+                                    //-     li.speaker2(data-timecode="00:03") Grandpa: Randy?
+                                    //-     li.speaker1(data-timecode="00:04") Scammer: Yeah.
+                                    //-     li.speaker2(data-timecode="00:05") Grandpa: What's the matter?
+                                    //-     li.speaker1(data-timecode="00:06") Scammer: I've been in a car wreck.
+                                    //-     li.speaker2(data-timecode="00:08") Grandma: Are you hurt bad?
 
                             //- p 
                             //- | Scammers often employ a technique known as love bombing, where they overwhelm their victims with 
@@ -74,11 +89,22 @@
                     .ui.basic.card
                         .content
                             h2 Refund Scams
-                            p In this scam, the scammers will try to get your trust by offering you a refund first. They might use different excuses: 
-                            .ui.bulleted.list 
-                                .item They may claim you're receiving a refund because the service provider you bought from is shutting down or going out of business.
-                                .item They may ask if you were happy with a recent tech support service you paid for. If you say you weren’t satisfied, they’ll propose a refund.
-                            p In either scenario, their aim is to obtain your bank account or credit card details to steal your personal information and money.
+                            p In this scam, scammers offer a refund to gain your trust. They may claim the service provider is shutting down or ask if you were satisfied with a recent tech support service. In either case, their goal is to steal your personal and financial information.
+                            div.ui.header
+                                i.phone.volume.icon
+                                | Audio Example
+                            .audio-player
+                                .wrap
+                                    audio#audio.with-transcript(controls)
+                                        source(src=`${public_resources}/audio/tech-audio/concepts-refund.WAV`  type="audio/mpeg")
+                                        | Your browser does not support the audio element.
+                            br
+
+                            //- p In this scam, the scammers will try to get your trust by offering you a refund first. They might use different excuses: 
+                            //- .ui.bulleted.list 
+                            //-     .item They may claim you're receiving a refund because the service provider you bought from is shutting down or going out of business.
+                            //-     .item They may ask if you were happy with a recent tech support service you paid for. If you say you weren’t satisfied, they’ll propose a refund.
+                            //- p In either scenario, their aim is to obtain your bank account or credit card details to steal your personal information and money.
 
 
                             //- p In step 4, the scammers contact the target, typically over a phone call, pretending to be the target’s grandchild, other loved one, or someone calling on behalf of them to ask for money [3].

@@ -564,15 +564,15 @@ function setLinks(currentPage) {
             nextlink = baseurl + "pressure";
         } else if (currentPage === "pressure") {
             backlink = baseurl + "callout";
-            nextlink = baseurl + "reflection";
-        } else if (currentPage === "reflection") {
-          backlink = baseurl + "pressure";
-          nextlink = baseurl + "quiz";
+            nextlink = baseurl + "quiz";
         } else if (currentPage === "quiz") {
-          backlink = baseurl + "reflection";
+          backlink = baseurl + "pressure";
+          nextlink = baseurl + "reflection";
+        } else if (currentPage === "reflection") {
+          backlink = baseurl + "quiz";
           nextlink = baseurl + "takeaways";
         } else if (currentPage === "takeaways") {
-          backlink = baseurl + "quiz";
+          backlink = baseurl + "reflection";
           nextlink =
             "/course-player?module=tech&section=signs&page=objectives";
         }
@@ -771,30 +771,38 @@ function updateProgressBar() {
             progress = (2 / total) * 100;
         } else if (pageParam === 'personal-info') {
             progress = (3 / total) * 100;
-        } else if (pageParam === 'activity') {
+        } else if (pageParam === 'types') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'quiz') {
+        } else if (pageParam === 'initial') {
             progress = (5 / total) * 100;
-        } else if (pageParam === 'reflection') {
+        } else if (pageParam === 'communicate') {
             progress = (6 / total) * 100;
+        } else if (pageParam === 'steal') {
+            progress = (7 / total) * 100;
+        } else if (pageParam === 'quiz') {
+            progress = (8 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (10 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }
     } else if(section === 'consequences') {
         if (pageParam === 'objectives') {
             progress = 0;
-        } else if (pageParam === 'intro-video') {
+        } else if (pageParam === 'financial') {
             progress = (1 / total) * 100;
-        }  else if (pageParam === 'general') {
+        }  else if (pageParam === 'identity') {
             progress = (2 / total) * 100;
-        } else if (pageParam === 'types') {
+        } else if (pageParam === 'privacy') {
             progress = (3 / total) * 100;
-        } else if (pageParam === 'activity') {
+        } else if (pageParam === 'emotional') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'quiz') {
+        } else if (pageParam === 'targeted') {
             progress = (5 / total) * 100;
-        } else if (pageParam === 'reflection') {
+        } else if (pageParam === 'quiz') {
             progress = (6 / total) * 100;
+        } else if (pageParam === 'reflection') {
+            progress = (7 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }
@@ -803,22 +811,22 @@ function updateProgressBar() {
             progress = 0;
         } else if (pageParam === 'intro-video') {
             progress = (1 / total) * 100;
-        } else if (pageParam === 'types') {
+        } else if (pageParam === 'spoofing') {
             progress = (2 / total) * 100;
-        } else if (pageParam === 'issue') {
+        } else if (pageParam === 'robocalls') {
             progress = (3 / total) * 100;
-        } else if (pageParam === 'know-you') {
+        } else if (pageParam === 'websites') {
             progress = (4 / total) * 100;
-        } else if (pageParam === 'offer') {
+        } else if (pageParam === 'popups') {
             progress = (5 / total) * 100;
-        } else if (pageParam === 'suspicious') {
+        } else if (pageParam === 'callout') {
             progress = (6 / total) * 100;
-        } else if (pageParam === 'activity') {
+        } else if (pageParam === 'pressure') {
             progress = (7 / total) * 100;
         } else if (pageParam === 'quiz') {
             progress = (8 / total) * 100;
         } else if (pageParam === 'reflection') {
-            progress = (9 / total) * 100;
+            progress = (11 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }
