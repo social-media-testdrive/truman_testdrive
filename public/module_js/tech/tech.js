@@ -655,12 +655,12 @@ function setLinks(currentPage) {
           nextlink = baseurl + "reporting";
         }else if (currentPage === "reporting"){
           backlink = baseurl + "post-actions";
-          nextlink = baseurl + "reflection";
-        } else if (currentPage === "reflection") {
-          backlink = baseurl + "reporting";
           nextlink = baseurl + "quiz";
         } else if (currentPage === "quiz") {
-          backlink = baseurl + "reflection";
+          backlink = baseurl + "reporting";
+          nextlink = baseurl + "reflection";
+        } else if (currentPage === "reflection") {
+          backlink = baseurl + "quiz";
           nextlink = baseurl + "takeaways";
         } else if (currentPage === "takeaways") {
           backlink = baseurl + "reflection";

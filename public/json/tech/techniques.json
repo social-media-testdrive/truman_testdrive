@@ -7,19 +7,19 @@
     "choices": {
       "0": {
         "text": "A. Spoofing",
-        "explanation": "Choice A is correct. Personal information about the target, such as their name, age and address, is the most basic information used by scammers in grandparent scams."
+        "explanation": "Choice A is correct. Spoofing is a tech support scam technique that is widely used by scammers. Tech support scammers often pretend to be a representative from real tech support companies through spoofed phone numbers, emails, or websites. They make it appear as if they are legitimate businesses to deceive victims into giving them access to their computers or personal information."
       },
       "1": {
         "text": "B. Fake Websites",
-        "explanation": "Choice B is incorrect. In grandparent scams, the scammer tends to use information about the target or the target’s family relationships to construct convincing narratives. Although social security numbers count as sensitive information and are often used in identity theft or other types of fraud, they are not typically used in grandparent scams."
+        "explanation": "Choice B is correct. Scammers create websites that may appear in search results (e.g., Google search) when people look for tech support services. Calling the number on the fake websites can lead to being scammed. Scammers use this technique to lure victims into the scam."
       },
       "2": {
         "text": "C. Robocalls",
-        "explanation": "Choice C is correct. In grandparent scams, scammers often use information about the target or their family relationships to craft convincing stories. Incorporating details about the target's recent life events can add credibility and foster more trust in the targets."
+        "explanation": "Choice C is correct. Scammers often use robocalls as an initial tactic. because it allows them to approach thousands of potential victims at the same time."
       },
       "3": {
         "text": "D. Voice-changing Software",
-        "explanation": "Choice D is correct. Scammers may find out the name of the target’s grandchild. By using the grandchild's name, scammers can more convincingly pose as the target’s grandchild or a trusted family member, increasing the emotional impact on the target."
+        "explanation": "Choice D is incorrect. Voice-changing software is typically used in grandparent scams. In a tech support scam, the scammer doesn’t need to pretend to be someone the target knows, so there is no need for them to alter their voice."
       }
     },
     "correctResponse": ["0", "1", "2"],
@@ -33,19 +33,19 @@
     "choices": {
       "0": {
         "text": "A. Your computer has been hacked and infected with viruses. You need to act now before it’s too late",
-        "explanation": "Choice A is correct. Grandparent scammers often manipulate grandparents' emotions by creating fake emergency situations to trick them into sending money. Common stories they use include fabricated car accidents, being falsely arrested in a foreign country, experiencing a medical crisis, or being kidnapped while traveling abroad. If you receive a call with such a frightening and urgent story, it's likely a scam. On the other hand, having a party with friends is not an emergency or fear-inducing situation, so it is usually not a part of scammers' deceptive stories."
+        "explanation": "Choice A is correct. This claims your computer is vulnerable to viruses in an attempt to scare you into paying for unnecessary tech support services."
       },
       "1": {
         "text": "B. Your Apple Pay account has been compromised. Your card details are exposed and need to be secured immediately",
-        "explanation": "Choice B is correct. This is also an example of a fake emergency story."
+        "explanation": "Choice B is correct. This claims your Apple Pay/card information has been compromised to trick you into revealing real financial details to the scammers."
       },
       "2": {
         "text": "C. We’ve detected a suspicious transaction of $2200 through your Mastercard on Amazon.com. You must respond urgently",
-        "explanation": "Choice C is correct. This is also an example of a fake emergency story."
+        "explanation": "Choice C is correct. This claims a large fraudulent purchase has occurred on your credit card, trying to get you to verify account information that can then be misused."
       },
       "3": {
         "text": "D. Illegal content involving children has been found on your computer. The authorities will be notified unless you take action right away.",
-        "explanation": "Choice D is incorrect. This is not an emergency story."
+        "explanation": "Choice D is correct. This makes the extremely disturbing claim of illegal content being found to threaten and coerce the victim into paying to make it \"go away.\""
       }
     },
     "correctResponse": ["0", "1", "2", "3"],
@@ -53,24 +53,29 @@
   },
   "3": {
     "progress": 85,
-    "type": "abcd",
-    "partial": "none",
-    "prompt": "3. What is Caller ID Spoofing?",
+    "type": "multi_select",
+    "partial": "audio_q3.html",
+    "prompt": "3. What scam techniques are used in the following recording? Select all that apply.",
     "choices": {
-      "a": {
-        "text": "A. A special code that shows an email is safe to open."
+      "0": {
+        "text": "A. Social Engineering",
+        "explanation": "Choice A is correct. Choice A is correct. The recording claims \"If you do not act now, you may forfeit your refund.\" This is an attempt to push you to act quickly. It also states twice to \"press 0 to speak with a representative. Press 0 now to claim your refund.\" This is a social engineering technique designed to create a sense of urgency. If you’ve never purchased the service from the company before, the safe approach is to hang up immediately and block the number to prevent future calls from the same source. If you do have an existing relationship with the company, make a separate call by using the number listed on their official website or check your bank account."
       },
-      "b": {
-        "text": "B. A trick scammers use to pretend to be someone else."
+      "1": {
+        "text": "B. Pre-recorded robocalls",
+        "explanation": "Choice B is correct. The recording has an automated, pre-recorded, and robotic voice. Also, the scammers impersonate a tech support company (OmniTech support), falsely claiming you are eligible for a refund for a service you were incorrectly charged for. Legitimate companies do not send unsolicited pre-recorded messages to their customers. If you’ve never purchased the service from the company before, the safe approach is to hang up immediately and block the number to prevent future calls from the same source. If you do have an existing relationship with the company, make a separate call by using the number listed on their official website or check your bank account."
       },
-      "c": {
-        "text": "C. A way to keep your online purchases secure."
+      "2": {
+        "text": "C. Fake websites",
+        "explanation": "Choice C is incorrect. While this is a common technique for tech support scams, this recording does not mention any fake website or direct people to one."
       },
-      "d": {
-        "text": "D. A tool to stop hackers from getting into your computer."
+      "3": {
+        "text": "D. Pop-up warnings",
+        "explanation": "Choice D is incorrect. While this is a common technique for tech support scams, this recording does not reference any pop-up warnings."
       }
     },
-    "explanation": "<h1>B is correct</h1><p>Caller ID spoofing is a technology that scammers use to hide their real phone numbers and make it seem like they are calling from a different number. They often impersonate trusted sources like banks or people known to the victim, aiming to deceive and trick individuals.</p>",
-    "correctResponse": "b"
+    "correctResponse": ["0", "1"],
+    "theAnswers": "A, B"
+
   }
 }

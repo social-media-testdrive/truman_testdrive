@@ -129,7 +129,7 @@
   {
     "progress": 60,
     "type": "multi_select",
-    "partial": "q6.html",
+    "partial": "audio_q6.html",
     "prompt": "6. In this audio recording, what warning sign do you notice that could indicate that this call is a scam? Select all that apply.",
     "choices": {
       "0": {
@@ -157,7 +157,7 @@
   {
     "progress": 70,
     "type": "multi_select",
-    "partial": "q7.html",
+    "partial": "audio_q7.html",
     "prompt": "7. In this conversation, what warning signs do you notice that could indicate that the caller is a scammer? Select all that apply.",
     "choices": {
       "0": {

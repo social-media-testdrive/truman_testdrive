@@ -1,140 +1,124 @@
 {
   "1": {
     "progress": 63,
-    "type": "yes_no",
-    "partial": "q1.html",
-    "prompt": "1. Is it important to be careful about sharing your family’s information, including names, on social media?",
+    "type": "multi_select",
+    "partial": "none",
+    "prompt": "1. What are effective preventative measures to protect yourself against falling victim to tech support scams? Select all that apply.",
     "choices": {
-      "yes": {
-        "text": "Yes"
+      "0": {
+        "text": "A. Keeping your operating system and applications updated.",
+        "explanation": "Choice A is correct. Software companies release updates with security patches. These patches fix vulnerabilities or exploits discovered in their software. Additionally, updates also introduce new security features designed to detect and prevent the latest types of scams. By keeping your operating system and applications updated, you enhance your device’s security."
       },
-      "no": {
-        "text": "No"
+      "1": {
+        "text": "B. Installing a pop-up blocker in your web browser.",
+        "explanation": "Choice B is correct. Many tech support scams rely on pop-up windows to deceive users into thinking their computer has a problem. By blocking pop-ups, you reduce the chances of encountering these deceptive messages."
+      },
+      "2": {
+        "text": "C. Posting about tech issues on public forums to get a variety of solutions.",
+        "explanation": "Choice C is incorrect. Public forums can be used by scammers who pose as helpful individuals. These scammers might offer seemingly legitimate solutions that actually lead to phishing sites, malware downloads, or requests for personal information."
+      },
+      "3": {
+        "text": "D. Using reputable security software.",
+        "explanation": "Choice D is correct. Reputable security software often includes features that protect against malware and phishing attacks. These features can block malicious websites and emails that scammers use to initiate tech support scams."
       }
     },
-    "explanation": "<h1>Yes you should be careful when sharing these information.</h1><p>Being careful about sharing your family's information, like names, on social media helps protect your family's privacy and security. Scammers can use publicly available information to craft more believable stories and potentially target your family members.</p>",
-    "correctResponse": "yes"
+    "correctResponse": ["0", "1", "3"],
+    "theAnswers": "A, B, D"
   },
   "2": {
     "progress": 69,
     "type": "abcd",
     "partial": "none",
-    "prompt": "2. What is a recommended action to help protect yourself from scammers using information from your social media accounts?",
+    "prompt": "2. You receive an unexpected call from someone claiming to be a tech support agent. The caller alerts you that your computer has a virus and immediate action is needed to prevent data loss. After searching the phone number on the internet, you find that it matches the computer company’s official customer support number. What is the most appropriate action to take in this situation?",
     "choices": {
       "a": {
-        "text": "A. Share your family's information, including names, on social media to keep your profile engaging."
+        "text": "A. Follow the instructions given by the tech support agent to resolve the issue."
       },
       "b": {
-        "text": "B. Set your social media to private and be cautious about what information you share online."
+        "text": "B. Hang up, then call the official customer service number from the website to verify the claim."
       },
       "c": {
-        "text": "C. Share your personal details openly to connect with more people on social media."
+        "text": "C. Ask questions to verify the caller’s identity, such as their name or job title, before continuing the conversation."
       },
       "d": {
-        "text": "D. Ignore privacy settings on social media to ensure your account is accessible to everyone."
+        "text": "D. Ask the caller to provide information about you, such as your name or address, to prove they are legitimate."
       }
     },
-    "explanation": "<h1>B is correct</h1><p>Setting your social media accounts to private limits who can see your posts and personal information, reducing the amount of information scammers can access to craft their stories. Being cautious about what information you share online also helps prevent scammers from using your personal details against you.</p>",
+    "explanation": "<h1>B is correct</h1><p>With the spoofing technique, even if the calling number matches the number listed on the official website, it's important to make a separate call using the official customer support number to ensure you are actually speaking with a representative from the company, not a scammer.</p>",
     "correctResponse": "b"
   },
   "3": {
     "progress": 75,
     "type": "abcd",
     "partial": "none",
-    "prompt": "3. What is a recommended strategy to verify the identity of a caller claiming to be your grandchild?",
+    "prompt": "3. You receive a pop-up warning on your computer claiming that your device is infected with a virus. The pop-up provides a phone number to call for tech support assistance and a link for downloading antivirus software that you can use yourself. What should you do?",
     "choices": {
       "a": {
-        "text": "A. Ask them to provide their social media profile information."
+        "text": "A. Immediately call the provided number to get help from the tech support service."
       },
       "b": {
-        "text": "B. Set your social media to private and be cautious about what information you share online."
+        "text": "B. Ignore the pop-up warning and close the internet browser."
       },
       "c": {
-        "text": "C. Answer calls from numbers that you do not recognize to see if it is your grandchild."
+        "text": "C. Click on the pop-up to download the recommended \"virus removal\" software."
       },
       "d": {
-        "text": "D. Establish a secret word or question that only your grandchild would know the answer to."
+        "text": "D. Close the pop-up window and run a full system scan with your trusted antivirus software."
       }
     },
-    "explanation": "<h1>D is correct</h1><p>Establishing a secret word or question provides a secure method of verification that only your actual grandchild would be able to answer correctly. It helps to prevent falling victim to impostors who may claim to be your grandchild over the phone.</p>",
-    "correctResponse": "d"
+    "explanation": "<h1>B is correct</h1><p>Pop-up warnings claiming your device is infected and providing a phone number for tech support assistance are a common scam tactic used by tech support scammers. Legitimate tech support companies do not use unsolicited pop-ups or prompts to initiate contact. Also, once you close your browser, the pop-up will likely disappear because it was an ad on a webpage you were visiting.</p>",
+    "correctResponse": "b"
   },
   "4": {
-    "progress": 81,
-    "type": "multi_select",
-    "partial": "none",
-    "prompt": "4. When answering a call, the caller addresses you as grandpa/grandma, what should you do? Select all that apply.",
-    "choices": {
-      "0": {
-        "text": "A. Feel happy and provide your grandchild's name, assuming they want you to guess it.",
-        "explanation": "Choice A is incorrect. It's understandable to feel happy when receiving a call from a grandchild. However, if they address you generically, it's safer to have them state their name first. Given the prevalence of grandparent scams, instruct your grandchildren to proactively identify themselves when calling, instead of prompting you to guess their name. Therefore, if someone asks you to guess their identity, it should raise an alert."
-      },
-      "1": {
-        "text": "B. Do not mention any of your grandchild’s names; wait for the caller to state the name themselves.",
-        "explanation": "Choice B is correct. This generic greeting could be a reg flag for grandparent scams, so do not tell them your grandchild name; wait for the caller to give the name."
-      },
-      "2": {
-        "text": "C. If they respond as”your favorite grandson/granddaughter” without stating their name, wait for them to provide it themselves",
-        "explanation": "Choice C is correct. The caller first used a generic greeting, and If you ask their name and they still don’t give it, responding something like “I am your favorite grandson”, or asking you to guess, do not give any names! This is a major red flag of a grandparent scam."
-      },
-      "3": {
-        "text": "D. Using your pre-established secret codeword to verify the caller’s identity,  if you have one.",
-        "explanation": "Choice D is correct. Using a secret codeword or question is an efficient way to verify the caller’s identity. Even with plenty of your personal information, it is highly unlikely the scammers would know your secret word or the answers to a specific question known only to your grandchild. If you don’t have one yet, create one now."
-      }
-    },
-    "correctResponse": ["1", "2", "3"],
-    "theAnswers": "B, C, D"
-  },
-  "5": {
     "progress": 88,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "5. If a caller claims to be an official from the police department, how should you respond? Select all that apply.",
+    "prompt": "4. Where can you report tech support scams? Select all that apply.",
     "choices": {
       "0": {
-        "text": "A. Ask for their identification number",
-        "explanation": "Choice A is incorrect. Asking for their identification number alone does not guarantee the caller is legitimate, as scammers can easily provide fake or misleading information over the phone."
+        "text": "A. Federal Trade Commission (FTC) at http://reportfraud.ftc.gov/.",
+        "explanation": "Choice A is correct. Reporting to the FTC helps the agency gather information about tech support scams and investigate them. Your report will contribute to a valuable database used by law enforcement agencies to detect and prevent similar scams."
       },
       "1": {
-        "text": "B. Follow the caller’s request as they claim they are a police officer",
-        "explanation": "Choice B is incorrect. Blindly following the caller's request, even if they claim to be a police officer, can be extremely risky. Scammers often impersonate authority figures to increase perceived legitimacy and pressure targets into compliance. It's important to verify the caller's identity by initiating a separate call to confirm their legitimacy."
+        "text": "B. The company that provides the software.",
+        "explanation": "Choice B is correct. Scammers often impersonate tech support at reputable software companies. Reporting the incident directly to the software provider will alert them to the scam, allowing the company to inform other users, develop and implement stronger security measures, and work with law enforcement to address the issue."
       },
       "2": {
-        "text": "C. Initiate a separate call to the police department to verify the caller’s identity",
-        "explanation": "Choice C is correct. You should always verify the person’s identity through a separate call. Also, do not use the number provided by the caller; instead, find the official number from a reliable source such as their official website. Contacting the police department directly is a reliable method."
+        "text": "C. Your local law enforcement agency.",
+        "explanation": "Choice C is correct. Local law enforcement can help investigate tech support scams and, if applicable, assist in tracking down the scammers. Reporting to the local authorities ensures that they are aware of the threat and can take action to prevent future incidents."
       },
       "3": {
-        "text": "D. Discuss the situation with your family member before you make any decisions",
-        "explanation": "Choice D is correct. In addition to contacting the police department directly, you should also talk to your family members. They can not only help you confirm whether the caller's claim is true or a scam, but also help you avoid making impulsive decisions in response to a potentially urgent or distressing situation."
+        "text": "D. Your bank, if you have provided money or personal information.",
+        "explanation": "Choice D is correct. You should contact your bank immediately in an attempt to recover the funds or protect your personal information. Even though recovery is not guaranteed, there is still an opportunity to mitigate the damage by acting quickly."
       }
     },
-    "correctResponse": ["2", "3"],
-    "theAnswers": "C, D"
+    "correctResponse": ["0", "1", "2", "3"],
+    "theAnswers": "A, B, C, D"
   },
-  "6": {
-    "progress": 91,
+  "5": {
+    "progress": 92,
     "type": "multi_select",
     "partial": "none",
-    "prompt": "6. If you suspect the caller is not your loved one, and the caller asks money from you, what should you do? Select all that apply.",
+    "prompt": "5. If you downloaded software that allowed a tech support scammer to gain remote access to your computer, what should you do?",
     "choices": {
       "0": {
-        "text": "A. Stop talking with the caller immediately and report him",
-        "explanation": "Choice A is correct. If you have any suspicions about the caller, you should end the conversation immediately. You should also report the caller and inform your family members about this incident to ensure your safety."
+        "text": "A. Immediately run an antivirus scan and malware removal tool to detect and remove any malicious software.",
+        "explanation": "Choice A is correct. Running an antivirus scan is crucial to identify and remove any malicious software that the scammer might have installed."
       },
       "1": {
-        "text": "B. Stop talking with the caller immediately and call your family member to verify the incident",
-        "explanation": "Choice B is correct. If you have any suspicions about the caller, you should end the conversation immediately. You should also report the caller and inform your family members about this incident to ensure your safety."
+        "text": "B. Backup your important data to an external hard drive or cloud storage in case you need to wipe your computer completely.",
+        "explanation": "Choice B is correct. Backing up your important data is a safety measure to ensure that if you need to completely wipe your computer, you won't lose important files."
       },
       "2": {
-        "text": "C. Keep talking with the caller to find out what happened.",
-        "explanation": "Choice C is incorrect. If you are already suspicious of this caller, it is important to end the conversation. You can then contact your family members to find out what happened. Scammers can be very persuasive, so it is crucial not to risk your safety."
+        "text": "C. Change all your important passwords, especially for online accounts like email, banking, and social media.",
+        "explanation": "Choice C is correct. Changing your passwords is essential because the scammer could have accessed sensitive account information."
       },
       "3": {
-        "text": "D. Give the money to the caller if you think it is necessary.",
-        "explanation": "Choice D is incorrect. Never give money to someone you already suspect."
+        "text": "D. Hire a tech professional who can safely remove any programs installed by the scammers. This will prevent the scammers from stealing your personal information and data.",
+        "explanation": "Choice D is correct. A tech professional can help ensure that any software the scammer installed is completely removed, which is important for maintaining your device's security."
       }
     },
-    "correctResponse": ["0", "1"],
-    "theAnswers": "A, B"
+    "correctResponse": ["0", "1", "2", "3"],
+    "theAnswers": "A, B, C, D"
   }
 }

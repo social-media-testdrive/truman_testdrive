@@ -3,23 +3,23 @@
       "progress": 64,
       "type": "multi_select",
       "partial": "none",
-      "prompt": "1. What are the warning signs indicating that the person calling you is a scammer?  Select all that apply.",
+      "prompt": "1. What are the common warning signs of tech support scams? Select all that apply.",
       "choices": { 
         "0": {
-            "text": "A. The caller starts with “Hey Grandma/Grandpa,” and when you inquire about their identity, they ask you to guess",
-            "explanation": "Choice A is correct. In some cases, scammers may not have your grandchild's name. They will use generic terms like ‘grandma’ or ‘grandpa’ and then try to get you to provide additional details, such as your grandchild's name or other information. This information can then be used to convince you that they are your loved one."
+            "text": "A. Requests remote access to your device",
+            "explanation": "Choice A is correct. Scammers frequently request remote access to your computer, claiming they need to check for security issues or viruses. They may say that you lack the skills to resolve these issues and offer to take care of it for you. Once granted access, they can view all your files, install malware, and maintain future control over your device for malicious purposes."
         },
         "1": {
-            "text": "B. The caller provides wrong information about your family member",
-            "explanation": "Choice B is correct. Scammers may know the names of your family members, such as your grandchild, but they likely lack specific details about them or other relatives. Be wary if they say something inaccurate about your family members. They may try to make excuses for their mistakes by claiming they misremembered or misspoke, but do not trust them."
+            "text": "B. Pop-up claims your computer is infected with a virus.",
+            "explanation": "Choice B is correct. Fake pop-up warnings aim to scare and mislead you into believing your device is compromised, so that you will call the number provided for \"tech support.\" However, this \"tech support\" is actually provided by the scammers. Once you call, they will try to scam you, often by requesting remote access to your computer or charging fees for unnecessary services."
         },
         "2": {
-          "text": "C. The caller claims to be your grandchild and they are planning to visit you",
-          "explanation": "Choice C is correct. Scammers may use online platforms, such as dating sites, to gather personal details about potential targets. For example, scammers may pose as potential romantic interests and manipulate individuals into sharing sensitive information, enabling them to create more convincing narratives."
+          "text": "C. Instructs you to visit an authorized service center or retail store for device repair or support.",
+          "explanation": "Choice C is incorrect. Legitimate tech support providers typically do not ask for remote access, generate pop-up warnings, make unsolicited claims about securing purchases, or instruct you to download unverified apps. Reputable companies, like Microsoft, will have you follow a list of steps to secure your computer. Often, these are point by point instructions listed on Microsoft's support pages. Requesting that the customer takes the device to an official service location is also a standard practice."
         },
         "3": {
-          "text": "D. The caller tells you they are in a car accident",
-          "explanation": "Choice D is correct. This scammer claims to have been in a car accident, a common tactic used to create a sense of urgency.  So, If you receive a call with a frightening and urgent story, it could indicate a grandparent scam."
+          "text": "D. Asks you to download a security software that allegedly locates viruses on your computer.",
+          "explanation": "Choice D is correct. Legitimate tech support would not instruct you to download unfamiliar programs, especially unprompted. However, scammers do this to trick you into installing malware that grants them access to your system and data. By getting you to run their malicious programs under the guise of security software, they can take full control of your device."
         }
     },
     "correctResponse": ["0", "1", "3"],
@@ -28,71 +28,71 @@
   "2": {
     "progress": 71,
     "type": "abcd",
-    "partial": "none",
-    "prompt": "2. In this conversation, what warning sign did you notice that could indicate that the caller is a scammer?",
+    "partial": "q2.html",
+    "prompt": "2. In this email, what warning sign did you notice that could indicate that this is a scam?",
     "choices": {
       "a": {
-        "text": "A. Inaccurate Family Details"
+        "text": "A. Pre-recorded or Robotic Voices"
       },
       "b": {
-        "text": "B. Voice Sounding Distorted."
+        "text": "B. Unsolicited Notification about an Account Issue."
       },
       "c": {
-        "text": "C. Pressure to Act Fast and Deter Questions"
+        "text": "C. Requests for Downloading Security/Diagnostic Apps"
       },
       "d": {
-        "text": "D. Demand for Secrecy"
+        "text": "D. Requests for Remote Access"
       }
     },
-    "explanation": "<h1>B is correct</h1><p>In this conversation, the grandparent comments \"you sound different.\" The scammer then blames a bad connection - a common excuse. So, the correct answer is B. voice sounding distorted.</p>",
+    "explanation": "<h1>B is correct</h1><p> This email is an unsolicited message that aims to raise concerns about a large amount being charged, which is a common tactic used by scammers. Calling the number provided in the email could lead you directly to the scammers, and the scam would then start from there. The safe approach is to ignore the email and directly check your bank statements for any unauthorized charges.</p>",
     "correctResponse": "b"
   },
   "3": {
     "progress": 79,
-    "type": "multi_select",
-    "partial": "none",
-    "prompt": "3. In this conversation, what warning signs did you notice that could indicate that the caller is a scammer? Select all that apply.",
-    "choices": { 
-      "0": {
-          "text": "A. A Fear Inducing and Urgent Scenario",
-          "explanation": "Choice A is correct. In this conversation, the caller claims to have been arrested. This tactic aims to instill fear and anxiety in the grandparents, exploiting their emotions to manipulate them into complying with the scammer’s demands."
+    "type": "abcd",
+    "partial": "audio_q3.html",
+    "prompt": "3. In this conversation, what warning signs do you notice that could indicate that the caller is a scammer?",
+    "choices": {
+      "a": {
+        "text": "A. Pre-recorded or Robotic Voices"
       },
-      "1": {
-          "text": "B. Distorted Voice",
-          "explanation": "Choice B is incorrect. In this conversation, there is no mention of the voice sounding unusual or different, so this recording doesn’t exhibit this warning sign. a3677777"
+      "b": {
+        "text": "B. Unsolicited Notification about an Account Issue."
       },
-      "2": {
-        "text": "C. Pressure to Act Fast and Deter Questions",
-        "explanation": "Choice C is correct. In this conversation, the caller tells the grandparent \"he's gonna call you in a minute\" after providing a supposed \"case number\". This creates a sense of urgency and pressure to act fast without questioning the situation. Also, by demanding the grandparent needs to have the \"case number\" ready for when the \"lawyer\" calls soon, the caller is deterring the grandparent from asking too many questions that could expose the scam."
+      "c": {
+        "text": "C. Requests for Downloading Security/Diagnostic Apps"
       },
-      "3": {
-        "text": "D. Demand for Secrecy",
-        "explanation": "Choice D is incorrect. In this conversation, the caller didn’t request that the grandparent keep the conversation a secret, so this recording doesn’t exhibit this warning sign."
+      "d": {
+        "text": "D. Requests for Remote Access"
       }
-  },
-    "correctResponse": ["0", "2"],
-    "theAnswers": "A, C"
+    },
+    "explanation": "<h1>D is correct</h1><p> The scammer states that “let me connect your computer with…,” which is actually a request for remote access to the target’s computer. Allowing remote access is like permitting a stranger to enter your home – they can go anywhere and do anything on your computer without your knowledge or control. Never grant remote access to your computer to strangers or unsolicited callers! </p>",
+    "correctResponse": "d"
   },
   "4": {
     "progress": 86,
-    "type": "abcd",
-    "partial": "none",
-    "prompt": "4. According to this conversation, what warning signs did you notice that can indicate the caller is a scammer?",
-    "choices": {
-      "a": {
-        "text": "A. Inaccurate Family Details"
+    "type": "multi_select",
+    "partial": "audio_q4.html",
+    "prompt": "4. According to this conversation, what warning signs did you notice that could indicate the caller is a scammer?",
+    "choices": { 
+      "0": {
+          "text": "A. Pre-recorded or Robotic Voices",
+          "explanation": "Choice A is incorrect. This conversation is with an actual person rather than a pre-recorded robot."
       },
-      "b": {
-        "text": "B. Voice Sounding Distorted."
+      "1": {
+          "text": "B. Unsolicited Phone Call",
+          "explanation": "Choice B is correct. This scammer initiates the conversation, saying there was some unusual activity from the target’s IP address."
       },
-      "c": {
-        "text": "C. Pressure to Act Fast and Deter Questions"
+      "2": {
+        "text": "C. Requests for Downloading Security/Diagnostic Apps",
+        "explanation": "Choice C is correct. In the conversation, the scammer directs the target to download the SecureScan tool, and claims it is a diagnostic tool for computers. The software could be malware, which is malicious and designed to cause damage."
       },
-      "d": {
-        "text": "D. Request for Untraceable Payment Methods"
+      "3": {
+        "text": "D. Requests for Remote Access",
+        "explanation": "Choice D is correct. At the end of the conversation, the scammer says, 'Open the software and provide me with the six-digit access code displayed on your screen. This will allow me to connect to your computer and fix the issues.' This is an attempt to trick you into giving them remote access to your computer."
       }
-    },
-    "explanation": "<h1>D is correct</h1><p>In this conversation, the scammer instructs the grandparent to use a Walmart Money Transfer, which is an untraceable payment method commonly used by scammers. Therefore, the correct answer is D. Request for Untraceable Payment Methods.</p>",
-    "correctResponse": "d"
-  }
+  },
+  "correctResponse": ["1", "2", "3"],
+  "theAnswers": "B, C, D"
+}
 }
