@@ -3,6 +3,7 @@ let pageReload= false;
 let badgeEarned = false;
 
 $(document).ready(function() {
+    console.log("wllo HELLOS DFFKDJLSDIOF SIDFOojsdiFJOIZF ZDJOIDSOIF SD LIJFIJ ");
     if(speechData !== "none") {
         $('#page-article').click();
     } else {
@@ -68,9 +69,9 @@ $(document).ready(function() {
                     const newUrl = window.location.pathname + '?' + urlParams.toString();
                     history.pushState({path: newUrl}, '', newUrl);
                 }
-                playAudio(page);
-                toggleHighlighting();
-                startHighlightingWords();
+                // playAudio(page);
+                // toggleHighlighting();
+                // startHighlightingWords();
             });
         } 
         // } else if(page === 'types') {
@@ -83,7 +84,7 @@ $(document).ready(function() {
                 console.log('Current slide number:', slideNum);
 
                 if(slideNum !== 1) {
-                    slideResetNarrationAndHighlighting(); // stop and remove previous audio/highlighting (needed to fix when user clicks next before narration is finished)
+                    // slideResetNarrationAndHighlighting(); // stop and remove previous audio/highlighting (needed to fix when user clicks next before narration is finished)
 
                     const urlParams = new URLSearchParams(window.location.search);
                     page = "types-" + slideNum;
@@ -91,9 +92,9 @@ $(document).ready(function() {
                     const newUrl = window.location.pathname + '?' + urlParams.toString();
                     history.pushState({path: newUrl}, '', newUrl);
 
-                    playAudio(page);
-                    toggleHighlighting();
-                    startHighlightingWords();          
+                    // playAudio(page);
+                    // toggleHighlighting();
+                    // startHighlightingWords();          
                 } else {
                     // remove slide param when returning back to first slide
                     if(window.location.search.includes('slide')) {
@@ -102,19 +103,19 @@ $(document).ready(function() {
                         const newUrl = window.location.pathname + '?' + urlParams.toString();
                         history.pushState({path: newUrl}, '', newUrl);
 
-                        // not needed, does it below?
+                        // // not needed, does it below?
                         page = "types";
-                        playAudio(page);
-                        toggleHighlighting();
-                        startHighlightingWords();
+                        // playAudio(page);
+                        // toggleHighlighting();
+                        // startHighlightingWords();
                     }          
                 }
             });    
         } 
 
-        playAudio(page);
-        toggleHighlighting();
-        startHighlightingWords();
+        // playAudio(page);
+        // toggleHighlighting();
+        // startHighlightingWords();
 
     }
 
@@ -136,9 +137,9 @@ $(document).ready(function() {
         $('.ui.sidebar').sidebar('hide');
 
         // stop and reset audio and highlighting immediately
-        if(speechData !== "none") {
-            stopHighlighting();
-        }
+        // if(speechData !== "none") {
+        //     stopHighlighting();
+        // }
 
 
         const { backlink, nextlink } = setLinks(currentPage);
@@ -148,9 +149,9 @@ $(document).ready(function() {
         // changed from const to let so on quiz pages can override backPage from quiz to quiz-results if user has past attempts
         let backPage = backParams.get('page');
 
-        var audio = document.getElementById('narration-audio');
-        audio.src = `https://dart-store.s3.amazonaws.com/identity+narration/${section}/${backPage}_${avatar}.mp3`;
-        audio.load(); // Reload the audio to apply the new source
+        // var audio = document.getElementById('narration-audio');
+        // audio.src = `https://dart-store.s3.amazonaws.com/identity+narration/${section}/${backPage}_${avatar}.mp3`;
+        // audio.load(); // Reload the audio to apply the new source
         
         if(backPage === null) {
             window.location.href = backlink;
@@ -191,22 +192,22 @@ $(document).ready(function() {
                         setupPractice();
                     }
 
-                    if(speechData !== "none") {
-                        // console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
-                        if(typeof pastAttempts !== 'undefined') {
-                            if(pastAttempts  && backPage === 'quiz') {
-                                const urlParams = new URLSearchParams(window.location.search);
-                                backPage = "quiz-results";
-                                urlParams.set('question', backPage); 
-                                const newUrl = window.location.pathname + '?' + urlParams.toString();
-                                history.pushState({path: newUrl}, '', newUrl);
-                            }
-                        }
+                    // if(speechData !== "none") {
+                    //     // console.log("YO YO YO the past attempts: " + pastAttempts + " and the back page: " + backPage)
+                    //     if(typeof pastAttempts !== 'undefined') {
+                    //         if(pastAttempts  && backPage === 'quiz') {
+                    //             const urlParams = new URLSearchParams(window.location.search);
+                    //             backPage = "quiz-results";
+                    //             urlParams.set('question', backPage); 
+                    //             const newUrl = window.location.pathname + '?' + urlParams.toString();
+                    //             history.pushState({path: newUrl}, '', newUrl);
+                    //         }
+                    //     }
 
-                        playAudio(backPage);
-                        toggleHighlighting();
-                        startHighlightingWords();
-                    }
+                    //     playAudio(backPage);
+                    //     toggleHighlighting();
+                    //     startHighlightingWords();
+                    // }
 
 
                     }
@@ -230,9 +231,9 @@ $(document).ready(function() {
         $('.ui.sidebar').sidebar('hide');
 
         // stop and reset audio and highlighting immediately
-        if(speechData !== "none") {
-            stopHighlighting();
-        }
+        // if(speechData !== "none") {
+        //     stopHighlighting();
+        // }
 
         // restartWordHighlighting();
 
@@ -391,20 +392,20 @@ $(document).ready(function() {
                     setupPractice();
                 }
 
-                if(speechData !== "none") {
-                    if(typeof pastAttempts !== 'undefined') {
-                        if(pastAttempts && nextPage === 'quiz') {
-                            const urlParams = new URLSearchParams(window.location.search);
-                            nextPage = "quiz-results";
-                            urlParams.set('question', nextPage); 
-                            const newUrl = window.location.pathname + '?' + urlParams.toString();
-                            history.pushState({path: newUrl}, '', newUrl);
-                        }
-                    }
-                    playAudio(nextPage);
-                    toggleHighlighting();
-                    startHighlightingWords();
-                }
+                // if(speechData !== "none") {
+                //     if(typeof pastAttempts !== 'undefined') {
+                //         if(pastAttempts && nextPage === 'quiz') {
+                //             const urlParams = new URLSearchParams(window.location.search);
+                //             nextPage = "quiz-results";
+                //             urlParams.set('question', nextPage); 
+                //             const newUrl = window.location.pathname + '?' + urlParams.toString();
+                //             history.pushState({path: newUrl}, '', newUrl);
+                //         }
+                //     }
+                //     playAudio(nextPage);
+                //     toggleHighlighting();
+                //     startHighlightingWords();
+                // }
 
                 // if(nextPage === 'quiz') {
                 //     console.log("Page is quiz so pause");
@@ -688,7 +689,7 @@ function setLinks(currentPage) {
           backlink = baseurl + "call2";
           nextlink = baseurl + "reflection";
         } else if (currentPage === "close") {
-          backlink = baseurl + "call2";
+          backlink = baseurl + "activity";
           nextlink = baseurl + "friends";
         } else if (currentPage === "friends") {
           backlink = baseurl + "close";
@@ -900,27 +901,39 @@ function updateProgressBar() {
     } else if (section === 'practice') {
         if (pageParam === 'objectives') {
             progress = 0;
-        } else if (pageParam === 'arrive') {
+        } else if (pageParam === 'introduction') {
             progress = (1 / total) * 100;
         } else if (pageParam === 'activity') {
             progress = (2 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (4 / total) * 100;
+        } else if (pageParam === 'activity') {
+          progress = (3 / total) * 100;
+        } else if (pageParam === 'close') {
+          progress = (4 / total) * 100;
+        } else if (pageParam === 'friends') {
+          progress = (5 / total) * 100;
+        } else if (pageParam === 'search') {
+          progress = (6 / total) * 100;
+        } else if (pageParam === 'call') {
+          progress = (7 / total) * 100;
+        } else if (pageParam === 'call2') {
+          progress = (8 / total) * 100;
+        } else if (pageParam === 'call3') {
+          progress = (9 / total) * 100;
+        } else if (pageParam === 'activity') {
+          progress = (10 / total) * 100;
+        }  else if (pageParam === 'reflection') {
+            progress = (11 / total) * 100;
         } else if (pageParam === 'takeaways') {
             progress = 100;
         }
     } else if (section === 'evaluation') {
-        if (pageParam === 'intro') {
-            progress = 0;
-        } else if (pageParam === 'quiz') {
-            progress = (1 / total) * 100;
-        } else if (pageParam === 'badge') {
-            progress = (10 / total) * 100;
-        } else if (pageParam === 'reflection') {
-            progress = (11 / total) * 100;
-        } else if (pageParam === 'certificate') {
-            progress = 100;
-        }
+      if(pageParam === 'intro') {
+        progress = 0;
+      } else if(pageParam === 'quiz') {
+          progress = 10;
+      } else if(pageParam === 'badge') {
+          progress = 100;
+      }
     }
 
     console.log("The Progress: " + progress);

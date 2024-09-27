@@ -1,7 +1,20 @@
 #close.hidden
     .ui.container
         .limit#learn-target
-            h1.ui.header.large#learn-title
-                .content
-                    i.book.icon
-                    | close choice path
+        h1.ui.header.large#learn-title
+          .content
+            i.warning.icon
+            | Restarting did not fix the pop-up
+
+        p You made a great choice! Closing the web browser and restarting the computer can help close most pop-up windows.
+
+        p However, what would you do if restarting the computer did not fix the problem?
+
+        // Buttons Section
+        .ui.three.buttons
+          button.ui.button(onclick=onclick="window.location.href='course-player?module=tech&section=practice&page=call'")
+            | Call the number on the pop-up window
+          button.ui.button(onclick="window.location.href='course-player?module=tech&section=practice&page=friends'")
+            | Keep the pop-up window open, and call family members or trusted friends.
+          button.ui.button(onclick="window.location.href='course-player?module=tech&section=practice&page=search'")
+            | Keep the pop-up window open, and search for the official website of your computer's operating system or antivirus software, and call the number listed there.

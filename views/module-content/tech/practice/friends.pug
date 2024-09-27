@@ -3,5 +3,12 @@
         .limit#learn-target
             h1.ui.header.large#learn-title
                 .content
-                    i.book.icon
-                    | friends choice path
+                    i.star.icon
+                    | You made a great choice! 
+            p Keeping the pop-up window open, and calling family members or trusted friends can help avoid being deceived by the scammers.
+            p Would you like to see how the scammer would respond if you called the provided number?
+            .ui.two.buttons
+                button.ui.positive.button(onclick="window.location.href='course-player?module=tech&section=practice&page=call'") 
+                    | Yes, let’s try that
+                button.ui.negative.button(onclick="window.location.href='course-player?module=tech&section=practice&page=reflection'")
+                    | No, I want to leave this section

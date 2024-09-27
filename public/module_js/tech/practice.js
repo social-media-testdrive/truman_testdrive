@@ -30,6 +30,8 @@ function setupPractice() {
     document.querySelectorAll('.ui.button[data-choice]').forEach(button => {
         button.addEventListener('click', function () {
             const choice = this.getAttribute('data-choice');
+
+            console.log("The user choose path: ", choice);
             //   var choiceData = {
             //     choice: choice,
             //   };
@@ -40,24 +42,38 @@ function setupPractice() {
                 $('#scam-popup').modal('hide');
                 $('#nextButton').click();
             } else if(choice === "close") {
-                // window.location.href = "course-player?module=tech&section=practice&page=close";
-
-                setLinks("close");
-                $('#scam-popup').modal('hide');
-                $('#nextButton').click();
+                window.location.href = "course-player?module=tech&section=practice&page=close";
+                // const urlParams = new URLSearchParams(window.location.search);
+                // const currentPage = urlParams.get('page');
+        
+                // setLinks("close");
+                // $('#scam-popup').modal('hide');
+                // const { backlink, nextlink } = setLinks(currentPage);
+                // history.pushState(null, '', backlink);
+        
+                            // fade out current page, then fade in previous page. at half duration each, 400ms total
+            $('#' + currentPage).transition({
+                animation: 'fade out',
+                duration: 200,
+                onComplete: function() {
+                    console.log('fade out complete');
+                    }
+            });
+        
+                // $('#nextButton').click();
 
             } else if(choice === "friends") {
-                // window.location.href = "course-player?module=tech&section=practice&page=friends";
+                window.location.href = "course-player?module=tech&section=practice&page=friends";
 
-                setLinks("friends");
-                $('#scam-popup').modal('hide');
-                $('#nextButton').click();
+                // setLinks("friends");
+                // $('#scam-popup').modal('hide');
+                // $('#nextButton').click();
             } else if(choice === "search") {
-                // window.location.href = "course-player?module=tech&section=practice&page=search";
+                window.location.href = "course-player?module=tech&section=practice&page=search";
 
-                setLinks("search");
-                $('#scam-popup').modal('hide');
-                $('#nextButton').click();
+                // setLinks("search");
+                // $('#scam-popup').modal('hide');
+                // $('#nextButton').click();
             }
             
         });

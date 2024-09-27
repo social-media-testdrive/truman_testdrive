@@ -3,5 +3,14 @@
         .limit#learn-target
             h1.ui.header.large#learn-title
                 .content
-                    i.book.icon
-                    | search choice path
+                    i.star.icon
+                    | You made a great choice! 
+            p Instead of calling the number provided, keep the pop-up window open and search for the official website of your operating system or antivirus software. 
+            p Contacting the official tech support through their verified channels can help you find a real tech support person who will guide you on the next steps. 
+            p Would you like to see how the scammer would respond if you called the provided number?
+
+            .ui.two.buttons
+                button.ui.positive.button(onclick="window.location.href='course-player?module=tech&section=practice&page=call'") 
+                    | Yes, let’s try that
+                button.ui.negative.button(onclick="window.location.href='course-player?module=tech&section=practice&page=reflection'")
+                    | No, I want to leave this section

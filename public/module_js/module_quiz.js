@@ -175,7 +175,7 @@ $(document).ready(function() {
 	$(this).find(".preButton").on("click", function () {
         // turnOffNarrationAndHighlighting();
 
-        if(pastAttempts || viewingAnswer) {
+        if(speechData !== "none" && pastAttempts || viewingAnswer) {
             console.log("stopping highlighting bc on results page")
             stopHighlighting();
         }
@@ -254,10 +254,11 @@ $(document).ready(function() {
             const url = new URL(window.location.href);
             url.searchParams.delete('question');
             window.history.replaceState({}, '', url.toString());
-
-            playAudio('quiz');
-            toggleHighlighting();
-            startHighlightingWords();
+            if(speechData !== "none") {
+                playAudio('quiz');
+                toggleHighlighting();
+                startHighlightingWords();
+            }
 		}
 
         // If viewing answer reset the show explanation button if going back to previous question
@@ -271,13 +272,10 @@ $(document).ready(function() {
 
 	// On clicking next, display the next question
     $(this).find(".nextButton").on("click", function () {
-        console.log("pabbllo vittar");
         // console.log("Next button clicked!!!!!!!!!! + currentQuestion: " + currentQuestion + " numQuestions: " + numQuestions + "quizOver: " + quizOver + "viewingAnswer: " + viewingAnswer + "pastAttempts: " + pastAttempts);
-        if(pastAttempts || viewingAnswer) {
+        if(speechData !== "none" && (pastAttempts || viewingAnswer)) {
             // console.log("stopping highlighting bc on results page")
             stopHighlighting();
-        } else {
-            // console.log("not past attempts")
         }
 
         // add question parameter to url
@@ -345,7 +343,10 @@ $(document).ready(function() {
             } else {
                 // Remove warning and Grade the question apporpriately 
                 $(".quizMessage").hide();
-                stopHighlighting();
+
+                if(speechData !== "none") {
+                    stopHighlighting();
+                }
 
                 let nextPage = "quiz-" + nextQuestion;
                 urlParams.set('question', nextPage); 
@@ -354,7 +355,7 @@ $(document).ready(function() {
 
                 // control audio and highlighting for each question using narration functions defined in identity-theft.js
                 // if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none" && nextQuestion !== "results") {
-                if(!quizOver && !viewingAnswer && !pastAttempts && speechData !== "none") {
+                if(speechData !== "none" && !quizOver && !viewingAnswer && !pastAttempts) {
                     playAudio(nextPage);
                     toggleHighlighting();
                     startHighlightingWords();
@@ -560,10 +561,12 @@ $(document).ready(function() {
         $('#narrate-next').removeClass("highlightedButton");
         $('#nextButton').removeClass("highlightedButton");
 
-        var audio = document.getElementById('narration-audio');   
-        audio.pause();
+        if(speechData !== "none") {
 
-        stopHighlighting();
+        var audio = document.getElementById('narration-audio');   
+            audio.pause();
+            stopHighlighting();
+        }
 
         viewingAnswer = true;
 
