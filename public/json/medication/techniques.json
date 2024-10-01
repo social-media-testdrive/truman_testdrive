@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 20,
+    "progress": 69.23,
     "type": "multi_select",
     "partial": "none",
     "prompt": "1. How do scammers make their products seem safe and trustworthy? Select all that apply:",
@@ -26,7 +26,7 @@
     "theAnswers": "A, D"
   },
   "2": {
-    "progress": 40,
+    "progress": 76.92,
     "type": "multi_select",
     "partial": "none",
     "prompt": "2. In this ad, what techniques are being used to mislead people? Select all that apply:",
@@ -52,7 +52,7 @@
     "theAnswers": "A, B, C, D"
   },
   "3": {
-    "progress": 60,
+    "progress": 84.62,
     "type": "multi_select",
     "partial": "none",
     "prompt": "3. How do scammers exploit the placebo effect in medication scams?",

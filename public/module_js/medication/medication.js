@@ -782,7 +782,7 @@ function updateProgressBar() {
     if (pageParam === "intro") {
       progress = 0;
     } else if (pageParam === "quiz") {
-      progress = 10;
+      progress = 20;
     } else if (pageParam === "badge") {
       progress = 100;
     }
@@ -808,7 +808,7 @@ function updateProgressBar() {
     } else if (pageParam === "quiz") {
       progress = (9 / total) * 100;
     } else if (pageParam === "reflection") {
-      progress = (10 / total) * 100;
+      progress = (13 / total) * 100;
     } else if (pageParam === "takeaways") {
       progress = 100;
     }
@@ -824,7 +824,7 @@ function updateProgressBar() {
     } else if (pageParam === "quiz") {
       progress = (4 / total) * 100;
     } else if (pageParam === "reflection") {
-      progress = (5 / total) * 100;
+      progress = (7 / total) * 100;
     } else if (pageParam === "takeaways") {
       progress = 100;
     }
@@ -846,7 +846,7 @@ function updateProgressBar() {
     } else if (pageParam === "quiz") {
       progress = (7 / total) * 100;
     } else if (pageParam === "reflection") {
-      progress = (8 / total) * 100;
+      progress = (12 / total) * 100;
     } else if (pageParam === "takeaways") {
       progress = 100;
     }
@@ -868,7 +868,7 @@ function updateProgressBar() {
     } else if (pageParam === "quiz") {
       progress = (7 / total) * 100;
     } else if (pageParam === "reflection") {
-      progress = (8 / total) * 100;
+      progress = (11 / total) * 100;
     } else if (pageParam === "takeaways") {
       progress = 100;
     }
@@ -894,7 +894,7 @@ function updateProgressBar() {
     } else if (pageParam === "quiz") {
       progress = (9 / total) * 100;
     } else if (pageParam === "reflection") {
-      progress = (10 / total) * 100;
+      progress = (16 / total) * 100;
     } else if (pageParam === "takeaways") {
       progress = 100;
     }

@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 20,
+    "progress": 58.82,
     "type": "multi_select",
     "partial": "none",
     "prompt": "1. How can you avoid medication scams? Select all that apply:",
@@ -26,7 +26,7 @@
     "theAnswers": "B, C"
   },
   "2": {
-    "progress": 40,
+    "progress": 64.71,
     "type": "abcd",
     "partial": "none",
     "prompt": "2. How can you verify if a drug claiming to be FDA-approved is actually FDA-approved?",
@@ -48,7 +48,7 @@
     "correctResponse": "a"
   },
   "3": {
-    "progress": 60,
+    "progress": 70.59,
     "type": "multi_select",
     "partial": "none",
     "prompt": "3. Which of the following are green flags that an online pharmacy is legitimate and safe? Select all that apply:",
@@ -74,7 +74,7 @@
     "theAnswers": "A, B, C, D"
   },
   "4": {
-    "progress": 80,
+    "progress": 76.47,
     "type": "yes_no",
     "partial": "none",
     "prompt": "4. Jason found a website that sells dietary supplements that help relieve back and joint pain. The website claims that the product is FDA-approved. Should Jason trust this claim?",
@@ -90,7 +90,7 @@
     "correctResponse": "no"
   },
   "5": {
-    "progress": 100,
+    "progress": 82.35,
     "type": "multi_select",
     "partial": "none",
     "prompt": "5. What should you do if you realize you’ve been scammed after paying for a fraudulent product? Select all that apply:",
@@ -116,7 +116,7 @@
     "theAnswers": "B, C, D"
   },
   "6": {
-    "progress": 120,
+    "progress": 88.24,
     "type": "multi_select",
     "partial": "none",
     "prompt": "6. What questions should you ask your doctor before taking dietary supplements? Select all that apply:",
