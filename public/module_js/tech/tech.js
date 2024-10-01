@@ -713,14 +713,6 @@ function setLinks(currentPage) {
       } else if (currentPage === "takeaways") {
           backlink = baseurl + "results";
           nextlink = "/course-player?module=tech&section=evaluation&page=intro";
-  
-          // complete module status to 100 manually since there is no quiz
-          console.log("HEY Posting to complete practice module status");
-          $.post('/completeModuleStatus', {
-              modId: 'romance',
-              section: 'practice'
-        });
-        
       } else if (section === "evaluation") {
         let baseurl = "/course-player?module=tech&section=evaluation&page=";
     

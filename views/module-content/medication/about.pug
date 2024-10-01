@@ -26,7 +26,7 @@ block content
           .twelve.wide.column
             p Sarah needs your help! She’s fallen victim to a cunning medication scam.
             p Uncover how scammers pose as distressed grandchildren to manipulate their targets into sending money. You'll learn how these scams work, how to spot them, and how to protect yourself and others.
-            if user.moduleProgress.grandparent.link === "/course-player?module=medication&section=challenge&page=intro" 
+            if user.moduleProgress.medication.link === "/course-player?module=medication&section=challenge&page=intro" 
               button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.medication.link") Start Mission
             else 
               button.ui.huge.blue.button(onclick="window.location=user.moduleProgress.medication.link") Continue Mission
@@ -46,7 +46,7 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                if(user.moduleStatus.grandparent.challenge === 100)
+                if(user.moduleStatus.medication.challenge === 100)
                   span.fake-checkbox.completed
                 else
                   span.fake-checkbox
@@ -59,7 +59,7 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                if(user.moduleStatus.grandparent.concepts === 100)
+                if(user.moduleStatus.medication.concepts === 100)
                   span.fake-checkbox.completed
                 else
                   span.fake-checkbox
@@ -72,7 +72,7 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                if(user.moduleStatus.grandparent.consequences === 100)
+                if(user.moduleStatus.medication.consequences === 100)
                   span.fake-checkbox.completed
                 else
                   span.fake-checkbox
@@ -85,7 +85,7 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                if(user.moduleStatus.grandparent.techniques === 100)
+                if(user.moduleStatus.medication.techniques === 100)
                   span.fake-checkbox.completed
                 else
                   span.fake-checkbox
@@ -98,7 +98,7 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                if(user.moduleStatus.grandparent.signs === 100)
+                if(user.moduleStatus.medication.signs === 100)
                   span.fake-checkbox.completed
                 else
                   span.fake-checkbox
@@ -111,7 +111,7 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                if(user.moduleStatus.grandparent.protection === 100)
+                if(user.moduleStatus.medication.protection === 100)
                   span.fake-checkbox.completed
                 else
                   span.fake-checkbox
@@ -124,7 +124,7 @@ block content
           .ui.grid
             .row
               .two.wide.centered.column
-                if(user.moduleStatus.grandparent.evaluation === 100)
+                if(user.moduleStatus.medication.evaluation === 100)
                   span.fake-checkbox.completed
                 else
                   span.fake-checkbox
@@ -164,25 +164,25 @@ block content
         .sixteen.wide.column
           .speech-div
             .centerme
-              if user.moduleProgress.grandparent.link === "/course-player?module=medication&section=challenge&page=intro" 
-                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Start Mission
+              if user.moduleProgress.medication.link === "/course-player?module=medication&section=challenge&page=intro" 
+                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.medication.link") Start Mission
               else 
-                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link") Continue Mission
+                button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.medication.link") Continue Mission
 
             img.dart_image.ui.medium.image(src=user.avatarImg)
 
             .ui.large.label.blue-pointing#speechBubble
-              if user.moduleProgress.grandparent.link === "/course-player?module=medication&section=challenge&page=intro" 
+              if user.moduleProgress.medication.link === "/course-player?module=medication&section=challenge&page=intro" 
                 p#speechText
                   | Sarah is counting on you! Click 'Start Mission' to begin. 
               else 
                 p#speechText
                   | Welcome back! Click 'Continue Mission' to pick up where you left off.
     .ui.centered.grid.mobile.only
-      if user.moduleProgress.grandparent.link === "/course-player?module=medication&section=challenge&page=intro" 
-        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
+      if user.moduleProgress.medication.link === "/course-player?module=medication&section=challenge&page=intro" 
+        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.medication.link" style="margin-top: 0px; margin-bottom: 60px;") Start Mission
       else 
-        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.grandparent.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission
+        button.ui.massive.blue.button(onclick="window.location=user.moduleProgress.medication.link" style="margin-top: 0px;  margin-bottom: 60px;") Continue Mission
 
     br
     br
