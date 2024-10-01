@@ -1,6 +1,6 @@
 {
     "1": {
-      "progress": 20,
+      "progress": 62.5,
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. What risks do buyers face when purchasing from scammers? Select all that apply:",
@@ -26,7 +26,7 @@
       "theAnswers": "A, B, C"
     },
     "2": {
-      "progress": 40,
+      "progress": 75,
       "type": "multi_select",
       "partial": "none",
       "prompt": "2. Why are counterfeit medications dangerous? Select all that apply:",

@@ -1,6 +1,6 @@
 {
   "1": {
-      "progress": 20,
+      "progress":20,
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. Which two types of products are most often used in medication scams?",
@@ -44,7 +44,7 @@
       "theAnswers": "B, C, D"
   },
   "3": {
-      "progress": 60,
+      "progress": 80,
       "type": "multi_select",
       "partial": "none",
       "prompt": "3. What terms or phrases do scammers use to make misleading claims about the safety of their products? Select all that apply.",

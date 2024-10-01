@@ -1,6 +1,6 @@
 {
     "1": {
-      "progress": 20,
+      "progress": 10,
       "type": "abcd",
       "partial": "none",
       "prompt": "1. What is a medication scam?",
@@ -116,7 +116,7 @@
       "theAnswers": "A, B, C"
     },
     "6": {
-      "progress": 120,
+      "progress": 60,
       "type": "yes_no",
       "partial": "none",
       "prompt": "6. TRUE or FALSE: The FDA reviews and approves dietary supplements for safety and effectiveness before they can be sold to the public.",
@@ -210,7 +210,7 @@
       "theAnswers": "A, B, C"
     },
     "10": {
-      "progress": 100,
+      "progress": 95,
       "type": "multi_select",
       "partial": "none",
       "prompt": "10. Which are the key characteristics of medication scams? Select all that apply.",

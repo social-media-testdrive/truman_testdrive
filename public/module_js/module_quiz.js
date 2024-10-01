@@ -502,7 +502,6 @@ $(document).ready(function() {
             // set status to 100
 
 
-            // postModuleProgress(modID, page, nextLink, progress, 100);
             // console.log("Posting quiz attempt to database!");
             // console.log("ScoreTotal is: " + scoreTotal);
             // const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

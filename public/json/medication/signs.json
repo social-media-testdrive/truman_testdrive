@@ -1,6 +1,6 @@
 {
   "1": {
-    "progress": 20,
+    "progress": 66.67,
     "type": "abcd",
     "partial": "none",
     "prompt": "1. Which of the following statements about medication scams is TRUE?",
@@ -22,7 +22,7 @@
     "correctResponse": "b"
   },
   "2": {
-    "progress": 40,
+    "progress": 75,
     "type": "multi_select",
     "partial": "none",
     "prompt": "2. Which of the following are warning signs of medication scams? Select all that apply:",
@@ -48,7 +48,7 @@
     "theAnswers": "A, B, D"
   },
   "3": {
-    "progress": 60,
+    "progress": 83.33,
     "type": "multi_select",
     "partial": "none",
     "prompt": "3. 'Still suffering from arthritis? Our new pill is designed to get rid of all types of arthritis in just 5 days, clinically proven to not only relieve joint damage, inflammation, redness, and swelling but also stop symptoms from returning permanently!' Identify the warning signs used in this advertisement. Select all that apply:",

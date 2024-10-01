@@ -410,7 +410,19 @@ const userSchema = new mongoose.Schema({
         signs: { type: Number, default: 0 }, 
         practice: { type: Number, default: 0 }, 
         evaluation: { type: Number, default: 0 }, 
-    }
+    },    
+    medication: {
+        intro: { type: Number, default: 0 }, 
+        challenge: { type: Number, default: 0 },  
+        concepts: { type: Number, default: 0 }, 
+        consequences: { type: Number, default: 0 }, 
+        techniques: { type: Number, default: 0 }, 
+        protection: { type: Number, default: 0 }, 
+        flags: { type: Number, default: 0 }, 
+        practice: { type: Number, default: 0 }, 
+        evaluation: { type: Number, default: 0 }, 
+    },    
+    
   },
   modulePageTimes: { // marks the progress of each module
     identity: {
@@ -775,6 +787,8 @@ const userSchema = new mongoose.Schema({
     romance: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
     phishing: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
     grandparent: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
+    tech: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
+    medication: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
     sales: [{ page: String, startTime: Date, endTime: Date, duration: Number }],
 
     // identity: [{

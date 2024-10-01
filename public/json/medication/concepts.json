@@ -1,6 +1,6 @@
 {
     "1": {
-      "progress": 20,
+      "progress": 71.43,
       "type": "multi_select",
       "partial": "none",
       "prompt": "1. Which of the following are examples of medication scams? Select all that apply:",
@@ -26,7 +26,7 @@
       "theAnswers": "B, C"
     },
     "2": {
-      "progress": 40,
+      "progress": 78.57,
       "type": "yes_no",
       "partial": "none",
       "prompt": "2. TRUE or FALSE: Dietary supplements, such as herbal blends, vitamins, and minerals, are scientifically proven to treat opioid addiction and dependence.",
@@ -42,7 +42,7 @@
       "correctResponse": "no"
     },
     "3": {
-      "progress": 60,
+      "progress": 85.71,
       "type": "abcd",
       "partial": "none",
       "prompt": "3. ‘VitoBlend is a safe, plant-based dietary supplement that has been proven to treat chronic pain related to a number of medical conditions, including arthritis, diabetes, and various cancers.’ According to FDA regulations, based on this claim, should VitoBlend be regulated as a dietary supplement or a drug?",
