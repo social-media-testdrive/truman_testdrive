@@ -75,7 +75,7 @@ function customOnWindowLoad(enableDataCollection){
         audioFile: ['']
       },
       {
-        intro: `Jeremy tiene dos amigas,
+        intro: `Jeremy tiene dos amigos,
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot1Image}'>
         <span>${bot1FullName}</span></span> y
         <span class='noLineBreak'><img class='ui avatar image customCircularAvatar' src='${cdn}/profile_pictures/${bot2Image}'>
