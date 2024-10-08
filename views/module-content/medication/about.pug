@@ -121,6 +121,19 @@ block content
                 .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=protection&page=objectives'") Start
         .ui.divider
         .ui.basic.segment
+            .ui.grid
+                .row
+                    .two.wide.centered.column
+                        if(user.moduleStatus.medication.practice === 100)
+                            span.fake-checkbox.completed
+                        else
+                            span.fake-checkbox
+                    .nine.wide.column
+                        h3 Practice
+                    .five.wide.right.aligned.column
+                        .ui.blue.inverted.button.small(onclick="window.location='/course-player?module=medication&section=practice&page=objectives'") Start
+        .ui.divider
+        .ui.basic.segment
           .ui.grid
             .row
               .two.wide.centered.column
