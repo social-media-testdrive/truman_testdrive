@@ -10,6 +10,7 @@ $(document).ready(function () {
   }
 
   if (section === "practice") {
+    setupPractice();
     setIntroduction();
   }
 
@@ -74,10 +75,7 @@ $(document).ready(function () {
     startPage === "activity3" ||
     startPage === "activity4"
   ) {
-    addAudioPlayer("car", rolePlay);
-    addAudioPlayer("car2", rolePlay);
-    addAudioPlayer("car3", rolePlay);
-    addAudioPlayer("car4", rolePlay);
+
 
     // add click event to the roleplay choice buttons
     // setIntroduction();
@@ -444,9 +442,9 @@ $(document).ready(function () {
         // if(section === "techniques" && nextPage === 'activity') {
         //     introJs().addHints();
         // }
-        // if(section === 'practice' && nextPage === 'activity') {
-        //     setupPractice();
-        // }
+        if(section === 'practice' && nextPage === 'introduction') {
+            setupPractice();
+        }
 
         if (speechData !== "none") {
           if (pastAttempts && nextPage === "quiz") {
@@ -468,57 +466,6 @@ $(document).ready(function () {
   });
 });
 
-function setGrandparentRole(role, file) {
-  console.log("the role is now:", role);
-  console.log("the file is now:", file);
-  // role updating for grandma/grandpa
-  let audioElement = document.getElementById("audio");
-  // print out check
-  console.log("the audio element before is:", audioElement);
-  if (audioElement) {
-    const newSrc = `https://dart-store.s3.amazonaws.com/medication-audio/${file}_${role}.wav`;
-    audioElement.src = newSrc; // Update the src of the audio element
-    audioElement.load();
-  }
-  console.log("the audio element after is now:", audioElement);
-
-  // Update the transcript data file
-  let transcriptElement = document.getElementById("transcript");
-  if (transcriptElement) {
-    transcriptElement.setAttribute(
-      "data-audio-file",
-      `https://dart-store.s3.amazonaws.com/medication-audio/${file}_${role}.wav`
-    );
-  }
-
-  // Update the transcript times
-  if (role === "Grandma") {
-    $("#num1").attr("data-timecode", "00:00");
-    $("#num2").attr("data-timecode", "00:01");
-    $("#num3").attr("data-timecode", "00:02");
-    $("#num4").attr("data-timecode", "00:04");
-    $("#num5").attr("data-timecode", "00:05");
-    $("#num6").attr("data-timecode", "00:06");
-    $("#num7").attr("data-timecode", "00:10");
-  } else {
-    $("#num1").attr("data-timecode", "00:00");
-    $("#num2").attr("data-timecode", "00:01");
-    $("#num3").attr("data-timecode", "00:03");
-    $("#num4").attr("data-timecode", "00:05");
-    $("#num5").attr("data-timecode", "00:06");
-    $("#num6").attr("data-timecode", "00:08");
-    $("#num7").attr("data-timecode", "00:12");
-  }
-  // initializeAudioPlayer();
-  // let $audioElement = $('.audio-player ul#transcript');
-  // initializeOneAudioPlayer($audioElement);
-
-  // Update all role text in the transcript
-  //- document.querySelectorAll('.role').forEach(el => el.textContent = roleData.text);
-  document
-    .querySelectorAll(".role-placeholder")
-    .forEach((el) => (el.textContent = role));
-}
 
 function setLinks(currentPage) {
   let backlink, nextlink;
@@ -529,12 +476,13 @@ function setLinks(currentPage) {
     $("#" + currentPage).transition({
       animation: "fade in",
       onComplete: function () {
-        // if(section === "techniques" && currentPage === 'activity') {
-        //     introJs().addHints();
-        // }
-        // if(section === 'practice' && currentPage === 'activity') {
-        //     setupPractice();
-        // }
+        if(section === "techniques" && currentPage === 'activity') {
+          introJs().addHints();
+        }
+
+        if(section == 'practice' && currentPage == 'introduction') {
+            setupPractice();
+        }
       },
     });
 
@@ -747,13 +695,15 @@ function setLinks(currentPage) {
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
       backlink = baseurl + "reflection";
-      nextlink = "/course-player?module=medication&section=practice&page=objectives";
+      nextlink =
+        "/course-player?module=medication&section=practice&page=objectives";
     }
   } else if (section === "practice") {
     let baseurl = "/course-player?module=medication&section=practice&page=";
 
     if (currentPage === "objectives") {
-      backlink = "/course-player?module=medication&section=signs&page=objectives";
+      backlink =
+        "/course-player?module=medication&section=signs&page=objectives";
       nextlink = baseurl + "introduction";
     } else if (currentPage === "introduction") {
       backlink = baseurl + "objectives";
@@ -762,48 +712,38 @@ function setLinks(currentPage) {
       // disable next button, user needs to choose role
       // setIntroduction();
       // $('#nextButton').prop('disabled', true);
-
-
-
-
     } else if (currentPage === "activity") {
-
       backlink = baseurl + "introduction";
       nextlink = baseurl + "activity2";
 
-      // add audio
-      addAudioPlayer("car", rolePlay);
     } else if (currentPage === "activity2") {
       backlink = baseurl + "activity";
       nextlink = baseurl + "activity3";
 
-      addAudioPlayer("car2", rolePlay);
     } else if (currentPage === "activity3") {
       backlink = baseurl + "activity2";
       nextlink = baseurl + "activity4";
 
-      addAudioPlayer("car3", rolePlay);
     } else if (currentPage === "activity4") {
       backlink = baseurl + "activity3";
       nextlink = baseurl + "reflection";
 
-      addAudioPlayer("car4", rolePlay);
     } else if (currentPage === "reflection") {
       backlink = baseurl + "activity4";
       nextlink = baseurl + "takeaways";
     } else if (currentPage === "takeaways") {
       backlink = baseurl + "reflection";
-      nextlink = "/course-player?module=medication&section=evaluation&page=intro";
+      nextlink =
+        "/course-player?module=medication&section=evaluation&page=intro";
 
       // complete module status to 100 manually since there is no quiz
       console.log("HEY Posting to complete practice module status");
-      $.post('/completeModuleStatus', {
-          modId: 'medication',
-          section: 'practice'
+      $.post("/completeModuleStatus", {
+        modId: "medication",
+        section: "practice",
       });
     }
-  }
-  else if (section === "evaluation") {
+  } else if (section === "evaluation") {
     let baseurl = "/course-player?module=medication&section=evaluation&page=";
 
     if (currentPage === "intro") {
@@ -1005,46 +945,18 @@ function setIntroduction() {
   document.querySelectorAll(".ui.button[data-role]").forEach((button) => {
     button.addEventListener("click", function () {
       const choice = this.getAttribute("data-role");
-      var roleData = {
-        role: choice,
-      };
-      fetch("/postRolePlay", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Include other headers as needed
-        },
-        body: JSON.stringify(roleData),
-      })
-        .then((response) => {
-          if (response.ok) {
-            // Handle success
-            console.log("Roleplay updated successfully. The choice: ", choice);
 
-            // manually set the audio and text to be correct
-            setGrandparentRole(choice, "car");
 
-            $("#nextButton").prop("disabled", false);
-            $("#nextButton").click();
-            addAudioPlayer("car", choice);
-            addAudioPlayer("car2", choice);
-            addAudioPlayer("car3", choice);
-            addAudioPlayer("car4", choice);
-          } else {
-            console.error("Failed to update roleplay");
-            // Handle errors
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          // Handle network errors
-        });
+      console.log("The choice: ", choice);
+      
+      if(choice == "addiction") {
+          console.log("INider")
+          window.location.href = "course-player?module=medication&section=practice&page=activity";
 
-      // const roleData = roles[role];
+      } else if(choice == "aging") {
+          window.location.href = "course-player?module=medication&section=practice&page=activity3";
+      } 
 
-      // console.log("roleData", roleData);
-
-      // $('#nextButton').click();
     });
   });
 }

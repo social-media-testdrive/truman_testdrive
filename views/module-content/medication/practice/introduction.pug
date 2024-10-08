@@ -14,23 +14,15 @@
 
                             .ui.large.right.pointing.label.blue-pointing#speechBubble
                                 p#speechText
-                                    | Well done for reaching this point! In this Practice section, you will listen to a series of audio conversations involving a scammer impersonating someone else. Imagine you are the grandparent in these conversations, and try to identify the techniques and warning signs used by the scammer.
+                                    | Well done for reaching this point! 
+                                    | In this Practice section, you will see a series of Medication Scams. 
+                                    | Imagine you are the Scammer's Target, and try to identify the techniques and warning signs used by the scammer.
                                     br
                                     br
-                                    em Please select whether you'd like to play the role of a Grandma or Grandpa:
+                                    em Which topic would you like to explore? Choose one to get started.
                                 //- .ui.buttons
-                                button.ui.big.pink.button#select-grandma(data-role="Grandma" style="margin-right: 30px;") Grandma
-                                button.ui.big.blue.button#select-grandpa(data-role="Grandpa") Grandpa
+                                button.ui.big.pink.button#select-addiction(data-role="addiction" style="margin-right: 30px;") Addiction Treatment
 
-//- script.
-//-    document.addEventListener('DOMContentLoaded', function () {
-
-//-     // disable next button, user needs to choose role
-//-     //- $('#nextButton').prop('disabled', false);
-
-//-     //- $('#nextButton').prop('disabled', true);
-//-     //- without jquery
-//-     //- document.getElementById('nextButton').disabled = true;
+                                button.ui.big.blue.button#select-aging(data-role="aging") Anti-Aging Products
 
 
-//-     });
