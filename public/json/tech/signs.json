@@ -26,32 +26,10 @@
     "theAnswers": "A, B, D"
   },
   "2": {
-    "progress": 71,
-    "type": "abcd",
-    "partial": "q2.html",
-    "prompt": "2. In this email, what warning sign did you notice that could indicate that this is a scam?",
-    "choices": {
-      "a": {
-        "text": "A. Pre-recorded or Robotic Voices"
-      },
-      "b": {
-        "text": "B. Unsolicited Notification about an Account Issue."
-      },
-      "c": {
-        "text": "C. Requests for Downloading Security/Diagnostic Apps"
-      },
-      "d": {
-        "text": "D. Requests for Remote Access"
-      }
-    },
-    "explanation": "<h1>B is correct</h1><p> This email is an unsolicited message that aims to raise concerns about a large amount being charged, which is a common tactic used by scammers. Calling the number provided in the email could lead you directly to the scammers, and the scam would then start from there. The safe approach is to ignore the email and directly check your bank statements for any unauthorized charges.</p>",
-    "correctResponse": "b"
-  },
-  "3": {
-    "progress": 79,
+    "progress": 75,
     "type": "abcd",
     "partial": "audio_q3.html",
-    "prompt": "3. In this conversation, what warning signs do you notice that could indicate that the caller is a scammer?",
+    "prompt": "2. In this conversation, what warning signs do you notice that could indicate that the caller is a scammer?",
     "choices": {
       "a": {
         "text": "A. Pre-recorded or Robotic Voices"
@@ -69,11 +47,11 @@
     "explanation": "<h1>D is correct</h1><p> The scammer states that “let me connect your computer with…,” which is actually a request for remote access to the target’s computer. Allowing remote access is like permitting a stranger to enter your home – they can go anywhere and do anything on your computer without your knowledge or control. Never grant remote access to your computer to strangers or unsolicited callers! </p>",
     "correctResponse": "d"
   },
-  "4": {
+  "3": {
     "progress": 86,
     "type": "multi_select",
     "partial": "audio_q4.html",
-    "prompt": "4. According to this conversation, what warning signs did you notice that could indicate the caller is a scammer?",
+    "prompt": "3. According to this conversation, what warning signs did you notice that could indicate the caller is a scammer?",
     "choices": { 
       "0": {
           "text": "A. Pre-recorded or Robotic Voices",

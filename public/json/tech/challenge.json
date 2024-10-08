@@ -40,8 +40,8 @@
         "text": "D. Asks you to download security software that allegedly locates viruses on your computer"
       }
     },
-    "correctResponse": ["0", "1", "2"],
-    "theAnswers": "A, B, C"
+    "correctResponse": ["0", "1", "3"],
+    "theAnswers": "A, B, D"
   },  
   "3": {
     "progress": 60,
@@ -62,13 +62,13 @@
         "text": "D. Use reputable security software"
       }
     },
-    "correctResponse": ["0", "1", "2"],
+    "correctResponse": ["0", "1", "3"],
     "theAnswers": "A, B, D"
   }, 
   "4": {
     "progress": 80,
     "type": "abcd",
-    "partial": "q4.html",
+    "partial": "none",
     "prompt": "4. You receive an unexpected call from someone claiming to be a tech support agent. The caller alerts you that your computer has a virus and immediate action is needed to prevent data loss. After searching the phone number on the internet, you find that it matches the computer company’s official customer support number. What is the most appropriate action to take in this situation?",
     "choices": {
         "a": {

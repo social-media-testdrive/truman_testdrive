@@ -29,7 +29,7 @@
                         .content
                             h2 Unsolicited Phone Calls
                             p An unsolicited phone call occurs when a scammer is pretending to be a representative of a well-known company, like Apple or Microsoft. They usually claim there’s a serious problem with your device that only they can help solve. 
-                            div.ui.header
+                            .ui.small.header(style="margin-top: -4px; margin-bottom: 4px;")
                                 i.phone.volume.icon
                                 | Audio Example
                             .audio-player
@@ -37,15 +37,11 @@
                                     audio#audio.with-transcript(controls)
                                         source(src=`${public_resources}/audio/tech-audio/concepts-unsolicited.mp3`  type="audio/mpeg")
                                         | Your browser does not support the audio element.
-                                    //- ul#transcript(data-audio-file=`${public_resources}/audio/grandparent-audio/randy.mp3`)
-                                    //-     li.speaker1.current(data-timecode="00:00") Scammer: Hi Grandpa.
-                                    //-     li.speaker2(data-timecode="00:01") Grandpa: What?
-                                    //-     li.speaker1(data-timecode="00:02") Scammer: Do you know who this is?
-                                    //-     li.speaker2(data-timecode="00:03") Grandpa: Randy?
-                                    //-     li.speaker1(data-timecode="00:04") Scammer: Yeah.
-                                    //-     li.speaker2(data-timecode="00:05") Grandpa: What's the matter?
-                                    //-     li.speaker1(data-timecode="00:06") Scammer: I've been in a car wreck.
-                                    //-     li.speaker2(data-timecode="00:08") Grandma: Are you hurt bad?
+                                    ul#transcript(data-audio-file=`${public_resources}/audio/tech-audio/concepts-unsolicited.mp3` style="max-height: 100px; margin-top: 1px;")
+                                        li.speaker1.current(data-timecode="00:00") Scammer: I am calling you from Microsoft.
+                                        li.speaker1(data-timecode="00:02") Scammer: Your system has already been hacked madam.
+                                        li.speaker1(data-timecode="00:04") Scammer: Okay? What my server failure and warning messages from your computer tell me, yeah that is why I’m calling you to help you madam, so don’t worry okay?
+                                        li.speaker1(data-timecode="00:14") Scammer: If you don’t listen to me I will call the police. Police will arrest you.
 
                             //- p 
                             //- | Scammers often employ a technique known as love bombing, where they overwhelm their victims with 
@@ -90,7 +86,7 @@
                         .content
                             h2 Refund Scams
                             p In this scam, scammers offer a refund to gain your trust. They may claim the service provider is shutting down or ask if you were satisfied with a recent tech support service. In either case, their goal is to steal your personal and financial information.
-                            div.ui.header
+                            .ui.small.header(style="margin-top: -4px; margin-bottom: 4px;")
                                 i.phone.volume.icon
                                 | Audio Example
                             .audio-player
@@ -98,26 +94,17 @@
                                     audio#audio.with-transcript(controls)
                                         source(src=`${public_resources}/audio/tech-audio/concepts-refund.WAV`  type="audio/mpeg")
                                         | Your browser does not support the audio element.
-                            br
-
-                            //- p In this scam, the scammers will try to get your trust by offering you a refund first. They might use different excuses: 
-                            //- .ui.bulleted.list 
-                            //-     .item They may claim you're receiving a refund because the service provider you bought from is shutting down or going out of business.
-                            //-     .item They may ask if you were happy with a recent tech support service you paid for. If you say you weren’t satisfied, they’ll propose a refund.
-                            //- p In either scenario, their aim is to obtain your bank account or credit card details to steal your personal information and money.
-
-
-                            //- p In step 4, the scammers contact the target, typically over a phone call, pretending to be the target’s grandchild, other loved one, or someone calling on behalf of them to ask for money [3].
-
-
-    
-                            //- | Scammers 
-                            //- b strategically time their communications 
-                            //- | to deepen emotional connections, notably by texting at night and sending good morning messages. By aligning with the victim's time zone, they often initiate conversations at night around 10 pm with 
-                            //- b personal and engaging questions
-                            //- |  like, "Share with me the highlight of your day." This approach not only cultivates intimacy by concluding the day on a note of shared experiences but also positions the scammer as one of the last thoughts before the victim falls asleep. Furthermore, a sweet good morning message upon waking ensures a positive start to their day, 
-                            //- b keeping the scammer prominently in their thoughts
-                            //- | . This calculated pattern of communication aims to strengthen the emotional bond and maintain the scammer's presence in the victim's daily routine.
+                                    ul#transcript(data-audio-file=`${public_resources}/audio/tech-audio/concepts-refund.WAV` style="max-height: 100px; margin-top: 1px;")
+                                        li.speaker1.current(data-timecode="00:00") Scammer: Thank you for calling the Windows refund department, how can I help you today?
+                                        li.speaker2(data-timecode="00:04") Target: I got a call from this number, why is that?
+                                        li.speaker1(data-timecode="00:07") Scammer: Since we are no longer in the computer business, we can not provide you any services on your computer, so that is why my company decided to refund back your money.
+                                        li.speaker2(data-timecode="00:16") Target:  Who is your company?
+                                        li.speaker1(data-timecode="00:18") Scammer: My company is Global Computer Support. We used to work for Microsoft Windows but our license got expired so no longer are we working with Microsoft Windows, that is why we are refunding money.
+                                        li.speaker2(data-timecode="00:29") Target:  What is my refund amount?
+                                        li.speaker1(data-timecode="00:32") Scammer: I hope you remember a long time ago you paid $300. We’re going to refund tha tenure amount to you today.
+                                        li.speaker2(data-timecode="00:39") Target: What do I have to do to get back my money?
+                                        li.speaker1(data-timecode="00:41") Scammer: You don’t have to do anything to get your money back. You just need to turn on your computer so I can send you a  refund cancellation form, for which you have to fill out on your computer. So please go ahead and turn on your computer and once your computer is on just let me know.                           
+                           
             i.source [2] Nicolet Fraud Alerts. Nicolet National Bank. 
                 a(href='https://www.nicoletbank.com/blog/tech-support-scam/' target='_blank') Tech Support Scams
                 | [3] R/scambait. Reddit 

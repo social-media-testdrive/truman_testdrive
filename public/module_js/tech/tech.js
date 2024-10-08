@@ -269,7 +269,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Challenge", "Bronze", "Challenge Conqueror", "/badges/identity/challenge_conqueror.svg");
+                        postBadge("Tech Support", "Challenge", "Bronze", "Challenge Conqueror", "/badges/identity/challenge_conqueror.svg");
 
                         badgeEarned = true;
                     } else if(section === 'concepts') {
@@ -282,7 +282,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Concepts", "Bronze", "Foundation Acheivers", "/badges/identity/foundation_acheivers.svg");
+                        postBadge("Tech Support", "Concepts", "Bronze", "Foundation Acheivers", "/badges/identity/foundation_acheivers.svg");
 
                         badgeEarned = true;
                     } else if(section === 'consequences') {
@@ -295,7 +295,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Consequences", "Bronze", "Aftermath Ace", "/badges/identity/aftermath_ace.svg");
+                        postBadge("Tech Support", "Consequences", "Bronze", "Aftermath Ace", "/badges/identity/aftermath_ace.svg");
 
                         badgeEarned = true;                    
                     } else if(section === 'techniques') {
@@ -308,7 +308,20 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Techniques", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
+                        postBadge("Tech Support", "Techniques", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
+
+                        badgeEarned = true;                    
+                    } else if(section === 'signs') {
+                        document.getElementById('unlockBadge').play();
+
+                        $('#earned_badge')
+                          .transition({
+                            animation: 'tada in',
+                            duration: '1s',
+                          })
+                        ;
+                  
+                        postBadge("Tech Support", "Signs", "Silver", "Trained Tactician", "/badges/identity/trained_tactician.svg");
 
                         badgeEarned = true;                    
                     } else if(section === 'protection') {
@@ -321,7 +334,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Protection", "Silver", "Prodigy Protector", "/badges/identity/prodigy_protector.svg");
+                        postBadge("Tech Support", "Protection", "Silver", "Prodigy Protector", "/badges/identity/prodigy_protector.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'reporting') {
@@ -334,7 +347,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Reporting", "Gold", "Alert Advocate", "/badges/identity/alert_advocate.svg");
+                        postBadge("Tech Support", "Reporting", "Gold", "Alert Advocate", "/badges/identity/alert_advocate.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'practice') {
@@ -347,7 +360,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Practice", "Gold", "Scam Spotter", "/badges/identity/scam_spotter.svg");
+                        postBadge("Tech Support", "Practice", "Gold", "Scam Spotter", "/badges/identity/scam_spotter.svg");
 
                         badgeEarned = true;                             
                     } else if(section === 'evaluation') {
@@ -360,7 +373,7 @@ $(document).ready(function() {
                           })
                         ;
                   
-                        postBadge("Identity Theft", "Evaluation", "Platinum", "Champion of Completion", "/badges/identity/champion_of_completion.svg");
+                        postBadge("Tech Support", "Evaluation", "Platinum", "Champion of Completion", "/badges/identity/champion_of_completion.svg");
 
                         badgeEarned = true;                             
                     }
@@ -618,7 +631,7 @@ function setLinks(currentPage) {
         } 
         
          else if (currentPage === "takeaways") {
-          backlink = baseurl + "quiz";
+          backlink = baseurl + "reflection";
           nextlink =
             "/course-player?module=tech&section=protection&page=objectives";
         }
