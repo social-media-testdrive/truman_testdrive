@@ -700,6 +700,7 @@ function setLinks(currentPage) {
     }
   } else if (section === "practice") {
     let baseurl = "/course-player?module=medication&section=practice&page=";
+    let holdPrev = 'reflection'
 
     if (currentPage === "objectives") {
       backlink =
@@ -709,9 +710,6 @@ function setLinks(currentPage) {
       backlink = baseurl + "objectives";
       nextlink = baseurl + "activity";
 
-      // disable next button, user needs to choose role
-      // setIntroduction();
-      // $('#nextButton').prop('disabled', true);
     } else if (currentPage === "activity") {
       backlink = baseurl + "introduction";
       nextlink = baseurl + "activity2";
@@ -731,17 +729,7 @@ function setLinks(currentPage) {
     } else if (currentPage === "reflection") {
       backlink = baseurl + "activity4";
       nextlink = baseurl + "takeaways";
-    } else if (currentPage === "takeaways") {
-      backlink = baseurl + "reflection";
-      nextlink =
-        "/course-player?module=medication&section=evaluation&page=intro";
-
-      // complete module status to 100 manually since there is no quiz
-      console.log("HEY Posting to complete practice module status");
-      $.post("/completeModuleStatus", {
-        modId: "medication",
-        section: "practice",
-      });
+      holdPrev = "reflection"
     } else if (currentPage === "activity5") {
       backlink = baseurl + "introduction";
       nextlink = baseurl + "activity6";
@@ -759,9 +747,20 @@ function setLinks(currentPage) {
       nextlink = baseurl + "reflection2";
 
     } else if (currentPage === "reflection2") {
+      holdPrev = "reflection2"
       backlink = baseurl + "activity8";
       nextlink = baseurl + "takeaways";
-    }
+    } else if (currentPage === "takeaways") {
+      backlink = baseurl + holdPrev;
+      nextlink = "/course-player?module=medication&section=evaluation&page=intro";
+
+      // complete module status to 100 manually since there is no quiz
+      console.log("HEY Posting to complete practice module status");
+      $.post("/completeModuleStatus", {
+        modId: "medication",
+        section: "practice",
+      });
+    } 
 
 
   } else if (section === "evaluation") {
@@ -912,7 +911,38 @@ function updateProgressBar() {
     } else if (pageParam === "takeaways") {
       progress = 100;
     }
-  } else if (section === "evaluation") {
+  } else if (section === "practice") {
+    if (pageParam === "objectives") {
+        progress = 0; // 0%
+    } else if (pageParam === "introduction") {
+        progress = (1 / total) * 100; // ~11%
+    } else if (pageParam === "activity") {
+        progress = (2 / total) * 100; // ~22%
+    } else if (pageParam === "activity2") {
+        progress = (3 / total) * 100; // ~33%
+    } else if (pageParam === "activity3") {
+        progress = (4 / total) * 100; // ~33% (same as activity2)
+    } else if (pageParam === "activity4") {
+        progress = (5 / total) * 100; // ~44%
+    } else if (pageParam === "activity5") {
+        progress = (2 / total) * 100; // ~55%
+    } else if (pageParam === "activity6") {
+        progress = (3 / total) * 100; // ~55% (same as activity5)
+    } else if (pageParam === "activity7") {
+        progress = (4 / total) * 100; // ~66%
+    } else if (pageParam === "activity8") {
+        progress = (5 / total) * 100; // ~77%
+    } else if (pageParam === "reflection") {
+        progress = (6 / total) * 100; // ~88%
+    } else if (pageParam === "reflection2") {
+        progress = (6 / total) * 100; // ~88% (same as reflection)
+    } else if (pageParam === "takeaways") {
+        progress = 100;
+    }
+
+  }
+
+  else if (section === "evaluation") {
     if (pageParam === "intro") {
       progress = 0;
     } else if (pageParam === "quiz") {

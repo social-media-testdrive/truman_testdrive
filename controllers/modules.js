@@ -100,7 +100,7 @@ exports.getModule = async (req, res) => {
   } else if (section === "reporting") {
     numPages = 9;
   } else if (section === "practice") {
-    if (module === "grandparent") {
+    if (module === "grandparent" || module === "medication") {
       numPages = 8;
     } else {
       numPages = 12;
