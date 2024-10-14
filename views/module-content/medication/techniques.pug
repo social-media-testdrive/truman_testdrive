@@ -56,7 +56,12 @@ block scripts
         var startPage = "#{page}"; 
         var total = parseInt(#{numPages});
     script.
-
+        $('.ui.shape .ui.card').on('click', function() {
+            $(this).closest('.ui.card').removeClass('click-me-glow');
+            // Navigate up to the parent '.ui.shape' of the clicked '.ui.card' and perform the flip
+            $(this).closest('.ui.shape').shape('flip over');
+            
+        });
         //- Sources referenced: https://mgmgblog.com/en/post-4601/ and https://codepen.io/jjinMangKo/pen/LYygOrq
         $('#steps-slider').slick({
             asNavFor:"#image-slider",

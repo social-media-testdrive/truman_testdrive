@@ -18,6 +18,11 @@ block content
         include practice/activity3.pug
         include practice/activity4.pug
 
+        include practice/activity5.pug
+        include practice/activity6.pug
+        include practice/activity7.pug
+        include practice/activity8.pug
+
         include practice/reflection.pug
         include practice/takeaways.pug
     audio(id="narration-audio", src=`https://dart-store.s3.amazonaws.com/identity+theft+voice+over/${section}/${page}_${user.avatar.toLowerCase()}.mp3`, preload="auto", onended="disableNarrationPlayButton()")
@@ -51,6 +56,11 @@ block scripts
     //- if page === 'activity'
     //-     script(src='/module_js/identity_theft_explore.js', emailData=emails)
     script.
+        $('.ui.shape .ui.card').on('click', function() {
+            $(this).closest('.ui.card').removeClass('click-me-glow');
+            // Navigate up to the parent '.ui.shape' of the clicked '.ui.card' and perform the flip
+            $(this).closest('.ui.shape').shape('flip over');
+        });
         window.addEventListener('load', function() {
             // Simulate a delayed loading process for demonstration
             //- setTimeout(function() {

@@ -1,7 +1,7 @@
 const progressBar = document.getElementById("theft-progress");
 let pageReload = false;
 let badgeEarned = false;
-
+let choice = "addiction"
 $(document).ready(function () {
   if (speechData !== "none") {
     $("#page-article").click();
@@ -742,7 +742,28 @@ function setLinks(currentPage) {
         modId: "medication",
         section: "practice",
       });
+    } else if (currentPage === "activity5") {
+      backlink = baseurl + "introduction";
+      nextlink = baseurl + "activity6";
+
+    } else if (currentPage === "activity6") {
+      backlink = baseurl + "activity5";
+      nextlink = baseurl + "activity7";
+
+    } else if (currentPage === "activity7") {
+      backlink = baseurl + "activity6";
+      nextlink = baseurl + "activity8";
+
+    } else if (currentPage === "activity8") {
+      backlink = baseurl + "activity7";
+      nextlink = baseurl + "reflection2";
+
+    } else if (currentPage === "reflection2") {
+      backlink = baseurl + "activity8";
+      nextlink = baseurl + "takeaways";
     }
+
+
   } else if (section === "evaluation") {
     let baseurl = "/course-player?module=medication&section=evaluation&page=";
 
@@ -944,7 +965,7 @@ function appendScriptWithVariables(
 function setIntroduction() {
   document.querySelectorAll(".ui.button[data-role]").forEach((button) => {
     button.addEventListener("click", function () {
-      const choice = this.getAttribute("data-role");
+      choice = this.getAttribute("data-role");
 
 
       console.log("The choice: ", choice);
@@ -954,34 +975,10 @@ function setIntroduction() {
           window.location.href = "course-player?module=medication&section=practice&page=activity";
 
       } else if(choice == "aging") {
-          window.location.href = "course-player?module=medication&section=practice&page=activity3";
+          window.location.href = "course-player?module=medication&section=practice&page=activity5";
       } 
 
     });
   });
 }
 
-function addAudioPlayer(file, choice) {
-  console.log("adding audio player for role play", rolePlay);
-  $.get(
-    "/quizPartials/medication/practice/" + file + "_" + choice + ".html",
-    function (data) {
-      // 'data' contains the content of the Pug template
-      const audioContainer = $("#audio-container_" + file);
-      audioContainer.empty();
-      audioContainer.html(data);
-      initializeAudioPlayer();
-      $("#nextButton").prop("disabled", false);
-
-      if (choice === "Grandma") {
-        document
-          .querySelectorAll(".role-placeholder")
-          .forEach((el) => (el.textContent = "Grandma"));
-      } else {
-        document
-          .querySelectorAll(".role-placeholder")
-          .forEach((el) => (el.textContent = "Grandpa"));
-      }
-    }
-  );
-}
