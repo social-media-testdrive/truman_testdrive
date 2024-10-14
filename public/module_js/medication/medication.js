@@ -703,7 +703,7 @@ function setLinks(currentPage) {
 
     if (currentPage === "objectives") {
       backlink =
-        "/course-player?module=medication&section=signs&page=objectives";
+        "/course-player?module=medication&section=protection&page=objectives";
       nextlink = baseurl + "introduction";
     } else if (currentPage === "introduction") {
       backlink = baseurl + "objectives";
