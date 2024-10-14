@@ -95,17 +95,8 @@
                             img.ui.tiny.image(src=`${public_resources}/images/modules/medication/imprint4.png` style="margin-left:auto; margin-right:auto")
                             div(style="text-align: center") Clinically Tested
 
-
-
-
-
-
-
-
-
-
                 .six.wide.column#content-column(style="margin-top:auto; margin-bottom:auto")
-                    .step1
+                    .step5
                         p After reviewing the website, What claims on the website did you find most appealing? Select all that apply.
                         .ui.vertical.inverted.buttons
                             button.ui.button(data-value="appealing1") Game-changing
@@ -118,56 +109,56 @@
                             button.ui.button(data-value="appealing8") Youthful Effects
                             button.ui.button(data-value="nothing") Unappealing
                         button.ui.button.primary#submit-button-1 Submit
-                    .step2.hidden
-                        p#response-text
-                        button.ui.big.teal.button#continue-button Continue
+                    .step6.hidden
+                        p#response-text-3
+                        button.ui.big.teal.button#continue-button-3 Continue
 
-                    .step3.hidden
+                    .step7.hidden
                       p After reviewing the website, Some claims might seem very appealing, but did you notice any red flags in the following options? Select all that apply.
                       .ui.vertical.inverted.buttons
                         button.ui.button(data-value="grandiose") A. Grandiose claims
                         button.ui.button(data-value="emotional") B. Emotional language
                         button.ui.button(data-value="satisfaction") C. Satisfaction guarantee
                         button.ui.button(data-value="discounts") D. Unrealistic discounts
-                        button.ui.button(data-value="prescription-free") E. Prescription-free meds
+                        button.ui.button(data-value="prescription-free") E. No Prescription
                         button.ui.button(data-value="fda-terms") F. Misleading FDA terms
-                        button.ui.button(data-value="safety") G. Misleading safety
+                        button.ui.button(data-value="safety") G. Safety Misrepresentation
                         button.ui.button(data-value="testimonials") H. Fake testimonials
                         button.ui.button(data-value="nothing") I. No red flags
                       button.ui.button.primary#submit-button-2 Submit
 
 
-                    .step4.hidden
-                        p#response-text-2
-                        //- button.ui.big.teal.button#continue-button Continue
+                    .step8.hidden
+                        p#response-text-4
 
                         .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
                             i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
                             .content 
-                                p#narrate-2-intro-video 
+                                p
                                     span Click the "Next" button below to move on to the next part.
 
 script.
   document.addEventListener('DOMContentLoaded', function() {
-    $('.menu .item').tab();  // Initialize Semantic UI tabs
-  });
-  let textSet = new Set();
-  function setToString(set) {
-    const array = Array.from(set);
-    const length = array.length;
+    $('.menu .item').tab(); // Initialize Semantic UI tabs
 
-    if (length === 0) return ""; // Empty set
-    if (length === 1) return array[0].toString(); // Single item
-
-    return array.slice(0, -1).join(", ") + " and " + array[length - 1];
-  }
-  document.addEventListener('DOMContentLoaded', function () {
-
+    let textSet = new Set();
     const selectedValues = new Set();
-    document.querySelectorAll('.step1 .ui.button').forEach(button => {
-      button.addEventListener('click', function () {
+    const secondSelectedValues = new Set();
+
+    function setToString(set) {
+      const array = Array.from(set);
+      const length = array.length;
+
+      if (length === 0) return ""; // Empty set
+      if (length === 1) return array[0].toString(); // Single item
+
+      return array.slice(0, -1).join(", ") + " and " + array[length - 1];
+    }
+
+    document.querySelectorAll('.step5 .ui.button').forEach(button => {
+      button.addEventListener('click', function() {
         const value = this.getAttribute('data-value');
-        if (!($(this).text() == "Submit")){
+        if (!($(this).text() == "Submit")) {
           textSet.add($(this).text()); // Get the text inside the button
         }
         console.log(`Selected:`); // Log or store the text as needed
@@ -182,34 +173,52 @@ script.
       });
     });
 
-    document.getElementById('submit-button-1').addEventListener('click', function () {
-      document.querySelector('.step1').classList.add('hidden');
-      document.querySelector('.step2').classList.remove('hidden');
-      console.log("CLICKED")
-      const responseText = document.getElementById('response-text');
+    document.getElementById('submit-button-1').addEventListener('click', function() {
+      document.querySelector('.step5').classList.add('hidden');
+      document.querySelector('.step6').classList.remove('hidden');
+      console.log("CLICKED");
+      const responseText = document.getElementById('response-text-3');
       if (selectedValues.has('nothing')) {
         responseText.innerHTML = `
-          You don’t find anything appealing? That great. You are avoiding being swayed by emotional language.
+          You don’t find anything appealing? That's great. You are avoiding being swayed by emotional language.
         `;
       } else {
-        
         responseText.innerHTML = `
-          The followings are what you find more appealing to you: \n
-          ${setToString(textSet)}.\n
+          The following are what you find more appealing: 
+          ${setToString(textSet)}. 
           I agree!
         `;
       }
     });
 
-    document.getElementById('continue-button').addEventListener('click', function () {
+    // Moved outside of the continue button click event
+    document.getElementById('submit-button-2').addEventListener('click', function() {
+      document.querySelector('.step7').classList.add('hidden');
+      document.querySelector('.step8').classList.remove('hidden');
+      const responseText = document.getElementById('response-text-4');
+      if (secondSelectedValues.has('nothing')) {
+        responseText.innerHTML = `
+          All options from A to H are displaying red flags on the website, so be careful.
+          Even if you didn’t spot all of them, remain cautious if you come across any of these red flags in real life.
+          If you didn’t spot any, please review our module content again.
+        `;
+      } else {
+        responseText.innerHTML = `
+          Well done! All options from A to H are displaying red flags on the website homepage, so be careful. 
+          Even if you didn’t spot all of them, remain cautious if you come across any of these red flags in real life.
+        `;
+      }
+    });
+
+    document.getElementById('continue-button-3').addEventListener('click', function() {
       textSet = new Set();
-      document.querySelector('.step2').classList.add('hidden');
-      document.querySelector('.step3').classList.remove('hidden');
-      const secondSelectedValues = new Set();
-      document.querySelectorAll('.step3 .ui.button').forEach(button => {
-        button.addEventListener('click', function () {
+      document.querySelector('.step6').classList.add('hidden');
+      document.querySelector('.step7').classList.remove('hidden');
+
+      document.querySelectorAll('.step7 .ui.button').forEach(button => {
+        button.addEventListener('click', function() {
           const value = this.getAttribute('data-value');
-          if (!($(this).text() == "Submit")){
+          if (!($(this).text() == "Submit")) {
             textSet.add($(this).text()); // Get the text inside the button
           }
           console.log(`Selected:`); // Log or store the text as needed
@@ -222,24 +231,6 @@ script.
             this.classList.add('active');
           }
         });
-      });
-
-      document.getElementById('submit-button-2').addEventListener('click', function () {
-        document.querySelector('.step3').classList.add('hidden');
-        document.querySelector('.step4').classList.remove('hidden');
-        const responseText = document.getElementById('response-text-2');
-        if (selectedValues.has('nothing')) {
-          responseText.innerHTML = `
-            All options from A to H are displaying red flags on the website, so be careful.
-            Even if you didn’t spot all of them, remain cautious if you come across any of these red flags in real life.
-            If you didn’t spot any, please review our module content again.
-          `;
-        } else {
-          responseText.innerHTML = `
-            Well done! All options from A to H are displaying red flags on the website homepage, so be careful. 
-            Even if you didn’t spot all of them, remain cautious if you come across any of these red flags in real life.
-          `;
-        }
       });
     });
   });
