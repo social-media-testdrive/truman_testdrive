@@ -29,7 +29,7 @@ const getNewsAPI = async (req, res) => {
                     to: toDate,
                     // pageSize: 20,
                     page,
-                    excludeDomains: 'thestar.com.my, yahoo.com, theregister.com, forbes.com'
+                    excludeDomains: 'thestar.com.my, yahoo.com, theregister.com, forbes.com, businessinsider.com'
                     // searchIn: 'title,content'
                     // country:'us'
                 }
