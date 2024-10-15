@@ -36,16 +36,13 @@ function () {
           <div class="ui raised segment">
               <div class="ui fluid container" style="height: 200px;">
                   <div class="ui image banner">
-                      <img src="${resources}/images/missions/${module.moduleName}-scams-banner.jpg">
+                      <img src="${resources}/images/missions/banner-${module.moduleName}.svg" style="z-index: 100 !important">
   
-                      <div class="ui bottom small progress" id="${module.moduleName}-progress" data-percent="${(module.progress / module.total) * 100
-          }" style="margin:0;padding:0;">
-                          <div class="bar">
-                              <div class="progress"></div>
-                          </div>
-                      </div>
-                      <div style="text-align:center; color:grey">
-                        ${module.progress}/${module.total}
+                      <div class="ui progress" style="margin-top: -35px; z-index: 0 !important;" id="${module.moduleName}-progress" data-percent="${(module.progress / module.total) * 100}">
+                        <div class="bar">
+                          <div class="progress"></div>
+                        </div>
+                        <div class="label">${module.progress}/${module.total}</div>
                       </div>
                   </div>
               </div>
