@@ -722,7 +722,7 @@ i.big.unlock.icon {
   }
 
   .chat {
-    width: 329px;
+    width: 329px
     /* border: solid 1px #EEE; */
     display: flex;
     flex-direction: column;

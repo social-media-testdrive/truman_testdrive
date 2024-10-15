@@ -330,6 +330,14 @@ app.get("/dashboard", passportConfig.isAuthenticated, function (req, res) {
   });
 });
 
+// Render feedback
+app.get("/feedback", passportConfig.isAuthenticated, function (req, res) {
+  res.render("feedback", {
+    title: "feedback",
+  });
+});
+
+
 /**
  * Module Routes
  */

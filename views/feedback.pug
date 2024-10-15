@@ -1,0 +1,26 @@
+extends ./ui_layout
+
+block content
+  .ui.grid(style="margin-top: -58px;")
+    .row#blue-upper
+      .ui.container
+        h1.ui.header.center.aligned Feedback
+        //- .limit(style="padding-bottom: 20px; text-align: center;")
+        //-   p#about 
+        //-     i.circular.info.pear.small.icon(style="position: relative; bottom: 2px; right: 5px; border: none !important; font-size: 0.8rem;")
+        //-     | Help us improve Dart Academy! Please let us know about any bugs or areas that can be improved.
+    .row.centered
+      iframe(
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdNQxXG1dlwpNaZkZvXWS0FXLsF4q-3q-u6AajbarzZ5nCIAA/viewform?embedded=true" 
+        width="640" 
+        height="917" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0"
+      ) Loading…
+        
+
+
+ 
+block styles
+  link(rel='stylesheet', href='/css/mods.css')
