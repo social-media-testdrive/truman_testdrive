@@ -1,0 +1,236 @@
+#activity5.hidden
+    .ui.container(style="width: 90vw;")
+        .limit(style="padding: 0;")
+            h1.ui.header.large#learn-title
+                .content
+                    i.book.up.icon
+                    | Anti-Aging Products
+
+            .ui(style="padding: 5px; z-index: 99;")
+                .content 
+                    p#narrate-2-intro-video 
+                      span Life Renew has been trending on Facebook with claims of rejuvenating your youth and halting aging using natural herbs from the Amazon rainforest. You see multiple comments stating that the product has done wonders for them. Curious, you click the ad and decide to review the website for more information.
+
+            .ui.centered.stackable.grid
+                .ten.wide.column
+                  .ui.blue.top.attached.tabular.menu
+                    a.active.item(data-tab="Home") Home
+                    a.item(data-tab="Research") Research
+                    a.item(data-tab="Custumers") Custumers
+                    a.item(data-tab="Contacts") Contacts
+                  .ui.bottom.attached.active.tab.segment(data-tab="Home")
+                      h2 Life Renew 
+                      .ui.centered.stackable.grid
+                        .eleven.wide.column
+                          p A game-changing anti-aging pill called "Life Renew" that’s 100% natural and works like magic. Made from a special mix of herbs and plants from the deep Amazon rainforest, Life Renew promises to turn back the clock in ways you won't believe. Users say that within weeks, they see fewer wrinkles, tighter skin, and a youthful glow they haven’t seen in years. 
+
+                          p The secret? It boosts collagen, helps cells regenerate, and keeps your skin super hydrated. Plus, Life Renew claims to give you more energy, better mental clarity, and even bring back your natural hair color and thickness.
+
+                          p Life Renew stands out for being all-natural, free of synthetic chemicals or additives, using only pure ingredients from nature. While clinical trials aren't fully published, results show a 98% success rate, with noticeable changes in just 30 days. Users are calling it a "fountain of youth," sharing stories of how it transformed their lives, helping them look and feel younger.
+
+                        .five.wide.column
+                          img.ui.medium.image(src=`${public_resources}/images/modules/medication/practice-life-renew.png`)
+
+                  .ui.bottom.attached.tab.segment(data-tab="Research")
+                      h2 Life Renew Experts 
+                      .ui.centered.stackable.grid
+                        .five.wide.column
+                          img.ui.medium.image(src=`${public_resources}/images/modules/medication/practice-dr-carter.png` style='')
+                        .eleven.wide.column
+                          p Dr. Amanda Carter, Lead Researcher
+                          p "As the lead researcher behind Life Renew, I am astounded by the unprecedented results we've observed in our clinical trials. Our unique blend of natural botanicals has shown unparalleled effectiveness in erasing signs of aging, from wrinkles to restoring youthful skin elasticity. It's truly gratifying to witness our groundbreaking research translate into a product that delivers beyond expectations."
+                  
+                  
+                  .ui.bottom.attached.tab.segment(data-tab="Custumers")
+                    h3 Hear From Our Customers About Life Renew
+                    .ui.three.column.grid
+                      .column(style="padding:1")
+                        .ui.card
+                          .content
+                            img.ui.avatar.image(src=`${public_resources}/images/shared_sources/filler.png`)
+                            | Jane M., 52
+                            span.right.floated.meta California
+                          .content
+                            p "I've tried countless anti-aging products, but nothing worked like Life Renew. In just a month, my wrinkles faded, my skin felt firmer, and I looked years younger. It's truly a miracle!"
+
+
+                      .column(style="padding:1")
+                        .ui.card
+                          .content
+                            img.ui.avatar.image(src=`${public_resources}/images/shared_sources/filler.png`)
+                            | Tom R., 60
+                            span.right.floated.meta New York
+                          .content
+                            p "Life Renew has completely transformed my life. My energy levels are through the roof, my mind feels sharper, and my skin has never looked better. People keep asking me what my secret is!"
+
+                        
+                      .column(style="padding:1")
+                        .ui.card
+                          .content
+                            img.ui.avatar.image(src=`${public_resources}/images/shared_sources/filler.png`)
+                            | Lisa K., 45
+                            span.right.floated.meta Texas
+                          .content
+                            p "I was skeptical at first, but Life Renew exceeded all my expectations. My skin is glowing, my hair is thicker, and I feel more vibrant than I have in years. It's like turning back the clock!"
+
+                  .ui.bottom.attached.tab.segment(data-tab="Contacts")
+                    .ui.centered.stackable.grid
+                      h2 Life Renew  
+                      .ui.centered.stackable.grid
+                        p Call 1-888-liferenew or visit liferenew.com to order your 30-day supply and get a FREE bottle!
+                        p Rest assured with our 100% satisfaction guarantee. If you're not satisfied with your purchase, return the unused portion for a full refund. Take advantage of this incredible offer now and rejuvenate your skin and overall well-being with Life Renew!
+                        .four.column.centered.row
+                          .column
+                            img.ui.tiny.image(src=`${public_resources}/images/modules/medication/imprint1.png` style="margin-left:auto; margin-right:auto")
+                            div(style="text-align: center") 100% Natural
+                          .column
+                            img.ui.tiny.image(src=`${public_resources}/images/modules/medication/imprint2.png` style="margin-left:auto; margin-right:auto")
+                            div(style="text-align: center") FDA Registered
+
+                          .column
+                            img.ui.tiny.image(src=`${public_resources}/images/modules/medication/imprint3.png` style="margin-left:auto; margin-right:auto")
+                            div(style="text-align: center") Gluten-free
+
+                          .column
+                            img.ui.tiny.image(src=`${public_resources}/images/modules/medication/imprint4.png` style="margin-left:auto; margin-right:auto")
+                            div(style="text-align: center") Clinically Tested
+
+                .six.wide.column#content-column(style="margin-top:auto; margin-bottom:auto")
+                    .step5
+                        p After reviewing the website, What claims on the website did you find most appealing? Select all that apply.
+                        .ui.vertical.inverted.buttons
+                            button.ui.button(data-value="appealing1") Game-changing
+                            button.ui.button(data-value="appealing2") 100% Natural 
+                            button.ui.button(data-value="appealing3") Amazon Herbs
+                            button.ui.button(data-value="appealing4") 30-Day Results
+                            button.ui.button(data-value="appealing5") Refund Guarantee
+                            button.ui.button(data-value="appealing6") Expert Endorsed
+                            button.ui.button(data-value="appealing7") Life-changing
+                            button.ui.button(data-value="appealing8") Youthful Effects
+                            button.ui.button(data-value="nothing") Unappealing
+                        button.ui.button.primary#submit-button-1 Submit
+                    .step6.hidden
+                        p#response-text-3
+                        button.ui.big.teal.button#continue-button-3 Continue
+
+                    .step7.hidden
+                      p After reviewing the website, Some claims might seem very appealing, but did you notice any red flags in the following options? Select all that apply.
+                      .ui.vertical.inverted.buttons
+                        button.ui.button(data-value="grandiose") A. Grandiose claims
+                        button.ui.button(data-value="emotional") B. Emotional language
+                        button.ui.button(data-value="satisfaction") C. Satisfaction guarantee
+                        button.ui.button(data-value="discounts") D. Unrealistic discounts
+                        button.ui.button(data-value="prescription-free") E. No Prescription
+                        button.ui.button(data-value="fda-terms") F. Misleading FDA terms
+                        button.ui.button(data-value="safety") G. Safety Misrepresentation
+                        button.ui.button(data-value="testimonials") H. Fake testimonials
+                        button.ui.button(data-value="nothing") I. No red flags
+                      button.ui.button.primary#submit-button-2 Submit
+
+
+                    .step8.hidden
+                        p#response-text-4
+
+                        .ui.icon.mini.message(style="padding: 5px; z-index: 99;")
+                            i.info.circle.blue.icon(style="color: #0C2746; font-size: 1.5rem;")
+                            .content 
+                                p
+                                    span Click the "Next" button below to move on to the next part.
+
+script.
+  document.addEventListener('DOMContentLoaded', function() {
+    $('.menu .item').tab(); // Initialize Semantic UI tabs
+
+    let textSet = new Set();
+    const selectedValues = new Set();
+    const secondSelectedValues = new Set();
+
+    function setToString(set) {
+      const array = Array.from(set);
+      const length = array.length;
+
+      if (length === 0) return ""; // Empty set
+      if (length === 1) return array[0].toString(); // Single item
+
+      return array.slice(0, -1).join(", ") + " and " + array[length - 1];
+    }
+
+    document.querySelectorAll('.step5 .ui.button').forEach(button => {
+      button.addEventListener('click', function() {
+        const value = this.getAttribute('data-value');
+        if (!($(this).text() == "Submit")) {
+          textSet.add($(this).text()); // Get the text inside the button
+        }
+        console.log(`Selected:`); // Log or store the text as needed
+        console.log([...textSet])
+        if (selectedValues.has(value)) {
+          selectedValues.delete(value);
+          this.classList.remove('active');
+        } else {
+          selectedValues.add(value);
+          this.classList.add('active');
+        }
+      });
+    });
+
+    document.getElementById('submit-button-1').addEventListener('click', function() {
+      document.querySelector('.step5').classList.add('hidden');
+      document.querySelector('.step6').classList.remove('hidden');
+      console.log("CLICKED");
+      const responseText = document.getElementById('response-text-3');
+      if (selectedValues.has('nothing')) {
+        responseText.innerHTML = `
+          You don’t find anything appealing? That's great. You are avoiding being swayed by emotional language.
+        `;
+      } else {
+        responseText.innerHTML = `
+          The following are what you find more appealing: 
+          ${setToString(textSet)}. 
+          I agree!
+        `;
+      }
+    });
+
+    // Moved outside of the continue button click event
+    document.getElementById('submit-button-2').addEventListener('click', function() {
+      document.querySelector('.step7').classList.add('hidden');
+      document.querySelector('.step8').classList.remove('hidden');
+      const responseText = document.getElementById('response-text-4');
+      if (secondSelectedValues.has('nothing')) {
+        responseText.innerHTML = `
+          All options from A to H are displaying red flags on the website, so be careful.
+          Even if you didn’t spot all of them, remain cautious if you come across any of these red flags in real life.
+          If you didn’t spot any, please review our module content again.
+        `;
+      } else {
+        responseText.innerHTML = `
+          Well done! All options from A to H are displaying red flags on the website homepage, so be careful. 
+          Even if you didn’t spot all of them, remain cautious if you come across any of these red flags in real life.
+        `;
+      }
+    });
+
+    document.getElementById('continue-button-3').addEventListener('click', function() {
+      textSet = new Set();
+      document.querySelector('.step6').classList.add('hidden');
+      document.querySelector('.step7').classList.remove('hidden');
+
+      document.querySelectorAll('.step7 .ui.button').forEach(button => {
+        button.addEventListener('click', function() {
+          const value = this.getAttribute('data-value');
+          if (!($(this).text() == "Submit")) {
+            textSet.add($(this).text()); // Get the text inside the button
+          }
+          console.log(`Selected:`); // Log or store the text as needed
+          console.log([...textSet])
+          if (secondSelectedValues.has(value)) {
+            secondSelectedValues.delete(value);
+            this.classList.remove('active');
+          } else {
+            secondSelectedValues.add(value);
+            this.classList.add('active');
+          }
+        });
+      });
+    });
+  });
