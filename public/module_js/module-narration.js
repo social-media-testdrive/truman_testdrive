@@ -694,60 +694,80 @@ function startHighlightingWords() {
 function getRemainingTime(){
     return  delay - ( (new Date()).getTime() - startTimeMS );
 }
-
 function clearWordHighlights() {
-    console.log("* In clear word highlights, clearing existing timeouts")
+    console.log("* In clear word highlights, clearing existing timeouts");
     clearTimeout(highlightTimeoutWordID); // Clear any existing timeouts
 
     const urlParams = new URLSearchParams(window.location.search);
     const currentPage = urlParams.get('page');
 
-    if(previousElement.includes("narrate-title")){ 
-        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    // Check for the presence of elements before attempting to manipulate them
+    if (previousElement.includes("narrate-title")) { 
+        const element = document.getElementById(previousElement);
+        if (element) element.classList.remove('highlighted-sentence');
     }
-    if(previousElement.includes("narrate-link")){
-        document.getElementById("narrate-link-" + currentPage).classList.remove('highlighted-word-dark');
-        document.getElementById("narrate-link-" + currentPage).classList.remove('highlighted-word');
+    if (previousElement.includes("narrate-link")) {
+        const linkElement = document.getElementById("narrate-link-" + currentPage);
+        if (linkElement) {
+            linkElement.classList.remove('highlighted-word-dark');
+            linkElement.classList.remove('highlighted-word');
+        }
     }
-    if(previousElement.includes("narrate-link-2")){
-        document.getElementById("narrate-link-2-" + currentPage).classList.remove('highlighted-word-dark');
-        document.getElementById("narrate-link-2-" + currentPage).classList.remove('highlighted-word');
+    if (previousElement.includes("narrate-link-2")) {
+        const linkElement2 = document.getElementById("narrate-link-2-" + currentPage);
+        if (linkElement2) {
+            linkElement2.classList.remove('highlighted-word-dark');
+            linkElement2.classList.remove('highlighted-word');
+        }
     }
-    if(previousElement.includes("narrate-link-3")){
-        document.getElementById("narrate-link-3-" + currentPage).classList.remove('highlighted-word-dark');
-        document.getElementById("narrate-link-3-" + currentPage).classList.remove('highlighted-word');
+    if (previousElement.includes("narrate-link-3")) {
+        const linkElement3 = document.getElementById("narrate-link-3-" + currentPage);
+        if (linkElement3) {
+            linkElement3.classList.remove('highlighted-word-dark');
+            linkElement3.classList.remove('highlighted-word');
+        }
     }
-    if(previousElement.includes("narrate-time")){ 
-        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    if (previousElement.includes("narrate-time")) { 
+        const timeElement = document.getElementById(previousElement);
+        if (timeElement) timeElement.classList.remove('highlighted-sentence');
     }
-    if(previousElement.includes("narrate-header")){ 
-        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    if (previousElement.includes("narrate-header")) { 
+        const headerElement = document.getElementById(previousElement);
+        if (headerElement) headerElement.classList.remove('highlighted-sentence');
     }
-    if(previousElement.includes("narrate-slide-header")){ 
-        document.getElementById(previousElement).classList.remove('highlighted-sentence');
+    if (previousElement.includes("narrate-slide-header")) { 
+        const slideHeaderElement = document.getElementById(previousElement);
+        if (slideHeaderElement) slideHeaderElement.classList.remove('highlighted-sentence');
     }
 
-    if(selectedElement !== null && !showingHere && !showingLink) {
+    // Check for selectedElement
+    if (selectedElement !== null && !showingHere && !showingLink) {
         selectedElement.classList.remove('highlighted-sentence');
     }
 
     let markElements = null;
-    if(contrastWords) {
+    if (contrastWords) {
         markElements = $('mark.highlighted-word-dark');
-    } else if(hiddenHighlight) {
+    } else if (hiddenHighlight) {
         markElements = $('mark.highlighted-word-hide');
-    }  else {
+    } else {
         markElements = $('mark.highlighted-word');
     }
 
-    // Loop through all the 'mark' elements and remove them
-    if(markElements.length > 0) {
+    // Check if markElements exists and has elements
+    if (markElements && markElements.length > 0) {
         for (let i = markElements.length - 1; i >= 0; i--) {
             let markElement = markElements[i];
-            markElement.parentNode.replaceChild(document.createTextNode(markElement.textContent), markElement);
-        }    
+            if (markElement && markElement.parentNode) {
+                markElement.parentNode.replaceChild(
+                    document.createTextNode(markElement.textContent),
+                    markElement
+                );
+            }
+        }
     }
 }
+
 
 function clearToggleVisual(whichHighlighting) {
     // console.log("*In clear toggle visual for: " + whichHighlighting);
