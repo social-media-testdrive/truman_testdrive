@@ -1,91 +1,81 @@
-//- Chat Box  
-#chatbox1.container.clearfix.hidden
-  .chat
-    .chat-header.clearfix
-      a.chat-close(href='#')
-        i.large.close.icon
-      a.chat-minimize(href='#')
-        i.window.minimize.icon
-      a(href='#')
-        img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg')
-      .chat-about
-        .chat-with Chat with Jack
-    .chat-history
-      ul
-        li
-          .message-data
-            span.message-data-name
-              i.dot.circle.icon.online
-              |  Jack
-            span.message-data-time 10:12 AM
-          .message.my-message
-            | hey, I have a question about the homework for tomorrow
-        li
-          .message-data
-            span.message-data-name
-              i.dot.circle.icon.online
-              |  Jack
-            span.message-data-time 10:20 AM
-          .message.my-message
-            | can you tell me your number so i can call you real quick?
-    .chat-message.clearfix
-      .ui.fluid.action.input
-        input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
-        button
-          i.send.icon
-          | Send
-
-//- Chat Box  
-#chatbox2.container.clearfix.hidden
-  .chat
-    .chat-header.clearfix
-      a.chat-close(href='#')
-        i.large.close.icon
-      a.chat-minimize(href='#')
-        i.window.minimize.icon
-      a(href='#')
-        img.ui.avatar.image(src=cdn+'/profile_pictures/user8.jpg')
-      .chat-about
-        .chat-with Chat with Rob
-    .chat-history
-      ul
-        li
-          .message-data
-            span.message-data-name
-              i.dot.circle.icon.online
-              |  Rob
-            span.message-data-time 10:12 AM
-          .message.my-message
-            | Hi there! I noticed that you were also online!
-        li
-          .message-data
-            span.message-data-name
-              i.dot.circle.icon.online
-              |  Rob
-            span.message-data-time 10:20 AM
-          .message.my-message
-            | Do you want to talk for a bit?
-        li
-          .message-data
-            span.message-data-name
-              i.dot.circle.icon.online
-              |  Rob
-            span.message-data-time 10:20 AM
-          .message.my-message
-            | I want to get to know you better!
-    .chat-message.clearfix
-      .ui.fluid.action.input
-        input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
-        button
-          i.send.icon
-          | Send
-
+//- Chat Box
+#chatbox1.chat.hidden
+  .chat-header.clearfix
+    i.large.close.icon.chat-close.float-right
+    i.window.minimize.large.icon.chat-minimize.float-right
+    img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg')
+    .chat-about
+      .chat-with Chat with Jack
+  .chat-history
+    ul
+      li
+        .message-data
+          span.message-data-name
+            i.dot.circle.icon.online
+            |  Jack
+          span.message-data-time 10:12 AM
+        .message.my-message
+          | hey, I have a question about the homework for tomorrow
+      li
+        .message-data
+          span.message-data-name
+            i.dot.circle.icon.online
+            |  Jack
+          span.message-data-time 10:20 AM
+        .message.my-message
+          | can you tell me your number so i can call you real quick?
+  .chat-message.clearfix
+    .ui.fluid.action.input
+      input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+      button
+        i.send.icon
+        | Send
+//- Chat Box
+#chatbox2.chat.hidden
+  .chat-header.clearfix
+    i.large.close.icon.chat-close.float-right
+    i.window.minimize.large.icon.chat-minimize.float-right
+    img.ui.avatar.image(src=cdn+'/profile_pictures/user8.jpg')
+    .chat-about
+      .chat-with Chat with Rob
+  .chat-history
+    ul
+      li
+        .message-data
+          span.message-data-name
+            i.dot.circle.icon.online
+            |  Rob
+          span.message-data-time 10:12 AM
+        .message.my-message
+          | Hi there! I noticed that you were also online!
+      li
+        .message-data
+          span.message-data-name
+            i.dot.circle.icon.online
+            |  Rob
+          span.message-data-time 10:20 AM
+        .message.my-message
+          | Do you want to talk for a bit?
+      li
+        .message-data
+          span.message-data-name
+            i.dot.circle.icon.online
+            |  Rob
+          span.message-data-time 10:20 AM
+        .message.my-message
+          | I want to get to know you better!
+  .chat-message.clearfix
+    .ui.fluid.action.input
+      input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+      button
+        i.send.icon
+        | Send
 script#message-template(type='text/x-handlebars-template').
   <li class="clearfix">
-  <div class="message-data align-right">
-  <span class="message-data-time" >{{time}}</span> &nbsp; &nbsp;
-  <span class="message-data-name" >Me</span> <i class="fa fa-circle me"></i>
-  </div>
+    <div class="message-data align-right">
+      <span class="message-data-time">{{time}}</span> &nbsp; &nbsp;
+      <span class="message-data-name">Me</span> <i class="dot circle icon me"></i>
+    </div>
   <div class="message other-message float-right">
   {{messageOutput}}
   </div>

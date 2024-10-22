@@ -1,15 +1,9 @@
 $(window).on("load", function() {
     const pathArray = window.location.pathname.split('/');
-
-    $('.container.clearfix').each(function() {
+    $('.chat').each(function() {
         const chatId = this.id;
         const chat = {
             messageToSend: '',
-            messageResponses: [
-                'OK !!',
-                'OK !!',
-                'OK !!'
-            ],
             init: function() {
                 this.cacheDOM();
                 this.bindEvents();
@@ -35,8 +29,8 @@ $(window).on("load", function() {
             render: function() {
                 this.scrollToBottom();
                 if (this.messageToSend.trim() !== '') {
-                    var template = Handlebars.compile($("#message-template").html());
-                    var context = {
+                    const template = Handlebars.compile($("#message-template").html());
+                    const context = {
                         messageOutput: this.messageToSend,
                         time: this.getCurrentTime()
                     };
@@ -44,13 +38,6 @@ $(window).on("load", function() {
                     this.$chatHistoryList.append(template(context));
                     this.scrollToBottom();
                     this.$textarea.val('');
-
-                    // Reponses. Commented out. Template also removed from chatBox.pug.
-                    // var templateResponse = Handlebars.compile($("#message-response-template").html());
-                    // var contextResponse = {
-                    //     response: this.getRandomItem(this.messageResponses),
-                    //     time: this.getCurrentTime()
-                    // };
 
                     setTimeout(function() {
                         this.scrollToBottom();
@@ -60,7 +47,6 @@ $(window).on("load", function() {
 
             addMessage: function() {
                 this.messageToSend = this.$textarea.val();
-
                 $.post("/chatAction", {
                     message: this.$textarea.val(),
                     absTime: Date.now(),
@@ -88,24 +74,17 @@ $(window).on("load", function() {
             getCurrentTime: function() {
                 return new Date().toLocaleTimeString().
                 replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
-            },
-
-            getRandomItem: function(arr) {
-                return arr[Math.floor(Math.random() * arr.length)];
             }
         };
-
-        if (pathArray[2] == 'safe-posting') {
-            chat.init();
-        };
+        chat.init();
     });
 
-    //Minimize a chat box
-    $('a.chat-minimize').click(function(e) {
-        e.preventDefault();
-        let chat = $(this).closest('.chat').children('.chat-history');
+    // Minimize a chat box
+    $('.chat-minimize, .chat-header').click(function(e) {
+        e.stopImmediatePropagation();
+        const chat = $(this).closest('.chat').children('.chat-history');
         chat.slideToggle(300, 'swing');
-        var chatId = $(this).closest('.container.clearfix')[0].id;
+        const chatId = $(this).closest('.chat')[0].id;
 
         $.post("/chatAction", {
             absTime: Date.now(),
@@ -117,12 +96,19 @@ $(window).on("load", function() {
         });
     });
 
-    //Close a chat box
-    $('a.chat-close').click(function(e) {
-        e.preventDefault();
-        let chat = $(this).closest('.chat');
-        chat.fadeOut(300, 'swing');
-        var chatId = $(this).closest('.container.clearfix')[0].id;
+    // Close a chat box
+    $('.chat-close').click(function(e) {
+        // Prevent user from closing the chat box
+        if (pathArray[1] == "modual") {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            $(this).closest('.chat').transition('fade down');
+        } else {
+            e.stopImmediatePropagation();
+            const chat = $(this).closest('.chat').children('.chat-history');
+            chat.slideToggle(300, 'swing');
+        }
+        const chatId = $(this).closest('.chat')[0].id;
 
         $.post("/chatAction", {
             absTime: Date.now(),
@@ -133,4 +119,11 @@ $(window).on("load", function() {
             _csrf: $('meta[name="csrf-token"]').attr('content')
         });
     });
+
+    // This prevents the user from moving to the next step when they press the "Enter" key in the chat in safe-posting. 
+    window.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && event.target.id == 'message-to-send') {
+            event.stopImmediatePropagation();
+        }
+    }, true);
 });

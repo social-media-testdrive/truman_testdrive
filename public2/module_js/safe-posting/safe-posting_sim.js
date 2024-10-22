@@ -25,35 +25,3 @@ const hintsList = [{
         audioFile: ['CUSML.11.5.2.mp3']
     }
 ];
-
-function customOnHintCloseFunction() {
-    closedHints++;
-    clickedHints = 0;
-    if ($('#removeHidden').is(":visible")) {
-        $('#removeHidden').transition('fade');
-    }
-    if (closedHints == hintsList.length) {
-        endIntro();
-    }
-}
-
-function endIntro() {
-    var intro = introJs().setOptions({
-        'hidePrev': true,
-        'hideNext': true,
-        'exitOnOverlayClick': false,
-        'exitOnEsc': false,
-        'showBullets': false,
-        'showStepNumbers': false,
-        'scrollToElement': true,
-        'doneLabel': 'Done &#10003'
-    });
-    intro.setOptions({
-        steps: [{
-            intro: "Now let’s review what we learned."
-        }]
-    });
-    intro.start().onexit(function() {
-        window.location.href = '/trans/safe-posting';
-    });
-};

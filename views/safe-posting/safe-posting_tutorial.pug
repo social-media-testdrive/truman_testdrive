@@ -46,50 +46,46 @@ block content
                 a.like.comment Like
                 a.flag.comment Flag
       include ../partials/script/components/newUserComment
-    .container.clearfix
-      .chat#step2
-        .chat-header.clearfix
-          //-Making both buttons a minimize action. If user closes chat before tooltip highlights, tooltip bugs out. 
-          a.chat-minimize(href='#')
-            i.large.close.icon
-          a.chat-minimize(href='#')
-            i.window.minimize.icon
-          a(href='#')
-            img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg')
-          .chat-about
-            .chat-with Chat with Sam Hill
-        .chat-history
-          ul
-            li
-              .message-data
-                span.message-data-name 
-                  i.dot.circle.icon.online
-                  | Sam 
-                span.message-data-time 10:12 AM
-              .message.my-message
-                | hey! I really like ur pictures.
-            li
-              .message-data
-                span.message-data-name
-                  i.dot.circle.icon.online
-                  |  Sam 
-                span.message-data-time 10:12 AM
-              .message.my-message
-                | idk u but u seem cool 😎 tell me about urself
-            li
-              .message-data
-                span.message-data-name
-                  i.dot.circle.icon.online
-                  |  Sam 
-                span.message-data-time 10:20 AM
-              .message.my-message
-                | where do u go to school?
-        .chat-message.clearfix
-          .ui.fluid.action.input
-            input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
-            button
-              i.send.icon
-              | Send
+  .chat#step2
+    .chat-header
+      //-Making both buttons a minimize action. If user closes chat before tooltip highlights, tooltip bugs out. 
+      //- i.large.close.icon.chat-close.float-right
+      i.window.minimize.large.icon.chat-minimize.float-right
+      img.ui.avatar.image(src=cdn+'/profile_pictures/user21.jpg',style="width: 3em;height: 3em;")
+      .chat-about
+        .chat-with Chat with David Cole
+    .chat-history
+      ul
+        li
+          .message-data
+            span.message-data-name 
+              i.dot.circle.icon.online
+              | David 
+            span.message-data-time 10:12 AM
+          .message.my-message
+            | hey! I really like ur pictures.
+        li
+          .message-data
+            span.message-data-name
+              i.dot.circle.icon.online
+              | David 
+            span.message-data-time 10:12 AM
+          .message.my-message
+            | idk u but u seem cool 😎 tell me about urself
+        li
+          .message-data
+            span.message-data-name
+              i.dot.circle.icon.online
+              | David 
+            span.message-data-time 10:20 AM
+          .message.my-message
+            | where do u go to school?
+    .chat-message.clearfix
+      .ui.fluid.action.input
+        input#message-to-send(type='text', name='message-to-send', placeholder='Type your message')
+        button
+          i.send.icon
+          | Send
   script#message-template(type='text/x-handlebars-template').
     <li class="clearfix">
     <div class="message-data align-right">
@@ -113,7 +109,7 @@ block content
 
 block scripts
   script(src='/postFunctionalities.js')
-  script(src=cdn+'/js/chatbox3.js')
+  script(src='/module_js/chatbox.js')
   script(src="/module_js/safe-posting/safe-posting_tutorial.js")
   script(src='/module_js/voiceover.js')
   script(src="/module_js/base_introSteps.js")

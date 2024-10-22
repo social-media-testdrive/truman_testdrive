@@ -166,19 +166,11 @@ function recordModalInputs(modalNameAttrStr) {
 function openChat() {
     if (currentModuleForHeader == "safe-posting") {
         setTimeout(function() {
-            $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
-            $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
             $('#chatbox1').slideToggle(300, 'swing');
-            $($('#chatbox1 .chat-history')[0]).slideToggle(300, 'swing');
-            $($('#chatbox1 .chat-message')[0]).slideToggle(300, 'swing');
         }, 10000);
 
         setTimeout(function() {
-            $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
-            $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
             $('#chatbox2').slideToggle(300, 'swing');
-            $($('#chatbox2 .chat-history')[0]).slideToggle(300, 'swing');
-            $($('#chatbox2 .chat-message')[0]).slideToggle(300, 'swing');
         }, 20000);
     }
 }

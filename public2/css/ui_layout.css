@@ -41,7 +41,7 @@ body {
 }
 
 #pagecontainer {
-    padding-top: 115px;
+    padding-top: 150px;
     padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 2rem;
@@ -96,7 +96,7 @@ body {
 
 .ui.menu.testDriveHeader,
 .ui.menu.testDriveFooter {
-    z-index: 10000002;
+    z-index: 10000001;
 }
 
 
@@ -258,7 +258,7 @@ button,
 
 .introjs-tooltipReferenceLayer,
 .introjs-tooltip {
-    z-index: 10000000;
+    z-index: 10000003;
 }
 
 

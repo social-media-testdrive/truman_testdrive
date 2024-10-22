@@ -1,94 +1,90 @@
 .chat {
-    /*width: 490px;
-  float: left;
-  background: #F2F5F8;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  color: #434651;*/
-    background: #fff;
-    bottom: 0px;
+    background: transparent;
     font-size: 12px;
-    right: 24px;
     position: fixed;
-    width: 275px;
-    float: right;
-    z-index: 2;
+    right: 24px;
+    bottom: 45px;
+    width: 320px;
+    /* Appears over header & footer, but below tooltips*/
+    z-index: 10000002 !important;
+}
+
+.chat#step2,
+.chat#chat1 {
+    /*Tutorial Chat*/
+    width: 360px;
+}
+
+.chat#chatbox2 {
+    /*Script Chat #2*/
+    right: 360px;
 }
 
 .chat-close {
     color: #fff;
-    display: block;
-    float: right;
-    font-size: 10px;
-    height: 16px;
-    line-height: 16px;
-    text-align: center;
+    font-size: 20px !important;
+    margin-top: 10px !important;
+    margin-left: 10px !important;
 }
 
 .chat-minimize {
     color: #fff;
-    display: block;
-    float: right;
-    font-size: 10px;
-    height: 16px;
-    line-height: 16px;
-    text-align: center;
+    font-size: 18px !important;
+    margin-top: 5px !important;
 }
 
 .chat .chat-header {
-    /*padding: 20px;
-  border-bottom: 2px solid white;*/
     background: #293239;
     border-radius: 5px 5px 0 0;
+    border-bottom: 2px solid white;
     color: #fff;
     cursor: pointer;
-    padding: 16px 24px;
+    padding: 14px 20px;
+    height: 65px;
 }
 
 .chat .chat-header img {
     float: left;
+    width: 3em !important;
+    height: 3em !important;
 }
 
 .chat .chat-header .chat-about {
     float: left;
-    padding-left: 10px;
-    margin-top: 6px;
+    padding-left: 8px;
+    margin-top: 9px;
 }
 
 .chat .chat-header .chat-with {
     font-weight: bold;
-    font-size: 16px;
-}
-
-.chat .chat-header .chat-num-messages {
-    color: #92959E;
-}
-
-.chat .chat-header .fa-star {
-    float: right;
-    color: #D8DADF;
-    font-size: 20px;
-    margin-top: 12px;
-}
-
-.chat-history {
-    height: 252px;
-    padding: 8px 24px;
-    overflow-y: scroll;
+    font-size: 17px;
+    text-wrap: wrap;
+    word-break: break-word;
 }
 
 .chat .chat-history {
-    /*padding: 30px 30px 20px;
-  overflow-y: scroll;
-  height: 575px;*/
-    height: 252px;
-    border-bottom: 2px solid #e0dcdc;
+    border-left: 2px solid #e0dcdc;
+    border-right: 2px solid #e0dcdc;
     padding: 10px 10px;
     overflow-y: scroll;
+    background: #fff;
+    height: 252px;
+    max-height: calc(100vh - 200px);
+    width: 100%;
+}
+
+.chat .chat-history ul {
+    list-style: none;
+    margin: 5px;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 .chat .chat-history .message-data {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 .chat .chat-history .message-data-time {
@@ -103,11 +99,14 @@
     font-size: 14px;
     border-radius: 7px;
     margin-bottom: 8px;
-    width: 100%;
+    width: fit-content;
     position: relative;
+    text-wrap: wrap;
+    word-break: break-word;
 }
 
-.chat .chat-history .message:after {
+
+/* .chat .chat-history .message:after {
     bottom: 100%;
     left: 7%;
     border: solid transparent;
@@ -119,7 +118,7 @@
     border-bottom-color: #DCDCDC;
     border-width: 10px;
     margin-left: -10px;
-}
+} */
 
 .chat .chat-history .my-message {
     background: #DCDCDC;
@@ -135,49 +134,11 @@
     left: 93%;
 }
 
-.chat-message img {
-    border-radius: 50%;
-    float: left;
-}
-
-
-/* not currently used, but can keep for potential future use */
-
-.chat-message-counter {
-    background: #e62727;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    display: none;
-    font-size: 12px;
-    font-weight: bold;
-    height: 28px;
-    left: 0;
-    line-height: 28px;
-    margin: -15px 0 0 -15px;
-    position: absolute;
-    text-align: center;
-    top: 0;
-    width: 28px;
-}
-
 .chat .chat-message {
     padding: 15px;
-}
-
-.chat .chat-message textarea {
-    width: 100%;
-    padding: 5px 10px;
-    font: 14px/22px "Lato", Arial, sans-serif;
-    margin-bottom: 5px;
-    border-radius: 5px;
-    resize: none;
-}
-
-.chat .chat-message .fa-file-o,
-.chat .chat-message .fa-file-image-o {
-    font-size: 16px;
-    color: gray;
-    cursor: pointer;
+    border: 2px solid #e0dcdc;
+    background-color: white;
+    height: 70px;
 }
 
 .chat .chat-message button {
@@ -195,23 +156,50 @@
     color: #75b1e8;
 }
 
-.clearfix:after {
-    visibility: hidden;
-    display: block;
-    font-size: 0;
-    content: " ";
-    clear: both;
-    height: 0;
+.float-right {
+    float: right;
 }
 
-.chat-history ul {
-    list-style: none;
-    margin: 5px;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+
+/* not currently used, but can keep for potential future use */
+
+
+/* .chat-message-counter {
+    background: #e62727;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: none;
+    font-size: 12px;
+    font-weight: bold;
+    height: 28px;
+    left: 0;
+    line-height: 28px;
+    margin: -15px 0 0 -15px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 28px;
+}
+
+.chat-message img {
+    border-radius: 50%;
+    float: left;
+}
+
+.chat .chat-message textarea {
+    width: 100%;
+    padding: 5px 10px;
+    font: 14px/22px "Lato", Arial, sans-serif;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    resize: none;
+}
+
+.chat .chat-message .fa-file-o,
+.chat .chat-message .fa-file-image-o {
+    font-size: 16px;
+    color: gray;
+    cursor: pointer;
 }
 
 .online,
@@ -233,29 +221,17 @@
     color: #2185d0;
 }
 
-.float-right {
-    float: right;
-}
-
-
-/* not currently used, but can keep for potential future use */
 
 .chat-time {
     float: right;
     font-size: 10px;
 }
 
-
-/* not currently used, but can keep for potential future use */
-
 .chat-feedback {
     font-style: italic;
     margin: 0 0 0 80px;
 }
 
-
-/* not currently used, but can keep for potential future use */
-
 .chat-message-content {
     margin-left: 56px;
-}
+} */
