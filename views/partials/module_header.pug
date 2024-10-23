@@ -77,9 +77,10 @@ header(style="z-index: 1000 !important;")
                             input(type="checkbox" id="highlight-sentences-checkbox" onchange="postNarrationSetting('sentence', this.checked)")
                             label
 
-                a.item#feedback-button(href="/feedback" target="_blank")
+                a.item#feedback-button(target="_blank")
                     i.comment.dots.large.icon
                     span Feedback
+
                 a.item#exit-button
                     i.home.large.icon
 
@@ -94,3 +95,27 @@ header(style="z-index: 1000 !important;")
     .actions(style="text-align: center;")
         .ui.negative.huge.button#no-button No
         .ui.positive.huge.button#yes-button Yes
+
+script.
+    document.getElementById('feedback-button').addEventListener('click', (e) => {
+        // Prevent the default behavior of opening the link immediately
+        e.preventDefault();
+
+        // Extract URL parameters
+        //- const urlParams = new URLSearchParams(window.location.search);
+        //- const module = urlParams.get('module');
+        //- const section = urlParams.get('section');
+        //- const page = urlParams.get('page');
+        
+        // Build the new Google Form link with pre-filled values
+        const formBaseURL = "https://docs.google.com/forms/d/e/1FAIpQLSdNQxXG1dlwpNaZkZvXWS0FXLsF4q-3q-u6AajbarzZ5nCIAA/viewform";
+        const feedbackURL = `${formBaseURL}?usp=pp_url&entry.870767962=${encodeURIComponent(window.location.href)}`;
+
+        //- const feedbackURL = `${formBaseURL}?usp=pp_url&entry.870767962=${module} course, ${section} section, ${page} page`;
+
+        // Update feedback button link
+        document.getElementById('feedback-button').setAttribute('href', feedbackURL);
+
+        // Open the new feedback URL in a new tab
+        window.open(feedbackURL, '_blank');
+    });
