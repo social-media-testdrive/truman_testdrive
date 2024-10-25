@@ -10,33 +10,36 @@ const stepsList = [
     audioFile: [`CUSML.6.6.1.mp3`],
   },
   {
-    intro: `A continuación, te comentamos unos datos importantes antes de comenzar:
+    intro: `Here is some helpful background before you start:
     <br><a href='/user/DylanCrazzzzzy' target='_blank'>
     <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user19.jpg'>
-    <span> Daniel Ríos</span></a>acaba de mudarse a la ciudad y es nuevo en la escuela. Le encantan los cómics y pasa la mayor parte 
-    del recreo sentado solo dibujando en su sketchbook.
-    `,
+    <span>Dylan Moore</span></a> just moved into town and is new in
+    school. <br>He loves to draw comics and spends most of recess
+    sitting by himself drawing in his sketchbook.`,
     audioFile: [`CUSML.misc_09.mp3`],
   },
   {
-    intro: `Algunos de sus compañeros han comenzado a burlarse de él en la escuela.
-     <br>La semana pasada, <a href='/user/memeking' target='_blank'>
+    intro: `Some of Dylan’s classmates have started to make fun of him
+    at school. <br>Last week, <a href='/user/memeking' target='_blank'>
     <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user34.jpg'/>
-    <span>Jorge Vera</span></a> tomó una foto en secreto del sketchbook de Daniel. Publicó la foto en las redes 
-    sociales con un comentario despectivo.`,
+    <span>Keegan Scott</span></a> secretly took a picture of Dylan’s
+    sketchbook. He posted the photo on social media with a mean
+    comment.`,
     audioFile: [`CUSML.6.6.3.mp3`],
   },
   {
-    intro: `Desde entonces, los amigos de Jorge como:
+    intro: `Since then, Keegan’s friends:
     <a href='/user/ella_vaderrr' target='_blank'> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user25.jpg'/>
-    <span>Margarita García</span></a> & <a href='/user/goaliegirl' target='_blank'> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user29.jpg'/>
-    <span>Breana Summers</span></a> también se han estado burlando de Daniel en las redes sociales.`,
+    <span>Ella Sroni</span></a> & <a href='/user/goaliegirl' target='_blank'> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user29.jpg'/>
+    <span>Breana Summers</span></a> have also been making fun of Dylan
+    on social media.`,
     audioFile: [`CUSML.6.6.4.mp3`],
   },
   {
-    intro: `Ahora, ¡aplica lo que has aprendido! <br>Intenta <b>detectar y responder a las publicaciones o comentarios</b> de acoso en el feed del TestDrive
-    Cuando llegues al final, haz clic en "Continuar" para pasar a la siguiente parte de la lección.`,
-
+    intro: `Now, let’s apply what you have learned! <br>Try to <b>spot
+    and respond to cyberbullying posts or comments</b> on the TestDrive
+    timeline. When you get to the end of the timeline, click
+    “Let's Continue” to move to the next part of the lesson.`,
     audioFile: [`CUSML.6.6.5.mp3`],
   },
 ];

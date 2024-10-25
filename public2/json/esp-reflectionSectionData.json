@@ -92,12 +92,12 @@
   "cyberbullying": {
     "Q1": {
       "type": "checkbox",
-      "prompt": "Cuéntanos qué hiciste para ser un aliado:",
+      "prompt": "Tell us what you did to be an upstander.",
       "checkboxLabels": {
-        "0": "Reporté la publicación o el comentario.",
-        "1": "Le di 'Me gusta' a la publicación de la víctima para mostrar apoyo.",
-        "2": "Escribí un comentario de apoyo o defensa a la víctima.",
-        "3": "ISe lo diría a un adulto de confianza si viera este tipo de publicación."
+        "0": "I flagged the post or comment.",
+        "1": "I \"liked\" the target's post to show support.",
+        "2": "I wrote a supportive or defending comment for the target.",
+        "3": "I would tell a trusted adult if I saw this kind of post."
       },
       "responseRequirement": "atLeastOne",
       "correctResponses": {
@@ -109,15 +109,15 @@
     },
     "Q2": {
       "type": "written",
-      "prompt": "¿Por qué actuaste de esa manera?"
+      "prompt": "Why did you act this way?"
     },
     "Q3": {
       "type": "written",
-      "prompt": "¿Por qué es importante que las personas actúen en contra del ciberbullying?"
+      "prompt": "Why is it important for people to act against cyberbullying?"
     },
     "Q4": {
       "type": "written",
-      "prompt": "¿Qué harás en el futuro para defender a una víctima de ciberbullying?"
+      "prompt": "What will you do in the future to be an upstander if you see cyberbullying?"
     }
   },
   "digfoot": {
