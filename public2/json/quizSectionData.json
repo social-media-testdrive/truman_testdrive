@@ -340,6 +340,64 @@
       "explanation": " \n<span class = 'inline bold green'>D is correct: Telling a trusted adult can be a safe way to take action and be an upstander.</span> \n \n<span class = 'inline bold'>A is incorrect:</span> Even though it is deleted, other people may have already seen the story or have screenshots of it. \n \n<span class = 'inline bold'>B is incorrect:</span> If you post a story to make fun of Michael, you would be participating in cyberbullying. Upstanders do not bully other people in return. \n \n<span class = 'inline bold'>C is incorrect:</span> You are unable to delete someone else’s story."
     }
   },
+  "cyberbullying-esp": {
+    "Q1": {
+      "prompt": "El ciberbullying es un comportamiento muy problemático que puede causar severos daños a la víctima",
+      "radioLabels": {
+        "0": "Verdadero",
+        "1": "Falso",
+        "2": "No lo sé."
+      },
+      "explanation": "A es correcto: el ciberbullying puede afectar muy severamente a la víctima. Las palabras y publicaciones dañinas pueden causar mucho dolor y dolor a la víctima del ciberbullying. "
+    },
+    "Q2": {
+      "prompt": "¿Qué es el ciberbullying?",
+      "radioLabels": {
+        "0": "El ciberbullying es cuando alguien publica o comparte cosas negativas sobre otra persona en línea",
+        "1": "El ciberbullying es un videojuego que puede ser jugado por varios jugadores al mismo tiempo.",
+        "2": "El ciberbullying es cuando alguien trata mal o se burla de otra persona en la escuela.",
+        "3": "El ciberbullying es un crimen en el que los estafadores intentan robar información privada.",
+        "4": "No lo sé."
+      },
+      "explanation": "A es correcto: El ciberbullying es cuando una persona publica o comparte información negativa sobre otra persona en línea. B es incorrecto: el ciberbullying no es un videojuego, aunque los jugadores pueden intimidar a otros en los videojuegos. C es incorrecto: el ciberbullying siempre ocurre en línea, aunque las personas pueden conectarse en línea usando dispositivos móviles en la escuela. D es incorrecto: se llama phishing cuando los estafadores intentan robar su información privada, no ciberbullying."
+    },
+    "Q3": {
+      "prompt": "Un acosador es alguien que lastima a otra persona a propósito.",
+      "radioLabels": {
+        "0": "Verdadero",
+        "1": "Falso",
+        "2": "No lo sé."
+      },
+      "explanation": "A Es correcto: Un acosador es alguien que lastima a una persona o un grupo a propósito más de una vez."
+    },
+    "Q4": {
+      "prompt": "¿Cuál de las siguientes personas puede ser considerado un aliado?",
+      "radioLabels": {
+        "0": "Una persona que ve un incidente de ciberbullying.",
+        "1": "Una persona que acosa a otra persona.",
+        "2": "La persona que está siendo acosada.",
+        "3": "Una persona que confronta al acosador.",
+        "4": "No sé."
+      },
+      "explanation": "D es correcto: Un aliado es alguien que actúa contra el acosador. A es incorrecto: un aliado tiene que ser alguien que toma medidas después de ver un incidente. B es incorrecto: los aliados actúan contra el acosador. C es incorrecto: La persona que está siendo intimidada es considerada un objetivo o la víctima de ciberbullying."
+    },
+    "Q5": {
+      "type": "radio",
+      "prompt": "En Instagram, Michael sigue burlándose de Sara en sus historias. Debido a que esas historias se eliminan después de un tiempo, es difícil responderlas. ¿Qué podrías hacer para ser un aliado?",
+      "radioLabels": {
+        "0": " Nada, porque las historias han sido eliminadas.",
+        "1": "Puedes publicar una historia para burlarte de Michael en tu propia cuenta de Instagram.",
+        "2": "Puedes borrar la historia de Michael. Solo tienes que encontrar el botón correcto.",
+        "3": "Debes contarle a un adulto de confianza sobre el comportamiento de Michael.",
+        "4": "No sé."
+      },
+      "responseRequirement": "any",
+      "correctResponse": "3",
+      "files": [""],
+      "explanation": "D es correcto: decirle a un adulto de confianza puede ser una forma segura de actuar y ser un aliado. A es incorrecto: aunque se elimine, es posible que otras personas ya hayan visto la historia o tengan capturas de pantalla de ella. B es incorrecto: si publicas una historia para burlarte de Michael, estarías participando en ciberbullying. Los aliados no intimidan a otras personas a cambio. C es incorrecto: no puedes eliminar la historia de otra persona."
+    }
+  },
+
   "digfoot": {
     "Q1": {
       "type": "radio",
