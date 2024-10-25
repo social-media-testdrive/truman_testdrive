@@ -36,6 +36,7 @@ const stepsList = [
   {
     intro: `Ahora, ¡aplica lo que has aprendido! <br>Intenta <b>detectar y responder a las publicaciones o comentarios</b> de acoso en el feed del TestDrive
     Cuando llegues al final, haz clic en "Continuar" para pasar a la siguiente parte de la lección.`,
+
     audioFile: [`CUSML.6.6.5.mp3`],
   },
 ];
