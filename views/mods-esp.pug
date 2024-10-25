@@ -22,11 +22,11 @@ block content
           .content
             .header= "Los altibajos de las redes sociales"
       
-      a.ui.card(href=`/${path}/cyberbullying-esp`)
-        .image()
-          img(src=cdn + "/cyberbullying.png")
-        .content
-          .header= "Cyberbullying"
+      //- a.ui.card(href=`/${path}/cyberbullying-esp`)
+      //-   .image()
+      //-     img(src=cdn + "/cyberbullying.png")
+      //-   .content
+      //-     .header= "Cyberbullying"
 
       //- a.ui.card(href="#")
       //-     .ui.inverted.active.dimmer.soon
@@ -95,6 +95,12 @@ block content
         .content
           .header="Identidades en línea"
 
+      a.ui.card(href=`/${path}/cyberbullying-esp`)
+        .image
+          img(src=cdn + "/upstander.png")
+        .content
+          .header= "¿Cómo defender a otras personas del cyberbullying?"
+
       a.ui.card(href="#")
         .ui.inverted.active.dimmer.soon
           .content
@@ -107,14 +113,4 @@ block content
         .content
           .header= "¿Esta información debería ser privada?"
 
-      a.ui.card(href=`/${path}/cyberbullying-esp`)
-        .ui.inverted.active.dimmer.soon
-          .content
-            .center
-              h2.ui.header
-                |
-                | ¡PRÓXIMAMENTE!
-        .image(style="filter: blur(1.5px)")
-          img(src=cdn + "/upstander.png")
-        .content
-          .header= "¿Cómo defender a otras personas del cyberbullying?"
+
