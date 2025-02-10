@@ -259,6 +259,7 @@ button,
 .introjs-tooltipReferenceLayer,
 .introjs-tooltip {
     z-index: 10000003;
+    visibility: visible;
 }
 
 
