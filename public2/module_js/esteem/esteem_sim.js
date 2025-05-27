@@ -1,7 +1,5 @@
-var hintsList=
-[
-  {
-    hint: `Nick's best friends, Liam and Vanessa, have posted that they are
+const hintsList = [{
+        hint: `Nick's best friends, Liam and Vanessa, have posted that they are
     hanging out, but Nick was not invited. Click on the post to reflect on how
     Nick might feel and what he can do if he is experiencing a red flag
     feeling.`,
@@ -37,18 +35,16 @@ var hintsList=
   }
 ]
 
-var stepsList=
-[
-  {
-    element: '#step1',
-    intro: `Click "Next" to begin!`,
-    position: 'left',
-    scrollTo: 'tooltip',
-    audioFile: ['']
-  },
-  {
-    element: '#step1',
-    intro: `This is Nick's social media timeline. He just got back from school
+const stepsList = [{
+        element: '#step1',
+        intro: `Click "Next" to begin!`,
+        position: 'left',
+        scrollTo: 'tooltip',
+        audioFile: ['']
+    },
+    {
+        element: '#step1',
+        intro: `This is Nick's social media timeline. He just got back from school
     and is checking out his feed.
     Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
@@ -63,22 +59,23 @@ function eventsAfterHints(){
   introJs().hideHints();
   introJs().showHint(0);
 
-  $('.ui.fluid.card.test img').on('click', function(){
-    $('.ui.accordion').accordion('open', 0);
-    $('.ui.accordion').accordion('close', 1);
-    $('input[type=checkbox]').prop('checked',false);
-    recordSimModalInputs('esteem_simPostModal1')
-  });
+    $('.ui.fluid.card img').on('click', function() {
+        $('.ui.accordion').accordion('open', 0);
+        $('.ui.accordion').accordion('close', 1);
+        $('.ui.modal input[type=checkbox]').prop('checked', false);
+        recordSimModalInputs('esteem_simPostModal1');
+        clickPost = true;
+        $('#confirmContinueCheck').hide();
+    });
 };
 
 
 function customOnHintCloseFunction(stepID) {
-
-  // sequential hint appearance
-  stepID += 1;
-  if(stepID !== numberOfHints){
-    introJs().showHint(stepID);
-  }
+    // sequential hint appearance
+    stepID += 1;
+    if (stepID !== numberOfHints) {
+        introJs().showHint(stepID);
+    }
 
   closedHints++;
   clickedHints = 0;

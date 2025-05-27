@@ -1,17 +1,13 @@
 extends ui_layout
   
 block content
-  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
   .computer.only.tablet.only.four.wide.column 
     .ui.sticky.sideMenu
       .ui.card
         .image
-          if actor.class == 'high_read'
-            img(src=actor.profile.picture)
-          else
-            img(src=cdn+'/profile_pictures/'+actor.profile.picture)
+          img(src=cdn+'/profile_pictures/'+actor.profile.picture)
         .content
-          a.header= actor.profile.name
+          a.header=actor.profile.name
           .meta="@"+actor.username
           .description=actor.profile.bio
           .description 
@@ -33,6 +29,7 @@ block content
       h3.centerText No Posts Yet
     each val in script
       if(val.type !== 'notification')
+<<<<<<< HEAD
         .ui.fluid.card.dim(postID=val.id, ui=user.ui, notify=user.notify, state=val.state || 'unread', type='actor')
             //- dimmer DIV for flagging
             .ui.dimmer.flag
@@ -222,14 +219,13 @@ block content
 
 block scripts
   script. 
-    // add humanized time to all posts
+    //- add humanized time to all posts
     function addHumanizedTimeToPost(){
-      let target = $(this);
-      var ms = parseInt(target.text(), 10);
-      let time = new Date(ms);
+      const target = $(this);
+      const ms = parseInt(target.text(), 10);
+      const time = new Date(ms);
       target.text(humanized_time_span(time));
     };
-    
   script.
     $(window).on('load', () => {
       $('.right.floated.time.meta, .date.sim').each(addHumanizedTimeToPost);
@@ -237,3 +233,6 @@ block scripts
         window.history.back();
       });
     });
+
+block styles
+  link(rel='stylesheet', href='/css/script.css')

@@ -22,7 +22,6 @@ function additionalOnBeforeChange(jqThis) {
 }
 
 $(window).on("load", function() {
-
     if ($('.ui.menu.notMobileView').is(":visible")) {
         stepsList = [{
                 element: '#step0',
@@ -159,5 +158,4 @@ $(window).on("load", function() {
             }
         ];
     }
-
 });

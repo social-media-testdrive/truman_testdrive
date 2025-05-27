@@ -1,11 +1,7 @@
 extends ui_layout-esp 
 
 block content
-  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  .ui.container.resultsAddBottomMargin
-    .ui.stackable.column.grid
-      .ui.column
-        .insertPrint
+  .ui.container
     .ui.warning.message.hidden.scoreBanner#scoreBannerHeader
 
     -var optionLabelDictionary = ["A.", "B.", "C.", "D.", "E."]
@@ -19,7 +15,7 @@ block content
               .content
                 | Preguntas  
                 
-          .ui.mini.green.right.labeled.icon.button.quizSegmentButton(class="voiceover_reflection" + questionNumber.substring(1))(questionNumber=questionNumber)     
+          .ui.small.green.right.labeled.icon.button.quizSegmentButton(class="voiceover_reflection" + questionNumber.substring(1), questionNumber=questionNumber)     
             i.down.arrow.icon
             if questionNumber == "Q1"
               |   Comenzar
@@ -27,7 +23,7 @@ block content
               |   Siguiente
 
           .ui.basic.segment.noPadding.quizPromptSegment.hidden(class=questionNumber)
-              .ui.label.resultsPromptLabel
+              .ui.label
                 h4.quizRadioPrompt(data-questionNumber=questionNumber)
                   | !{questionInfo.prompt.replace(/<span class = 'underline'>/g, '<span class = "underline">').replace(/<\/span>/g, '</span>')}
               .ui.form

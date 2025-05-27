@@ -21,7 +21,7 @@ i.external.alternate.icon {
 
 #sponsoredTag,
 .sponsoredTag {
-    border: none;
+    border: none !important;
 }
 
 
@@ -56,6 +56,11 @@ i.external.alternate.icon {
 
 
 /* gaming */
+
+.gamingPageBackground {
+    background-color: #FFFFFF;
+    padding: 2em !important;
+}
 
 .gamingElement1 img {
     object-fit: cover;
@@ -122,4 +127,8 @@ i.external.alternate.icon {
     object-fit: cover;
     width: 200px !important;
     height: 200px !important;
+}
+
+.column.sportsPageBackground {
+    margin-bottom: 1em;
 }

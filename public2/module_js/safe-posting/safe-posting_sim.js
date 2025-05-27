@@ -24,6 +24,7 @@ const hintsList = [{
         hintPosition: "top-middle",
         audioFile: ['CUSML.11.5.2.mp3']
     }
+<<<<<<< HEAD
 ];
 
 function customOnHintCloseFunction() {

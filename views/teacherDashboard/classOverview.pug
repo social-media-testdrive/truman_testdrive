@@ -1,7 +1,6 @@
 extends ../ui_layout
 
 block content
-
   .sixteen.wide.column.dashboardContentColumn.hiddenVisibility(style="padding:30px")
     include ../partials/teacherDashboardMenu
 
@@ -64,7 +63,7 @@ block content
             
 
 block scripts
-  -var cdn = "https://dhpd030vnpk29.cloudfront.net";
+  
   script(src=cdn+'/js/lib/Chart.js') 
   script(src='/user_portal/teacherDashboardTools.js')
   script(src='/user_portal/classOverview.js')

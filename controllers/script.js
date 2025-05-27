@@ -1,411 +1,185 @@
 const Script = require('../models/Script.js');
 const User = require('../models/User');
-const Notification = require('../models/Notification');
+const helpers = require('./helpers');
 const _ = require('lodash');
 
 /**
  * GET /habitsNotificationTimes
  * Get the notification timestamps for the habits module
  */
-exports.getNotificationTimes = (req, res) => {
-    Script.find()
-        .where('module').equals('habits-esp')
-        .where('type').equals('notification')
+exports.getNotificationTimes = async (req, res, next) => {
+    try {
+        const notifications = await Script.find({
+            module: 'habits-esp',
+            type: 'notification'
+        })
         .sort('time')
-        .exec(function(err, script_feed) {
-            if (err) {
-                return next(err);
-            }
+        .lean()
+        .exec();
 
-            var notifTimestampArray = [];
-            var notifTextArray = [];
-            var notifPhotoArray = [];
-            var notifCorrespondingPostArray = [];
+        const response = {
+            notificationTimestamps: notifications.map(n => n.time),
+            notificationText: notifications.map(n => n.body),
+            notificationPhoto: notifications.map(n => n.picture),
+            notifCorrespondingPost: notifications.map(n => parseInt(n.info_text))
+        };
 
-            for (var i = 0; i < script_feed.length; i++) {
-                if (notifTimestampArray) {
-                    notifTimestampArray.push(script_feed[i].time);
-                    notifTextArray.push(script_feed[i].body);
-                    notifPhotoArray.push(script_feed[i].picture);
-                    notifCorrespondingPostArray.push(parseInt(script_feed[i].info_text));
-                } else {
-                    notifTimestampArray = [script_feed[i].time];
-                    notifTextArray = [script_feed[i].body];
-                    notifPhotoArray = [script_feed[i].picture];
-                    notifCorrespondingPostArray = parseInt([script_feed[i].info_text]);
-                }
-            }
-            res.set({ 'Content-Type': 'application/json; charset=UTF-8' });
-            res.json({
-                notificationTimestamps: notifTimestampArray,
-                notificationText: notifTextArray,
-                notificationPhoto: notifPhotoArray,
-                notifCorrespondingPost: notifCorrespondingPostArray
-            });
-        });
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.json(response);
+    } catch (err) {
+        next(err);
+    }
 };
 
-/*
- GET /getSinglePost/:postId
- Get a single post
-*/
-exports.getSinglePost = (req, res, next) => {
-    Script.findById(req.params.postId)
-        .exec(function(err, post) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
-            if (post == null) {
-                console.log("NULL");
-                var myerr = new Error('Post not found!');
-                return next(myerr);
-            }
-            res.set({ 'Content-Type': 'application/json; charset=UTF-8' });
-            res.json({ post: post });
-        })
-}
+/**
+ * GET /getSinglePost/:postId
+ * Get a single post (json object).
+ */
+exports.getSinglePost = async (req, res, next) => {
+    try {
+        const post = await Script.findById(req.params.postId)
+            .lean()
+            .exec();
+
+        if (!post) {
+            return res.status(404).json({ error: "Post not found" });
+        }
+
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        res.json({ post });
+    } catch (err) {
+        next(err);
+    }
+};
 
 /**
  * GET /modual/:modId
- * Creates a list of the posts to show in the freeplay newsfeed
- * and renders the freeplay page.
+ * Return list of the posts to show in the freeplay newsfeed and render the freeplay page.
  */
-exports.getScript = (req, res, next) => {
-    User.findById(req.user.id)
-        .populate({
-            path: 'posts.reply',
-            model: 'Script',
-            populate: {
-                path: 'actor',
-                model: 'Actor'
-            }
-        })
-        .populate({
-            path: 'posts.actorAuthor',
-            model: 'Actor'
-        })
-        .populate({
-            path: 'posts.comments.actor',
-            model: 'Actor'
-        })
-        .exec(function(err, user) {
-            Script.find()
-                .where('module').equals(req.params.modId)
+exports.getScript = async (req, res, next) => {
+    try {
+        const [user, script_feed] = await Promise.all([
+            User.findById(req.user.id)
+                .populate({
+                    path: 'posts.reply',
+                    model: 'Script',
+                    populate: { path: 'actor', model: 'Actor' }
+                })
+                .populate({ path: 'posts.actorAuthor', model: 'Actor' })
+                .populate({ path: 'posts.comments.actor', model: 'Actor' })
+                .populate('feedAction.post')
+                .exec(),
+            Script.find({ module: req.params.modId })
                 .sort('-time')
                 .populate('actor')
-                .populate({
-                    path: 'comments.actor',
-                    populate: {
-                        path: 'actor',
-                        model: 'Actor'
-                    }
-                })
-                .exec(function(err, script_feed) {
-                    console.log('in here? 0');
-                    if (err) {
-                        return next(err);
-                    }
-                    console.log("mod id = " + req.params.modId);
-                    // Final array of all posts to go in the freeplay feed
-                    const finalfeed = [];
-                    // Array of any user-made posts in this module
-                    const user_posts = user.getModPosts(req.params.modId);
-                    console.log("user_posts = " + JSON.stringify(user_posts));
-                    // Sort the array by the time the post was created
-                    user_posts.sort(function(a, b) {
-                        return b.relativeTime - a.relativeTime;
-                    });
+                .populate({ path: 'comments.actor', model: 'Actor' })
+                .exec()
+        ]);
 
-                    // While there are regular posts or user-made posts to add to the final feed
-                    while (script_feed.length || user_posts.length) {
-                        if (typeof script_feed[0] === 'undefined') {
-                            // script_feed is empty, look at the first element of user_posts
-                            // For this post, check if there is a user feedAction matching this post's ID and get its index
-                            const feedIndex = _.findIndex(user.feedAction, function(o) {
-                                return o.post == user_posts[0].id;
-                            });
+        const user_posts = user.getModPosts(req.params.modId)
+            .sort((a, b) => b.relativeTime - a.relativeTime);
 
-                            if (feedIndex != -1) {
-                                // There was a feedAction found for this post.
-                                // Check if there is a like recorded for this post.
-                                if (user.feedAction[feedIndex].liked) {
-                                    // Update this post in script_feed.
-                                    user_posts[0].liked = true;
-                                }
-                            }
-                            finalfeed.push(user_posts[0]);
-                            // remove the element from user_posts
-                            user_posts.splice(0, 1);
-                        } else if (!(typeof user_posts[0] === 'undefined') && (script_feed[0].time < user_posts[0].relativeTime)) {
-                            // There are user-made posts that were created sooner than the post
-                            // in script_feed, so push them in first
+        const finalfeed = helpers.getFeed(user_posts, script_feed, user);
 
-                            // For this post, check if there is a user feedAction matching this post's ID and get its index
-                            const feedIndex = _.findIndex(user.feedAction, function(o) {
-                                return o.post == user_posts[0].id;
-                            });
+        // Prepare render data
+        const renderData = {
+            script: finalfeed,
+            mod: req.params.modId,
+            title: 'Free Play'
+        };
 
-                            if (feedIndex != -1) {
-                                // There was a feedAction found for this post.
-                                // Check if there is a like recorded for this post.
-                                if (user.feedAction[feedIndex].liked) {
-                                    // Update this post in script_feed.
-                                    user_posts[0].liked = true;
-                                }
-                            }
-                            finalfeed.push(user_posts[0])
-                                // remove the element from user_posts
-                            user_posts.splice(0, 1);
-                        } else {
-                            // Looking at the post in script_feed[0] now.
-                            // For this post, check if there is a user feedAction matching this
-                            // post's ID and get its index.
-                            const feedIndex = _.findIndex(user.feedAction, function(o) {
-                                return o.post == script_feed[0].id;
-                            });
-                            console.log('feed index = ' + feedIndex);
-                            if (feedIndex != -1) {
-                                console.log('in here? 1');
-                                // There was a feedAction found for this post.
-                                // Perform various checks to determine what actions were taken.
-                                // Check to see if there are comment-type actions.
-                                if (Array.isArray(user.feedAction[feedIndex].comments) && user.feedAction[feedIndex].comments) {
-                                    console.log('in here? 2');
-                                    // There are comment-type actions on this post.
-                                    // For each comment on this post, add likes, flags, etc.
-                                    for (var i = 0; i < user.feedAction[feedIndex].comments.length; i++) {
-                                        if (user.feedAction[feedIndex].comments[i].new_comment) {
-                                            // This is a new, user-made comment. Add it to the comments
-                                            // list for this post.
-                                            const newComment = new Object();
-                                            newComment.body = user.feedAction[feedIndex].comments[i].comment_body;
-                                            newComment.new_comment = user.feedAction[feedIndex].comments[i].new_comment;
-                                            newComment.time = user.feedAction[feedIndex].comments[i].absTime;
-                                            newComment.commentID = user.feedAction[feedIndex].comments[i].new_comment_id;
-                                            newComment.likes = 0;
-                                            script_feed[0].comments.push(newComment);
-                                        } else {
-                                            // This is not a new, user-created comment.
-                                            // Get the comment index that corresponds to the correct comment
-                                            const commentIndex = _.findIndex(script_feed[0].comments, function(o) {
-                                                return o.id == user.feedAction[feedIndex].comments[i].comment;
-                                            });
-                                            // If this comment's ID is found in script_feed, add likes, flags, etc.
-                                            if (commentIndex != -1) {
-                                                // Check if there is a like recorded for this comment.
-                                                if (user.feedAction[feedIndex].comments[i].liked) {
-                                                    // Update the comment in script_feed.
-                                                    script_feed[0].comments[commentIndex].liked = true;
-                                                    script_feed[0].comments[commentIndex].likes++;
-                                                }
-                                                // Check if there is a flag recorded for this comment.
-                                                if (user.feedAction[feedIndex].comments[i].flagged) {
-                                                    // Remove the comment from the post if it has been flagged.
-                                                    script_feed[0].comments.splice(commentIndex, 1);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                // No longer looking at comments on this post.
-                                // Now we are looking at the main post.
-                                // Check if there is a like recorded for this post.
-                                if (user.feedAction[feedIndex].liked) {
-                                    // Update this post in script_feed.
-                                    script_feed[0].like = true;
-                                    script_feed[0].likes++;
-                                }
-                                // Check for cases where the post should be removed from script_feed.
-                                // Check if there is a flag recorded for this post.
-                                if (user.feedAction[feedIndex].flagTime[0]) {
-                                    // Remove this post from script_feed.
-                                    script_feed.splice(0, 1);
-                                } else if (user.blocked.includes(script_feed[0].actor.username)) {
-                                    // This post was from an account that the user blocked.
-                                    // Remove this post from script_feed.
-                                    // The 'block' feature is not emphasized in TestDrive, but it is present.
-                                    script_feed.splice(0, 1);
-                                } else {
-                                    // There is no reason to remove this post from the feed
-                                    // and we have updated this post with any user actions, so
-                                    // push this post to finalfeed and remove it from script_feed.
-                                    finalfeed.push(script_feed[0]);
-                                    script_feed.splice(0, 1);
-                                }
-                            } else {
-                                // At this point, there are no user actions on this post.
-                                // Check uf this post is not from an account that the user blocked.
-                                if (user.blocked.includes(script_feed[0].actor.username)) {
-                                    // Remove this post from script_feed.
-                                    // The 'block' feature is not emphasized in TestDrive, but it is present.
-                                    script_feed.splice(0, 1);
-                                } else {
-                                    // There is nothing special to do to this post before adding it
-                                    // to the final feed and removing it from script_feed.
-                                    finalfeed.push(script_feed[0]);
-                                    script_feed.splice(0, 1);
-                                }
-                            }
-                        }
-                    }
-                    // This seems unnecesary, but commented out rather than removed.
-                    // TODO: Can remove later if it seems fine.
-                    // user.save((err) => {
-                    //   if (err) {
-                    //     return next(err);
-                    //   }
-                    // });
+        // Add habits-specific data if needed
+        if (req.params.modId.match(/^habits(-esp)?$/)) {
+            renderData.habitsStart = user.firstHabitViewTime;
+        }
 
-                    // Render custom script pages for certain modules, otherwise use the default
-                    // script page.
-                    if (req.params.modId == "advancedlit"){
-                        res.render('advancedlit/advancedlit_script', { script: finalfeed, mod: req.params.modId});
-                    } else if (req.params.modId == "esteem-esp") {
-                        res.render('esteem-esp/esteem-esp_script', { script: finalfeed, mod: req.params.modId});
-                    } else if (req.params.modId == "esteem"){
-                        res.render('esteem/esteem_script', { script: finalfeed, mod: req.params.modId});
-                    } else if (req.params.modId == "habits"){
-                        res.render('habits/habits_script', {
-                        script: finalfeed,
-                        mod: req.params.modId,
-                        habitsStart: user.firstHabitViewTime
-                        });
-                    } else if (req.params.modId == "habits-esp"){
-                        res.render('habits-esp/habits-esp_script', {
-                        script: finalfeed,
-                        mod: req.params.modId,
-                        habitsStart: user.firstHabitViewTime
-                        });
-                    } else if  (req.params.modId == "phishing"){
-                        res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId});
-                    }  else if  (req.params.modId == "phishing-esp"){
-                        res.render('phishing-esp/phishing-esp_script', { script: finalfeed, mod: req.params.modId});
-                    } else if (req.params.modId == "targeted"){
-                        res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
-                    }  else if (req.params.modId == "targeted-esp"){
-                        res.render('targeted-esp/targeted-esp_script', { script: finalfeed, mod: req.params.modId});
-                    } else {
-                        if(req.params.modId === 'safe-posting') {
-                        res.set({
-                            'Content-Security-Policy':
-                            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-                            "default-src 'self' https://www.google-analytics.com;" +
-                            "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-                            "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
-                            "media-src https://dhpd030vnpk29.cloudfront.net;" +
-                            "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
-                        });
-                        }
-                        res.render('script', { script: finalfeed, mod: req.params.modId});
-                    }
-                });
-        });
+        // Set CSP for safe-posting
+        if (req.params.modId === 'safe-posting') {
+            res.set({
+                'Content-Security-Policy': `script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;
+                default-src 'self' https://www.google-analytics.com;
+                style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;
+                img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;
+                media-src https://dhpd030vnpk29.cloudfront.net;
+                font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com/ data:`
+            });
+        }
+
+        // Determine view to render
+        const moduleViews = {
+            'advancedlit': 'advancedlit/advancedlit_script',
+            'esteem': 'esteem/esteem_script',
+            'esteem-esp': 'esteem-esp/esteem-esp_script',
+            'habits': 'habits/habits_script',
+            'habits-esp': 'habits-esp/habits-esp_script',
+            'phishing': 'phishing/phishing_script',
+            'phishing-esp': 'phishing-esp/phishing-esp_script',
+            'targeted': 'targeted/targeted_script',
+            'targeted-esp': 'targeted-esp/targeted-esp_script'
+        };
+
+        const view = moduleViews[req.params.modId] || 'script';
+        res.render(view, renderData);
+
+    } catch (err) {
+        console.error('Error in getScript:', err);
+        next(err);
+    }
 };
-
-/**
- * GET /testing/:modId
- * Get list of Script posts for Feed
- * Made for load testing - not sure if it should be deleted
- */
-exports.getScriptFeed = (req, res, next) => {
-    var scriptFilter = "";
-    var profileFilter = "";
-    Script.find()
-        //.where('time').lte(time_diff)//.gte(time_limit)
-        .where('module').equals(req.params.modId)
-        .sort('-time')
-        .populate('actor')
-        .populate({
-            path: 'comments.actor',
-            populate: {
-                path: 'actor',
-                model: 'Actor'
-            }
-        })
-        .exec(function(err, script_feed) {
-            if (err) { return next(err); }
-            //Successful, so render
-
-            //update script feed to see if reading and posts has already happened
-            var finalfeed = [];
-            finalfeed = script_feed;
-            res.render('feed', { script: finalfeed });
-        }); //end of Script.find()
-}; //end of .getScript
 
 /**
  * POST /post/new
- * Upload a new user-created post to the database.
+ * Add new user post.
  */
-exports.newPost = (req, res) => {
-    User.findById(req.user.id, (err, user) => {
-        if (err) {
-            return next(err);
+exports.newPost = async (req, res, next) => {
+    try {
+        const { picinput, body, module } = req.body;
+        
+        if (!picinput || !body) {
+            req.flash('errors', { 
+                msg: 'ERROR: Your post did not get sent. Please include a photo and a caption.' 
+            });
+            return res.redirect(`/modual/${module}`);
         }
-        const post = new Object();
-        post.type = "user_post";
-        post.body = req.body.body;
-        post.picture = req.body.picinput;
-        post.module = req.body.module;
-        post.absTime = Date.now();
-        post.relativeTime = post.absTime - user.createdAt;
-        // if numPost/etc never existed yet, make it here - should never happen in new users
-        // Note: Not sure if these 3 checks are really needed, but it doesn't seem
-        // to hurt to keep them.
-        if (!(user.numPosts) && user.numPosts < -1) {
-            user.numPosts = -1;
-        }
-        if (!(user.numReplies) && user.numReplies < -1) {
-            user.numReplies = -1;
-        }
-        if (!(user.numActorReplies) && user.numActorReplies < -1) {
-            user.numActorReplies = -1;
-        }
-        user.numPosts = user.numPosts + 1;
-        post.postID = user.numPosts;
+
+        const user = await User.findById(req.user.id);
+        const currDate = Date.now();
+
+        const post = {
+            type: "user_post",
+            module,
+            postID: ++user.numPosts,
+            body,
+            picture: picinput,
+            absTime: currDate,
+            relativeTime: currDate - user.createdAt,
+        };
 
         user.posts.push(post);
+        await user.save();
+        res.redirect(`/modual/${module}`);
 
-        user.save((err) => {
-            if (err) {
-                return next(err);
-            }
-            res.redirect('/modual/' + req.body.module);
-        });
-    });
+    } catch (err) {
+        console.error('Error in newPost:', err);
+        next(err);
+    }
 };
 
-function _postAction(req, res, next, functionToRun) {
-    User.findById(req.user.id, (err, user) => {
-        if (err) {
-            return next(err);
-        }
-
-        functionToRun(req, user);
-
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    // You should never see this error.
-                    req.flash('errors', {
-                        msg: 'Something in feedAction went wrong.'
-                    });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({
-                result: "success"
-            });
-        });
-    });
+// Shared action handler
+async function _postAction(req, res, next, actionFunction) {
+    try {
+        const user = await User.findById(req.user.id).exec();
+        actionFunction(req, user);
+        await user.save();
+        res.json({ result: "success" });
+    } catch (err) {
+        next(err);
+    }
 }
 
+// Feed action handler
 function _postUpdateFeedAction(req, user) {
-    let userAction = user.feedAction;
-    // Determine where this action occurred and set to record it in the appropriate field.
+    let userAction;
     switch (req.body.actionType) {
         case 'guided activity':
             userAction = user.guidedActivityAction;
@@ -418,186 +192,96 @@ function _postUpdateFeedAction(req, user) {
             break;
     }
 
-    // Check to see if req.body.postID is a valid ObjectId
-    // In the tutorial and sim sections, they are not (ex: 'esteem_tutorial_post1'). 
-    // In the free play sections, they are indexes (ex: '0')
-    // currently checking using regex; might be better to use mongo's object.isValid() function
-    // Check for the special case where the user tries to conduct a feedAction (liking post is the only action available) on a user-made post
-    // req.body.postID is an index, such as '0', '1', but to save a feedAction, feedAction's post attribute needs to be an ObjectID
-    if (typeof req.body.postID != "undefined" && !req.body.postID.toString().match(/^[0-9a-fA-F]{24}$/) && req.body.actionType === 'free play') {
-        // Find ObjectID of user-made post
+    // Handle user-made posts in free play
+    if (typeof req.body.postID !== "undefined" && 
+        !req.body.postID.toString().match(/^[0-9a-fA-F]{24}$/) && 
+        req.body.actionType === 'free play') {
         const user_post = user.posts.find(post => post.postID.toString() === req.body.postID);
-        // edit postID's attribute to corresponding ObjectID
-        req.body.postID = user_post.id;
+        if (user_post) {
+            req.body.postID = user_post.id;
+        }
     }
 
-    // Then find the object from the right post in feed.
-    let feedIndex = _.findIndex(userAction, function(o) {
-        return o.post == req.body.postID;
-    });
-    if (feedIndex == -1) {
-        //Post does not exist yet in User DB, so we have to add it now
-        let cat = new Object();
-
-        cat.modual = req.body.modual;
-        cat.post = req.body.postID;
-        cat.startTime = 0;
-        //cat.rereadTimes = 0;
-        // add new post into correct location
-        feedIndex = userAction.push(cat) - 1;
+    // Find or create feed action
+    let feedIndex = _.findIndex(userAction, o => o.post == req.body.postID);
+    if (feedIndex === -1) {
+        feedIndex = userAction.push({
+            post: req.body.postID,
+            modual: req.body.modual
+        }) - 1;
     }
 
-    // userAction is the correct action array
-    // we found the right post
-    // and feedIndex is the correct index for that post in the action array
-
-    // interaction with a popup modal
+    // Handle different action types
     if (req.body.modalName) {
-        let modalInfo = new Object();
-        modalInfo.modalOpened = true;
-        modalInfo.modalName = req.body.modalName;
-        modalInfo.modalOpenedTime = req.body.modalOpenedTime;
-        modalInfo.modalViewTime = req.body.modalViewTime;
-        modalInfo.modalCheckboxesCount = req.body.modalCheckboxesCount;
-        modalInfo.modalCheckboxesInput = req.body.modalCheckboxesInput;
-        modalInfo.modalDropdownCount = req.body.modalDropdownCount;
-        modalInfo.modalDropdownClick = req.body.modalDropdownClick;
-        userAction[feedIndex].modal.push(modalInfo);
-    }
-
-    // create a new Comment
-    if (req.body.new_comment) {
-        let cat = new Object();
-        cat.new_comment = true;
-        user.numReplies = user.numReplies + 1;
-        cat.new_comment_id = user.numReplies;
-        cat.comment_body = req.body.comment_text;
-        //cat.commentTime = req.body.new_comment - userAction[feedIndex].startTime;
-
-        // create a new cat.comment id for USER replies here to do actions on them. Empty now
-        cat.absTime = Date.now();
-        // cat.time = cat.absTime - user.createdAt;
-        userAction[feedIndex].comments.push(cat);
-
-        //array of replyTime is empty and we have a new (first) REPLY event
-        if ((!userAction[feedIndex].replyTime)) {
-            userAction[feedIndex].replyTime = [cat.absTime];
-        }
-
-        //Already have a replyTime Array, New REPLY event, need to add this to replyTime array
-        else if ((userAction[feedIndex].replyTime)) {
-            userAction[feedIndex].replyTime.push(cat.absTime);
-        }
-    }
-
-    // Are we doing anything with an existing comment?
-    else if (req.body.commentID) {
-        let commentIndex = _.findIndex(userAction[feedIndex].comments, function(o) {
-            return o.comment == req.body.commentID;
+        userAction[feedIndex].modal.push({
+            modalName: req.body.modalName,
+            modalOpened: true,
+            modalOpenedTime: req.body.modalOpenedTime,
+            modalViewTime: req.body.modalViewTime,
+            modalCheckboxesCount: req.body.modalCheckboxesCount,
+            modalCheckboxesInput: req.body.modalCheckboxesInput,
+            modalDropdownCount: req.body.modalDropdownCount,
+            modalDropdownClick: req.body.modalDropdownClick
         });
-
-        // no comment in this post-actions yet
-        if (commentIndex == -1) {
-            var cat = new Object();
-            cat.comment = req.body.commentID;
-            commentIndex = userAction[feedIndex].comments.push(cat) - 1;
+    } 
+    else if (req.body.new_comment) {
+        const newComment = {
+            new_comment: true,
+            new_comment_id: ++user.numComments,
+            comment_body: req.body.comment_text,
+            absTime: req.body.new_comment,
+        };
+        userAction[feedIndex].comments.push(newComment);
+        userAction[feedIndex].replyTime.push(newComment.absTime);
+    } 
+    else if (req.body.commentID) {
+        let commentIndex = _.findIndex(userAction[feedIndex].comments, o => o.comment == req.body.commentID);
+        if (commentIndex === -1) {
+            commentIndex = userAction[feedIndex].comments.push({ comment: req.body.commentID }) - 1;
         }
 
-        // LIKE A COMMENT
         if (req.body.like) {
-            let like = req.body.like;
-            if (userAction[feedIndex].comments[commentIndex].likeTime) {
-                // this is NOT the first like
-                userAction[feedIndex].comments[commentIndex].likeTime.push(like);
-            } else {
-                // this IS the first like
-                userAction[feedIndex].comments[commentIndex].likeTime = [like];
-            }
+            userAction[feedIndex].comments[commentIndex].likeTime.push(req.body.like);
             userAction[feedIndex].comments[commentIndex].liked = true;
-
-        }
-
-        // FLAG A COMMENT
+        } 
         else if (req.body.flag) {
-            let flag = req.body.flag;
-            if (userAction[feedIndex].comments[commentIndex].flagTime) {
-                // this is NOT the first flag
-                userAction[feedIndex].comments[commentIndex].flagTime.push(flag);
-            } else {
-                // this IS the first flag
-                userAction[feedIndex].comments[commentIndex].flagTime = [flag];
-            }
+            userAction[feedIndex].comments[commentIndex].flagTime.push(req.body.flag);
             userAction[feedIndex].comments[commentIndex].flagged = true;
         }
-
-    } // end of all comment junk
-
-    // else not a comment - it's a post action
+    } 
     else {
-
-        // array of flagTime is empty and we have a new (first) Flag event
-        if ((!userAction[feedIndex].flagTime) && req.body.flag) {
-            let flag = req.body.flag;
-            userAction[feedIndex].flagTime = [flag];
+        if (req.body.flag) {
+            userAction[feedIndex].flagTime = [req.body.flag];
             userAction[feedIndex].flagged = true;
-        }
-
-        //Already have a flagTime Array, New FLAG event, need to add this to flagTime array
-        else if ((userAction[feedIndex].flagTime) && req.body.flag) {
-            let flag = req.body.flag;
-            userAction[feedIndex].flagTime.push(flag);
-            userAction[feedIndex].flagged = true;
-        }
-
-        //array of likeTime is empty and we have a new (first) LIKE event
-        else if ((!userAction[feedIndex].likeTime) && req.body.like) {
-            let like = req.body.like;
-            userAction[feedIndex].likeTime = [like];
+        } 
+        else if (req.body.like) {
+            userAction[feedIndex].likeTime.push(req.body.like);
             userAction[feedIndex].liked = true;
-        }
-
-        //Already have a likeTime Array, New LIKE event, need to add this to likeTime array
-        else if ((userAction[feedIndex].likeTime) && req.body.like) {
-            let like = req.body.like;
-            userAction[feedIndex].likeTime.push(like);
-            userAction[feedIndex].liked = true;
-        }
-
-        // array of shareTime is empty and we have a new (first) Share event
-        else if ((!userAction[feedIndex].shareTime) && req.body.share) {
-            let share = req.body.share;
-            userAction[feedIndex].shareTime = [share];
+        } 
+        else if (req.body.share) {
+            userAction[feedIndex].shareTime.push(req.body.share);
             userAction[feedIndex].shared = true;
         }
-
-        // Already have a shareTime array, New Share event, need to add this to shareTime array
-        else if ((userAction[feedIndex].shareTime) && req.body.share) {
-            let share = req.body.share;
-            userAction[feedIndex].shareTime.push(share);
-            userAction[feedIndex].shared = true;
-        } else {
-            //console.log("Got a POST that did not fit anything. Possible Error.")
-        }
-    } //end of ELSE ANYTHING NOT A COMMENT
+    }
 }
 
 /**
  * POST /feed
- * Update user's actions on posts throughout a module.
- * All likes, flags, popup interactions, new comments (with actions on those
- * comments as well) get added here
+ * Add user's actions on posts throughout a module.
  */
 exports.postUpdateFeedAction = (req, res, next) => {
     _postAction(req, res, next, _postUpdateFeedAction);
 };
 
+// Unique feed action handler
 function _postUpdateUniqueFeedAction(req, user) {
-    let userAction = user.feedAction;
+    let userAction;
     switch (req.body.actionType) {
         case 'accounts':
             userAction = user.accountsAction;
             break;
-        case 'habits' || 'habits-esp':
+        case 'habits':
+        case 'habits-esp':
             userAction = user.habitsAction;
             break;
         case 'privacy':
@@ -607,347 +291,72 @@ function _postUpdateUniqueFeedAction(req, user) {
             userAction = user.feedAction;
             break;
     }
-
-    //Post does not exist yet in User DB, so we have to add it now
-    let cat = req.body.action;
-    // add new post into correct location
-    userAction.push(cat);
+    userAction.push(req.body.action);
 }
 
 /**
  * POST /habitsAction, /accountsAction, /privacyAction
- * Update user's actions (that are unique to the module) throughout a module.
- * ex: a user's clicks, input fields on forms, toggles, selections on dropdown menus
+ * Add user's actions unique to specific modules.
  */
 exports.postUpdateUniqueFeedAction = (req, res, next) => {
     _postAction(req, res, next, _postUpdateUniqueFeedAction);
 };
 
+// Chat action handler
 function _postUpdateChatAction(req, user) {
     let userAction = user.chatAction;
+    let feedIndex = _.findIndex(userAction, o => 
+        o.chatId == req.body.chatId && o.subdirectory1 === req.body.subdirectory1
+    );
 
-    // Find the object from the right chat in chatAction.
-    let feedIndex = _.findIndex(userAction, function(o) {
-        return o.chatId == req.body.chatId && o.subdirectory1 === req.body.subdirectory1;
-    });
-
-    if (feedIndex == -1) {
-        //Post does not exist yet in User DB, so we have to add it now
-        let cat = {};
-        cat.subdirectory1 = req.body.subdirectory1;
-        cat.subdirectory2 = req.body.subdirectory2;
-        cat.chatId = req.body.chatId;
-
-        // add new post into correct location
-        feedIndex = userAction.push(cat) - 1;
+    if (feedIndex === -1) {
+        feedIndex = userAction.push({
+            subdirectory1: req.body.subdirectory1,
+            subdirectory2: req.body.subdirectory2,
+            chatId: req.body.chatId
+        }) - 1;
     }
 
-    // userAction is the correct action array
-    // we found the right post
-    // and feedIndex is the correct index for that chat in the action array
-
-    // create a new message
     if (req.body.message) {
-        let cat = {};
-        cat.message = req.body.message;
-        cat.absTime = req.body.absTime;
-        userAction[feedIndex].messages.push(cat);
-    }
-    // chat was minimized
+        userAction[feedIndex].messages.push({
+            message: req.body.message,
+            absTime: req.body.absTime
+        });
+    } 
     else if (req.body.minimized) {
         userAction[feedIndex].minimized = true;
-        let minimizeTime = req.body.absTime;
-
-        if ((!userAction[feedIndex].minimizedTime)) {
-            userAction[feedIndex].minimizedTime = [minimizeTime];
-        } //Already have a minimizedTime Array, new Minimized event, need to add this to minimizeTime array
-        else {
-            userAction[feedIndex].minimizedTime.push(minimizeTime);
-        }
-    }
-    // chat was closed 
+        userAction[feedIndex].minimizedTime.push(req.body.absTime);
+    } 
     else if (req.body.closed) {
         userAction[feedIndex].closed = true;
-        let closeTime = req.body.absTime;
-        userAction[feedIndex].closedTime = closeTime;
+        userAction[feedIndex].closedTime = req.body.absTime;
     }
 }
 
 /**
  * POST /chatAction
- * Update user's actions on chats throughout a module.
- * All messages, minimize and close chat behavior is added here
+ * Add user's actions on chats throughout a module.
  */
 exports.postUpdateChatAction = (req, res, next) => {
     _postAction(req, res, next, _postUpdateChatAction);
-}
-
-/**
- * POST /deleteUserFeedActions
- * Delete user's feed posts Actions.
- * All likes, flags, new comments (with actions on those comments as well)
- * gets deleted here. This route is currently not used anywhere.
- */
-exports.postDeleteFeedAction = (req, res, next) => {
-    User.findById(req.user.id, (err, user) => {
-        //somehow user does not exist here
-        if (err) { return next(err); }
-
-        user.feedAction = [];
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', { msg: 'Something in delete feedAction went crazy. You should never see this.' });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({ result: "success" });
-        });
-    });
 };
 
-/*
- * POST /startPageAction
- * Update an action on the start page
- * TODO: This function should probably be moved to the user controller.
- */
-exports.postStartPageAction = (req, res, next) => {
-
-    User.findById(req.user.id, (err, user) => {
-
-        // somehow user does not exist here
-        if (err) {
-            return next(err);
+// Generic action handlers
+const createActionHandler = (actionField) => 
+    async (req, res, next) => {
+        try {
+            const user = await User.findById(req.user.id).exec();
+            user[actionField].push(req.body.action);
+            await user.save();
+            res.json({ result: "success" });
+        } catch (err) {
+            next(err);
         }
+    };
 
-        // Define the push location
-        let userAction = user.startPageAction;
-
-        //Post does not exist yet in User DB, so we have to add it now
-        let cat = req.body.action;
-
-        // add new post into correct location
-        userAction.push(cat);
-
-        // save to DB
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', {
-                        msg: 'Something in startPageAction went crazy. You should never see this.'
-                    });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({
-                result: "success"
-            });
-        });
-    });
-};
-
-/**
- * POST /introjsStep
- * Update log data for a introjs step\
- * TODO: This function should probably be moved to the user controller.
- */
-exports.postIntrojsStepAction = (req, res, next) => {
-
-    User.findById(req.user.id, (err, user) => {
-
-        // somehow user does not exist here
-        if (err) {
-            return next(err);
-        }
-
-        // Define the push location in userAction
-        let userAction = user.introjsStepAction;
-
-        // create new object to push to the DB
-        let cat = req.body.action;
-
-        // add new post into correct location
-        userAction.push(cat);
-
-        // save to DB
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', {
-                        msg: 'Something in introjsStepAction went crazy. You should never see this.'
-                    });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({
-                result: "success"
-            });
-        });
-    });
-};
-
-/**
- * POST /blueDot
- * Update a blue dot action
- * TODO: This function should probably be moved to the user controller.
- */
-exports.postBlueDotAction = (req, res, next) => {
-
-    User.findById(req.user.id, (err, user) => {
-
-        // somehow user does not exist here
-        if (err) {
-            return next(err);
-        }
-
-        // Define the push location
-        let userAction = user.blueDotAction;
-
-        //Post does not exist yet in User DB, so we have to add it now
-        let cat = req.body.action;
-
-        // add new post into correct location
-        userAction.push(cat);
-
-        // save to DB
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', {
-                        msg: 'Something in blueDotAction went crazy. You should never see this.'
-                    });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({
-                result: "success"
-            });
-        });
-    });
-};
-
-/*
- * POST /reflection
- * Update a response in the reflection section
- * Each reflection question gets its own action
- * TODO: This function should probably be moved to the user controller.
- */
-exports.postReflectionAction = (req, res, next) => {
-
-    User.findById(req.user.id, (err, user) => {
-
-        // somehow user does not exist here
-        if (err) {
-            return next(err);
-        }
-
-        // Define the push location
-        let userAction = user.reflectionAction;
-
-        //Post does not exist yet in User DB, so we have to add it now
-        let cat = req.body.action;
-        // add new post into correct location
-        userAction.push(cat);
-
-        // save to DB
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', {
-                        msg: 'Something in reflectionAction went crazy. You should never see this.'
-                    });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({
-                result: "success"
-            });
-        });
-    });
-};
-
-/*
- * POST /quiz
- * Add a quiz response in the quiz section
- * Each quiz question gets its own action
- * TODO: This function should probably be moved to the user controller.
- */
-exports.postQuizAction = (req, res, next) => {
-
-    User.findById(req.user.id, (err, user) => {
-        // somehow user does not exist here
-        if (err) {
-            return next(err);
-        }
-
-        // Define the push location
-        let userAction = user.quizAction;
-
-        //Post does not exist yet in User DB, so we have to add it now
-        let cat = req.body.action;
-        // add new post into correct location
-        userAction.push(cat);
-
-        // save to DB
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', {
-                        msg: 'Something in quizAction went crazy. You should never see this.'
-                    });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({
-                result: "success"
-            });
-        });
-    });
-};
-
-/*
- * POST /postViewQuizExplanations
- * Log time user clicked to view quiz explanations
- * Each click to view quiz explanations gets its own action
- * TODO: This function should probably be moved to the user controller.
- */
-exports.postViewQuizExplanations = (req, res, next) => {
-
-    User.findById(req.user.id, (err, user) => {
-        // somehow user does not exist here
-        if (err) {
-            return next(err);
-        }
-
-        // Define the push location
-        let userAction = user.viewQuizExplanations;
-
-        //Post does not exist yet in User DB, so we have to add it now
-        let cat = new Object();
-        cat = req.body.viewAction;
-        // add new post into correct location
-        userAction.push(cat);
-
-        // save to DB
-        user.save((err) => {
-            if (err) {
-                if (err.code === 11000) {
-                    req.flash('errors', {
-                        msg: 'Something in postViewQuizExplanation went crazy. You should never see this.'
-                    });
-                    return res.redirect('/');
-                }
-                return next(err);
-            }
-            res.send({
-                result: "success"
-            });
-        });
-    });
-};
+exports.postStartPageAction = createActionHandler('startPageAction');
+exports.postIntrojsStepAction = createActionHandler('introjsStepAction');
+exports.postBlueDotAction = createActionHandler('blueDotAction');
+exports.postReflectionAction = createActionHandler('reflectionAction');
+exports.postQuizAction = createActionHandler('quizAction');
+exports.postViewQuizExplanations = createActionHandler('viewQuizExplanations');

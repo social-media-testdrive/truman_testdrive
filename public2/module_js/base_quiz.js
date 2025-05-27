@@ -130,8 +130,8 @@ $(window).on("load", function() {
     const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
     const enableShareActivityData = $('meta[name="isShareActivityDataEnabled"]').attr('content') === "true";
 
-    // Add voiceovers from the voiceoverMappings variable
-    Voiceovers.addVoiceovers();
+    // Add voiceovers from the voiceoverMappings variable: Uncomment when voiceovers are added.
+    // Voiceovers.addVoiceovers();
     // Ensure the print/continue buttons don't have any residual classes
     // (these classes would be added after viewing sharing activity data popup, if enabled)
     $('.button.quizCheckAnswersButton, .button.quiz_print')
@@ -273,11 +273,12 @@ $(window).on("load", function() {
 
     // Defining the behavior for the "Show Correct Answers and Explanations" button
     $('.showExplanationButton').on('click', function() {
-        let cat = {};
-        cat.module = currentModule;
-        cat.click = true;
-        cat.absoluteTime = Date.now();
-
+        let cat = {
+            module: currentModule,
+            click: true,
+            absoluteTime: Date.now()
+        };
+        console.log(cat);
         $.post('/postViewQuizExplanations', {
             viewAction: cat,
             _csrf: $('meta[name="csrf-token"]').attr('content')
@@ -338,47 +339,7 @@ $(window).on("load", function() {
 
 function onPrint() {
     if ($('.quiz_print').hasClass('green')) {
-        $(".insertPrint").empty();
-        $(".insertPrint").css('display', 'block');
-
-        // At the moment of cloning and appending the radio elements to ".insertPrint",
-        // the new element has the same name and id of the original one. 
-        // This causes the original radio input to be unchecked. 
-
-        // A way to avoid this is to save the original radio inputs
-        // and resetting it after the cloning and appending is done. 
-
-        // used to save checked radio inputs
-        const answerArray = new Array();
-
-        // Iterate over each prompt and save the radio value (0, 1, 2... ) selected to 'answerArray'
-        $('.quizRadioPrompt').each(function(index) {
-            let radioSelection = $(this)
-                .closest('.ui.segment')
-                .find('.radio.checkbox input:checked').val();
-            answerArray.push(radioSelection);
-        });
-
-        // Append printed elements to '.insertPrint'
-        var scoreBannerText = document.getElementById("scoreBannerHeader").innerHTML;
-        let scoreBannerToAppend = $(document.getElementById("scoreBannerHeader")).clone().removeAttr('id');
-        scoreBannerToAppend.innerHTML = scoreBannerText;
-        if (scoreBannerText !== undefined && scoreBannerText !== '') {
-            $(".insertPrint").append(scoreBannerToAppend);
-        }
-
-        $('.radioQuestion').each(function() {
-            $(this).clone().removeClass('quizPromptSegment').appendTo(".insertPrint");
-        });
         window.print();
-
-        $(".insertPrint").css('display', 'none');
-        // reset radio selections to original radio inputs
-        $('.quizRadioPrompt').each(function(index) {
-            $(this)
-                .closest('.ui.segment')
-                .find('.radio.checkbox input[value=' + answerArray[index] + ']').prop("checked", true);
-        });
     } else {
         if ($('.quizPromptSegment.Q1')
             .is(':hidden')) {

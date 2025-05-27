@@ -1,28 +1,24 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('@node-rs/bcrypt');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// have 2 consts here, and choose which to export depending on the site version
 const userSchema = new mongoose.Schema({
-    username: { type: String, unique: true }, // username, must be unique
-    name: { type: String, default: '' }, // Real name associated with account
+    username: { type: String, unique: true }, // Username, must be unique. In Public TestDrive, this is randomly generated.
+    name: { type: String, default: '' }, // Used in Research TestDrive; real name associated with account.
     // email: {type: String, default: ""},
-    deleted: { type: Boolean, default: false }, // indicates if this account has been "deleted" from a class
-    password: String, // hashed and salted
-    // passwordResetToken: String,
-    // passwordResetExpires: Date,
-    active: { type: Boolean, default: true }, // currently active? Not used in TestDrive
-    isAdmin: { type: Boolean, default: false }, // is an Admin? (only changed directly in DB)
-    isInstructor: { type: Boolean, default: false }, // is this user an Instructor
-    isStudent: { type: Boolean, default: false }, // is this user a student
-    isGuest: { type: Boolean, default: false }, // is this user a guest
-    // className: {type: String, default: ''}, // which class this user belongs to, if a student
-    accessCode: { type: String, default: '' }, // which class this user belongs to, if a student
-    completed: { type: Boolean, default: false }, // Not used in TestDrive
+    deleted: { type: Boolean, default: false }, // Used in Research TestDrive, indicates if user has been "deleted" from a class.
+    password: String, // hashed and salted. Passwords are only set for Research TestDrive, teacher accounts. Else, random.
+    active: { type: Boolean, default: true }, // Used in Research TestDrive, indicates if the user is active. 
+    isAdmin: { type: Boolean, default: false }, // Indicates if user is an Administrator. This value is only changed directly in the database.
+    isInstructor: { type: Boolean, default: false }, // Used in Research TestDrive, indicates if user is an Instructor
+    isStudent: { type: Boolean, default: false }, // Used in Research TestDrive, indicates if user is a Student
+    isGuest: { type: Boolean, default: false }, // Indicates if user is a Guest. All Public TestDrive users are guests.
+    // className: {type: String, default: ''}, // Used in Research TestDrive; which class this user belongs to, if a student
+    accessCode: { type: String, default: '' }, // Used in Research TestDrive; AccessCode identifying which class this user belongs to, if a student
     reflectionCsv: { type: String, default: '' },
     timeReportCsv: { type: String, default: '' },
-    moduleProgress: { // marks the progress of each module: none, started, completed
+    moduleProgress: { // Used in Research TestDrive, marks the progress of each module: "none", "started", "completed".
         accounts: { type: String, default: 'none' },
         advancedlit: { type: String, default: 'none' },
         cyberbullying: { type: String, default: 'none' },
@@ -36,553 +32,343 @@ const userSchema = new mongoose.Schema({
         safeposting: { type: String, default: 'none' },
         targeted: { type: String, default: 'none' },
     },
-    earnedBadges: [new Schema({ // list of badges earned by the user, see testdriveBadges.json file
+    earnedBadges: [new Schema({ // List of badges earned by the user, see testdriveBadges.json file.
         badgeId: String,
         badgeTitle: String,
         badgeImage: String,
         dateEarned: Date
     })],
-    numPosts: { type: Number, default: -1 }, // How many posts has this user created? not including replys
-    numReplies: { type: Number, default: -1 }, // How many comments has user made
-    // numActorReplies: { type: Number, default: -1 }, // How many times has an actor commented on this user
+    numPosts: { type: Number, default: -1 }, // Indicates the number of posts the user has created.
+    numComments: { type: Number, default: -1 }, // Indicates the number of comments the user has created.
 
-    lastNotifyVisit: Date, // date user last visited the site
+    lastNotifyVisit: Date, // The absolute date (time) that the user last visited the site. 
 
-    mturkID: String, // Not used in TestDrive
+    // blocked: [String], // List of usernames of actors that the user has blocked, Not used in TestDrive
+    // reported: [String], // List of usernames of actors that the user has reported, Not used in TestDrive
 
-    // Experimental group of this user
-    // Not used in TestDrive
-    // group: String, // full group type
-    // ui: String,    // just UI type (no or ui)
-    // notify: String, // notification type (no, low or high)
-
-    // tokens: Array,
-
-    blocked: [String], // actors user has blocked, Not used in TestDrive
-    reported: [String], // actors user has reported, Not used in TestDrive
-
-    targetedAdTopic: [String], // Food, Gaming, or Sports
-    esteemTopic: [String], // Food, Gaming, or Sports
-    advancedlitTopic: { type: String, default: "" }, // Music, Gaming, or Sports, Not used currently
-    habitsTimer: [Number], // How long the user has been on the free-play page each time they visit, use sum of this array to get a total time.
-    firstHabitViewTime: { type: Number, default: -1 }, // The time that the user first opened the free-play section of the habits module
-    // if the user clicked to view quiz explanations
-    voiceoverTimer: [Number], // How long the user has kept the voiceover on, use sum of this array to get a total time
-    viewQuizExplanations: [new Schema({
-        module: String, // Which lesson module does this belong to
-        click: Boolean, // Did user click to view explanations?
-        absoluteTime: Date, // the absolute date the user clicked to view explanations
+    targetedAdTopic: [String], // List of interests that the user selected in targeted module: "Food", "Gaming", or "Sports". Order: Least recently selected to most recently selected.
+    esteemTopic: [String], // List of interests that the user selected in the esteem module: "Food", "Gaming", or "Sports". Order: Least recently selected to most recently selected.
+    habitsTimer: [Number], // List of time durations (in milliseconds), indicating how long the user has been on the free-play page in the habits module. Use sum of this array to get a total time.
+    firstHabitViewTime: { type: Number, default: -1 }, // The absolute date (time) that the user first opened the free-play section of the habits module.
+    voiceoverTimer: [Number], // List of time durations (in milliseconds), indicating how long the voiceover is on. Use the sum of this array to get a total time.
+    viewQuizExplanations: [new Schema({ // Indicates if the user has clicked to view quiz answer explanations.
+        module: String, // Indicates which module the action is completed in.
+        click: Boolean, // Indicates if the user clicked to view explanations.
+        absoluteTime: Date, // The absolute date (time) that the user clicked to view explanations.
     })],
 
-    // User created posts
+    // User-made posts
     posts: [new Schema({
-        type: String, // post, reply, actorReply (in TestDrive, it's always "user_post")
-        module: String, // Which lesson module does this belong to
+        type: String, // In TestDrive, this value is always "user_post".
+        module: String, // Indicates which module the post is made in.
 
-        postID: Number, // number for this post (1,2,3...) reply get -1 maybe should change to a String ID system
-        body: { type: String, default: '', trim: true }, // body of post or reply
-        picture: String, // picture for post
+        postID: Number, // ID for this post (0, 1,2,3...)
+        body: { type: String, default: '', trim: true }, // Body of post caption
+        picture: String, // Picture selected
 
-        // replyID: Number, //use this for User Replies (not used in TestDrive)
-        // reply: {type: Schema.ObjectId, ref: 'Script'}, //Actor Post reply is to =>
-        //
-        // //not used in testDrive
-        // actorReplyID: Number, //An Actor reply to a User Post
-        // actorReplyOBody: String, //Original Body of User Post
-        // actorReplyOPicture: String, //Original Picture of User Post
-        // actorReplyORelativeTime: Number,
-        // actorAuthor: {type: Schema.ObjectId, ref: 'Actor'},
-
-        // Actor Comments for User Made Posts, Not used in TestDrive
-        comments: [new Schema({
-            actor: { type: Schema.ObjectId, ref: 'Actor' },
-            body: { type: String, default: '', trim: true }, // body of comment
-            commentID: Number, // ID of the comment
-            time: Number, // reletive in millisecons
-            absTime: Number, // absolute time in millisecons (time in took place in real world)
-            new_comment: { type: Boolean, default: false }, // is new comment
-            isUser: { type: Boolean, default: false }, // is this a user comment on their own post
-            liked: { type: Boolean, default: false }, // has the user liked it?
-            flagged: { type: Boolean, default: false }, // is Flagged?
-            likes: Number // number of likes this comment has
-        }, { versionKey: false })],
-
-        absTime: Date, // absolute date (time in real world), this post took place in
-        relativeTime: { type: Number } // time the user made the post, relative to when the account was created (in milliseconds)
+        absTime: Date, // The absolute date (time) that the user made the post.
+        relativeTime: { type: Number } // The relative time (relative to when the user's account was created) that the user made the post, in milliseconds.
     })],
 
-    // logins user made to site
+    // List of absolute dates, indicating when a user has logged in.
     log: [new Schema({
         time: Date,
     })],
 
-    // pages user has visited
+    // List of pages that the user has visisted.
     pageLog: [new Schema({
-        time: Date,
+        time: Date, // The absolute date (time) that the user visited the page.
         subdirectory1: String,
         subdirectory2: String
     })],
 
-    // When and why someone reported an actor, Not used in TestDrive
-    blockAndReportLog: [new Schema({
-        time: Date,
-        action: String,
-        report_issue: String,
-        actorName: String
-    })],
-
-    // start page log data
+    // Start Page Actions
     startPageAction: [new Schema({
-        subdirectory1: String, // which page the user is on
-        subdirectory2: String, // which module the user is on
-        actionType: { type: String }, // Next or Term
-        vocabTerm: { type: String }, // none if actionType is "next"
-        absoluteTimestamp: Date // time the action occurred in the real world
+        subdirectory1: String, // Indicates which page the user is on. This value is always "start".
+        subdirectory2: String, // Indicates which module the action is completed in.
+        actionType: { type: String }, // Indicates the type of action; values: "next_showLearnSection", "next_showKeyIdeas", "KeyIdea".
+        vocabTerm: { type: String }, // Indicates which vocab term was clicked. Value is null if actionType is "next_".
+        absoluteTimestamp: Date // The absolute date (time) that the user clicked button.
     }, { _id: true, versionKey: false })],
 
-    // step log data (for any walkthrough-style text bubbles)
+    // IntroJsStep Actions: (the walkthrough-style text bubbles)
     introjsStepAction: [new Schema({
-        subdirectory1: String, // which page the user is on
-        subdirectory2: String, // which module the user is on
-        stepNumber: Number, // which step this action is on (steps start from 0)
-        viewDuration: Number, // how long the user was on this step (milliseconds)
-        absoluteStartTime: Date // time the step opened in the real world
+        subdirectory1: String, // Indicates which page the user is on.
+        subdirectory2: String, // Indicates which module the action is completed in.
+        stepNumber: Number, // Indicates which step the user clicked (steps start from 0).
+        viewDuration: Number, // Time duration indicating how long the user was on this step, in milliseconds.
+        absoluteStartTime: Date // The absolute date (time) that the step first opened/ appeared.
     }, { _id: true, versionKey: false })],
 
-    // blue dot action in a guided activity
+    // Blue Dot Actions
     blueDotAction: [new Schema({
-        subdirectory1: String, // which page the user is on
-        subdirectory2: String, // which module the user is on
-        dotNumber: Number, // which dot was opened
-        absoluteTimeOpened: Date, // date of when the dot was opened
-        viewDuration: Number, // how long the user viewed the dot (milliseconds)
-        clickedGotIt: Boolean
+        subdirectory1: String, // Indicates which page the user is on.
+        subdirectory2: String, // Indicates which module the action is completed in.
+        dotNumber: Number, // Indicates which dot was opened.
+        viewDuration: Number, // Time duration indicating how long the user viewed the dot, in milliseconds.
+        absoluteTimeOpened: Date, // The absolute date (time) that the dot was opened.
+        clickedGotIt: Boolean // Indicates if the blue dot was closed via clicking "Got it". If false, blue dot was closed by clicking outside of the prompt.
     }, { _id: true, versionKey: false })],
 
-    // only used in 'accounts' module (in the sim section), to record user's input in form fields
+    // Only used in the 'accounts' module (in the sim , sim2 section), to record user's input in form fields.
     accountsAction: [new Schema({
-        subdirectory1: String, // which page the user is on 
-        subdirectory2: String, // which module the user is on, should always be 'accounts', 
-        inputField: String, //which field is this for?
-        inputText: String, //user input into the field (for /sim/accounts page, it is the actual value, for /sim2/accounts page, it is "true" or "false", indicating if they provided an input)
-        passwordStrength: String, // unique only to password inputField
-        absoluteTimestamp: Date // time the user clicked "Let's Continue", which logs the answers
+        subdirectory1: String, // Indicates which page the user is on.
+        subdirectory2: String, // Indicates which module the action is completed in. This value is always "accounts". 
+        inputField: String, // Indicates which field the action corresponds to. 
+        inputText: String, // Value of field input (for /sim/accounts page, it is the actual value, for /sim2/accounts page, it is "true" or "false", indicating if they provided an input. This is to avoid collecting student information.)
+        passwordStrength: String, // Indicates password strength. Value is null if inputField is not "password".
+        absoluteTimestamp: Date // The absolute date (time) that the user clicked "Let's Continue", which logs the answers.
     }, { _id: true, versionKey: false })],
 
-    // only used in 'habits' module (in the sim3, sim4, modual sections), to record user's clicks and settings
+    // Only used in 'habits' module (in the sim3, sim4, modual sections), to record user's clicks and settings.
     habitsAction: [new Schema({
-        subdirectory1: String, // which page the user is on 
-        subdirectory2: String, // which module the user is on, should always be 'habits', 
+        subdirectory1: String, // Indicates which page the user is on.
+        subdirectory2: String, // Indicates which module the action is completed in. This value is always "habits". 
         actionType: String, // clickNotificationsTab, clickSettingsTab, clickMyActivityTab, setPauseNotifications,  setDailyReminder, togglePauseNotifications, clickNotificationPopup, clickNotificationItem
-        setValue: String, // value that was set (only used when actionType is setPauseNotifications, setDailyReminder, togglePauseNotifications)
-        absoluteTimestamp: Date // time the user did action
-            // viewDuration: Number // how long the user viewed pop up post (milliseconds)
+        setValue: String, // Value that was set (only used when actionType is setPauseNotifications, setDailyReminder, togglePauseNotifications)
+        absoluteTimestamp: Date // The absolute date (time) that the user did action.
     }, { _id: true, versionKey: false })],
 
-    // only used in 'privacy' module (in the tutorial, sim section), to record user's input in form fields
+    // Only used in 'privacy' module (in the tutorial, sim section), to record user's input in form fields.
     privacyAction: [new Schema({
-        subdirectory1: String, // which page the user is on 
-        subdirectory2: String, // which module the user is on, should always be 'privacy', 
-        inputField: String, //which field is this for?
-        inputText: String, //user input into the field
-        absoluteTimestamp: Date // time the user changed value of form field
+        subdirectory1: String, // Indicates which page the user is on.
+        subdirectory2: String, // Indicates which module the action is completed in. This value is always "privacy". 
+        inputField: String, // Indicates which input field.
+        inputText: String, // Value that was set.
+        absoluteTimestamp: Date // The aboslute date (time) the user did action.
     }, { _id: true, versionKey: false })],
 
-    // all actions a user can make in a chatbox
+    // Only used in 'safe-posting' module, to record user's actions with chatboxes.
     chatAction: [new Schema({
-        chatId: String, // which chat did the user interact with?
-        subdirectory1: String, // which page the user is on
-        subdirectory2: String, // which module the user is on
+        chatId: String, // Indicates which chat the user interacted with.
+        subdirectory1: String, // Indicates which page the user is on.
+        subdirectory2: String, // Indicates which module the action is completed in.
         messages: [new Schema({
-            message: String, // message
-            absTime: Date, // absolute time the message was sent
+            message: String, // Body (text) of message
+            absTime: Date, // The absolute date (time) the message was sent
         }, { _id: true, versionKey: false })],
-        minimized: { type: Boolean, default: false }, // is miminized? 
-        closed: { type: Boolean, default: false }, // is closed?
-        minimizedTime: [Date], // array for when chat was minimized
-        closedTime: Date, // when chat was closed
+        minimized: { type: Boolean, default: false }, // Indicates if the module was miminized.
+        closed: { type: Boolean, default: false }, // Indicates if the module was closed.
+        minimizedTime: [Date], // Array of absolute dates (times) for when chat minimization was clicked.
+        closedTime: Date, // The absolute date (time) the chat was closed
     }, { _id: true, versionKey: false })],
 
-    // all actions a user can make in the tutorial (not including introjs steps)
+    // Actions done on posts in the 'tutorial' section of modules.
     tutorialAction: [new Schema({
-        post: String, //which post did the user interact with?
-        modual: String, //which lesson mod did this take place in?
-        startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
-        liked: { type: Boolean, default: false }, //did the user like this post in the feed?
-        flagged: { type: Boolean, default: false }, //did the user flag this post in the feed?
-        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
-        flagTime: [Date], //same but for flagging
-        likeTime: [Date], //same but for liking
-        shareTime: [Date], //same but for sharing
-        replyTime: [Date], //same but for commenting
-        comments: [new Schema({
-            comment: String,
-            liked: { type: Boolean, default: false }, //is liked?
-            flagged: { type: Boolean, default: false }, //is Flagged?
-            flagTime: [Date], //array of flag times
-            likeTime: [Date], //array of like times
+        post: String, // Indicates which post the user interacted with. Format is: "${module}_tutorial_post${#}".
+        modual: String, // Indicates which module the action is completed in.
+        liked: { type: Boolean, default: false }, // Indicates if the user liked the post.
+        flagged: { type: Boolean, default: false }, // Indicates if the user flagged the post. Functionality is disabled in tutorial sections, so this value is always false.
+        shared: { type: Boolean, default: false }, // Indicates if the user shared the post. Functionality is disabled in tutorial sections, so this value is always false.
+        likeTime: [Date], // Array of absolute dates (times) of when the user liked the post.
+        flagTime: [Date], // Array of absolute dates (times) of when the user flagged the post. Should always be empty.
+        shareTime: [Date], // Array of asbsolute dates (times) of when the user shared the post. Should always be empty.
+        replyTime: [Date], // Array of absolute dates (times) of when the user made a comment on the post.
 
-            new_comment: { type: Boolean, default: false }, //is new comment
-            new_comment_id: String, //ID for comment
-            comment_body: String, // Text the user wrote (if the comment was user-made)
-            absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
-            // commentTime: { type: Number }, / / Not used in TestDrive
-            // time: {type: Number}
+        comments: [new Schema({
+            comment: String, // Indicates which comment the user interacted with. Format is: "${module}_tutorial_post${#}_comment${#}". Empty if comment is a user comment.
+            liked: { type: Boolean, default: false }, // Indicates if the user liked the comment.
+            flagged: { type: Boolean, default: false }, // Indicates if the user liked the comment. Functionality is disabled in tutorial sections, so this value is always false.
+            likeTime: [Date], // Array of absolute dates (times) of when the user liked the comment.
+            flagTime: [Date], // Array of absolute dates (times) of when the user flagged the comment. Should always be empty.
+
+            new_comment: { type: Boolean, default: false }, // Indicates if the comment is a user comment.
+            new_comment_id: String, // ID of user comment. Starts with 0.
+            comment_body: String, // Body (text) of user comment.
+            absTime: Date, // The absolute date (time) of when the user made the comment.
         }, { _id: true, versionKey: false })]
     }, { _id: true, versionKey: false })],
 
-    // all actions a user can make in the guided activity (not blue dots)
+    // Actions done on posts in the 'guided activity' section of modules.
     guidedActivityAction: [new Schema({
-        post: String, //which post did the user interact with?
-        modual: String, //which lesson mod did this take place in?
-        startTime: Number, //always the newest startTime (full date in ms) (not used in TestDrive)
-        liked: { type: Boolean, default: false }, //did the user like this post in the feed?
-        flagged: { type: Boolean, default: false }, //did the user flag this post in the feed?
-        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
-        flagTime: [Date], //same but for flagging
-        likeTime: [Date], //same but for liking
-        shareTime: [Date], //same but for sharing
-        replyTime: [Date], //same but for commenting
+        post: String, // Indicates which post the user interacted with. Format is: "${module}_sim_post${#}".
+        modual: String, // Indicates which module the action is completed in.
+        liked: { type: Boolean, default: false }, // Indicates if the user liked the post.
+        flagged: { type: Boolean, default: false }, // Indicates if the user flagged the post. Functionality is disabled in tutorial sections, so this value is always false.
+        shared: { type: Boolean, default: false }, // Indicates if the user shared the post. Functionality is disabled in tutorial sections, so this value is always false.
+        likeTime: [Date], // Array of absolute dates (times) of when the user liked the post.
+        flagTime: [Date], // Array of absolute dates (times) of when the user flagged the post. Should always be empty.
+        shareTime: [Date], // Array of asbsolute dates (times) of when the user shared the post. Should always be empty.
+        replyTime: [Date], // Array of absolute dates (times) of when the user made a comment on the post.
 
-        // popup modal info
         modal: [new Schema({
-            modalName: String, // Name of modal opened
-            modalOpened: { type: Boolean, default: false }, // Whether them modal was opened
-            modalOpenedTime: Date, // Real-life time when modal was opened
-            modalViewTime: Number, // Duration of time that the modal was open (in milliseconds)
-            modalCheckboxesCount: Number, // How many checkboxes are present in the modal
-            modalCheckboxesInput: Number, // Number which, when converted to binary format, corresponds to which checkboxes were checked
-            modalDropdownCount: Number, // How many accordion triangles are present in the modal
-            modalDropdownClick: Number // Which accordion triangles were clicked, when converted to binary format
+            modalName: String, // Name of the modal opened
+            modalOpened: { type: Boolean, default: false }, // Indicates if modal was opened.
+            modalOpenedTime: Date, // The absolute date (time) of when the modal was opened.
+            modalViewTime: Number, // The duration (how long) the modal was open, in milliseconds.
+            modalCheckboxesCount: Number, // Indicates how many checkboxes are present in the modal.
+            modalCheckboxesInput: Number, // Number which, when converted to binary format, corresponds to which checkboxes were checked in the modal.
+            modalDropdownCount: Number, // Indicates how many accordion triangles are present in the modal.
+            modalDropdownClick: Number // Number which, when converted to binary format, corresponds to Which accordion triangles were clicked in the modal.
         }, { _id: false, versionKey: false })],
 
-        // user created comment on an actor's post (fake post)
         comments: [new Schema({
-            comment: String,
-            liked: { type: Boolean, default: false }, // is liked?
-            flagged: { type: Boolean, default: false }, // is Flagged?
-            flagTime: [Date], // array of flag times
-            likeTime: [Date], // array of like times
+            comment: String, // Indicates which comment the user interacted with. Format is: "${module}_sim_post${#}_comment${#}". Empty if comment is a user comment.
+            liked: { type: Boolean, default: false }, // Indicates if the user liked the comment.
+            flagged: { type: Boolean, default: false }, // Indicates if the user liked the comment. Functionality is disabled in tutorial sections, so this value is always false.
+            likeTime: [Date], // Array of absolute dates (times) of when the user liked the comment.
+            flagTime: [Date], // Array of absolute dates (times) of when the user flagged the comment. Should always be empty.
 
-            new_comment: { type: Boolean, default: false }, // is new comment
-            new_comment_id: String, // ID for comment
-            comment_body: String, // Text the user wrote (if the comment was user-made)
-            absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
-            commentTime: { type: Number }, // Not used in TestDrive
-            // time: {type: Number}
+            new_comment: { type: Boolean, default: false }, // Indicates if the comment is a user comment.
+            new_comment_id: String, // ID of user comment. Starts with 0.
+            comment_body: String, // Body (text) of user comment.
+            absTime: Date, // The absolute date (time) of when the user made the comment.
         }, { _id: true, versionKey: false })]
     }, { _id: true, versionKey: false })],
 
-    // all actions a user can make in a feed
+    // Actions done on posts in the 'free play' section of modules.
     feedAction: [new Schema({
-        post: { type: Schema.ObjectId, ref: 'Script' }, // which post did the user interact with?
-        modual: String, // which lesson mod did this take place in?
-        postClass: String, // class of the post itself (don't think this is used anymore)
-        rereadTimes: Number, // number of times post has been viewed by user (not used in TestDrive)
-        startTime: Number, // always the newest startTime (full date in ms) (not used in TestDrive)
-        liked: { type: Boolean, default: false }, // did the user like this post in the feed?
-        flagged: { type: Boolean, default: false }, // did the user flag this post in the feed?
-        shared: { type: Boolean, default: false }, //did the user share this post in the feed?
-        readTime: [Number], // array of how long a user read a post. Each read is a new element in this array
-        flagTime: [Date], // same but for flagging
-        likeTime: [Date], // same but for liking
-        shareTime: [Date], //same but for sharing
-        replyTime: [Date], // same but for commenting
+        post: { type: Schema.ObjectId, ref: 'Script' }, // Indicates which post the user interacted with. ObjectId references object in Scripts or object in user.posts.
+        modual: String, // Indicates which module the action is completed in.
+        liked: { type: Boolean, default: false }, // Indicates if the user liked the post.
+        flagged: { type: Boolean, default: false }, // Indicates if the user flagged the post. Functionality is disabled in tutorial sections, so this value is always false.
+        shared: { type: Boolean, default: false }, // Indicates if the user shared the post. Functionality is disabled in tutorial sections, so this value is always false.
+        likeTime: [Date], // Array of absolute dates (times) of when the user liked the post.
+        flagTime: [Date], // Array of absolute dates (times) of when the user flagged the post. Should always be empty.
+        shareTime: [Date], // Array of asbsolute dates (times) of when the user shared the post. Should always be empty.
+        replyTime: [Date], // Array of absolute dates (times) of when the user made a comment on the post.
 
-        // popup modal info
         modal: [new Schema({
-            modalName: String, // Name of modal opened
-            modalOpened: { type: Boolean, default: false }, // Whether them modal was opened
-            modalOpenedTime: Date, // Real-life time when modal was opened
-            modalViewTime: Number, // Duration of time that the modal was open (in milliseconds)
-            modalCheckboxesCount: Number, // How many checkboxes are present in the modal
-            modalCheckboxesInput: Number, // Number which, when converted to binary format, corresponds to which checkboxes were checked
-            modalDropdownCount: Number, // How many accordion triangles are present in the modal
-            modalDropdownClick: Number // Which accordion triangles were clicked, when converted to binary format
+            modalName: String, // Name of the modal opened
+            modalOpened: { type: Boolean, default: false }, // Indicates if modal was opened.
+            modalOpenedTime: Date, // The absolute date (time) of when the modal was opened.
+            modalViewTime: Number, // The duration (how long) the modal was open, in milliseconds.
+            modalCheckboxesCount: Number, // Indicates how many checkboxes are present in the modal.
+            modalCheckboxesInput: Number, // Number which, when converted to binary format, corresponds to which checkboxes were checked in the modal.
+            modalDropdownCount: Number, // Indicates how many accordion triangles are present in the modal.
+            modalDropdownClick: Number // Number which, when converted to binary format, corresponds to Which accordion triangles were clicked in the modal.
         }, { _id: false, versionKey: false })],
 
-        // user created comment on an actor's post (fake post)
         comments: [new Schema({
-            comment: { type: Schema.ObjectId }, // ID Reference for Script post comment
-            liked: { type: Boolean, default: false }, // is liked?
-            flagged: { type: Boolean, default: false }, // is Flagged?
-            flagTime: [Date], // array of flag times
-            likeTime: [Date], // array of like times
+            comment: String, // Indicates which comment the user interacted with. Format is: "${module}_sim_post${#}_comment${#}". Empty if comment is a user comment.
+            liked: { type: Boolean, default: false }, // Indicates if the user liked the comment.
+            flagged: { type: Boolean, default: false }, // Indicates if the user liked the comment. Functionality is disabled in tutorial sections, so this value is always false.
+            likeTime: [Date], // Array of absolute dates (times) of when the user liked the comment.
+            flagTime: [Date], // Array of absolute dates (times) of when the user flagged the comment. Should always be empty.
 
-            new_comment: { type: Boolean, default: false }, // is new comment
-            new_comment_id: Number, // ID for comment
-            comment_body: String, // Text the user wrote (if the comment was user-made)
+            new_comment: { type: Boolean, default: false }, // Indicates if the comment is a user comment.
+            new_comment_id: String, // ID of user comment. Starts with 0.
+            comment_body: String, // Body (text) of user comment.
             comment_index: Number, // Index of comment on post
-            absTime: Date, // Real-life timestamp of when the comment was made (user-made only)
-            commentTime: { type: Number }, // Not used in TestDrive
-            // time: {type: Number}
+            absTime: Date, // The absolute date (time) of when the user made the comment.
         }, { _id: true, versionKey: false })]
     }, { _id: true, versionKey: false })],
 
-    // action in the reflection section
+    // Submission in the 'reflection' section
     reflectionAction: [new Schema({
-        absoluteTimeContinued: Date, // time that the user left the page by clicking continue
-        modual: String, // which lesson mod did this take place in?
-        attemptDuration: Number, // how long the user took for the reflection attempt (milliseconds)
+        absoluteTimeContinued: Date, // The absolute date (time) that the user left the page by clicking "Continue".
+        modual: String, // Indicates which module the action is completed in.
+        attemptDuration: Number, // The duration (how long) the user took for the reflection submission/attempt, in milliseconds.
         answers: [new Schema({
-            questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
-            prompt: String,
-            type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
-            writtenResponse: String,
-            radioSelection: String, // this is for the presentation module
-            numberOfCheckboxes: Number,
-            checkboxResponse: Number,
-            checkedActualTime: Boolean, // this is unique to the habits module
+            questionNumber: String, // Indicates which question. See reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'.
+            prompt: String, // Body (text) of the question prompt.
+            type: String, // Indicates the type of response: 'written', 'checkbox', 'radio', 'habitsUnique'
+            writtenResponse: String, // Body (text) of user's response.
+            radioSelection: String, // Radio selection (only used in 'presentation' module) of user's response.
+            numberOfCheckboxes: Number, // Indicates how many checkboxes are present in the question.
+            checkboxResponse: Number, // Number which, when converted to binary format, corresponds to which checkboxes were checked in the user's response.
+            checkedActualTime: Boolean, // Indicates if user checked their time in free play section. This is unique to the 'habits' module.
         }, { _id: false, versionKey: false })],
     }, { _id: true, versionKey: false })],
 
-    // action in the quiz section
+    // Submission in the 'quiz' section
     quizAction: [new Schema({
-        absoluteTimeContinued: Date, // time that the user submitted their answers by clicking "Check My Answers"
-        modual: String, // the modual corresponding to the quiz answers
-        attemptNumber: Number, // this tracks the user's attempt (i.e. 0, 1, 2)
-        attemptDuration: Number, // how long the user took for the quiz attempt (milliseconds)
+        absoluteTimeContinued: Date, // The absolute date (time) that the user submitted their answers by clicking "Check My Answers".
+        modual: String, // Indicates which module the action is completed in.
+        attemptNumber: Number, // Indicates which quiz attempt (i.e. 0, 1, 2)
+        attemptDuration: Number, // The duration (how long) the user took for the quiz attempt, in milliesconds.
         answers: [new Schema({
-            questionNumber: String, // corresponds with quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
-            prompt: String, // question prompt text
-            // type: String, // Which type of response this will be: It is always "radio"
-            radioSelectionIndex: Number, // radio selection index
-            radioSelection: String, // radio selection text
+            questionNumber: String, // Indicates which question. See quizSectionData.json, i.e. 'Q1', 'Q2', 'Q3'.
+            prompt: String, // Body (text) of the question prompt.
+            radioSelectionIndex: Number, // Radio selection of user's response.
+            radioSelection: String, // Body (text) of the radio selection of user's response.
         }, { _id: false, versionKey: false })],
-        numCorrect: Number // the number of questions they answered correctly
+        numCorrect: Number // The number of questions the user answered correctly in attempt.
     }, { _id: true, versionKey: false })],
 
-    //users profile
+    // User profile
     profile: {
-        name: String,
-        location: String,
-        bio: String,
-        picture: String
+        name: { type: String, default: '', trim: true },
+        location: { type: String, default: '', trim: true },
+        bio: { type: String, default: '', trim: true },
+        picture: { type: String, default: '', trim: true }
     },
 
-    // history of all changes to the user profile
+    // List (history) of all changes to the user profile
     profileHistory: [new Schema({
-        absoluteTimeChanged: Date,
-        name: String,
-        location: String,
-        bio: String,
-        picture: String
+        absoluteTimeChanged: Date, // The absolute date (time) the profile was changed
+        name: String, // Value of the new profile name
+        location: String, // Value of the new location
+        bio: String, // Value of the new bio
+        picture: String // Value of the new picture
     }, { _id: true, versionKey: false })],
 }, { timestamps: true });
 
 /**
  * Password hash middleware.
  */
-userSchema.pre('save', function save(next) {
+userSchema.pre('save', async function save(next) {
     const user = this;
     if (!user.isModified('password')) { return next(); }
-    bcrypt.genSalt(10, (err, salt) => {
-        if (err) { return next(err); }
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            if (err) { return next(err); }
-            user.password = hash;
-            next();
-        });
-    });
+    try {
+        user.password = await bcrypt.hash(user.password, 10);
+        next();
+    } catch (err) {
+        next(err);
+    }
 });
 
 /**
  * Helper method for validating user's password.
  */
-userSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-        cb(err, isMatch);
-    });
+userSchema.methods.comparePassword = async function comparePassword(candidatePassword, cb) {
+    try {
+        cb(null, await bcrypt.verify(candidatePassword, this.password));
+    } catch (err) {
+        cb(err);
+    }
 };
 
 /**
- * Add Log to User regardless of when last access was
+ * Helper method to log when a user has logged in.
  */
-userSchema.methods.logUser = function logUser(time) {
-    if (this.log.length > 0) {
-        var log = {};
-        log.time = time;
-        this.log.push(log);
-    } else if (this.log.length == 0) {
-        var log = {};
-        log.time = time;
-        this.log.push(log);
+userSchema.methods.logUser = async function logUser(time) {
+    try {
+        this.log.push({
+            time: time
+        });
+        await this.save();
+    } catch (err) {
+        console.log(err);
     }
-    this.lastNotifyVisit = time;
-    this.save((err) => {
-        if (err) {
-            return next(err);
-        }
-    });
 };
 
-userSchema.methods.logPage = function logPage(time, subdirectory1, subdirectory2) {
-    let log = {};
-    log.time = time;
-    if (subdirectory1 !== undefined) {
-        log.subdirectory1 = subdirectory1;
-        log.subdirectory2 = subdirectory2;
-    } else {
-        log.subdirectory1 = "home";
-        log.subdirectory2 = "";
+/**
+ * Helper method to log the pages the user has visited. 
+ */
+userSchema.methods.logPage = async function logPage(time, subdirectory1, subdirectory2) {
+    try {
+        this.pageLog.push({
+            time: time,
+            subdirectory1: subdirectory1 ? subdirectory1 : "home",
+            subdirectory2: subdirectory2 ? subdirectory2 : ""
+        });
+        await this.save();
+    } catch (err) {
+        console.log(err);
     }
-    this.pageLog.push(log);
 };
 
 /**
  * Helper method for getting all User Posts.
  */
-userSchema.methods.getPosts = function getPosts() {
-    var temp = [];
-    for (var i = 0, len = this.posts.length; i < len; i++) {
-        if (this.posts[i].postID >= 0)
-            temp.push(this.posts[i]);
-    }
-
-    temp.sort(function(a, b) {
-        return a.postID - b.postID;
+userSchema.methods.getPosts = function getPosts(module) {
+    let ret = this.posts.filter(post => post.module == module);
+    ret.sort(function(a, b) {
+        return b.relativeTime - a.relativeTime;
     });
-
-    return temp;
-
+    return ret;
 };
-
-/**
- * Helper method for getting all User replies.
- no longer needed in Truman or TestDrive
- */
-userSchema.methods.getReplies = function getReplies() {
-    var temp = [];
-    for (var i = 0, len = this.posts.length; i < len; i++) {
-        if (this.posts[i].replyID >= 0)
-            temp.push(this.posts[i]);
-    }
-
-    temp.sort(function(a, b) {
-        return a.postID - b.postID;
-    });
-
-    return temp;
-};
-
-/**
- * Helper method for getting all User Posts in a lesson mod
- This way posts made in one lesson mod don't show up in another
-*/
-userSchema.methods.getModPosts = function getModPosts(module) {
-    var temp = [];
-    for (var i = 0, len = this.posts.length; i < len; i++) {
-        if (this.posts[i].postID >= 0 && this.posts[i].module == module)
-            temp.push(this.posts[i]);
-    }
-    //sort to ensure that posts[x].postID == x
-    temp.sort(function(a, b) {
-        return a.postID - b.postID;
-    });
-
-    return temp;
-};
-
-/**
- * Helper method for getting all User Replies from Lesson Mod.
- not needed anymore now that we have comments instead of replies
- */
-userSchema.methods.getModReplies = function getModReplies(module) {
-    var temp = [];
-    for (var i = 0, len = this.posts.length; i < len; i++) {
-        if (this.posts[i].replyID >= 0 && this.posts[i].module == module)
-            temp.push(this.posts[i]);
-    }
-
-    temp.sort(function(a, b) {
-        return a.postID - b.postID;
-    });
-
-    return temp;
-};
-
-/**
- * Helper method for getting all User Posts and replies.
- */
-userSchema.methods.getPostsAndReplies = function getPostsAndReplies() {
-    var temp = [];
-    for (var i = 0, len = this.posts.length; i < len; i++) {
-        if (this.posts[i].postID >= 0 || this.posts[i].replyID >= 0)
-            temp.push(this.posts[i]);
-    }
-
-    //sort to ensure that posts[x].postID == x
-    temp.sort(function(a, b) {
-        return a.absTime - b.absTime;
-    });
-
-    return temp;
-
-};
-
-/**
- * Helper method for getting all User Posts and replies for a lesson mod
- not needed now
- */
-userSchema.methods.getModPostsAndReplies = function getModPostsAndReplies(module) {
-    var temp = [];
-    for (var i = 0, len = this.posts.length; i < len; i++) {
-        if ((this.posts[i].postID >= 0 || this.posts[i].replyID >= 0) && this.posts[i].module == module)
-            temp.push(this.posts[i]);
-    }
-
-    //sort to ensure that posts[x].postID == x
-    temp.sort(function(a, b) {
-        return a.absTime - b.absTime;
-    });
-
-    return temp;
-
-};
-
-//Return the user post from its ID
-userSchema.methods.getUserPostByID = function(postID) {
-
-    return this.posts.find(x => x.postID == postID);
-
-};
-
-//Return the user pre-quiz result from its ID
-userSchema.methods.getUserPreQuizScore = function(modual) {
-
-    return this.quiz.find(x => ((x.modual == modual) && (x.type == "pre")));
-
-};
-
-//Return the user post-quiz result from its ID
-userSchema.methods.getUserPostQuizScore = function(modual) {
-
-    return this.quiz.find(x => ((x.modual == modual) && (x.type == "post")));
-
-};
-
-
-//Return the user reply from its ID, not needed now
-userSchema.methods.getUserReplyByID = function(replyID) {
-
-    return this.posts.find(x => x.replyID == replyID);
-
-};
-
-//Return the actor reply from its ID - not needed now
-userSchema.methods.getActorReplyByID = function(actorReplyID) {
-
-    return this.posts.find(x => x.actorReplyID == actorReplyID);
-
-};
-
-//get user posts within the min/max time period
-userSchema.methods.getPostInPeriod = function(min, max, module) {
-    //concat posts & reply
-    return this.posts.filter(function(item) {
-        return (item.relativeTime >= min) && (item.relativeTime <= max) && (item.module == module);
-    });
-}
 
 /**
  * Helper method for getting user's gravatar.
@@ -598,7 +384,5 @@ userSchema.methods.gravatar = function gravatar(size) {
     return `https://gravatar.com/avatar/${md5}?s=${size}&d=retro`;
 };
 
-//TODO: change here, use ternary operator
 const User = mongoose.model('User', userSchema);
-
 module.exports = User;

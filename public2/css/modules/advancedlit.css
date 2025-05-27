@@ -84,14 +84,6 @@
 }
 
 
-/* trans */
-
-.bullet.icon {
-    text-indent: 8em !important;
-    font-size: 8px !important;
-}
-
-
 /* sim */
 
 .ui.grid .removeColumnPadding,

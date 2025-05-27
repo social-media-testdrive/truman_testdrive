@@ -1,8 +1,11 @@
-function addHumanizedTimeToPost() {
-  let target = $(this);
-  let ms = parseInt(target.text(), 10);
-  let time = new Date(ms);
+let pathArrayForHeader;
+let currentPageForHeader;
+let currentModuleForHeader;
 
+function addHumanizedTimeToPost() {
+  const target = $(this);
+  const ms = parseInt(target.text(), 10);
+  const time = new Date(ms);
   date_formats = {
     past: [
       { ceiling: 2, text: "Hace $seconds segundo" },
@@ -60,123 +63,111 @@ function getActionType(currentPage) {
 // ****** actions on main post *******
 
 function likePost(e) {
-  const enableDataCollection = e.data.enableDataCollection;
-  let target = $(event.target);
-  // Determine if the comment is being LIKED or UNLIKED based on the initial
-  // button color. Red = UNLIKE, Not Red = LIKE.
-  if (target.closest(".ui.like.button").hasClass("red")) {
-    // Since the button was already red, this button press is an UNLIKE action.
-    // Remove red color from like button and decrease the displayed like count
-    target.closest(".ui.like.button").removeClass("red");
-    const label = $(this)
-      .closest(".ui.like.button")
-      .next("a.ui.basic.red.left.pointing.label.count");
-    label.html(function (i, val) {
-      return val * 1 - 1;
-    });
-  } else {
-    // Since the button was not red, this button press is a LIKE action
-    // Add red color to like button and increase the displayed like count
-    target.closest(".ui.like.button").addClass("red");
-    var label = $(this).next("a.ui.basic.red.left.pointing.label.count");
-    label.html(function (i, val) {
-      return val * 1 + 1;
-    });
-    // Store information about the action
-    let pathArrayForHeader = window.location.pathname.split("/");
-    let currentPageForHeader = pathArrayForHeader[1];
-    let currentModuleForHeader = pathArrayForHeader[2];
-    let postID = $(this).closest(".ui.card").attr("postID");
-    let actionType = getActionType(currentPageForHeader);
-    let like = Date.now();
-    if (actionType === "free play" || enableDataCollection) {
-      $.post("/feed", {
-        actionType: actionType,
-        postID: postID,
-        modual: currentModuleForHeader,
-        like: like,
-        _csrf: $('meta[name="csrf-token"]').attr("content"),
-      });
+    const enableDataCollection = e.data.enableDataCollection;
+    const target = $(e.target).closest('.ui.like.button');
+    const label = target.closest('.ui.like.button').next("a.ui.basic.red.left.pointing.label.count");
+    const postID = target.closest(".ui.fluid.card").attr("postID");
+    const currDate = Date.now();
+
+    // Determine if the comment is being LIKED or UNLIKED based on the initial
+    // button color. Red = UNLIKE, Not Red = LIKE.
+    if (target.hasClass("red")) { //Unlike Post
+        target.removeClass("red");
+        label.html(function(i, val) { return val * 1 - 1 });
+    } else { // Like post
+        target.addClass("red");
+        label.html(function(i, val) { return val * 1 + 1 });
+
+        // Store information about the action
+        let pathArrayForHeader = window.location.pathname.split("/");
+        let currentPageForHeader = pathArrayForHeader[1];
+        let currentModuleForHeader = pathArrayForHeader[2];
+        const actionType = getActionType(currentPageForHeader);
+        if (actionType === "free play" || enableDataCollection) {
+            $.post("/feed", {
+                actionType: actionType,
+                postID: postID,
+                modual: currentModuleForHeader,
+                like: currDate,
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+        }
     }
-  }
-}
+} 
 
 function flagPost(e) {
-  const enableDataCollection = e.data.enableDataCollection;
-  let flag = Date.now();
-  var post = $(this).closest(".ui.card");
-  let postID = post.attr("postID");
-  let pathArrayForHeader = window.location.pathname.split("/");
-  let currentPageForHeader = pathArrayForHeader[1];
-  let currentModuleForHeader = pathArrayForHeader[2];
-  let actionType = getActionType(currentPageForHeader);
-  if (actionType === "free play" || enableDataCollection) {
-    $.post("/feed", {
-      actionType: actionType,
-      postID: postID,
-      modual: currentModuleForHeader,
-      flag: flag,
-      _csrf: $('meta[name="csrf-token"]').attr("content"),
-    });
-  }
-  post
-    .find(".ui.dimmer.flag")
-    .dimmer({
-      closable: false,
-    })
-    .dimmer("show");
-  //repeat to ensure its closable
-  post
-    .find(".ui.dimmer.flag")
-    .dimmer({
-      closable: true,
-    })
-    .dimmer("show");
+    const enableDataCollection = e.data.enableDataCollection;
+    const target = $(e.target);
+    const post = target.closest(".ui.card, .ui.fluid.card"); // Combined both selectors
+    const postID = post.attr("postID");
+    const flag = Date.now();
+    
+    // Get path information (from HEAD version)
+    const pathArrayForHeader = window.location.pathname.split("/");
+    const currentPageForHeader = pathArrayForHeader[1];
+    const currentModuleForHeader = pathArrayForHeader[2];
+    const actionType = getActionType(currentPageForHeader);
 
-  let pathArray = window.location.pathname.split("/");
-  let mod = pathArray[2];
-
-  if (mod == "digital-literacy") {
-    $(".ui.modal input[type=checkbox]").prop("checked", false);
-    if (actionType === "free play" && post.attr("isArticle") !== undefined) {
-      // post.attr('isArticle') is not undefined only when flagged post is an article. The flagModal should only be displayed for article posts (not actor or user posts).
-      recordModalInputs("digital-literacy_flagModal");
-    } else if (actionType === "guided activity") {
-      recordSimModalInputs("digital-literacy_flagModal");
+    if (actionType === "free play" || enableDataCollection) {
+        $.post("/feed", {
+            actionType: actionType,
+            postID: postID,
+            modual: currentModuleForHeader,
+            flag: flag,
+            _csrf: $('meta[name="csrf-token"]').attr("content"),
+        });
     }
-  }
 
-  if (
-    currentModuleForHeader === "cyberbullying" &&
-    (postID === "cyberbullying_sim_post3" ||
-      postID === "cyberbullying_sim_post4")
-  ) {
-    clickPost = true; //see cyberbullying_sim.pug for initialization and comments
-    $("#confirmContinueCheck").hide();
-  }
+    // Combined dimmer handling from both versions
+    post.find(".ui.dimmer.flag")
+        .dimmer({
+            closable: false
+        })
+        .dimmer("show")
+        .dimmer({
+            closable: true  // From second version
+        })
+        .dimmer("show");
+
+    // Digital-literacy specific handling (combined)
+    if (currentModuleForHeader == "digital-literacy") {
+        $(".ui.modal input[type=checkbox]").prop("checked", false);
+        if (actionType === "free play" && post.attr("isArticle") !== undefined) {
+            recordModalInputs("digital-literacy_flagModal");
+        } else if (actionType === "guided activity") {
+            recordSimModalInputs("digital-literacy_flagModal");
+        }
+    }
+
+    if (currentModuleForHeader === "cyberbullying" &&
+        (postID === "cyberbullying_sim_post3" ||
+         postID === "cyberbullying_sim_post4")) {
+        clickPost = true; //see cyberbullying_sim.pug for initialization and comments
+        $("#confirmContinueCheck").hide();
+    }
 }
 
 function sharePost(e) {
-  $(".ui.small.basic.share.modal").modal("show");
+    $('.ui.small.basic.share.modal').modal('show');
+    const enableDataCollection = e.data.enableDataCollection;
+    const target = $(e.target);
+    const share = Date.now();
+    const post = target.closest(".ui.card");
+    const postID = post.attr("postID");
+    const actionType = getActionType(currentPageForHeader);
+    let pathArrayForHeader = window.location.pathname.split("/");
+    let currentPageForHeader = pathArrayForHeader[1];
+    let currentModuleForHeader = pathArrayForHeader[2];
 
-  const enableDataCollection = e.data.enableDataCollection;
-  let share = Date.now();
-  var post = $(this).closest(".ui.card");
-  let postID = post.attr("postID");
-  let pathArrayForHeader = window.location.pathname.split("/");
-  let currentPageForHeader = pathArrayForHeader[1];
-  let currentModuleForHeader = pathArrayForHeader[2];
-  let actionType = getActionType(currentPageForHeader);
-  if (actionType === "free play" || enableDataCollection) {
-    $.post("/feed", {
-      actionType: actionType,
-      postID: postID,
-      modual: currentModuleForHeader,
-      share: share,
-      _csrf: $('meta[name="csrf-token"]').attr("content"),
-    });
-  }
-  $(".ui.small.basic.share.modal").modal("show");
+    if (actionType === "free play" || enableDataCollection) {
+        $.post("/feed", {
+            actionType: actionType,
+            postID: postID,
+            modual: currentModuleForHeader,
+            share: share,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
+    }
 }
 
 // ****** actions on a comment *******
@@ -296,61 +287,43 @@ async function addNewComment(event) {
 }
 
 function likeComment(e) {
-  const enableDataCollection = e.data.enableDataCollection;
-  const target = $(event.target);
-  // Determine if the comment is being LIKED or UNLIKED based on the initial
-  // button color. Red = UNLIKE, Not Red = LIKE.
-  if (target.hasClass("red")) {
-    // Since the button was already red, this button press is an UNLIKE action.
-    // Remove red color from Like Button and heart icon
-    target.removeClass("red");
-    const comment = target.parents(".comment");
-    comment.find("i.heart.icon").removeClass("red");
-    // Decrease the like count by 1
-    const label = comment.find("span.num");
-    label.html(function (i, val) {
-      return val * 1 - 1;
-    });
-  } else {
-    // Since the button was not red, this button press is a LIKE action
-    // Add red color to heart icon
-    target.addClass("red");
-    const comment = target.parents(".comment");
-    comment.find("i.heart.icon").addClass("red");
-    // Increase the like count by 1
-    const label = comment.find("span.num");
-    label.html(function (i, val) {
-      return val * 1 + 1;
-    });
-    // Get information about the post/comment/timestamp
-    const postID = $(this).closest(".ui.card").attr("postID");
-    const commentID = comment.attr("commentID");
+    const enableDataCollection = e.data.enableDataCollection;
+    const target = $(e.target);
+    const comment = target.parents('.comment');
+    const label = comment.find('span.num');
+
+    const postID = target.closest(".ui.fluid.card").attr("postID");
+    const commentID = comment.attr('commentID');
     const like = Date.now();
 
-    let pathArrayForHeader = window.location.pathname.split("/");
-    let currentPageForHeader = pathArrayForHeader[1];
-    let currentModuleForHeader = pathArrayForHeader[2];
-    let actionType = getActionType(currentPageForHeader);
-    if ($(this).closest(".ui.fluid.card").attr("type") == "userPost") {
-      $.post("/userPost_feed", {
-        postID: postID,
-        commentID: commentID,
-        like: like,
-        _csrf: $('meta[name="csrf-token"]').attr("content"),
-      });
+    // Determine if the comment is being LIKED or UNLIKED based on the initial
+    // button color. Red = UNLIKE, Not Red = LIKE.
+    if (target.hasClass('red')) {
+        target.removeClass('red');
+        comment.find('i.heart.icon').removeClass('red');
+        target.html('Like');
+        // Decrease the like count by 1
+        label.html(function(i, val) { return val * 1 - 1 });
     } else {
-      if (actionType === "free play" || enableDataCollection) {
-        $.post("/feed", {
-          actionType: actionType,
-          postID: postID,
-          modual: currentModuleForHeader,
-          commentID: commentID,
-          like: like,
-          _csrf: $('meta[name="csrf-token"]').attr("content"),
-        });
-      }
+        target.addClass('red');
+        comment.find('i.heart.icon').addClass('red');
+        target.html('Unlike');
+        // Increase the like count by 1
+        label.html(function(i, val) { return val * 1 + 1 });
+
+        const actionType = getActionType(currentPageForHeader);
+
+        if (actionType === "free play" || enableDataCollection) {
+            $.post("/feed", {
+                actionType: actionType,
+                postID: postID,
+                modual: currentModuleForHeader,
+                commentID: commentID,
+                like: like,
+                _csrf: $('meta[name="csrf-token"]').attr('content')
+            });
+        }
     }
-  }
 }
 
 function flagComment(e) {
@@ -364,6 +337,7 @@ function flagComment(e) {
   let currentPageForHeader = pathArrayForHeader[1];
   let currentModuleForHeader = pathArrayForHeader[2];
   let actionType = getActionType(currentPageForHeader);
+  
   comment.replaceWith(
     `<div class='comment' style='background-color:black;color:white;'>
       <h5 class='ui inverted header'>
@@ -393,6 +367,7 @@ function flagComment(e) {
       });
     }
   }
+  
   try {
     // We store the page's hints on the body for easy access
     document.body.hints.refresh();
@@ -401,11 +376,10 @@ function flagComment(e) {
       console.error(error);
     }
   }
-  if (
-    currentModuleForHeader === "cyberbullying" &&
-    (commentID === "cyberbullying_sim_post4_comment1" ||
-      commentID === "cyberbullying_sim_post1_comment1")
-  ) {
+  
+  if (currentModuleForHeader === "cyberbullying" &&
+      (commentID === "cyberbullying_sim_post4_comment1" ||
+       commentID === "cyberbullying_sim_post1_comment1")) {
     clickPost = true; //see cyberbullying_sim.pug for initialization and comments
     $("#confirmContinueCheck").hide();
   }
@@ -414,10 +388,18 @@ function flagComment(e) {
 $(window).on("load", () => {
   const enableDataCollection =
     $('meta[name="isDataCollectionEnabled"]').attr("content") === "true";
+  let pathArrayForHeader = window.location.pathname.split('/');
+  let currentPageForHeader = pathArrayForHeader[1];
+  let currentModuleForHeader = pathArrayForHeader[2];
+  
+  // add humanized time to all posts
+  $(".right.floated.time.meta, .date.sim, .time.notificationTime").each(
+    addHumanizedTimeToPost
+  );
 
   // Focus new comment element if "Reply" button is clicked
   $(".reply.button").click(function () {
-    let parent = $(this).closest(".ui.fluid.card");
+    const parent = $(this).closest(".ui.fluid.card");
     parent.find("input.newcomment").focus();
   });
 
@@ -432,39 +414,32 @@ $(window).on("load", () => {
   window.addEventListener(
     "keydown",
     function (event) {
-      // console.log(event.target);
       if (event.key === "Enter" && event.target.className == "newcomment") {
         event.stopImmediatePropagation();
-        addNewComment(event);
+        event.preventDefault();
+        $(event.target).parents(".ui.form").siblings("i.big.send.link.icon").click();
       }
     },
     true
   );
 
-  // add humanized time to all posts
-  $(".right.floated.time.meta, .date.sim, .time.notificationTime").each(
-    addHumanizedTimeToPost
-  );
+  // create a new comment
+  $("i.big.send.link.icon").click({ enableDataCollection }, addNewComment);
 
   // like a post
   $(".like.button").click({ enableDataCollection }, likePost);
 
-  // create a new comment
-  $("i.big.send.link.icon").click({ enableDataCollection }, addNewComment);
-
   // like a comment
   $("a.like.comment").click({ enableDataCollection }, likeComment);
 
-  // flag a comment
-  $("a.flag.comment").click({ enableDataCollection }, flagComment);
-
-  // only enable certain functionality when not in a tutorial page
-  // TODO: double check with Yoon that this is intended behavior
-  let pathArray = window.location.pathname.split("/");
-  let currentPage = pathArray[1];
-  if (currentPage !== "tutorial") {
+  // Only enable flagging and sharing functionality when not in tutorial pages
+  if (currentPageForHeader !== "tutorial") {
     // flag a post
     $(".flag.button").on("click", { enableDataCollection }, flagPost);
+    
+    // flag a comment
+    $("a.flag.comment").click({ enableDataCollection }, flagComment);
+    
     // share a post
     $(".ui.share.button").on("click", { enableDataCollection }, sharePost);
   }

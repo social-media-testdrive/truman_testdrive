@@ -13,22 +13,59 @@ function recordResponse(responseType) {
     switch (responseType) {
         case 'written':
             answer.type = 'written';
-            answer.writtenResponse = $(this)
-                .closest('.ui.label')
+            answer.writtenResponse = $(this).parent()
                 .siblings('.ui.form')
                 .find('textarea')
                 .val();
             break;
-        case 'checkboxes':
+        case 'checkboxGroupedPhotoRow':
             answer.type = 'checkbox';
             // using bit shifting to record which boxes are checked
             // i.e. [][✓][][][✓][]  => 010010
             // records the base 10 number in DB, decode to binary string later
-            let checkboxInputs = 0b0; // does not need to be binary, useful for testing
-            let numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
-            $(this).closest('.ui.segment').find('.ui.checkbox input').each(function() {
+            var checkboxInputs = 0b0; // does not need to be binary, useful for testing
+            var numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
+            $(this).parent().siblings('.ui.stackable.cards').find('.ui.fluid.card').each(function() {
                 numberOfCheckboxes++;
-                if ($(this).is(":checked")) {
+                if ($(this).hasClass("selectedCard")) {
+                    checkboxInputs = checkboxInputs << 1;
+                    checkboxInputs++;
+                } else {
+                    checkboxInputs = checkboxInputs << 1;
+                }
+            });
+            answer.numberOfCheckboxes = numberOfCheckboxes;
+            answer.checkboxResponse = checkboxInputs;
+            break;
+        case 'checkboxGrouped':
+            answer.type = 'checkbox';
+            // using bit shifting to record which boxes are checked
+            // i.e. [][✓][][][✓][]  => 010010
+            // records the base 10 number in DB, decode to binary string later
+            var checkboxInputs = 0b0; // does not need to be binary, useful for testing
+            var numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
+            $(this).parent().siblings('.ui.stackable.cards').find('.ui.fluid.card .ui.form .ui.checkbox').each(function() {
+                numberOfCheckboxes++;
+                if ($(this).hasClass("checked")) {
+                    checkboxInputs = checkboxInputs << 1;
+                    checkboxInputs++;
+                } else {
+                    checkboxInputs = checkboxInputs << 1;
+                }
+            });
+            answer.numberOfCheckboxes = numberOfCheckboxes;
+            answer.checkboxResponse = checkboxInputs;
+            break;
+        case 'checkbox':
+            answer.type = 'checkbox';
+            // using bit shifting to record which boxes are checked
+            // i.e. [][✓][][][✓][]  => 010010
+            // records the base 10 number in DB, decode to binary string later
+            var checkboxInputs = 0b0; // does not need to be binary, useful for testing
+            var numberOfCheckboxes = 0; // record number of boxes to add any leading zeros when decoding
+            $(this).parent().siblings('.ui.form').find('.ui.checkbox').each(function() {
+                numberOfCheckboxes++;
+                if ($(this).hasClass("checked")) {
                     checkboxInputs = checkboxInputs << 1;
                     checkboxInputs++;
                 } else {
@@ -42,16 +79,17 @@ function recordResponse(responseType) {
             answer.type = 'radio';
             let radioSelection = "";
             radioSelection = $(this)
-                .closest('.ui.segment')
+                .parent()
+                .siblings('.ui.form')
                 .find('.radio.checkbox input:checked')
                 .siblings('label')
                 .text();
             answer.radioSelection = radioSelection;
             break;
-        case 'habits_time_entry':
+        case 'habitsUnique':
             answer.type = 'habitsUnique';
             answer.writtenResponse = $(this)
-                .closest('.ui.label')
+                .parent()
                 .siblings('.ui.form')
                 .find('input')
                 .val();
@@ -68,6 +106,7 @@ function iterateOverPrompts(startTime) {
       reflectionAction: {
           absoluteTimeContinued: Date, //time that the user left the page by clicking continue
           modual: String, // which lesson mod did this take place in?
+          attemptDuration: Number, // how long the user took for the reflection attempt (milliseconds)
           answers: [{
               questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
               prompt: String,
@@ -83,45 +122,44 @@ function iterateOverPrompts(startTime) {
     const timestamp = Date.now();
 
     // create new object with desired data to pass to the post request
-    let cat = {};
-    cat.absoluteTimeContinued = timestamp;
-    cat.modual = currentModule;
-    cat.attemptDuration = timestamp - startTime;
+    let cat = {
+        absoluteTimeContinued: timestamp,
+        modual: currentModule,
+        attemptDuration: timestamp - startTime
+    };
 
     let answers = [];
     // Search for each prompt type.
     // The types are: written, checkboxes, radio**, and habits_time_entry**.
     // **Unusual prompt types that currently only occur once in the project.
+    // For each question, record response based on prompt type. 
+    // The types are: checkboxGroupedPhotoRow, checkboxGrouped, writen, checkbox, radio, habitsUnique
     $('.reflectionPrompt').each(function() {
-        answers.push(recordResponse.call($(this), 'written'));
+        answers.push(recordResponse.call($(this), $(this).attr('data-questionType')));
     });
 
-    $('.reflectionCheckboxesPrompt').each(function() {
-        answers.push(recordResponse.call($(this), 'checkboxes'));
-    });
-
-    $('.reflectionRadioPrompt').each(function() {
-        answers.push(recordResponse.call($(this), 'radio'));
-    });
-
-    $('.reflectionHabitsTimeEntryPrompt').each(function() {
-        answers.push(recordResponse.call($(this), 'habits_time_entry'));
-    });
     cat.answers = answers;
 
     $.post("/reflection", {
-        action: cat,
-        _csrf: $('meta[name="csrf-token"]').attr('content')
-    }).then(function() {
-        window.location.href = `/quiz/${currentModule}`
-    });
+            action: cat,
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        })
+        .then(function() {
+            window.location.href = `/quiz/${currentModule}`
+        });
 }
 
 function checkAllPromptsOpened() {
     let status = true;
     $('.reflectionPromptSegment').each(function() {
-        if ($(this).is(':hidden')) {
-            status = false;
+        if (currentModule === 'cyberbullying') {
+            if (!$(this).hasClass('Q3') && $(this).is(':hidden')) {
+                status = false;
+            }
+        } else {
+            if ($(this).is(':hidden')) {
+                status = false;
+            }
         }
     });
     return status;
@@ -141,19 +179,28 @@ function hideWarning(warningID) {
     }
 }
 
+function onPrint() {
+    if ($('.results_print').hasClass('green')) {
+        window.print();
+    } else {
+        if ($('.reflectionPromptSegment.Q1')
+            .is(':hidden')) {
+            showWarning('.startPromptsWarning');
+        } else {
+            showWarning('.openAllPromptsWarning');
+        }
+    }
+}
+
 $(window).on("load", function() {
     // startTime is used to track the start time of each attempt, to later calculate the duration/time the user spent on each attempt
-    let startTime = Date.now();
-    // The code assumes that only one of these will be true, not both.
-    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
-    const enableShareActivityData = $('meta[name="isShareActivityDataEnabled"]').attr('content') === "true";
+    const startTime = Date.now();
     // Add voiceovers from the voiceoverMappings variable
     Voiceovers.addVoiceovers();
     // Ensure the print/continue buttons don't have any residual classes
     // (these classes would be added after viewing sharing activity data popup,
     // if enabled)
-    $('.button.resultsContinueButton, .button.results_print')
-        .removeClass('loading disabled');
+    $('.button.resultsContinueButton, .button.results_print').removeClass('loading disabled');
     // Make any "which ones did you notice?" posts at the top interactable.
     // Plays an animation and toggles a blue glow around the post.
     $('.selectablePosts .card').on('click', function() {
@@ -164,13 +211,19 @@ $(window).on("load", function() {
     // Defining the behavior for the "next" button on each question's segment.
     $('.reflectionSegmentButton').on('click', function() {
         let segmentButton = $(this);
+        const questionNumber = segmentButton.attr('questionnumber'); // returns questionNumber of question to be displayed next (ex: "Q1", "Q2")
+        let nextQuestionNumber = 'Q' + (parseInt(questionNumber.substring(1)) + 1);
+        if (currentModule === 'cyberbullying' && questionNumber === 'Q2') {
+            nextQuestionNumber = 'Q4';
+        }
+
         segmentButton.hide();
-        segmentButton.next('.reflectionPromptSegment').transition({
+        $(`.reflectionPromptSegment.${questionNumber}`).transition({
             animation: 'fade down',
             onComplete: function() {
-                segmentButton.parents('.reflectionTopSegment')
-                    .next('.reflectionTopSegment')
-                    .transition('fade down');
+                $(`.reflectionTopSegment.${nextQuestionNumber}`).transition({
+                    animation: 'fade down',
+                })
             }
         });
         hideWarning('.startPromptsWarning');
@@ -184,7 +237,7 @@ $(window).on("load", function() {
         }
     });
 
-    // Defining the behavior for the "continue" button
+    // Defining the behavior for the "Continue" button
     $('.resultsContinueButton').on('click', function() {
         // Empty .insertPrint to avoid problems with iterating over responses
         $(".insertPrint").empty();
@@ -193,8 +246,7 @@ $(window).on("load", function() {
             // Show slightly different error messaging for start vs next buttons:
             // If the first question is not visible, show the "start" warning,
             // otherwise show the default warning.
-            if ($('.voiceover_reflection1')
-                .next('.reflectionPromptSegment')
+            if ($('.reflectionPromptSegment.Q1')
                 .is(':hidden')) {
                 showWarning('.startPromptsWarning');
             } else {
@@ -203,7 +255,18 @@ $(window).on("load", function() {
             return;
         }
         // All of the questions are now visible to the user.
-
         iterateOverPrompts(startTime);
     });
+
+    //Used for habits module
+    $('#checkTime').on('click', function() {
+        $.get("/habitsTimer", function(data) {
+            const activityDisplayTimeMinutes = Math.floor(data.totalTimeViewedHabits / 60000);
+            const activityDisplayTimeSeconds = Math.floor((data.totalTimeViewedHabits % 60000) / 1000);
+            $('#habitsActivityTotalTimeMinutes').html(activityDisplayTimeMinutes);
+            $('#habitsActivityTotalTimeSeconds').html(activityDisplayTimeSeconds);
+            $('#undoHide').show();
+            $('.ui.statistics').show();
+        });
+    })
 });

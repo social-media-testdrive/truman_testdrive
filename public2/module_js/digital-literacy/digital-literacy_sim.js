@@ -1,4 +1,4 @@
-var stepsList = [{
+const stepsList = [{
         element: '#step1',
         intro: `Click "Next" to begin!`,
         position: 'left',
@@ -14,7 +14,6 @@ var stepsList = [{
         audioFile: ['CUSML.5.6.1.mp3']
     },
     {
-
         element: '#step1',
         intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0'
     class='introjs-hint'><div class='introjs-hint-dot'></div><div
@@ -26,7 +25,7 @@ var stepsList = [{
     }
 ];
 
-var hintsList = [{
+const hintsList = [{
         hint: `Be sure to check the article's website. This one is suspicious
     because of the '.com.co,' a sure sign it's trying to imitate a credible
     site. Also note the spelling errors in the URL.`,
@@ -50,24 +49,30 @@ var hintsList = [{
     },
     {
         hint: `If you decide the article is fake news, you can flag the post to
-    report it. Don’t share the article!`,
+    report it. Don't share the article!`,
         element: '#hint4',
         audioFile: ['CUSML.5.6.6.mp3']
     }
 ];
 
-var clickedArticle = false;
+let clickedArticle = false;
 
-var info_text = 'No Information Found';
-let post_info_description = new Map([
-    ['WWW.NEWSNETWORK.COM.CO', 'News Network provides the most up to date local and national news.'],
-    ['WWW.NYTIMES.COM', 'The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 125 Pulitzer Prizes, more than any other newspaper. The Times is ranked 17th in the world by circulation and 2nd in the U.S.'],
-    ['WWW.NPR.ORG', 'National Public Radio (NPR, stylized as npr) is an American privately and publicly funded non-profit membership media organization based in Washington, D.C.']
-]);
-
-$('.ui.accordion').accordion();
+let info_text = 'No Information Found';
+const post_info_description = {
+    'WWW.NEWSNETWORK.COM.CO': 'News Network provides the most up to date local and national news.',
+    'WWW.NYTIMES.COM': 'The New York Times (sometimes abbreviated as the NYT and NYTimes) is an American newspaper based in New York City with worldwide influence and readership. Founded in 1851, the paper has won 125 Pulitzer Prizes, more than any other newspaper. The Times is ranked 17th in the world by circulation and 2nd in the U.S.',
+    'WWW.NPR.ORG': 'National Public Radio (NPR, stylized as npr) is an American privately and publicly funded non-profit membership media organization based in Washington, D.C.'
+};
 
 function eventsAfterHints() {
+    $(".info_button").click(function(e) {
+        const clickedId = '#' + $(this).attr('id');
+        const info_header = $(clickedId).parent().siblings('.newsArticleTitleContainer').find('a.articleLink')[0].innerText;
+        const info_text = post_info_description[info_header.toString().trim()] || 'No Information Found';
+        document.getElementById('post_info_text_modual').innerHTML = info_text;
+        recordSimModalInputs('digital-literacy_infoModal');
+        e.stopPropagation();
+    });
 
     $('.img.post, .newsArticleTitleContainer, .description').on('click', function() {
         // update clickedArticle.
@@ -77,15 +82,6 @@ function eventsAfterHints() {
             $("#cyberTransButton").addClass("green");
         }
         recordSimModalInputs('digital-literacy_articleModal');
-    });
-
-    $(".info_button").click(function(e) {
-        var clickedId = '#' + $(this).attr('id');
-        let info_header = $(clickedId).next()[0].innerText;
-        let info_text = post_info_description.get(info_header.toString().trim()) || 'No Information Found';
-        document.getElementById('post_info_body').innerHTML = info_text;
-        recordSimModalInputs('digital-literacy_infoModal');
-        e.stopPropagation();
     });
 
     $('.flag.button').on('click', function() {
@@ -99,7 +95,7 @@ function customErrorCheck() {
         //show the message normally the first time
         if ($('#clickAllDotsWarning').is(":hidden")) {
             $('#clickAllDotsWarning').transition('fade');
-            $('#cyberTransButton').css("margin-bottom", "10em");
+            $('#cyberTransButton').css("margin-bottom", "4em");
         } else {
             //otherwise, bounce the message to draw attention to it
             $('#clickAllDotsWarning').transition('bounce');

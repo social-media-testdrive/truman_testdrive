@@ -1,0 +1,14 @@
+/* ------- END PAGE ------- */
+
+.endPageButton {
+    max-width: 100%;
+    width: 260px;
+    text-align: left !important;
+    margin-bottom: 1em !important;
+}
+
+.ui.basic.segment.center.aligned {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

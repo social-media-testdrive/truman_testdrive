@@ -1,0 +1,19 @@
+.ui.dimmer.flag
+  .content
+    .center
+      h2.ui.inverted.icon.header
+        i.red.flag.icon
+        if isAd
+          | You've reported this ad!
+        else 
+          | You've flagged this!
+        h3.ui.inverted.header
+          span 
+            | The admins will review this !{isAd ? "ad" : "post"} further. We are sorry you had this experience.
+if isAd
+  .ui.inverted.dimmer.notflag
+    .content
+      .center
+        h2.ui.inverted.icon.header
+          i.eye.slash.icon
+          h1.ui.header You've hidden this ad! 

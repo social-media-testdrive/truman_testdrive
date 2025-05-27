@@ -1,4 +1,4 @@
-var hintsList = [{
+const hintsList = [{
         hint: `How can you have a positive impact on your digital footprint?
     You can post things related to your hobbies, your school activities, or
     any other interests!`,
@@ -37,7 +37,7 @@ var hintsList = [{
     }
 ];
 
-var stepsList = [{
+const stepsList = [{
         element: '#step1',
         intro: `Click "Next" to begin!`,
         position: 'left',
@@ -62,7 +62,6 @@ function eventsAfterHints() {
         clickPost = true;
         $('#confirmContinueCheck').hide();
         $('.ui.modal input[type=checkbox]').prop('checked', false);
-        // $('#digfoot_sim_modal').modal('show');
         recordSimModalInputs('digfoot_simModal');
     });
 }

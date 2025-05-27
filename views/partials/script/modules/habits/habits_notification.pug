@@ -1,0 +1,10 @@
+.ui.raised.segment.habitsNotificationItem.hidden(correspondingPost=val.info_text)
+  .ui.feed
+    .event
+      //-CSS properties: https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image
+      .label
+        img(src=cdn + '/profile_pictures/' +val.actor.profile.picture)
+      .content
+        .summary=val.body
+        .time.notificationTime=(habitsStart + val.time)
+        .time.millisecondType.hidden=(val.time)

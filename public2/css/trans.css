@@ -1,17 +1,24 @@
-i.icon.addIndent {
-    text-indent: 3em;
+.ui.warning.message {
+    display: none;
+}
+
+
+/* Trans section */
+
+.segment.removePadding {
+    padding: 0;
+}
+
+.segment.reviewSegment {
+    padding: 14px;
+}
+
+.button.showReviewSectionButton {
+    margin-top: 14px;
+    margin-bottom: 14px;
 }
 
 .circle.bullet {
     text-indent: 8em !important;
     font-size: 8px !important;
-}
-
-.ui.container .reviewSegment {
-    padding: 14px 0 14px 0;
-}
-
-.ui.container .showReviewSectionButton {
-    margin-top: 14px;
-    margin-bottom: 14px;
 }

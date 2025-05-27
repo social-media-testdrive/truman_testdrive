@@ -1,29 +1,30 @@
-.sixteen.wide.column 
-  .row
-    br
-    if messages.errors
-      .ui.negative.message
-        i.close.icon
-        for error in messages.errors
-          div= error.msg
-    if messages.info
-      .ui.warning.message
-        i.close.icon
-        for info in messages.info
-          div= info.msg
-    if messages.success
-      .ui.positive.message
-        i.close.icon
-        for success in messages.success
-          div= success.msg
-    if messages.final
-      .ui.icon.info.message
-        i.trophy.icon
-        .content
-          .header
-            | Thank you for participating in our study
-          ul.list
-            li The study is now over and your account has been disabled.
-            li
-              | If you haven't yet already, please complete the end survey 
-              a(href='https://cornell.qualtrics.com/jfe/form/SV_8eukV6K9MLA5Au9') here.
+if messages.errors
+  .sixteen.wide.column
+    .ui.negative.message
+      i.close.icon
+      for error in messages.errors
+        div= error.msg
+if messages.info
+  .sixteen.wide.column
+    .ui.warning.message
+      i.close.icon
+      for info in messages.info
+        div= info.msg
+if messages.success
+  .sixteen.wide.column
+    .ui.positive.message
+      i.close.icon
+      for success in messages.success
+        div= success.msg
+if messages.final
+  .sixteen.wide.column
+    .ui.icon.info.message
+      i.trophy.icon
+      .content
+        .header
+          | Thank you for participating in our study!
+        ul.list
+          li The study is now over and your account has been disabled.
+          if messages.final[0].msg
+            li If you haven't yet already, please complete the end survey 
+              a(href=messages.final[0].msg) here.

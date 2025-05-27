@@ -31,21 +31,21 @@ const hintsList = [{
     }
 ];
 
-//activating a normal dropdown (the one used in the habits module activity page)
-$('.ui.selection.dropdown').dropdown();
+$(window).on("load", function() {
+    //if "set daily reminder" value is changed
+    $(".ui.selection.dropdown[name='reminderTimeSelect']").change(function() {
+        const cat = {
+            subdirectory1: 'sim4',
+            subdirectory2: 'habits',
+            absoluteTimestamp: Date.now(),
+            actionType: 'setDailyReminder',
+            setValue: $("#reminderTimeSelectValue").val()
+        };
 
-//if "set daily reminder" value is changed
-$(".ui.selection.dropdown[name='reminderTimeSelect']").change(function() {
-    let cat = {};
-    cat.subdirectory1 = 'sim4';
-    cat.subdirectory2 = 'habits';
-    cat.absoluteTimestamp = Date.now();
-    cat.actionType = 'setDailyReminder';
-    cat.setValue = $("#reminderTimeSelectValue").val();
-
-    $.post("/habitsAction", {
-        action: cat,
-        actionType: 'habits',
-        _csrf: $('meta[name="csrf-token"]').attr('content')
+        $.post("/habitsAction", {
+            action: cat,
+            actionType: 'habits',
+            _csrf: $('meta[name="csrf-token"]').attr('content')
+        });
     });
 });

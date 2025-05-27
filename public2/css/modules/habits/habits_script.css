@@ -1,92 +1,105 @@
 /* desktop main menu  */
 
 .ui.vertical.menu {
-  width: auto;
+    width: auto;
 }
+
 
 /* mobile main menu */
 
 .ui.top.fixed.vertical.menu {
-  width: 100%;
-  padding-top: 5em;
+    width: 100%;
+    padding-top: 5em;
 }
+
 
 /* both main menus */
 
-.ui.red.pointing.label {
-  display: none;
+.ui.menu .ui.red.pointing.label {
+    display: none;
 }
 
+
 /* hiding various elements with various margins */
+
 #content,
 #pauseTimeSelectField {
-  display: none;
+    display: none;
 }
 
 .ui.button.habitsSettingsDisplay,
 .ui.button.habitsActivityDisplay {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 .container.habitsActivityDisplay {
-  /* display: none; */
-  margin-bottom: 10em;
+    /* display: none; */
+    margin-bottom: 10em;
 }
+
 
 /* settings and activity pages */
 
 .field label {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #pauseTimeSelectField label,
 #reminderTimeSelectField label {
-  font-size: 100%;
-  font-weight: bold;
+    font-size: 100%;
+    font-weight: bold;
 }
 
 .menu .item {
-  font-size: 100%;
+    font-size: 100%;
 }
+
 
 /* notifications display */
 
-.ui.feed > .event > .label {
-  overflow: hidden;
-  width: 3em;
-  height: 3em;
+.ui.feed>.event>.label {
+    overflow: hidden;
+    width: 3em;
+    height: 3em;
 }
 
-.ui.feed > .event > .label > img {
-   width:100%;
-   height:100%;
-   display:inline;
-   margin:0 auto;
+.ui.feed>.event>.label>img {
+    width: 100%;
+    height: 100%;
+    display: inline;
+    margin: 0 auto;
 }
 
-.ui.feed > .event .notificationTime {
-  font-weight: normal;
+.ui.feed>.event .notificationTime {
+    font-weight: normal;
 }
+
 
 /* notification popups */
+
+
 /* https://stackoverflow.com/questions/26421274/css-circular-cropping-of-rectangle-image */
 
 .ui.sticky.notificationPopup .label {
-  overflow: hidden;
-  width: 3em;
-  height:3em;
+    overflow: hidden;
+    width: 3em;
+    height: 3em;
+}
+
+.ui.sticky.notificationPopup .ui.message {
+    padding: 1em 2em 1.5em 1.5em;
 }
 
 img.popupNotificationImage {
-  width: 100%;
-  height: 100%;
-  display: inline;
-  margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: inline;
+    margin: 0 auto;
 }
 
 #desktopPopup {
-  padding-bottom:4em;
-  padding-left:1em;
-  padding-right:1em;
-  display:none;
+    padding-bottom: 4em;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: none;
 }

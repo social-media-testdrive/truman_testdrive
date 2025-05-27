@@ -1,24 +1,25 @@
 extends ../ui_layout
 
 block content
-  .ui.sixteen.wide.row
-    .ui.sixteen.wide.column
-      h2.loginPageTitle Welcome to the Research Version of Social Media TestDrive!
-  .ui.sixteen.wide.row 
-    .eight.wide.column.isntructorLoginColumn
-      h2.ui.header Login As Instructor
-      form.ui.form(action="/instructorLogin", method='POST')
-        input(type='hidden', name='_csrf', value=csrfToken)
+  .ui.sixteen.wide.column
+    h2.loginPageTitle Welcome to the Research Version of Social Media TestDrive!
+  .ui.eight.wide.column.left.floated
+    .ui.card.fluid(style="padding: 20px;")
+      h2.ui.header Log In as Instructor
+      form.ui.form(action='/instructorLogin', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
         .field
           label(for='instructor_username' style="font-size:larger;") Username
-          input(type='text', name='instructor_username', id='instructor_username', placeholder='Username', required).field
+          input(type='text', name='instructor_username', id='instructor_username', placeholder='Username', autofocus, required)
+        .field
           label(for='instructor_password' style="font-size:larger;") Password
-          input(type='password', name='instructor_password', id='instructor_password', placeholder='Password', required).field
-        button.ui.big.green.button(type='submit') Login
+          input(type='password', name='instructor_password', id='instructor_password', placeholder='Password', required)
+        button.ui.large.button.green(type='submit') Log In
         p Don't have an account yet? Contact us to get an account.
-      br  
-      h2 Are You a Student?
-      h4 Use the login link your teacher gave you.
-        
+      .ui.divider
+      //- .ui.horizontal.divider
+      h2.ui.header(style="margin-top: 1rem;") Are You a Student? 
+      p Use the log in link your teacher gave you.
+
 block styles
   link(rel='stylesheet', href='/css/login.css')

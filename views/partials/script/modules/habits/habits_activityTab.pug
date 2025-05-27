@@ -1,0 +1,33 @@
+//-Activity page
+.ui.container.habitsActivityDisplay.hidden
+  h2.ui.header My Activity
+  .ui.divider
+
+  h2.ui.header Time on TestDrive:
+  .ui.statistics
+    .statistic
+      .value#habitsActivityTotalTimeMinutes 0
+      .label
+        | min 
+    .statistic
+      .value :
+      .label
+    .statistic
+      .value#habitsActivityTotalTimeSeconds 0
+      .label
+        | sec
+  h2.ui.header Manage My Time:
+  .field#reminderTimeSelectField.mt-4.mb-3
+    label Set Daily Reminder
+      br
+      .ui.selection.dropdown(name='reminderTimeSelect').mt-2
+        input(type='hidden')#reminderTimeSelectValue
+        i.dropdown.icon
+        .default.text 
+        .menu
+          .item(data-value='15 minutes') 15 minutes
+          .item(data-value='1 hour') 1 hour
+          .item(data-value='2 hours') 2 hours
+          .item(data-value='4 hours') 4 hours
+          .item(data-value='8 hours') 8 hours
+  span We'll send you a reminder once you've reached the time you set for yourself.
