@@ -187,7 +187,7 @@ exports.getGuest = async(req, res, next) => {
             }
         });
 
-        const existingUser = await User.findOne({ username: req.body.username }).exec();
+        const existingUser = await User.findOne({ username: user.username }).exec();
         if (existingUser) {
             req.flash('errors', { msg: 'An account with that Username already exists.' });
             return res.redirect('/guest/' + req.params.modId);
@@ -226,7 +226,7 @@ exports.postUpdateProfile = async(req, res, next) => {
     if (validator.isEmpty(req.body.name)) validationErrors.push({ msg: 'Name cannot be blank.' });
     if (validationErrors.length) {
         req.flash('errors', validationErrors);
-        return res.redirect('/login');
+        return res.redirect('/account/' + req.params.modId);
     }
 
     try {
