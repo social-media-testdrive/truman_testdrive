@@ -60,16 +60,16 @@ passport.use('instructor-local', new LocalStrategy({
         if (err) {
             return done(err);
         }
-        if (!user) {
+            if (!user) {
             return done(null, false, { msg: 'Invalid username or password.' });
         }
         user.comparePassword(instructor_password, async(err, isMatch) => {
             if (err) {
                 return done(err);
             }
-            if (isMatch) {
-                // log in
-                return done(null, user);
+                if (isMatch) {
+                    // log in
+                    return done(null, user);
             }
             return done(null, false, { msg: 'Invalid username or password.' });
         });
@@ -81,15 +81,18 @@ passport.use('instructor-local', new LocalStrategy({
  */
 
 exports.isAuthenticated = (req, res, next) => {
-    const mod = req.path.split('/').slice(-1)[0];
-    const isResearchVersion = process.env.isResearchVersion === "true";
-    // if ((!isResearchVersion && (req.path === "/" || req.path.startsWith("/intro"))) || req.isAuthenticated()) {
-    if ((!isResearchVersion && req.path === "/") || req.isAuthenticated()) {
-        return next();
-    }
-    console.log(`Not authenticated for the following path: ${req.path}`)
-        // redirect to the appropriate if not authenticated
-    res.redirect(isResearchVersion ? '/login' : `/guest/${mod}`);
+  // Allow access to intro pages when MongoDB is not available
+  if (!process.env.PRO_MONGODB_URI && !process.env.PRO_MONGOLAB_URI) {
+      return next();
+  }
+  
+  const mod = req.path.split('/').slice(-1)[0];
+  const isResearchVersion = process.env.isResearchVersion === "true";
+  if ((!isResearchVersion && req.path === "/") || req.isAuthenticated()) {
+      return next();
+  }
+  console.log(`Not authenticated for the following path: ${req.path}`)
+  res.redirect(isResearchVersion ? '/login' : `/guest/${mod}`);
 };
 
 /**

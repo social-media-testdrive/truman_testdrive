@@ -1,0 +1,43 @@
+extends ../ui_layout-esp
+
+block content
+
+  .ui.text.container
+    br
+    h2 Ejercicio de Publicación Segura
+
+    .ui.form
+      .field
+        label ¿Viste alguna publicación de acoso?
+        textarea(rows='2')
+      .field
+        label ¿Cómo respondiste?
+        textarea(rows='2')
+      .field
+        label ¿Qué puedes hacer en el futuro si ves ciberbullying?
+        textarea(rows='2')
+      .grouped.fields
+        label(for='confidence') ¿Sientes que sabes cómo lidiar con el cyberbullying en el futuro?
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='confidence', checked='', tabindex='0')
+          label Definitivamente sí
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='confidence', tabindex='0')
+          label Algo así
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='confidence', tabindex='0')
+          label No realmente
+      .field
+        .ui.radio.checkbox
+          input.hidden(type='radio', name='confidence', tabindex='0')
+          label En lo absoluto
+
+    .ui.big.green.labeled.icon.button.com
+        i.rocket.icon
+        |   ¡Entendido!
+    br
+    br
+    br
