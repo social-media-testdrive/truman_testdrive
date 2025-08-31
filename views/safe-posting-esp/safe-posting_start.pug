@@ -1,0 +1,147 @@
+extends ../ui_layout-esp
+
+block content
+  
+  .ui.text.container.addBottomMargin
+    br
+    .ui.raised.segment
+      h3.ui.header
+        i.book.blue.icon
+        .content
+          | Aprender
+      hr
+      .ui.basic.segment.removePadding
+        .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
+          i.down.arrow.icon
+          |   Siguiente
+      .ui.basic.segment.learnSegment.hidden
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content.
+            En las redes sociales podemos compartir información personal, intereses 
+            y conectarnos con amigos y familiares. ¡También puedes usarlo para hablar 
+            con gente nueva y conocer nuevos amigos!
+   
+        h5.ui.header
+          i.arrow.circle.right.blue.icon
+          .content.
+            En las redes sociales es posible que estés hablando con muchas personas 
+            diferentes al mismo tiempo. Quizás no conozcas a algunos de ellos en la 
+            vida real. Recuerda tener siempre cuidado con la información que compartes 
+            en línea, especialmente con personas que nunca has conocido cara a cara.
+        br
+        .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
+          i.down.arrow.icon
+          |   Siguiente
+    
+    .ui.segment.keyIdeasSegment.hidden
+      h3.ui.header
+        i.key.blue.icon
+        .content Vocabulario clave
+      .sub.header.grayElement 
+        i.hand.pointer.icon
+        span Selecciona cada palabra para aprender más
+      br   
+      .ui.stackable.two.column.grid
+        .ui.column
+          .ui.raised.segment.keyTerm.voiceover_keyTerm1
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Audiencia
+            span.hidden.keyTermDefinition
+              | Cualquier persona que pueda ver información relacionada contigo, ya sea 
+              | publicada por ti o por otra cuenta.
+        .ui.column
+          .ui.raised.segment.keyTerm.voiceover_keyTerm2
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Información privada
+            span.hidden.keyTermDefinition 
+              | Información sobre ti que puede usarse para identificarte porque es solamente tuya.
+              | ul Esto puede incluir cosas como tu nombre completo, escuela, dirección 
+              | o número de teléfono.
+        
+        .ui.column
+          .ui.raised.segment.keyTerm.voiceover_keyTerm3
+            a.ui.blue.ribbon.label.keyTermLabel
+                span Riesgoso
+            span.hidden.keyTermDefinition 
+              | Potencialmente dañino para tu bienestar emocional o físico.
+              ul Es riesgoso compartir información privada en línea. Las personas podrían 
+                | compartirlo con otras personas o utilizarla para intentar engañarte o estafarte.
+    
+    .ui.warning.message#clickNextWarning
+      .header
+       | Dale clic a \"Siguiente\"
+    .ui.warning.message#clickLabelsWarning
+     .header
+      | Dale clic a cada etiqueta para continuar
+    a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
+      .ui.labeled.icon.button
+          i.rocket.icon
+          |   ¡Entendido!
+          
+block scripts
+  script.
+    var voiceoverMappings = {
+      '.showLearnSectionButton': {
+        "initialDelay": 700,
+        "delay": 500,
+        "files": ['CUSML.11.1.1.mp3','CUSML.11.1.2.mp3']
+      },
+      '.voiceover_keyTerm1': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.2.1.mp3']
+      },
+      '.voiceover_keyTerm2': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.2.2.mp3']
+      },
+      '.voiceover_keyTerm3': {
+        "initialDelay": 700,
+        "delay": 0,
+        "files": ['CUSML.11.2.3.mp3']
+      }
+    };
+
+    var currentStep = 0;
+    var maxSteps = 2;
+
+    function clickGotIt(){
+      window.location.href = '/tutorial/safe-posting-esp';
+    }
+
+    $('.showLearnSectionButton').click(function(){
+      $('.learnSegment').removeClass('hidden');
+      $('.showLearnSectionButton').addClass('hidden');
+      $('.showKeyTermsButton').removeClass('hidden');
+      currentStep = 1;
+    });
+
+    $('.showKeyTermsButton').click(function(){
+      $('.keyIdeasSegment').removeClass('hidden');
+      $('.showKeyTermsButton').addClass('hidden');
+      currentStep = 2;
+    });
+
+    $('.keyTerm').click(function(){
+      $(this).find('.keyTermDefinition').toggleClass('hidden');
+    });
+
+    // Add warning messages
+    setTimeout(function(){
+      if(currentStep === 0){
+        $('#clickNextWarning').removeClass('hidden');
+      }
+    }, 10000);
+
+    setTimeout(function(){
+      if(currentStep === 1){
+        $('#clickLabelsWarning').removeClass('hidden');
+      }
+    }, 15000);
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js")
+
+block styles
+  link(rel='stylesheet', href='/css/start.css')  

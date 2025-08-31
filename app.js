@@ -4,7 +4,7 @@
 const express = require("express");
 const _ = require("lodash");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const errorHandler = require("errorhandler");
@@ -14,7 +14,7 @@ const flash = require("express-flash");
 const path = require("path");
 const mongoose = require("mongoose");
 const passport = require("passport");
-const expressValidator = require("express-validator");
+//const expressValidator = require("express-validator");
 //multer is how we send files (like images) thru web forms
 const multer = require("multer");
 const csrf = require("csurf");
@@ -55,8 +55,8 @@ var m_options = multer.diskStorage({
 var userpost_options = multer.diskStorage({
   destination: path.join(__dirname, "uploads/user_post"),
   filename: function (req, file, cb) {
-    var lastsix = req.user.id.substr(req.user.id.length - 6);
-    var prefix = lastsix + Math.random().toString(36).slice(2, 10);
+        var lastsix = req.user.id.substr(req.user.id.length - 6);
+        var prefix = lastsix + Math.random().toString(36).slice(2, 10);
     cb(null, prefix + file.originalname.replace(/[^A-Z0-9]+/gi, "_"));
   },
 });
@@ -65,7 +65,7 @@ var userpost_options = multer.diskStorage({
 var useravatar_options = multer.diskStorage({
   destination: path.join(__dirname, "uploads/user_post"),
   filename: function (req, file, cb) {
-    var prefix = req.user.id + Math.random().toString(36).slice(2, 10);
+        var prefix = req.user.id + Math.random().toString(36).slice(2, 10);
     cb(null, prefix + file.originalname.replace(/[^A-Z0-9]+/gi, "_"));
   },
 });
@@ -116,16 +116,20 @@ mongoose.connection.on('error', (err) => {
 /*
  * Connect to MongoDB.
  */
-mongoose.set("useFindAndModify", false);
-mongoose.set("useCreateIndex", true);
-mongoose.set("useNewUrlParser", true);
-mongoose.set("useUnifiedTopology", true);
-mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
-mongoose.connection.on("error", (err) => {
-  console.error(err);
-  //console.log('%s MongoDB connection error. Please make sure MongoDB is running.', chalk.red('✗'));
-  process.exit();
+//mongoose.set("useFindAndModify", false);
+//mongoose.set("useCreateIndex", true);
+//mongoose.set("useNewUrlParser", true);
+//mongoose.set("useUnifiedTopology", true);
+if (process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI) {
+mongoose.connect(process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI);
+mongoose.connection.on('error', (err) => {
+    console.error(err);
+        console.log('MongoDB connection error. Please make sure MongoDB is running.');
+        console.log('Continuing without MongoDB...');
 });
+} else {
+    console.log('No MongoDB URI provided. Running without database...');
+}
 
 /*
  * Express configuration.
@@ -145,28 +149,34 @@ app.use(sass({
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressValidator());
+//app.use(expressValidator());
 // Define our session.
-app.use(
-  session({
+const sessionConfig = {
     resave: true,
     saveUninitialized: true,
     rolling: false,
     cookie: {
-      path: "/",
-      httpOnly: true,
-      secure: false,
-      maxAge: 1209600000,
-      sameSite: "lax",
+        path: "/",
+        httpOnly: true,
+        secure: false,
+        maxAge: 1209600000,
+        sameSite: "lax",
     },
-    secret: process.env.SESSION_SECRET,
-    store: new MongoStore({
-      url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
-      autoReconnect: true,
-      clear_interval: 3600,
-    }),
-  })
-);
+    secret: process.env.SESSION_SECRET || 'fallback-secret-key'
+};
+// Only use MongoStore if MongoDB is available
+if (process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI) {
+    try {
+        sessionConfig.store = new MongoStore({
+            url: process.env.PRO_MONGODB_URI || process.env.PRO_MONGOLAB_URI,
+            autoReconnect: true,
+            clear_interval: 3600,
+        });
+    } catch (error) {
+        console.log('MongoStore creation failed, using memory store instead...');
+    }
+}
+app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -197,12 +207,13 @@ app.use(lusca.xframe("SAMEORIGIN"));
 app.use(lusca.xssProtection(true));
 
 app.use((req, res, next) => {
-  res.locals.user = req.user;
-  next();
+    res.locals.user = req.user || null;
+    res.locals.cdn = process.env.CDN || 'https://dhpd030vnpv29.cloudfront.net';
+    next();
 });
 
 app.use((req, res, next) => {
-  // After successful login, redirect back to the intended page
+    // After successful login, redirect back to the intended page
   if (
     !req.user &&
     req.path !== "/login" &&
@@ -218,8 +229,8 @@ app.use((req, res, next) => {
     //console.log("!!!!!!!path is now");
     //console.log(req.path);
     req.session.returnTo = req.path;
-  }
-  next();
+    }
+    next();
 });
 
 //var csrf = lusca({ csrf: true });
@@ -237,21 +248,21 @@ function addCsrf(req, res, next) {
 }
 
 function setHttpResponseHeaders(req, res, next) {
-  // TODO: rework chatbox so that 'unsafe-eval' in script-src is not required.
-  res.set({
+    // TODO: rework chatbox so that 'unsafe-eval' in script-src is not required.
+    res.set({
     "Cache-Control": "no-cache, no-store",
     Expires: "0",
     Pragma: "no-cache",
     "Content-Type": "text/html; charset=UTF-8",
     "Content-Security-Policy":
       "script-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-      "default-src 'self' https://www.google-analytics.com;" +
-      "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-      "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
-      "media-src https://dhpd030vnpk29.cloudfront.net;" +
+            "default-src 'self' https://www.google-analytics.com;" +
+            "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+            "img-src 'self' https://dhpd030vnpk29.cloudfront.net https://www.googletagmanager.com https://www.google-analytics.com;" +
+            "media-src https://dhpd030vnpk29.cloudfront.net;" +
       "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:",
-  });
-  next();
+    });
+    next();
 }
 
 function isValidModId(req, res, next) {
@@ -280,24 +291,24 @@ function isValidModId(req, res, next) {
     "targeted-esp",
   ];
   console.log("req.params.modId = " + req.params.modId);
-  if (modIds.includes(req.params.modId)) {
-    next();
-  } else {
+    if (modIds.includes(req.params.modId)) {
+        next();
+    } else {
     console.log("ERROR -> req.params.modId = " + req.params.modId);
     var err = new Error("Page Not Found.");
-    err.status = 404;
+        err.status = 404;
 
-    console.log(err);
+        console.log(err);
 
     // set locals, only providing error stack in development
     err.stack = req.app.get("env") === "development" ? err.stack : "";
 
     res.locals.message =
       err.message + " Oops! We can't seem to find the page you're looking for.";
-    res.locals.error = err;
+        res.locals.error = err;
 
     // render the error page
-    res.status(err.status);
+        res.status(err.status);
     res.render("error");
   }
 }
@@ -385,7 +396,7 @@ app.get(
   function (req, res) {
     res.render("mods-esp", {
       title: "Elige una lección",
-      isResearchVersion,
+        isResearchVersion,
     });
   }
 );
@@ -700,9 +711,10 @@ app.get(
       req.params.modId === "phishing-esp" ||
       req.params.modId === "targeted-esp" ||
       req.params.modId === "advancedlit-esp" ||
-      req.params.modId === "presentation-esp"
+      req.params.modId === "presentation-esp" ||
+      req.params.modId === "safe-posting-esp"
     ) {
-      res.render("base_intro-esp.pug", {
+      res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_start", {
         title: "Bienvenidos",
       });
     } else {
@@ -930,7 +942,7 @@ app.get(
         `${__dirname}/public2/json/esp-reflectionSectionData.json`
       );
       const reflectionData = JSON.parse(data.toString());
-      res.render(req.params.modId + "/" + req.params.modId + "_results", {
+      res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_results", {
         title: "Reflexionar",
         reflectionData,
       });
@@ -991,7 +1003,7 @@ app.get(
           "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:",
       });
     }
-    res.render(req.params.modId + "/" + req.params.modId + "_sim", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim", {
       title: "Guided Activity",
     });
   }
@@ -1005,7 +1017,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId + "_sim1", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim1", {
       title: "Guided Activity",
     });
   }
@@ -1019,7 +1031,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId + "_sim2", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim2", {
       title: "Guided Activity",
     });
   }
@@ -1033,7 +1045,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId + "_sim3", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim3", {
       title: "Guided Activity",
     });
   }
@@ -1047,7 +1059,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId + "_sim4", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim4", {
       title: "Guided Activity",
     });
   }
@@ -1092,7 +1104,7 @@ app.get(
       // anticipating a specific user behavior that causes 500 errors
       res.redirect("/");
     } else {
-      res.render(req.params.modId + "/" + req.params.modId + "_start", {
+      res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_start", {
         title: "Learn",
       });
     }
@@ -1107,7 +1119,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId + "_trans", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_trans", {
       title: "Review",
     });
   }
@@ -1121,7 +1133,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId + "_trans2", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_trans2", {
       title: "Review",
     });
   }
@@ -1135,7 +1147,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId + "_trans_script", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_trans_script", {
       title: "Review",
     });
   }
@@ -1150,17 +1162,17 @@ app.get(
   addCsrf,
   function (req, res) {
     if (req.params.modId === "safe-posting") {
-      res.set({
+        res.set({
         "Content-Security-Policy":
           "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
-          "default-src 'self'  https://www.google-analytics.com;" +
-          "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-          "img-src 'self' https://dhpd030vnpk29.cloudfront.net  https://www.googletagmanager.com https://www.google-analytics.com;" +
-          "media-src https://dhpd030vnpk29.cloudfront.net;" +
+                "default-src 'self'  https://www.google-analytics.com;" +
+                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+                "img-src 'self' https://dhpd030vnpk29.cloudfront.net  https://www.googletagmanager.com https://www.google-analytics.com;" +
+                "media-src https://dhpd030vnpk29.cloudfront.net;" +
           "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:",
       });
     }
-    res.render(req.params.modId + "/" + req.params.modId + "_tutorial", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_tutorial", {
       title: "Tutorial",
     });
   }
@@ -1174,7 +1186,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId + "_tutorial2", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_tutorial2", {
       title: "Tutorial",
     });
   }
@@ -1189,17 +1201,17 @@ app.get(
   addCsrf,
   function (req, res) {
     if (req.params.modId === "safe-posting") {
-      res.set({
+        res.set({
         "Content-Security-Policy":
           "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/  https://www.googletagmanager.com https://www.google-analytics.com;" +
-          "default-src 'self' https://www.google-analytics.com;" +
-          "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
-          "img-src 'self' https://dhpd030vnpk29.cloudfront.net  https://www.googletagmanager.com https://www.google-analytics.com;" +
-          "media-src https://dhpd030vnpk29.cloudfront.net;" +
+                "default-src 'self' https://www.google-analytics.com;" +
+                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+                "img-src 'self' https://dhpd030vnpk29.cloudfront.net  https://www.googletagmanager.com https://www.google-analytics.com;" +
+                "media-src https://dhpd030vnpk29.cloudfront.net;" +
           "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:",
-      });
+        });
     }
-    res.render(req.params.modId + "/" + req.params.modId + "_tut_guide", {
+    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_tut_guide", {
       title: "Tutorial",
     });
   }
@@ -1296,7 +1308,7 @@ app.post(
   setHttpResponseHeaders,
   scriptController.postDeleteFeedAction
 );
-// Post information about a user's reflection answers in the reflection section
+// Post information about a user's reflection answers in the reflection section 
 app.post(
   "/reflection",
   passportConfig.isAuthenticated,
@@ -1652,7 +1664,7 @@ if (enableTeacherDashboard) {
     userController.postName
   );
 
-  // The class overview page on the teacher dashboard
+    // The class overview page on the teacher dashboard
   app.get(
     "/classOverview",
     passportConfig.isAuthenticated,
@@ -1666,7 +1678,7 @@ if (enableTeacherDashboard) {
     }
   );
 
-  // The module overview page on the teacher dashboard
+    // The module overview page on the teacher dashboard
   app.get(
     "/moduleOverview",
     passportConfig.isAuthenticated,
@@ -1680,7 +1692,7 @@ if (enableTeacherDashboard) {
     }
   );
 
-  // The student report page on the teacher dashboard
+    // The student report page on the teacher dashboard
   app.get(
     "/studentReport",
     passportConfig.isAuthenticated,
@@ -1732,7 +1744,7 @@ if (enableLearnerDashboard) {
     userController.postUpdateNewBadge
   );
 
-  // The learning achievement page on the learner dashboard
+    // The learning achievement page on the learner dashboard
   app.get(
     "/learningAchievement",
     passportConfig.isAuthenticated,
@@ -1746,7 +1758,7 @@ if (enableLearnerDashboard) {
     }
   );
 
-  // The learning map page on the learner dashboard
+    // The learning map page on the learner dashboard
   app.get(
     "/learningMap",
     passportConfig.isAuthenticated,
@@ -1760,7 +1772,7 @@ if (enableLearnerDashboard) {
     }
   );
 
-  // The module completion page on the learner dashboard
+    // The module completion page on the learner dashboard
   app.get(
     "/moduleCompletion",
     passportConfig.isAuthenticated,
@@ -1824,10 +1836,10 @@ app.use(function (err, req, res, next) {
       : " Oops! Something went wrong.";
 
   res.locals.message = err.message;
-  res.locals.error = err;
+        res.locals.error = err;
 
   // render the error page
-  res.status(err.status);
+        res.status(err.status);
   res.render("error");
 });
 
@@ -1835,19 +1847,19 @@ app.use(function (err, req, res, next) {
 // Necessary to include because in express, 404 responses are not the result of an error, so the error-handler middleware will not capture them. https://expressjs.com/en/starter/faq.html
 app.use(function (req, res, next) {
   var err = new Error("Page Not Found.");
-  err.status = 404;
+    err.status = 404;
 
-  console.log(err);
+    console.log(err);
 
   // set locals, only providing error stack in development
   err.stack = req.app.get("env") === "development" ? err.stack : "";
 
   res.locals.message =
     err.message + " Oops! We can't seem to find the page you're looking for.";
-  res.locals.error = err;
+    res.locals.error = err;
 
   // render the error page
-  res.status(err.status);
+    res.status(err.status);
   res.render("error");
 });
 // }
