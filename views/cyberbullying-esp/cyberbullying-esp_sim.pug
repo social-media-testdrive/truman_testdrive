@@ -40,7 +40,7 @@ block content
                 span 
                   | Los administradores del TestDrive van a revisar el post luego.
       .content
-        .right.floated.meta= "Yesterday"
+        .right.floated.meta= "Ayer"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user55.jpg')
               span='Lana Reed'
@@ -82,8 +82,11 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment#hint1(type='text' placeholder='Write a Comment')
+            if user && user.profile && user.profile.picture
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+          input.newcomment#hint1(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
     //-#######################
     .ui.fluid.card.dim()
@@ -97,7 +100,7 @@ block content
                 span 
                   | Los administradores del TestDrive van a revisar el post luego.
       .content
-        .right.floated.meta= "Yesterday"
+        .right.floated.meta= "Ayer"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user54.jpg')
               span='Ariel Simon'
@@ -137,8 +140,11 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment(type='text' placeholder='Write a Comment')
+            if user && user.profile && user.profile.picture
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+          input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
     //-##########
     
@@ -153,7 +159,7 @@ block content
                   span 
                     | Los administradores del TestDrive van a revisar el post luego.
         .content
-          .right.floated.meta= "Yesterday"
+          .right.floated.meta= "Ayer"
           a(href='#')
                 img.ui.avatar.image(src=cdn+'/profile_pictures/user66.jpeg')
                 span='Emma Hanson'
@@ -176,8 +182,11 @@ block content
         .extra.content
           .ui.fluid.left.labeled.right.icon.input
             .ui.label
-              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-            input.newcomment(type='text' placeholder='Write a Comment')
+              if user && user.profile && user.profile.picture
+                img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+              else
+                img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+            input.newcomment(type='text' placeholder='Escribe un comentario')
             i.big.send.link.icon
     
 
@@ -193,7 +202,7 @@ block content
                 span 
                   | Los administradores del TestDrive van a revisar el post luego.
       .content
-        .right.floated.meta= "Yesterday"
+        .right.floated.meta= "Ayer"
         a(href='#')
               img.ui.avatar.image(src=cdn+'/profile_pictures/user44.png')
               span='David Cole'
@@ -235,8 +244,11 @@ block content
       .extra.content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-          input.newcomment#hint4(type='text' placeholder='Write a Comment')
+            if user && user.profile && user.profile.picture
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+          input.newcomment#hint4(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
     .ui.message.warning.hidden#confirmContinueCheck
       .ui.header 
@@ -293,7 +305,7 @@ block scripts
       },
       {
         element: document.querySelectorAll('#step1')[0],
-        intro: "<div> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user55.jpg'/><b>Lana</b>  &  <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>are in the same class at school. Recently, Emma has been saying a lot of mean things to Lana.</div>",
+        intro: "<div> <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user55.jpg'/><b>Lana</b>  &  <img class='ui avatar image' src='https://dhpd030vnpk29.cloudfront.net/profile_pictures/user66.jpg'/><b>Emma</b> </div> <div>están en la misma clase de la escuela. Recientemente, Emma ha estado diciendo muchas cosas hirientes a Lana.</div>",
         position:'right',
         scrollTo: 'tooltip',
         audioFile: ['CUSML.6.4.4.mp3']

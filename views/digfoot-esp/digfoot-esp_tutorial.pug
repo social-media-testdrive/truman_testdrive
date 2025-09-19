@@ -71,7 +71,10 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(
-              src=cdn + "/profile_pictures/" + user.profile.picture,
+              if user && user.profile && user.profile.picture
+                src=cdn + "/profile_pictures/" + user.profile.picture,
+              else
+                src=cdn + "/profile_pictures/avatar-icon.svg",
               name=user.profile.name
             )
           input.newcomment(type="text", placeholder="Escribe un Comentario")
@@ -133,7 +136,10 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             img.ui.avatar.image(
-              src=cdn + "/profile_pictures/" + user.profile.picture,
+              if user && user.profile && user.profile.picture
+                src=cdn + "/profile_pictures/" + user.profile.picture,
+              else
+                src=cdn + "/profile_pictures/avatar-icon.svg",
               name=user.profile.name
             )
           input.newcomment(type="text", placeholder="Escribe un Comentario")
