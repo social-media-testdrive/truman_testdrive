@@ -371,6 +371,10 @@ exports.postUpdateInterestSelection = async(req, res, next) => {
  */
 exports.postUpdateHabitsTimer = async(req, res, next) => {
     try {
+        if (!req.user || !req.user.id) {
+            // For guest users, just return success without updating anything
+            return res.json({ success: true, message: 'Guest user - no timer update needed' });
+        }
         const user = await User.findById(req.user.id).exec();
         if (req.body.habitsTimer) {
             user.habitsTimer.push(req.body.habitsTimer);

@@ -247,6 +247,18 @@ function addCsrf(req, res, next) {
   next();
 }
 
+function getSpanishViewName(modId, pageType) {
+  // Most Spanish modules use full name, only safe-posting-esp uses base name
+  const baseNameModules = ['safe-posting-esp'];
+  const baseName = modId.replace('-esp', '');
+  
+  if (baseNameModules.includes(modId)) {
+    return `${modId}/${baseName}_${pageType}`;
+  } else {
+    return `${modId}/${modId}_${pageType}`;
+  }
+}
+
 function setHttpResponseHeaders(req, res, next) {
     // TODO: rework chatbox so that 'unsafe-eval' in script-src is not required.
     res.set({
@@ -272,6 +284,7 @@ function isValidModId(req, res, next) {
     "advancedlit",
     "advancedlit-esp",
     "cyberbullying",
+    "cyberbullying-esp",
     "digfoot",
     "digfoot-esp",
     "digital-literacy",
@@ -287,6 +300,7 @@ function isValidModId(req, res, next) {
     "privacy",
     "privacy-esp",
     "safe-posting",
+    "safe-posting-esp",
     "targeted",
     "targeted-esp",
   ];
@@ -440,7 +454,9 @@ app.get(
       req.params.modId === "phishing-esp" ||
       req.params.modId === "targeted-esp" ||
       req.params.modId === "advancedlit-esp" ||
-      req.params.modId === "presentation-esp"
+      req.params.modId === "presentation-esp" ||
+      req.params.modId === "safe-posting-esp" ||
+      req.params.modId === "cyberbullying-esp"
     ) {
       res.render("base_end-esp.pug", {
         title: "Terminado",
@@ -712,9 +728,10 @@ app.get(
       req.params.modId === "targeted-esp" ||
       req.params.modId === "advancedlit-esp" ||
       req.params.modId === "presentation-esp" ||
-      req.params.modId === "safe-posting-esp"
+      req.params.modId === "safe-posting-esp" ||
+      req.params.modId === "cyberbullying-esp"
     ) {
-      res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_start", {
+      res.render(getSpanishViewName(req.params.modId, "start"), {
         title: "Bienvenidos",
       });
     } else {
@@ -871,7 +888,9 @@ app.get(
       req.params.modId === "phishing-esp" ||
       req.params.modId === "targeted-esp" ||
       req.params.modId === "advancedlit-esp" ||
-      req.params.modId === "presentation-esp"
+      req.params.modId === "presentation-esp" ||
+      req.params.modId === "safe-posting-esp" ||
+      req.params.modId === "cyberbullying-esp"
     ) {
       res.render("base_intro-esp.pug", {
         title: "Bienvenidos",
@@ -936,13 +955,15 @@ app.get(
       req.params.modId === "phishing-esp" ||
       req.params.modId === "targeted-esp" ||
       req.params.modId === "advancedlit-esp" ||
-      req.params.modId === "presentation-esp"
+      req.params.modId === "presentation-esp" ||
+      req.params.modId === "safe-posting-esp" ||
+      req.params.modId === "cyberbullying-esp"
     ) {
       const data = await fs.readFileAsync(
         `${__dirname}/public2/json/esp-reflectionSectionData.json`
       );
       const reflectionData = JSON.parse(data.toString());
-      res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_results", {
+      res.render(getSpanishViewName(req.params.modId, "results"), {
         title: "Reflexionar",
         reflectionData,
       });
@@ -1003,7 +1024,7 @@ app.get(
           "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:",
       });
     }
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim", {
+    res.render(getSpanishViewName(req.params.modId, "sim"), {
       title: "Guided Activity",
     });
   }
@@ -1017,7 +1038,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim1", {
+    res.render(getSpanishViewName(req.params.modId, "sim1"), {
       title: "Guided Activity",
     });
   }
@@ -1031,7 +1052,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim2", {
+    res.render(getSpanishViewName(req.params.modId, "sim2"), {
       title: "Guided Activity",
     });
   }
@@ -1045,7 +1066,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim3", {
+    res.render(getSpanishViewName(req.params.modId, "sim3"), {
       title: "Guided Activity",
     });
   }
@@ -1059,7 +1080,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_sim4", {
+    res.render(getSpanishViewName(req.params.modId, "sim4"), {
       title: "Guided Activity",
     });
   }
@@ -1104,7 +1125,7 @@ app.get(
       // anticipating a specific user behavior that causes 500 errors
       res.redirect("/");
     } else {
-      res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_start", {
+      res.render(getSpanishViewName(req.params.modId, "start"), {
         title: "Learn",
       });
     }
@@ -1119,7 +1140,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_trans", {
+    res.render(getSpanishViewName(req.params.modId, "trans"), {
       title: "Review",
     });
   }
@@ -1133,7 +1154,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_trans2", {
+    res.render(getSpanishViewName(req.params.modId, "trans2"), {
       title: "Review",
     });
   }
@@ -1147,7 +1168,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_trans_script", {
+    res.render(getSpanishViewName(req.params.modId, "trans_script"), {
       title: "Review",
     });
   }
@@ -1172,7 +1193,7 @@ app.get(
           "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:",
       });
     }
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_tutorial", {
+    res.render(getSpanishViewName(req.params.modId, "tutorial"), {
       title: "Tutorial",
     });
   }
@@ -1186,7 +1207,7 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_tutorial2", {
+    res.render(getSpanishViewName(req.params.modId, "tutorial2"), {
       title: "Tutorial",
     });
   }
@@ -1211,7 +1232,7 @@ app.get(
           "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:",
         });
     }
-    res.render(req.params.modId + "/" + req.params.modId.replace("-esp", "") + "_tut_guide", {
+    res.render(getSpanishViewName(req.params.modId, "tut_guide"), {
       title: "Tutorial",
     });
   }

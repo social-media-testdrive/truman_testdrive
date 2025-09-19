@@ -1,6 +1,7 @@
 const Script = require('../models/Script.js');
 const User = require('../models/User');
 const Notification = require('../models/Notification');
+const mongoose = require('mongoose');
 const _ = require('lodash');
 
 /**
@@ -8,14 +9,23 @@ const _ = require('lodash');
  * Get the notification timestamps for the habits module
  */
 exports.getNotificationTimes = (req, res) => {
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+        console.log('No database connection, returning empty notification data');
+        return res.json({
+            notificationTimestamps: [],
+            notificationText: [],
+            notificationPhoto: [],
+            notifCorrespondingPost: []
+        });
+    }
+    
     Script.find()
         .where('module').equals('habits-esp')
         .where('type').equals('notification')
         .sort('time')
-        .exec(function(err, script_feed) {
-            if (err) {
-                return next(err);
-            }
+        .exec()
+        .then(function(script_feed) {
 
             var notifTimestampArray = [];
             var notifTextArray = [];
@@ -42,6 +52,9 @@ exports.getNotificationTimes = (req, res) => {
                 notificationPhoto: notifPhotoArray,
                 notifCorrespondingPost: notifCorrespondingPostArray
             });
+        })
+        .catch(function(err) {
+            return next(err);
         });
 };
 
@@ -50,13 +63,15 @@ exports.getNotificationTimes = (req, res) => {
  Get a single post
 */
 exports.getSinglePost = (req, res, next) => {
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+        console.log('No database connection, returning empty post data');
+        return res.json({ post: null });
+    }
+    
     Script.findById(req.params.postId)
-        .exec(function(err, post) {
-            if (err) {
-                console.log("ERROR");
-                console.log(err);
-                return next(err);
-            }
+        .exec()
+        .then(function(post) {
             if (post == null) {
                 console.log("NULL");
                 var myerr = new Error('Post not found!');
@@ -64,6 +79,11 @@ exports.getSinglePost = (req, res, next) => {
             }
             res.set({ 'Content-Type': 'application/json; charset=UTF-8' });
             res.json({ post: post });
+        })
+        .catch(function(err) {
+            console.log("ERROR");
+            console.log(err);
+            return next(err);
         })
 }
 
@@ -73,7 +93,25 @@ exports.getSinglePost = (req, res, next) => {
  * and renders the freeplay page.
  */
 exports.getScript = (req, res, next) => {
-    User.findById(req.user.id)
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+        console.log('No database connection, showing empty feed');
+        console.log('modId:', req.params.modId);
+        // Use Spanish template for Spanish modules
+        if (req.params.modId.endsWith('-esp')) {
+            const templatePath = req.params.modId + '/' + req.params.modId + '_script';
+            console.log('Using Spanish template:', templatePath);
+            return res.render(templatePath, { script: [], mod: req.params.modId });
+        } else {
+            console.log('Using English template: script');
+            return res.render('script', { script: [], mod: req.params.modId });
+        }
+    }
+    
+    // Handle both authenticated and guest users
+    if (req.user && req.user.id) {
+        // Authenticated user path
+        User.findById(req.user.id)
         .populate({
             path: 'posts.reply',
             model: 'Script',
@@ -90,8 +128,9 @@ exports.getScript = (req, res, next) => {
             path: 'posts.comments.actor',
             model: 'Actor'
         })
-        .exec(function(err, user) {
-            Script.find()
+        .exec()
+        .then(function(user) {
+            return Script.find()
                 .where('module').equals(req.params.modId)
                 .sort('-time')
                 .populate('actor')
@@ -102,11 +141,9 @@ exports.getScript = (req, res, next) => {
                         model: 'Actor'
                     }
                 })
-                .exec(function(err, script_feed) {
+                .exec()
+                .then(function(script_feed) {
                     console.log('in here? 0');
-                    if (err) {
-                        return next(err);
-                    }
                     console.log("mod id = " + req.params.modId);
                     // Final array of all posts to go in the freeplay feed
                     const finalfeed = [];
@@ -301,7 +338,76 @@ exports.getScript = (req, res, next) => {
                         res.render('script', { script: finalfeed, mod: req.params.modId});
                     }
                 });
+        })
+        .catch(function(err) {
+            return next(err);
         });
+    } else {
+        // Guest user path - just show the script feed without user-specific data
+        Script.find()
+            .where('module').equals(req.params.modId)
+            .sort('-time')
+            .populate('actor')
+            .populate({
+                path: 'comments.actor',
+                populate: {
+                    path: 'actor',
+                    model: 'Actor'
+                }
+            })
+            .exec()
+            .then(function(script_feed) {
+                console.log("mod id = " + req.params.modId);
+                
+                // For guest users, just use the script feed as is
+                const finalfeed = script_feed;
+                
+                // Render custom script pages for certain modules, otherwise use the default
+                if (req.params.modId == "advancedlit"){
+                    res.render('advancedlit/advancedlit_script', { script: finalfeed, mod: req.params.modId});
+                } else if (req.params.modId == "esteem-esp") {
+                    res.render('esteem-esp/esteem-esp_script', { script: finalfeed, mod: req.params.modId});
+                } else if (req.params.modId == "esteem"){
+                    res.render('esteem/esteem_script', { script: finalfeed, mod: req.params.modId});
+                } else if (req.params.modId == "habits"){
+                    res.render('habits/habits_script', {
+                        script: finalfeed,
+                        mod: req.params.modId,
+                        habitsStart: -1 // Default value for guest users
+                    });
+                } else if (req.params.modId == "habits-esp"){
+                    res.render('habits-esp/habits-esp_script', {
+                        script: finalfeed,
+                        mod: req.params.modId,
+                        habitsStart: -1 // Default value for guest users
+                    });
+                } else if  (req.params.modId == "phishing"){
+                    res.render('phishing/phishing_script', { script: finalfeed, mod: req.params.modId});
+                }  else if  (req.params.modId == "phishing-esp"){
+                    res.render('phishing-esp/phishing-esp_script', { script: finalfeed, mod: req.params.modId});
+                } else if (req.params.modId == "targeted"){
+                    res.render('targeted/targeted_script', { script: finalfeed, mod: req.params.modId});
+                }  else if (req.params.modId == "targeted-esp"){
+                    res.render('targeted-esp/targeted-esp_script', { script: finalfeed, mod: req.params.modId});
+                } else {
+                    if(req.params.modId === 'safe-posting') {
+                        res.set({
+                            "Content-Security-Policy":
+                                "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ http://cdnjs.cloudflare.com/ https://www.googletagmanager.com https://www.google-analytics.com;" +
+                                "default-src 'self' https://www.google-analytics.com;" +
+                                "style-src 'self' 'unsafe-inline' https://dhpd030vnpk29.cloudfront.net https://cdnjs.cloudflare.com/ https://fonts.googleapis.com;" +
+                                "img-src 'self' https://dhpd030vnpk29.cloudfront.net  https://www.googletagmanager.com https://www.google-analytics.com;" +
+                                "media-src https://dhpd030vnpk29.cloudfront.net;" +
+                                "font-src 'self' https://fonts.gstatic.com  https://cdnjs.cloudflare.com/ data:"
+                        });
+                    }
+                    res.render('script', { script: finalfeed, mod: req.params.modId});
+                }
+            })
+            .catch(function(err) {
+                return next(err);
+            });
+    }
 };
 
 /**
@@ -324,14 +430,17 @@ exports.getScriptFeed = (req, res, next) => {
                 model: 'Actor'
             }
         })
-        .exec(function(err, script_feed) {
-            if (err) { return next(err); }
+        .exec()
+        .then(function(script_feed) {
             //Successful, so render
 
             //update script feed to see if reading and posts has already happened
             var finalfeed = [];
             finalfeed = script_feed;
             res.render('feed', { script: finalfeed });
+        })
+        .catch(function(err) {
+            return next(err);
         }); //end of Script.find()
 }; //end of .getScript
 

@@ -1,7 +1,7 @@
 extends ../script-esp.pug
 
 block post
-  if (val.type === user.esteemTopic[user.esteemTopic.length - 1] || val.type === "neutral")
+  if (user && user.esteemTopic && user.esteemTopic.length > 0 && (val.type === user.esteemTopic[user.esteemTopic.length - 1] || val.type === "neutral"))
     if (val.info_text !== "")
       include ../partials/script/actorPost-esp
     else
@@ -11,7 +11,7 @@ block rightColumn
 
   .computer.only.four.wide.column
     .ui.sticky.compact.positive.message.advancedLitReminder
-      case user.esteemTopic[user.esteemTopic.length - 1]
+      case (user && user.esteemTopic && user.esteemTopic.length > 0) ? user.esteemTopic[user.esteemTopic.length - 1] : "default"
         when "Música"
           p
             | Recuerda que estás viendo el feed de Jeremy. Presta atención a las
