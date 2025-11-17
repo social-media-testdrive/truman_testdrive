@@ -14,7 +14,7 @@ function initializeModuleTimePieChart() {
               'rgba(229, 0, 39)'
             ]
         }],
-        labels: ["Learn","Practice","Explore","Reflect"],
+        labels: ["Aprender","Practicar","Explorar","Reflexionar"],
       },
 
       options: {

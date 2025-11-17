@@ -17,8 +17,7 @@ const stepsList = [
   },
   {
     element: '#step1',
-    intro: `El <b>ciberbullying</b> se da cuando alguien publica o comparte cosas negativas sobre otra persona en línea. El acosador puede usar dispositivos digitales, sitios o aplicaciones. Este suele hacer esto una y otra vez a la misma persona.
-    `,
+    intro: `El <b>ciberbullying</b> es cuando alguien usa internet o redes sociales para herir o burlarse de otra persona. El acosador puede usar el celular, redes o apps para molestar. Casi siempre lo hace varias veces y con la misma persona.`,
     position: 'right',
     scrollTo: 'tooltip',
     audioFile: ['CUSML.6.3.2.mp3']
