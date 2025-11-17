@@ -994,9 +994,21 @@ app.get(
     const data = await fs.readFileAsync(
       `${__dirname}/public2/json/quizSectionData.json`
     );
-    // console.log('data: ' + JSON.stringify(JSON.parse(data.toString())));
-    quizData = JSON.parse(data.toString())[req.params.modId];
-    // console.log('quizData: ' + JSON.stringify(quizData));
+    const allQuizData = JSON.parse(data.toString());
+    quizData = allQuizData[req.params.modId];
+    
+    console.log('Quiz route - modId:', req.params.modId);
+    console.log('Quiz data found:', !!quizData);
+    console.log('Available modules in JSON:', Object.keys(allQuizData).filter(k => k.includes('cyberbullying')));
+    
+    // Handle case where quizData is undefined (module not found in JSON)
+    if (!quizData) {
+      console.error('Quiz data not found for module:', req.params.modId);
+      return res.status(404).render('error', {
+        message: 'Quiz data not found for this module',
+        error: { status: 404 }
+      });
+    }
 
     res.render("base_quiz.pug", {
       title: "Quiz",

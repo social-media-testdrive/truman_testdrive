@@ -754,6 +754,10 @@ exports.getLearnerEarnedBadges = (req, res, next) => {
  * Delete user account.
  */
 exports.getDeleteAccount = async(req, res, next) => {
+    // Check if user exists
+    if (!req.user) {
+        return res.status(401).send('Unauthorized');
+    }
     // Is this a guest account?
     if (typeof req.user.isGuest !== 'undefined' && req.user.isGuest) {
         await User.deleteOne({ _id: req.user.id }).exec();
