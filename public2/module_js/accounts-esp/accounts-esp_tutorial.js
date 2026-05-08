@@ -42,9 +42,8 @@ const stepsList = [{
     },
     {
         element: '#passwordStep',
-        intro: `Examples of bad passwords: password, 123456, abc123, 111111,
-password1, yourname11, or anything else that could be easily guessed by
-other people.`,
+        intro: `Ejemplos de contraseñas poco seguras: password, 123456, abc123, 111111,
+password1, yourname11, o cualquier otra que otros puedan adivinar fácilmente.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.8.3.06.mp3']

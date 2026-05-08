@@ -94,9 +94,9 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             if user && user.profile && user.profile.picture
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                else
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
           input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
 
@@ -172,9 +172,9 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             if user && user.profile && user.profile.picture
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                else
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
           input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
 
@@ -233,9 +233,9 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             if user && user.profile && user.profile.picture
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                else
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
           input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
 
@@ -293,9 +293,9 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             if user && user.profile && user.profile.picture
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                else
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
           input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
 
@@ -371,9 +371,9 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             if user && user.profile && user.profile.picture
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                else
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
           input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
 
@@ -448,9 +448,9 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             if user && user.profile && user.profile.picture
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                else
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
           input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
 
@@ -490,9 +490,9 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             if user && user.profile && user.profile.picture
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                else
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
           input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
 
@@ -568,9 +568,9 @@ block content
         .ui.fluid.left.labeled.right.icon.input
           .ui.label
             if user && user.profile && user.profile.picture
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
-                else
-                  img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+            else
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
           input.newcomment(type='text' placeholder='Escribe un comentario')
           i.big.send.link.icon
 
@@ -611,9 +611,7 @@ block scripts
       },
       {
         element: document.querySelectorAll('#step1')[0],
-        intro: `Dale clic a "Listo" y busca los puntos azules&nbsp;&nbsp;<a role='button' tabindex='0'
-class='introjs-hint'><div class='introjs-hint-dot'></div><div class=
-'introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para aprender más...`,
+        intro: `Dale clic a "Listo" y busca los puntos azules&nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para aprender más...`,
         position:'right',
         scrollTo:'tooltip',
         audioFile: ['CUSML.7.8.04.mp3']

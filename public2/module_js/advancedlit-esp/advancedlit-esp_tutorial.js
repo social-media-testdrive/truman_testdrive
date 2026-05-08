@@ -6,29 +6,29 @@ let startTimestamp = Date.now();
 
 const firstStepsList = [{
         element: '#step1A',
-        intro: `Dale clic a "Siguiente" para comenzar!`,
+        intro: `¡Dale clic a "Siguiente" para comenzar!`,
         position: 'right',
         scrollTo: 'tooltip',
         audioFile: ['']
     },
     {
         element: '#step1A',
-        intro: `Let's scroll through the timeline to learn how to respond to
-    breaking news on social media.`,
+        intro: `Desplázate por la línea de tiempo para aprender cómo responder a
+    las noticias de último minuto en las redes sociales.`,
         position: "right",
         audioFile: ['CUSML.9.3.01.mp3']
     },
     {
         element: '#step1',
-        intro: `When you see a breaking news story on social media, it's
-    important to make sure it is reliable.`,
+        intro: `Cuando veas una noticia de último minuto en las redes sociales, es
+    importante asegurarte de que sea confiable.`,
         position: "right",
         audioFile: ['CUSML.9.3.02.mp3']
     },
     {
         element: '#step1',
-        intro: `Let's learn more about the story before sharing it with others!
-    Click on the tornado warning article to see what you can learn.`,
+        intro: `Aprendamos más sobre la noticia antes de compartirla con otras personas.
+    Haz clic en el artículo sobre las lluvias fuertes en Arequipa para ver qué puedes averiguar.`,
         position: "right",
         audioFile: ['CUSML.9.3.03.mp3']
     }
@@ -36,37 +36,35 @@ const firstStepsList = [{
 
 const secondStepsList = [{
         element: '#step2',
-        intro: `Check to see if the article is clearly labeled as an opinion
-    piece or a news article. In this example, the title states that this is a
-    news article.`,
+        intro: `Comprueba si el artículo está claramente etiquetado como opinión
+    o como noticia. En este ejemplo, el título indica que es una noticia.`,
         position: "bottom",
         scrollTo: "element",
         audioFile: ['CUSML.9.3.04.mp3']
     },
     {
         element: '#step3',
-        intro: `When you read an article, <b>fact-check</b> the information!
-    Reliable articles will explain where they got the information and will
-    include links to the sources that the author used when writing their
-    story.`,
+        intro: `Al leer un artículo, ¡<b>verifica los hechos</b> de la información!
+    Los artículos confiables explican de dónde obtuvieron la información e
+    incluyen enlaces a las fuentes que el autor usó al escribir la noticia.`,
         position: "left",
         scrollTo: "element",
         audioFile: ['CUSML.9.3.05.mp3']
     },
     {
         element: '#step3B',
-        intro: `Breaking news stories develop over time, so the first reports might
-    not have all the information. Reliable articles will often make this
-    clear.`,
+        intro: `Las noticias de último minuto se desarrollan con el tiempo; las primeras
+    versiones quizá no tengan toda la información. Los artículos confiables suelen
+    dejarlo claro.`,
         position: "left",
         scrollTo: "element",
         audioFile: ['CUSML.9.3.06.mp3']
     },
     {
         element: "#step4",
-        intro: `Even if an article looks reliable, it's a good idea to check with at
-    least one additional source. Click the search button to see if other sites
-    are reporting this story.`,
+        intro: `Aunque un artículo parezca confiable, conviene contrastarlo con al menos
+    otra fuente. Haz clic en el botón de búsqueda para ver si otros sitios
+    también informan de esta historia.`,
         position: "right",
         scrollTo: "element",
         audioFile: ['CUSML.9.3.07.mp3']
@@ -75,23 +73,23 @@ const secondStepsList = [{
 
 const thirdStepsList = [{
         element: "#step5",
-        intro: `You can look for additional resources using a search engine.`,
+        intro: `Puedes buscar más información usando un motor de búsqueda.`,
         position: "right",
         scrollTo: "element",
         audioFile: ['CUSML.9.3.08.mp3']
     },
     {
         element: "#step5B",
-        intro: `Some of the sources you found are reporting the same news as the
-    article you saw. This is a sign that the article is reliable.`,
+        intro: `Algunas de las fuentes que encontraste informan de la misma noticia que el
+    artículo que viste. Eso indica que el artículo es confiable.`,
         position: "right",
         scrollTo: "tooltip",
         audioFile: ['CUSML.9.3.09.mp3']
     },
     {
         element: "#step6",
-        intro: `Click on the "Go back to the timeline" button to see what you can
-    do next.`,
+        intro: `Haz clic en el botón «Volver al feed» para ver qué puedes hacer a
+    continuación.`,
         position: "bottom",
         scrollTo: "element",
         audioFile: ['CUSML.9.3.10.mp3']
@@ -100,9 +98,9 @@ const thirdStepsList = [{
 
 const fourthStepsList = [{
         element: '#step1',
-        intro: `We verified that the article is from a trustworthy site and that
-    others are reporting the same news. It’s okay to share this breaking news
-    with your friends.`,
+        intro: `Comprobamos que el artículo proviene de un sitio confiable y que
+    otros medios informan de la misma noticia. Puedes compartir esta noticia de
+    último minuto con tus amigos.`,
         position: "right",
         scrollTo: "element",
         scrollPadding: 90,
@@ -110,8 +108,8 @@ const fourthStepsList = [{
     },
     {
         element: '#step1',
-        intro: `If you are not sure whether the article is accurate, do not share it
-    with others. You don't want others believing something that may not be true!`,
+        intro: `Si no estás seguro de que el artículo sea correcto, no lo compartas con
+    otras personas. ¡No querrías que otros creyeran algo que podría no ser cierto!`,
         position: "right",
         scrollTo: "element",
         audioFile: ['CUSML.9.3.12.mp3']

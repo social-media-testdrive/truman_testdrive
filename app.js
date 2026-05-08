@@ -714,24 +714,29 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    if (req.params.modId === "delete") {
+    const modIdIntro = String(req.params.modId || "").trim();
+    if (modIdIntro === "delete") {
       // anticipating a specific user behavior that causes 500 errors
       res.redirect("/");
+    } else if (modIdIntro === "presentation-esp") {
+      // Vista explícita: evita confusión con la plantilla en inglés en despliegues antiguos
+      res.render("presentation-esp/presentation-esp_start", {
+        title: "Bienvenidos",
+      });
     } else if (
-      req.params.modId === "esteem-esp" ||
-      req.params.modId === "habits-esp" ||
-      req.params.modId === "digfoot-esp" ||
-      req.params.modId === "privacy-esp" ||
-      req.params.modId === "accounts-esp" ||
-      req.params.modId === "digital-literacy-esp" ||
-      req.params.modId === "phishing-esp" ||
-      req.params.modId === "targeted-esp" ||
-      req.params.modId === "advancedlit-esp" ||
-      req.params.modId === "presentation-esp" ||
-      req.params.modId === "safe-posting-esp" ||
-      req.params.modId === "cyberbullying-esp"
+      modIdIntro === "esteem-esp" ||
+      modIdIntro === "habits-esp" ||
+      modIdIntro === "digfoot-esp" ||
+      modIdIntro === "privacy-esp" ||
+      modIdIntro === "accounts-esp" ||
+      modIdIntro === "digital-literacy-esp" ||
+      modIdIntro === "phishing-esp" ||
+      modIdIntro === "targeted-esp" ||
+      modIdIntro === "advancedlit-esp" ||
+      modIdIntro === "safe-posting-esp" ||
+      modIdIntro === "cyberbullying-esp"
     ) {
-      res.render(getSpanishViewName(req.params.modId, "start"), {
+      res.render(getSpanishViewName(modIdIntro, "start"), {
         title: "Bienvenidos",
       });
     } else {
@@ -1133,11 +1138,16 @@ app.get(
   csrfProtection,
   addCsrf,
   function (req, res) {
-    if (req.params.modId === "delete") {
+    const modIdStart = String(req.params.modId || "").trim();
+    if (modIdStart === "delete") {
       // anticipating a specific user behavior that causes 500 errors
       res.redirect("/");
+    } else if (modIdStart === "presentation-esp") {
+      res.render("presentation-esp/presentation-esp_start", {
+        title: "Learn",
+      });
     } else {
-      res.render(getSpanishViewName(req.params.modId, "start"), {
+      res.render(getSpanishViewName(modIdStart, "start"), {
         title: "Learn",
       });
     }

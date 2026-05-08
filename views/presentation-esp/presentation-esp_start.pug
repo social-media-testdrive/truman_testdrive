@@ -1,5 +1,6 @@
 extends ../ui_layout-esp
 
+//- presentation-esp learn start (es); plantilla solo en castellano
 block content
 
   .ui.text.container.addBottomMargin
@@ -13,64 +14,63 @@ block content
       .ui.basic.segment.removePadding
         .ui.mini.green.right.labeled.icon.button.showLearnSectionButton
           i.down.arrow.icon
-          |   Next
+          |   Siguiente
       .ui.basic.segment.learnSegment.hidden
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            | Posting on social media can be a great way to show people who you 
-            | are! You can be yourself and share your thoughts with other people. 
+            | Publicar en redes sociales puede ser una buena forma de mostrar quién eres.
+            | Puedes ser tú mismo y compartir tus ideas con otras personas.
         h5.ui.header
           i.arrow.circle.right.blue.icon
           .content
-            | Sometimes, people have fake accounts too. These are called 
-            | <b>finstas</b> or spam accounts. People may have these to talk to 
-            | others who are interested in the same things as they are, or to 
-            | post things for only their close friends to see.
+            | A veces la gente también tiene cuentas falsas. Se llaman
+            | <b>finstas</b> o cuentas basura (spam). Algunas personas las usan para hablar con
+            | quienes comparten sus mismos intereses, o para publicar cosas que solo quieren que vean sus amigos cercanos.
         br
         .ui.mini.green.right.labeled.icon.button.showKeyTermsButton
           i.down.arrow.icon
-          |   Next
+          |   Siguiente
     
     .ui.segment.keyIdeasSegment.hidden
       h3.ui.header
         i.key.blue.icon
-        .content Key Ideas
+        .content Ideas clave
       .sub.header.grayElement 
         i.hand.pointer.icon
-        span Click on each word below to learn more
+        span Selecciona cada palabra para aprender más
       br
     
       .ui.stackable.two.column.grid
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm1
             a.ui.blue.ribbon.label.keyTermLabel
-                span Audience
-            span.hidden.keyTermDefinition Anyone who can see information about you or posted by you online.
+                span Audiencia
+            span.hidden.keyTermDefinition Cualquier persona que pueda ver información sobre ti o publicada por ti en internet.
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm2
             a.ui.blue.ribbon.label.keyTermLabel
-                span Anonymous
-            span.hidden.keyTermDefinition Keeping your name and identity hidden online.
-              ul Sometimes people use finstas to post anonymously.    
+                span Anónimo
+            span.hidden.keyTermDefinition Mantener ocultos tu nombre y tu identidad en línea.
+              ul A veces la gente usa finstas para publicar de forma anónima.    
         .ui.column
           .keyTerm.ui.raised.segment.voiceover_keyTerm3
             a.ui.blue.ribbon.label.keyTermLabel
-                span Curate
-            span.hidden.keyTermDefinition To select and organize what you post on social media.
-              ul Some people keep their main account carefully curated, while they might post more casually on an anonymous account.       
+                span Curar
+            span.hidden.keyTermDefinition Elegir y organizar lo que publicas en redes sociales.
+              ul Algunas personas mantienen su cuenta principal muy cuidada, mientras publican con más soltura en una cuenta anónima.       
     
     
     .ui.warning.message#clickNextWarning
       .header
-       | Click "Next"
+       | Clic "Siguiente"
     .ui.warning.message#clickLabelsWarning
      .header
-      | Click on each label to proceed   
+      | Dale clic a cada etiqueta para continuar   
     a(href='javascript:void(0);', onclick='javascript:clickGotIt();')
       .ui.labeled.icon.button
           i.rocket.icon
-          |   Got it!
+          |   Entendido
 
 block scripts
   script.
@@ -96,10 +96,10 @@ block scripts
         "files": ['CUSML.12.2.3.mp3']
       }
     };
-  //- script(src='/module_js/voiceover.js')
-  script(src="/module_js/base_start.js")
+  script(src='/module_js/voiceover.js')
+  script(src="/module_js/base_start.js?v=3")
   
 block styles
   link(rel='stylesheet', href='/css/start.css')
   
-  
+

@@ -2,7 +2,8 @@ extends ../ui_layout
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  -var chosenTopic = user.esteemTopic[user.esteemTopic.length - 1];
+  -var esteemTopics = (user && Array.isArray(user.esteemTopic)) ? user.esteemTopic : []
+  -var chosenTopic = esteemTopics.length ? esteemTopics[esteemTopics.length - 1] : 'Gaming'
   
   .ui.container.resultsAddBottomMargin
     .ui.stackable.column.grid

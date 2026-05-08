@@ -1,14 +1,11 @@
 var hintsList = [{
-        hint: `Search engines like Google often prioritize results about breaking
-    news.`,
+        hint: `Los buscadores como Google suelen priorizar resultados sobre noticias de último minuto.`,
         element: '#hint2',
         hintPosition: 'middle-middle',
         audioFile: ['CUSML.9.4.07.mp3']
     },
     {
-        hint: `None of the sources you found are reporting the same news as the
-    article you saw on your timeline. This might be an indication that the
-    article has inaccurate information.`,
+        hint: `Ninguna de las fuentes que encontraste informa lo mismo que el artículo que viste en tu cronología. Eso puede ser una señal de que el artículo tiene información incorrecta.`,
         element: '#hint3',
         hintPosition: 'middle-right',
         audioFile: ['CUSML.9.4.08.mp3']

@@ -1,20 +1,17 @@
 const hintsList = [{
-        hint: `Based on your analysis of the article, think about what would you do
-    next.`,
+        hint: `Según tu análisis del artículo, piensa qué harías a continuación.`,
         element: '#hint1',
         hintPosition: 'middle-middle',
         audioFile: ['CUSML.9.4.09.mp3']
     },
     {
-        hint: `It's not a good idea to share a news article that isn't accurate
-    since it can cause other people believe something that isn't true.`,
+        hint: `No es buena idea compartir una noticia que no es exacta, porque puede llevar a que otras personas creen algo falso.`,
         element: '#hint2',
         hintPosition: 'bottom-middle',
         audioFile: ['CUSML.9.4.10.mp3']
     },
     {
-        hint: `If you think the article is incorrect, you can flag the post to
-    report it to the website.`,
+        hint: `Si crees que el artículo es incorrecto, puedes marcar la publicación para reportarla al sitio.`,
         element: '#hint3',
         hintPosition: 'top-middle',
         audioFile: ['CUSML.9.4.11.mp3']

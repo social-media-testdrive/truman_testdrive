@@ -4,7 +4,7 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.one.column.centered.grid.feedbackMessagesGrid
+    .ui.one.column.centered.grid.feedbackMessagesGrid.sim-privacy-feedback
       .ui.fixed.bottom.sticky
         .ui.icon.compact.message.warning#removeHidden
           i.close.icon
@@ -28,14 +28,14 @@ block content
       form.ui.form
         .grouped.fields
           label.sectionTitle(for='account') Account Settings
-            .field
-              br
-              .ui.toggle.read-only.checkbox
-                input(type='checkbox' name='privateAccount')
-                label Private account
-            span.settingSmallLabel When your account is private, only people you approve can see your posts.
+          .field
             br
-            br
+            .ui.toggle.checkbox#privateAccountCue
+              input(type='checkbox' name='privateAccount')
+              label Private account
+          span.settingSmallLabel When your account is private, only people you approve can see your posts.
+          br
+          br
             
       .ui.divider
       br
@@ -48,8 +48,8 @@ block content
             .field
               br
               label.standardLabel Allow friend requests from
-                .div
-                .ui.selection.disabled.dropdown
+              .div
+              .ui.selection.dropdown
                   input(type='hidden' name='friendRequests')
                   i.dropdown.icon
                   .default.text Select
@@ -59,8 +59,8 @@ block content
             br
             .field
               label.standardLabel Who can see my friends list?
-                .div
-                .ui.selection.disabled.dropdown
+              .div
+              .ui.selection.dropdown
                   input(type='hidden' name='friendList')
                   i.dropdown.icon
                   .default.text Select
@@ -74,12 +74,11 @@ block content
             .field
               br
               label.standardLabel Allow comments from
-                .div
-                .ui.selection.disabled.dropdown
-                  input(type='hidden' name='friendRequests')
+              .div
+              .ui.selection.dropdown
+                  input(type='hidden' name='commentsList')
                   i.dropdown.icon
                   .default.text Select
-                  .default.
                   .menu
                     .item(data-value='0') Everyone
                     .item(data-value='1') Friends of Friends
@@ -89,7 +88,7 @@ block content
             .field
               label.standardLabel Block comments from
               .div
-                select.ui.fluid.search.disabled.dropdown(multiple='')
+                select.ui.fluid.search.dropdown.blocklistDropdown(multiple='')
                   option Fake N. Ame
                   option Ima Robot
                   option Cloe Hansen
@@ -116,45 +115,43 @@ block content
                   option Ella Sroni
             br
             label.subsectionTitle(for='tags') Tags
-              .field
-                br
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='public' checked='checked')
-                  label Allow people to tag me in their posts
-              .field
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='public' checked='checked')
-                  label Automatically add tagged posts in my timeline
-                  br
-                  br
+            .field
+              br
+              .ui.toggle.read-only.checkbox
+                input(type='checkbox' name='public' checked='checked')
+                label Allow people to tag me in their posts
+            .field
+              .ui.toggle.read-only.checkbox
+                input(type='checkbox' name='public' checked='checked')
+                label Automatically add tagged posts in my timeline
+              br
+              br
       .ui.divider
       br
       form.ui.form
         .grouped.fields
             label.sectionTitle(for='information') Location Sharing Settings
-              .field#hint2
-                br
-                .ui.toggle.checkbox#locationCue1(name='locationToggle')
-                  input(type='checkbox' name='locationSetting' checked='checked')
-                  label Turn on location sharing
+            .field#hint2
+              br
+              .ui.toggle.checkbox#locationCue1(name='locationToggle')
+                input(type='checkbox' name='locationSetting' checked='checked')
+                label Turn on location sharing
             .field
               br
               label.standardLabel Share my location with
-                .div
-                .ui.selection.dropdown#locationCue2(name='shareLocationWith')
-                  input(type='hidden')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
-                .ui.message.hidden#locationMessage
-                  p Now only your friends can see your location.
-            br
-            .ui.divider
-            br#hint3
+              .div
+              .ui.selection.dropdown#locationCue2(name='shareLocationWith')
+                input(type='hidden')
+                i.dropdown.icon
+                .default.text Select
+                .menu
+                  .item(data-value='0') All
+                  .item(data-value='1') Friends of friends
+                  .item(data-value='2') Friends
+                  .item(data-value='3') Only me
+              .ui.message.hidden#locationMessage
+                p Now only your friends can see your location.
+            .ui.divider#hint3
     
     
     .ui.warning.message#locationCue1Text
@@ -162,7 +159,7 @@ block content
         | Turn location sharing off
     .ui.warning.message#locationCue2Text
       .header
-        | Change to share your location with "Friends"
+        | Set “Share my location with” to Friends (not All).
     .ui.warning.message#locationCue3Text
       .header
         | Click through all of the blue dots

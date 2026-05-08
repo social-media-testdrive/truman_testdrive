@@ -33,7 +33,8 @@ $(window).on("load", async function () {
 
   let jsonPath = '/json/advancedlit_articleData.json';
 
-  $.getJSON(jsonPath).then(function(articleData){
+  $.getJSON(jsonPath).then(function(data){
+    let articleData = data.en;
     $('.ui.tab').each(function(){
       let dataTabAttribute = ($(this).closest('.ui.tab').attr('data-tab'));
       if( (dataTabAttribute === "article1")

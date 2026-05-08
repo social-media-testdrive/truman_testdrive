@@ -33,7 +33,8 @@ $(window).on("load", async function () {
 
   let jsonPath = '/json/advancedlit_articleData.json';
 
-  $.getJSON(jsonPath).then(function(articleData){
+  $.getJSON(jsonPath).then(function(data){
+    let articleData = data.es;
     $('.ui.tab').each(function(){
       let dataTabAttribute = ($(this).closest('.ui.tab').attr('data-tab'));
       if( (dataTabAttribute === "article1")
@@ -44,7 +45,7 @@ $(window).on("load", async function () {
         $(this).find('.articleHeading').text(articleData[dataTabAttribute].headline);
         $(this).find('.articleSubheading').text(articleData[dataTabAttribute].subHeadline);
         $(this).find('.articleAuthor').text(articleData[dataTabAttribute].author);
-        $(this).find('.articleDate').text('Published: ' + articleData[dataTabAttribute].date);
+        $(this).find('.articleDate').text('Publicado: ' + articleData[dataTabAttribute].date);
         $(this).find('.fullArticleImage').attr("src",articleData[dataTabAttribute].image);
         $(this).find('.articleBlock1').text(articleData[dataTabAttribute].block1);
         $(this).find('.articleBlock2').text(articleData[dataTabAttribute].block2);

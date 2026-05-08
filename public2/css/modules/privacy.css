@@ -28,6 +28,58 @@
 
 /* tutorial, sim, settings pages */
 
+/*
+ * Guided privacy sim adds class sim-privacy-feedback on markup.
+ * The help strip (.sticky) uses z-index ~1e7 — it can sit above the form and swallow clicks meant for dropdowns.
+ * Let pointer events pass through the strip except on visible .ui.message banners.
+ */
+.sim-privacy-feedback.ui.grid.feedbackMessagesGrid {
+    pointer-events: none;
+}
+
+.sim-privacy-feedback.ui.grid.feedbackMessagesGrid .ui.message {
+    pointer-events: auto;
+}
+
+/* Drop sticky below ui_layout's 1e7 so it cannot paint above the form; #step1 then stacks above the bar. */
+.sim-privacy-feedback.ui.grid.feedbackMessagesGrid .ui.fixed.bottom.sticky {
+    z-index: 40000 !important;
+}
+
+/* Only privacy guided sim uses #step1.ui.container.addTopMargin (see privacy*_sim.pug). */
+#step1.ui.container.addTopMargin {
+    position: relative;
+    z-index: 50000;
+}
+
+#step1.ui.container.addTopMargin .ui.dropdown .menu {
+    z-index: 50100 !important;
+}
+
+#step1.ui.container.addTopMargin form.ui.form,
+#step1.ui.container.addTopMargin .ui.form {
+    overflow: visible !important;
+}
+
+#step1 select.privacy-sim-single {
+    min-height: 2.6em;
+}
+
+/* Free-play privacy settings (EN + ESP) use #hint1; same stacking as guided sim so menus are clickable. */
+#hint1.ui.container.addTopMargin {
+    position: relative;
+    z-index: 50000;
+}
+
+#hint1.ui.container.addTopMargin .ui.dropdown .menu {
+    z-index: 50100 !important;
+}
+
+#hint1.ui.container.addTopMargin form.ui.form,
+#hint1.ui.container.addTopMargin .ui.form {
+    overflow: visible !important;
+}
+
 .ui.container.addTopMargin {
     margin-top: 1em
 }
@@ -44,7 +96,9 @@
     font-size: 100%;
 }
 
-.ui.form .field>label.standardLabel .div {
+/* .div may follow label as sibling (valid HTML) or legacy pattern inside label */
+.ui.form .field>label.standardLabel .div,
+.ui.form .field>label.standardLabel + .div {
     width: 200px;
 }
 

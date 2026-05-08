@@ -2,7 +2,7 @@ extends ../ui_layout-esp
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  -var adType = user.targetedAdTopic[user.targetedAdTopic.length - 1]
+  -var adType = (user && user.targetedAdTopic && user.targetedAdTopic.length) ? user.targetedAdTopic[user.targetedAdTopic.length - 1] : ''
   
   .ui.container.resultsAddBottomMargin
     .ui.stackable.column.grid
@@ -261,20 +261,20 @@ block content
 
     .ui.warning.message.hidden.startPromptsWarning
       .header
-        | Click "Start"
+        | Haz clic en "Comenzar"
     .ui.warning.message.hidden.openAllPromptsWarning
       .header
-        | Click "Next"
+        | Haz clic en "Siguiente"
     //- include ../partials/optInToShareActivityData.pug
     br
     .ui.big.labeled.icon.button.results_print(onclick="onPrint()")
           i.right.arrow.icon
-          |   Print your responses
+          |   Imprime tus respuestas
     br
     br
     .ui.big.labeled.icon.button.resultsContinueButton
           i.rocket.icon
-          |   Continue
+          |   Continuar
 
       
 block scripts

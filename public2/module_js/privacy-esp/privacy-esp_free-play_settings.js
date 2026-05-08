@@ -12,46 +12,186 @@ var hintsList = [
     // audioFile: ['CUSML.7.8.09.mp3']
   },
   {
-    hint: `¿Desactivaste la opción de compartir ubicación y cambiaste quién puede ver la ubicación de Lucía? Haz clic en "<i>¡Continuar!</i>" para ver cómo ha cambiado su perfil.`,
+    hint: `¿Desactivaste la opción de compartir ubicación y dejaste «Compartir mi ubicación con» en Amigos? Cierra los tres puntos azules con «¡Entendido!» y pulsa «¡Listo!».`,
     element: '#hint3',
     hintPosition: 'middle-right',
     // audioFile: ['CUSML.7.8.10.mp3']
   }
 ];
 
-//Variables for the two key settings
-let keySetting1 = $("input[name='locationSetting']").is(':checked');
-let keySetting2 = "";
+// Fila "Amigos" — usar data-value (el texto visible puede variar).
+const LOCATION_SHARE_FRIENDS_VALUE = '2';
+
+/** true = «Activar la función de compartir ubicación» está encendida (hay que apagarla para continuar). */
+function readLocationSharingToggleOn() {
+  var $wrap = $('#locationCue1');
+  if (!$wrap.length) {
+    return false;
+  }
+  var $inp = $wrap.find('input[type=checkbox]').first();
+  if ($wrap.hasClass('ui') && $wrap.hasClass('checkbox')) {
+    try {
+      var api = $wrap.checkbox('is checked');
+      if (api === true) {
+        return true;
+      }
+      if (api === false) {
+        return false;
+      }
+    } catch (e) {
+      /* seguir con DOM */
+    }
+  }
+  if ($inp.length && $inp.prop('checked')) {
+    return true;
+  }
+  return $wrap.hasClass('checked');
+}
+
+let keySetting1 = readLocationSharingToggleOn();
+/** Valor oculto de #locationCue2: '0'..'3' */
+let keySetting2 = '';
+
+/** Módulo Semantic UI del desplegable (el id vive en el .ui.dropdown). */
+function $locationCue2Module() {
+  var $d = $('#locationCue2');
+  if (!$d.length) {
+    return $d;
+  }
+  if ($d.hasClass('ui') && $d.hasClass('dropdown')) {
+    return $d;
+  }
+  return $d.closest('.ui.dropdown');
+}
+
+function normalizeDropdownValue(value) {
+  if (value === undefined || value === null) {
+    return '';
+  }
+  if (Array.isArray(value)) {
+    value = value.length ? value[0] : '';
+  }
+  return String(value).trim();
+}
+
+function readLocationShareValue() {
+  var $m = $locationCue2Module();
+  if (!$m.length) {
+    return '';
+  }
+  try {
+    var v = normalizeDropdownValue($m.dropdown('get value'));
+    if (v === '') {
+      v = normalizeDropdownValue($m.find('input[type=hidden]').first().val());
+    }
+    return v;
+  } catch (e) {
+    try {
+      return normalizeDropdownValue($m.find('input[type=hidden]').first().val());
+    } catch (e2) {
+      return '';
+    }
+  }
+}
+
+function refreshKeySettingsFromDom() {
+  keySetting1 = readLocationSharingToggleOn();
+  keySetting2 = readLocationShareValue();
+}
+
+function locationShareIsFriends() {
+  if (keySetting2 === LOCATION_SHARE_FRIENDS_VALUE) {
+    return true;
+  }
+  try {
+    var t = ($locationCue2Module().dropdown('get text') || '').trim().toLowerCase();
+    return t === 'amigos' || /\bamigos\b/.test(t);
+  } catch (e) {
+    return false;
+  }
+}
+
+function onAudienceChange(value) {
+  keySetting2 = normalizeDropdownValue(value);
+  if (keySetting2 === '') {
+    keySetting2 = readLocationShareValue();
+  }
+  if (locationShareIsFriends()) {
+    $('#locationCue2Text').hide();
+  }
+  updateContinueGreen();
+}
+
+function updateContinueGreen() {
+  refreshKeySettingsFromDom();
+  if (closedHints == hintsList.length) {
+    if (keySetting1 === false && locationShareIsFriends()) {
+      $('.settings1').addClass('green');
+      $('#locationCue1Text').hide();
+      $('#locationCue2Text').hide();
+    } else {
+      $('.settings1').removeClass('green');
+    }
+  }
+}
 
 function customOnHintCloseFunction() {
   closedHints++;
   clickedHints = 0;
-  if($('#removeHidden').is(":visible")){
+  if ($('#removeHidden').is(':visible')) {
     $('#removeHidden').transition('fade');
-    if($('#clickAllDotsWarning').is(":hidden")){
-      $('#cyberTransButton').css("margin-bottom", "4em");
+    if ($('#clickAllDotsWarning').is(':hidden')) {
+      $('#cyberTransButton').css('margin-bottom', '4em');
     }
   }
-  //turn the button green if all three criteria are met
-  if(closedHints == hintsList.length) {
-    //remove the yellow warning about dots
-    if($('#clickAllDotsWarning').is(':visible')){
+  if (closedHints == hintsList.length) {
+    if ($('#clickAllDotsWarning').is(':visible')) {
       $('#clickAllDotsWarning').transition('fade');
-      $('#cyberTransButton').css("margin-bottom", "4em");
+      $('#cyberTransButton').css('margin-bottom', '4em');
     }
-    if((keySetting1 === false) && (keySetting2 === "Amigos")){
-      $( ".settings1" ).addClass("green");
-    }
+    updateContinueGreen();
   }
-};
+}
 
-//Make the dropdown work
-$('.ui.dropdown')
-  .dropdown('set selected', '0');
+function onLocationSharingToggleUiRefresh() {
+  refreshKeySettingsFromDom();
+  if (keySetting1 === false) {
+    $('#locationCue1Text').hide();
+  }
+  updateContinueGreen();
+}
 
-/*All code below is using logic to determine if all required criteria are met before allowing to proceed, handling error messages*/
+$(function () {
+  $('#locationCue1').checkbox({
+    onChange: onLocationSharingToggleUiRefresh,
+    onChecked: onLocationSharingToggleUiRefresh,
+    onUnchecked: onLocationSharingToggleUiRefresh,
+  });
+  $('#privateAccountCue').checkbox();
 
-//Functions for adding visual cues to the appropriate settings
+  $('.ui.selection.dropdown').not('#locationCue2').dropdown();
+  $('#locationCue2').dropdown({
+    onChange: function (value) {
+      onAudienceChange(value);
+    },
+  });
+  $('.blocklistDropdown').dropdown();
+
+  $('.ui.selection.dropdown').not('#locationCue2').dropdown('set selected', '0');
+  $('#locationCue2').dropdown('set selected', '0');
+
+  $('#locationCue2').on('change', 'input[type=hidden]', function () {
+    onAudienceChange($(this).val());
+  });
+
+  refreshKeySettingsFromDom();
+  updateContinueGreen();
+});
+
+$(window).on('load', function () {
+  refreshKeySettingsFromDom();
+  updateContinueGreen();
+});
 
 function jiggleCueOne() {
   $('#locationCue1').transition('shake');
@@ -61,66 +201,25 @@ function jiggleCueTwo() {
 }
 
 $('#cyberTransButton').on('click', function () {
-  if(keySetting1 == true){
+  refreshKeySettingsFromDom();
+  if (keySetting1 == true) {
     $('#locationCue1Text').show();
     $('#locationCue1').transition('bounce');
   } else {
     $('#locationCue1Text').hide();
   }
-  if(keySetting2 !== "Amigos"){
+  if (!locationShareIsFriends()) {
     $('#locationCue2Text').show();
     $('#locationCue2').transition('bounce');
   } else {
     $('#locationCue2Text').hide();
   }
-  if(closedHints != hintsList.length){
-    //show the message normally the first time
-    if($('#clickAllDotsWarning').is(":hidden")){
+  if (closedHints != hintsList.length) {
+    if ($('#clickAllDotsWarning').is(':hidden')) {
       $('#clickAllDotsWarning').transition('fade');
-      $('#cyberTransButton').css("margin-bottom", "10em");
-    }else{
-      //otherwise, bounce the message to draw attention to it
+      $('#cyberTransButton').css('margin-bottom', '10em');
+    } else {
       $('#clickAllDotsWarning').transition('bounce');
-    }
-  }
-});
-
-//get the value of the dropdown when it changes
-$(".ui.selection.dropdown[name='shareLocationWith']").change(function() {
-  keySetting2 = $(".ui.selection.dropdown[name='shareLocationWith']").dropdown('get text');
-
-  //If the yellow warning is already open, make it disappear when setting is corrected
-  if(keySetting2 === "Amigos"){
-    $('#locationCue2Text').hide();
-  }
-
-  //All blue dots are clicked and the settings are correct
-  if(closedHints == hintsList.length) {
-    if((keySetting1 == false) && (keySetting2 === "Amigos")){
-       $( ".settings1" ).addClass("green");
-    }
-    else{
-      $( ".settings1" ).removeClass("green");
-    }
-  }
-});
-
-//Get the value of the toggle when it changes
-$(".ui.toggle.checkbox[name='locationToggle']").change(function() {
-  keySetting1 = $("input[name='locationSetting']").is(":checked");
-
-  //If the yellow warning is already open, make it disappear when setting is corrected
-  if(keySetting1 == false){
-    $('#locationCue1Text').hide();
-  }
-
-  if(closedHints == hintsList.length) {
-    if((keySetting1 == false) && (keySetting2 === "Amigos")){
-       $( ".settings1" ).addClass("green");
-    }
-    else{
-      //Indicate settings to change with animation
-      $( ".settings1" ).removeClass("green");
     }
   }
 });

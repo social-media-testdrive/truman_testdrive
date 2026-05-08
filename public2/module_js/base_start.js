@@ -1,53 +1,56 @@
-let actionArray = new Array(); // this array will be handed to Promise.all
+let actionArray = new Array();
 const pathArray = window.location.pathname.split('/');
 
+/** Semantic “.hidden” / display:none !important — force section visible */
+function tdRevealSection($el, display) {
+    display = display || 'block';
+    $el.each(function () {
+        var el = this;
+        el.classList.remove('hidden');
+        el.removeAttribute('hidden');
+        el.style.setProperty('display', display, 'important');
+    });
+    return $el;
+}
+
 function animateUnclickedLabels() {
-    $('.keyTermDefinition').each(function() {
-        if ($(this).is(":hidden")) {
+    $('.keyTermDefinition').each(function () {
+        if ($(this).hasClass('hidden') || $(this).is(':hidden')) {
             $(this).siblings('.keyTermLabel').transition('bounce');
         }
-    })
-};
+    });
+}
 
 function clickGotIt() {
-    if ($('.learnSegment').is(':hidden')) {
-        //User has not yet clicked next
+    // Do not rely on :hidden alone — Semantic UI + transitions can lie after reveal
+    if (!$('.learnSegment').hasClass('td-start-learn-revealed')) {
         $('#clickNextWarning').show();
         $('.showLearnSectionButton').transition('bounce');
-    }
-    if ($('.keyIdeasSegment').is(":hidden")) {
-        // User has not yet clicked next
+    } else if (!$('.keyIdeasSegment').hasClass('td-start-keyideas-revealed')) {
         $('#clickNextWarning').show();
         $('.showKeyTermsButton').transition('bounce');
     } else {
-        // Determine if all the labeles are clicked
-        if ($(".keyTermDefinition:hidden").length === 0) {
-            // All labels are clicked so everything is good to proceed
+        if ($('.keyTermDefinition.hidden').length === 0) {
             $('#clickLabelsWarning').hide();
-            // actionArray should be empty if enableDataCollection = false
-            Promise.all(actionArray).then(function() {
-                let pathArray = window.location.pathname.split('/');
-                if (pathArray[2] === "privacy") {
-                    // special case for the privacy module
-                    window.location.href = '/tut_guide/' + pathArray[2];
+            Promise.all(actionArray).then(function () {
+                let pa = window.location.pathname.split('/');
+                if (pa[2] === 'privacy') {
+                    window.location.href = '/tut_guide/' + pa[2];
                 } else {
-                    window.location.href = '/tutorial/' + pathArray[2];
+                    window.location.href = '/tutorial/' + pa[2];
                 }
             });
         } else {
-            // User has not clicked all the labels - show warning and animate unclicked
             $('#clickLabelsWarning').show();
             animateUnclickedLabels();
         }
     }
-};
+}
 
 function logActionInDB(enableDataCollection, actionType, keyIdea = '') {
-    // check if data collection is enabled first
     if (!enableDataCollection) {
         return;
     }
-    // log action in db
     const cat = new Object();
     cat.subdirectory1 = pathArray[1];
     cat.subdirectory2 = pathArray[2];
@@ -56,67 +59,69 @@ function logActionInDB(enableDataCollection, actionType, keyIdea = '') {
         cat.vocabTerm = keyIdea;
     }
     cat.absoluteTimestamp = Date.now();
-    const jqxhr = $.post("/startPageAction", {
+    const jqxhr = $.post('/startPageAction', {
         action: cat,
-        _csrf: $('meta[name="csrf-token"]').attr('content')
+        _csrf: $('meta[name="csrf-token"]').attr('content'),
     });
-    //     const csrf = $('meta[name="csrf-token"]').attr('content');
-    //     _logStartPageAction(cat, csrf, 3);
-    // };
-
-    // function _logStartPageAction(cat, csrf, retryCount) {
-    //     if (retryCount <= 0) {
-    //         return;
-    //     }
-
-    //     const jqxhr = $.post({
-    //         data: {
-    //             action: cat,
-    //             _csrf: csrf
-    //         },
-    //         url: "/startPageAction",
-    //         error: function(jqXHR, textStatus, errorThrown) {
-    //             if (jqXHR.status === 403 && jqXHR.responseText.includes('invalid csrf token')) {
-    //                 const newCsrf = $.get("/getCSRFToken");
-    //                 _logStartPageAction(cat, newCsrf, --retryCount);
-    //             }
-    //         }
-    //     });
     actionArray.push(jqxhr);
-};
+}
 
-$(window).on("load", function() {
+$(function () {
+    $('#clickNextWarning, #clickLabelsWarning').hide();
 
-    Voiceovers.addVoiceovers();
-    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === "true";
-    $('.showLearnSectionButton').on('click', function() {
-        $('#clickNextWarning').hide();
-        $('.learnSegment').show();
-        $('.learnSegment .ui.header').transition('jiggle');
-        $('.showLearnSectionButton').parent('.ui.segment').hide();
-        logActionInDB(enableDataCollection, 'next_showLearnSection');
-    });
-
-    $('.showKeyTermsButton').on('click', function() {
-        $('#clickNextWarning').hide();
-        $('.showKeyTermsButton').css('display', 'none');
-        $('.keyIdeasSegment').show();
-        $('.keyIdeasSegment').transition('jiggle');
-        if ($(".keyTermDefinition:hidden").length === 0) {
-            $('.ui.labeled.icon.button').addClass('green');
+    try {
+        if (typeof Voiceovers !== 'undefined' && typeof voiceoverMappings !== 'undefined') {
+            Voiceovers.addVoiceovers();
         }
-        logActionInDB(enableDataCollection, 'next_showKeyIdeas');
-    });
+    } catch (e) {
+        console.warn('Voiceovers.addVoiceovers skipped:', e);
+    }
 
-    $('.keyTerm').on('click', function(event) {
-        $(event.target).closest('.keyTerm').children('.keyTermDefinition').show();
-        $(event.target).closest('.keyTerm').transition('tada');
-        if ($(".keyTermDefinition:hidden").length === 0) {
-            $('#clickLabelsWarning').hide();
-            $('.ui.labeled.icon.button').addClass('green');
-        }
-        const vocabTerm = $(event.target).closest('.keyTerm').children('.keyTermLabel').text();
-        logActionInDB(enableDataCollection, 'keyIdea', vocabTerm);
-    });
+    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === 'true';
 
+    // Delegated + namespaced so double-loads do not stack handlers
+    $(document)
+        .off('click.tdStartLearn', '.showLearnSectionButton')
+        .on('click.tdStartLearn', '.showLearnSectionButton', function (e) {
+            e.preventDefault();
+            $('#clickNextWarning').hide();
+            var $learn = $('.learnSegment');
+            tdRevealSection($learn, 'block');
+            $learn.addClass('td-start-learn-revealed');
+            $learn.find('.ui.header').first().transition('jiggle');
+            $(this).closest('.ui.segment').hide();
+            logActionInDB(enableDataCollection, 'next_showLearnSection');
+        });
+
+    $(document)
+        .off('click.tdStartKeyideas', '.showKeyTermsButton')
+        .on('click.tdStartKeyideas', '.showKeyTermsButton', function (e) {
+            e.preventDefault();
+            $('#clickNextWarning').hide();
+            $(this).css('display', 'none');
+            var $key = $('.keyIdeasSegment');
+            tdRevealSection($key, 'block');
+            $key.addClass('td-start-keyideas-revealed');
+            $key.transition('jiggle');
+            if ($('.keyTermDefinition.hidden').length === 0) {
+                $('.ui.labeled.icon.button').addClass('green');
+            }
+            logActionInDB(enableDataCollection, 'next_showKeyIdeas');
+        });
+
+    $(document)
+        .off('click.tdStartKeyterm', '.keyTerm')
+        .on('click.tdStartKeyterm', '.keyTerm', function (event) {
+            var $def = $(event.target).closest('.keyTerm').children('.keyTermDefinition');
+            tdRevealSection($def, 'block');
+            $(event.target).closest('.keyTerm').transition('tada');
+            if ($('.keyTermDefinition.hidden').length === 0) {
+                $('#clickLabelsWarning').hide();
+                $('.ui.labeled.icon.button').addClass('green');
+            }
+            const vocabTerm = $(event.target).closest('.keyTerm').children('.keyTermLabel').text();
+            logActionInDB(enableDataCollection, 'keyIdea', vocabTerm);
+        });
 });
+
+window.clickGotIt = clickGotIt;

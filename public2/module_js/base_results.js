@@ -62,39 +62,65 @@ function recordResponse(responseType) {
     return answer;
 }
 
-// This function is only called if enableDataCollection = true
+// When data collection is off, skip POST /reflection and go straight to the quiz.
 function iterateOverPrompts(startTime) {
-    console.log('=== NAVIGATION STARTING ===');
-    
-    // Determine the quiz URL
-    const quizUrl = `/quiz/${currentModule || 'cyberbullying-esp'}`;
-    console.log('Navigating to:', quizUrl);
-    console.log('Current path:', window.location.pathname);
-    
-    // COMPLETELY SKIP THE POST REQUEST FOR NOW
-    console.log('Skipping POST request to avoid CSRF issues');
-    
-    // Navigate immediately using multiple methods to ensure it works
-    console.log('Attempting navigation...');
-    
-    // Method 1: Direct navigation
-    window.location.href = quizUrl;
-    
-    // Method 2: Backup navigation after short delay
-    setTimeout(function() {
-        if (window.location.pathname.indexOf('/results/') !== -1) {
-            console.log('Backup navigation triggered - still on results page');
-            window.location.replace(quizUrl);
+    const enableDataCollection = $('meta[name="isDataCollectionEnabled"]').attr('content') === 'true';
+    if (!enableDataCollection) {
+        window.location.href = `/quiz/${currentModule}`;
+        return;
+    }
+
+    /* Sample reflectionAction object: 
+      reflectionAction: {
+          absoluteTimeContinued: Date, //time that the user left the page by clicking continue
+          modual: String, // which lesson mod did this take place in?
+          answers: [{
+              questionNumber: String, // corresponds with reflectionSectionData.json, i.e. 'Q1', 'Q2', 'Q3'...
+              prompt: String,
+              type: String, // Which type of response this will be: written, checkbox, radio, habitsUnique
+              writtenResponse: String,
+              radioSelection: String, // this is for the presentation module
+              numberOfCheckboxes: Number,
+              checkboxResponse: Number,
+              checkedActualTime: Boolean, // this is unique to the habits module
+          }]
         }
-    }, 100);
-    
-    // Method 3: Final backup
-    setTimeout(function() {
-        if (window.location.pathname.indexOf('/results/') !== -1) {
-            console.log('Final backup navigation - forcing redirect');
-            window.location = quizUrl;
-        }
-    }, 500);
+    */
+    const timestamp = Date.now();
+
+    // create new object with desired data to pass to the post request
+    let cat = {};
+    cat.absoluteTimeContinued = timestamp;
+    cat.modual = currentModule;
+    cat.attemptDuration = timestamp - startTime;
+
+    let answers = [];
+    // Search for each prompt type.
+    // The types are: written, checkboxes, radio**, and habits_time_entry**.
+    // **Unusual prompt types that currently only occur once in the project.
+    $('.reflectionPrompt').each(function() {
+        answers.push(recordResponse.call($(this), 'written'));
+    });
+
+    $('.reflectionCheckboxesPrompt').each(function() {
+        answers.push(recordResponse.call($(this), 'checkboxes'));
+    });
+
+    $('.reflectionRadioPrompt').each(function() {
+        answers.push(recordResponse.call($(this), 'radio'));
+    });
+
+    $('.reflectionHabitsTimeEntryPrompt').each(function() {
+        answers.push(recordResponse.call($(this), 'habits_time_entry'));
+    });
+    cat.answers = answers;
+
+    $.post("/reflection", {
+        action: cat,
+        _csrf: $('meta[name="csrf-token"]').attr('content')
+    }).then(function() {
+        window.location.href = `/quiz/${currentModule}`
+    });
 }
 
 function checkAllPromptsOpened() {
@@ -122,10 +148,6 @@ function hideWarning(warningID) {
 }
 
 $(window).on("load", function() {
-    console.log('base_results.js: Window loaded');
-    console.log('base_results.js: Current module from path:', currentModule);
-    console.log('base_results.js: Button exists?', $('.resultsContinueButton').length);
-    
     // startTime is used to track the start time of each attempt, to later calculate the duration/time the user spent on each attempt
     let startTime = Date.now();
     // The code assumes that only one of these will be true, not both.
@@ -138,8 +160,6 @@ $(window).on("load", function() {
     // if enabled)
     $('.button.resultsContinueButton, .button.results_print')
         .removeClass('loading disabled');
-    
-    console.log('base_results.js: Buttons after cleanup:', $('.resultsContinueButton').length);
     // Make any "which ones did you notice?" posts at the top interactable.
     // Plays an animation and toggles a blue glow around the post.
     $('.selectablePosts .card').on('click', function() {
@@ -171,17 +191,14 @@ $(window).on("load", function() {
     });
 
     // Defining the behavior for the "continue" button
-    $('.resultsContinueButton').on('click', function(e) {
-        console.log('=== CONTINUE BUTTON CLICKED ===');
-        e.preventDefault(); // Prevent any default form submission
-        e.stopPropagation(); // Stop event bubbling
-        
+    $('.resultsContinueButton').on('click', function() {
         // Empty .insertPrint to avoid problems with iterating over responses
         $(".insertPrint").empty();
-        
         if (!checkAllPromptsOpened()) {
-            console.log('Not all prompts opened - showing warning');
             // All of the questions are not yet visible to the user.
+            // Show slightly different error messaging for start vs next buttons:
+            // If the first question is not visible, show the "start" warning,
+            // otherwise show the default warning.
             if ($('.voiceover_reflection1')
                 .next('.reflectionPromptSegment')
                 .is(':hidden')) {
@@ -189,13 +206,10 @@ $(window).on("load", function() {
             } else {
                 showWarning('.openAllPromptsWarning');
             }
-            return false;
+            return;
         }
-        
-        console.log('All prompts opened - starting navigation');
+        // All of the questions are now visible to the user.
+
         iterateOverPrompts(startTime);
-        
-        // Return false to prevent any default behavior
-        return false;
     });
 });

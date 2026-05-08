@@ -21,38 +21,38 @@ block content
             p Haz clic en todos los puntos azules para continuar.
     
     .ui.container.addTopMargin#hint1
-      h2.ui.header#topOfPage Configuraciónes de privacidad
+      h2.ui.header#topOfPage Configuraciones de privacidad
       br
       .ui.divider
       br
       form.ui.form
         .grouped.fields
-          label.sectionTitle(for='account') Configuraciónes de cuenta
-            .field#hint2
-              br
-              .ui.warning.message#privateAccountCueText
-                .header
-                  | Active la configuración de "cuenta privada"
-              .ui.toggle.checkbox#privateAccountCue(name='togglePrivateAccount')
-                input(type='checkbox' name='toggleValue')
-                label Cuenta Privada
-            span.settingSmallLabel Cuando su cuenta es privada, solo las personas que usted aprueba pueden ver sus publicaciones.
+          label.sectionTitle(for='account') Configuraciones de cuenta
+          .field#hint2
             br
-            br
+            .ui.warning.message#privateAccountCueText
+              .header
+                | Active la configuración de "cuenta privada"
+            .ui.toggle.checkbox#privateAccountCue(name='togglePrivateAccount')
+              input(type='checkbox' name='toggleValue')
+              label Cuenta Privada
+          span.settingSmallLabel Cuando su cuenta es privada, solo las personas que usted aprueba pueden ver sus publicaciones.
+          br
+          br
             
       .ui.divider
       br
       form.ui.form
         .grouped.fields
-            label.sectionTitle(for='interaction') Configuraciónes de Interacción
+            label.sectionTitle(for='interaction') Configuraciones de Interacción
             br
             br
             label.subsectionTitle(for='contacts') Contactos
             .field
               br
               label.standardLabel Permitir solicitudes de amistad de
-                .div
-                .ui.selection.disabled.dropdown
+              .div
+              .ui.selection.dropdown
                   input(type='hidden' name='friendRequests')
                   i.dropdown.icon
                   .default.text Seleccionar
@@ -62,8 +62,8 @@ block content
             br
             .field
               label.standardLabel ¿Quién puede ver mi lista de amigos?
-                .div
-                .ui.selection.disabled.dropdown
+              .div
+              .ui.selection.dropdown
                   input(type='hidden' name='friendList')
                   i.dropdown.icon
                   .default.text Seleccionar
@@ -77,9 +77,9 @@ block content
             .field
               br
               label.standardLabel Permitir comentarios de
-                .div
-                .ui.selection.disabled.dropdown
-                  input(type='hidden' name='friendRequests')
+              .div
+              .ui.selection.dropdown
+                  input(type='hidden' name='commentsList')
                   i.dropdown.icon
                   .default.text Seleccionar
                   .menu
@@ -91,7 +91,7 @@ block content
             .field
               label.standardLabel Bloquear comentarios de
               .div
-                select.ui.fluid.search.disabled.dropdown(multiple='')
+                select.ui.fluid.search.dropdown.blocklistDropdown(multiple='')
                   option Nombre F. 
                   option Soyun Robot
                   option Carolina Jara
@@ -118,32 +118,32 @@ block content
                   option Valeria Vargas
             br
             label.subsectionTitle(for='tags') Etiquetas
-              .field
-                br
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='public')
-                  label Permitir etiquetas
-              .field
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='public')
-                  label Agregar automáticamente publicaciones etiquetadas a mi feed
-                  br
-                  br
+            .field
+              br
+              .ui.toggle.read-only.checkbox
+                input(type='checkbox' name='public')
+                label Permitir etiquetas
+            .field
+              .ui.toggle.read-only.checkbox
+                input(type='checkbox' name='public')
+                label Agregar automáticamente publicaciones etiquetadas a mi feed
+              br
+              br
       .ui.divider
       br
       form.ui.form
         .grouped.fields
-            label.sectionTitle(for='information') Configuraciónes de ubicación
-              .field
-                br
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='locationShare')
-                  label Activar la función de compartir ubicación
+            label.sectionTitle(for='information') Configuraciones de ubicación
+            .field
+              br
+              .ui.toggle.read-only.checkbox
+                input(type='checkbox' name='locationShare')
+                label Activar la función de compartir ubicación
             .field
               br
               label.standardLabel Compartir mi ubicación con
-                .div
-                .ui.selection.disabled.dropdown#locationDropdown
+              .div
+              .ui.selection.dropdown#locationDropdown
                   input(type='hidden' name='resetDropdownSelection')
                   i.dropdown.icon
                   .default.text Seleccionar

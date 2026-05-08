@@ -20,16 +20,18 @@ block content
           
       .ui.card
         .image
-          if user.profile.picture
+          if user && user.profile && user.profile.picture
             img(src=cdn+'/profile_pictures/'+user.profile.picture)
-          else
+          else if user && user.gravatar
             img(src=user.gravatar(60))
+          else
+            img(src=cdn+'/profile_pictures/avatar-icon.svg')
         .content
           a.header="Invitado/a"
           .meta="@Invitado/a"
-          .description=user.profile.bio
+          .description= user && user.profile && user.profile.bio ? user.profile.bio : ''
           .description
-            if user.profile.location
+            if user && user.profile && user.profile.location
               i.marker.icon
               span="Ubicación"
       
@@ -55,10 +57,12 @@ block content
     .ui.sticky.newPostSticky
       #newpost.ui.fluid.left.labeled.right.icon.input.habitsHomeDisplay
         .ui.label
-          if user.profile.picture
-            img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+          if user && user.profile && user.profile.picture
+              img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture)
+          else if user && user.gravatar
+              img.ui.avatar.image(src=user.gravatar(60))
           else
-            img.ui.avatar.image(src=user.gravatar(60))
+              img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg')
         input(type='text', placeholder='Agrega una nueva publicación')
         i.big.photo.link.icon
         
@@ -182,19 +186,21 @@ block content
         -if (val.actorAuthor) {u_class = "actorReply"}
         -else if (val.reply) {u_class = "userReply"}
         -else {u_class = "userPost"}
-        .ui.fluid.card.habitsHomeDisplay(u_postID=val.id, ui=user.ui, notify=user.notify, type=u_class, postID=val.postID)
+        .ui.fluid.card.habitsHomeDisplay(u_postID=val.id, ui=(user && user.ui), notify=(user && user.notify), type=u_class, postID=val.postID)
           
           //- This is a User made post
           .content
             .right.floated.time.meta= ((Date.now() - (Date.now() - val.absTime)))
             |  
             a.ui.avatar.image.myProfileLink(href='/me/'+mod)
-              if user.profile.picture
+              if user && user.profile && user.profile.picture
                 img(src=cdn+'/profile_pictures/'+user.profile.picture)
-              else
+              else if user && user.gravatar
                 img(src=user.gravatar(60))
+              else
+                img(src=cdn+'/profile_pictures/avatar-icon.svg')
             a.myProfileLink(href='/me/'+mod)
-              span=user.profile.name || user.email || user.id
+              span=(user && user.profile && user.profile.name) ? user.profile.name : (user && user.email) ? user.email : (user && user.id) ? user.id : 'Usuario'
           if val.picture
             .image
               img(src=cdn+"/post_pictures/"+val.picture)
@@ -223,12 +229,14 @@ block content
                         -console.log("New COMMENT AREA");
                         .comment(commentID=comment.commentID)
                           a.avatar.image(href='/me/'+mod)
-                            if user.profile.picture
+                            if user && user.profile && user.profile.picture
                               img(src=cdn+'/profile_pictures/'+user.profile.picture)
-                            else
+                            else if user && user.gravatar
                               img(src=user.gravatar(60))
+                            else
+                              img(src=cdn+'/profile_pictures/avatar-icon.svg')
                           .content
-                            a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                            a.author(href='/me/'+mod)=(user && user.profile && user.profile.name) ? user.profile.name : (user && user.username) ? user.username : (user && user.id) ? user.id : 'Usuario'
                             .metadata
                               span.date.sim=(comment.time)
                               //- .rating
@@ -279,7 +287,7 @@ block content
       else
         
         //-this is a totally normal actor post
-        .ui.fluid.card.dim.habitsHomeDisplay(postNumber = val.post_id, postID=val.id, ui=user.ui, transparency=user.transparency, notify=user.notify, state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
+        .ui.fluid.card.dim.habitsHomeDisplay(postNumber = val.post_id, postID=val.id, ui=(user && user.ui), transparency=(user && user.transparency), notify=(user && user.notify), state=val.state || 'unread', type='actor', actor_un = val.actor.username, actor_name = val.actor.profile.name, actor_pic = val.actor.profile.picture)
           //- dimmer DIV for flagging
           .ui.dimmer.flag
                 .content
@@ -339,12 +347,14 @@ block content
                       -console.log("New COMMENT AREA");
                       .comment(commentID=comment.new_comment_id)
                         a.avatar.image(href='/me/'+mod)
-                          if user.profile.picture
+                          if user && user.profile && user.profile.picture
                             img(src=cdn+'/profile_pictures/'+user.profile.picture)
-                          else
+                          else if user && user.gravatar
                             img(src=user.gravatar(60))
+                          else
+                            img(src=cdn+'/profile_pictures/avatar-icon.svg')
                         .content
-                          a.author(href='/me/'+mod)=user.profile.name || user.username || user.id
+                          a.author(href='/me/'+mod)=(user && user.profile && user.profile.name) ? user.profile.name : (user && user.username) ? user.username : (user && user.id) ? user.id : 'Usuario'
                           .metadata
                             span.date.sim=(comment.time)
                           .text=comment.body
@@ -376,23 +386,27 @@ block content
                     //- Add comment.body to displayedComments
                     - displayedComments.push(comment.body + comment.time)
           .extra.content
-            if user.comment_prompt == "yes"
+            if user && user.comment_prompt == "yes"
               .description="How is "+val.actor.profile.name+" Feeling?"
               .ui.fluid.left.labeled.right.icon.input
                 .ui.label            
-                  if user.profile.picture
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                  if user && user.profile && user.profile.picture
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=(user.profile.name || user.username || user.id))
+                  else if user && user.gravatar
+                    img.ui.avatar.image(src=user.gravatar(60), name=((user.profile && user.profile.name) || user.username || user.id))
                   else
-                    img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
                 input.newcomment(type='text', placeholder='Escribe un comentario')
                 i.big.send.link.icon
             else
               .ui.fluid.left.labeled.right.icon.input
                 .ui.label
-                  if user.profile.picture
-                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name || user.username || user.id)
+                  if user && user.profile && user.profile.picture
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=(user.profile.name || user.username || user.id))
+                  else if user && user.gravatar
+                    img.ui.avatar.image(src=user.gravatar(60), name=((user.profile && user.profile.name) || user.username || user.id))
                   else
-                    img.ui.avatar.image(src=user.gravatar(60), name=user.profile.name || user.username || user.id)            
+                    img.ui.avatar.image(src=cdn+'/profile_pictures/avatar-icon.svg', name='Usuario')
                 input.newcomment(type='text', placeholder='Escribe un comentario')
                 i.big.send.link.icon  
                      

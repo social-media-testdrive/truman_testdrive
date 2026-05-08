@@ -2,7 +2,7 @@ const nextPageURL = 'modual';
 
 const stepsList = [
   {
-    intro: `Clic a \"Siguiente\" para comenzar`,
+    intro: `Haz clic en "Siguiente" para comenzar`,
     audioFile: ['']
   },
   {
@@ -10,13 +10,13 @@ const stepsList = [
     audioFile: ['CUSML.3.7.1.mp3']
   },
   {
-    intro: `As you look through the timeline, see if you can spot posts that
-    are phishing scams.`,
+    intro: `Mientras recorres la línea de tiempo, fíjate si puedes detectar publicaciones
+    que son estafas de phishing.`,
     audioFile: ['CUSML.3.7.2.mp3']
   },
   {
-    intro: `Remember to not click on any suspiscious links and to report
-    phishing posts to the website.`,
+    intro: `Recuerda no hacer clic en enlaces sospechosos y denunciar las publicaciones
+    de phishing en el sitio web.`,
     audioFile: ['CUSML.3.7.3.mp3']
   }
 ];

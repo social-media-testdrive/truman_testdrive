@@ -276,8 +276,10 @@ function startIntro(enableDataCollection) {
                 });
                 jqhxrArray.push(jqxhr);
             }
-            Promise.all(jqhxrArray).then(function() {
-                // changed from base_introStep.js
+            // Must run hints even when telemetry fails/rejects — Promise.all would skip startHints().
+            var pendingTelemetry = jqhxrArray.splice(0, jqhxrArray.length);
+            var waiter = pendingTelemetry.length ? $.when.apply($, pendingTelemetry) : $.when();
+            waiter.always(function() {
                 startHints(enableDataCollection);
                 try {
                     eventsAfterHints();

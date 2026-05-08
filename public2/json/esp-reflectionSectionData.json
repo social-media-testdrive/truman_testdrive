@@ -351,7 +351,7 @@
     },
     "Q4": {
       "type": "written",
-      "prompt": "¿Por qué es importante evaluar la información que ves en las redes social?"
+      "prompt": "¿Por qué es importante evaluar la información que ves en las redes sociales?"
     },
     "Q5": {
       "type": "written",
@@ -699,11 +699,11 @@
   "safe-posting": {
     "Q1": {
       "type": "checkbox",
-      "prompt": "Why is this post inappropriate for social media?",
+      "prompt": "¿Por qué esta publicación no es adecuada para las redes sociales?",
       "checkboxLabels": {
-        "0": "Private information like street address, phone number, school name, or email address was shared",
-        "1": "The person making the post did not think about all the audiences who could see it",
-        "2": "It was appropriate for social media"
+        "0": "Se compartió información privada, como dirección, número de teléfono, nombre del colegio o correo electrónico.",
+        "1": "La persona que publicó no pensó en todas las audiencias que podrían verla.",
+        "2": "Era adecuada para las redes sociales."
       },
       "responseRequirement": "exact",
       "correctResponses": {
@@ -714,13 +714,13 @@
     },
     "Q2": {
       "type": "checkbox",
-      "prompt": "How did you respond to these messages that asked for private information?",
+      "prompt": "¿Cómo respondiste a estos mensajes que pedían información privada?",
       "checkboxLabels": {
-        "0": "I changed the subject",
-        "1": "I used humor",
-        "2": "I ignored the message",
-        "3": "I was direct",
-        "4": "I did something else"
+        "0": "Cambié de tema",
+        "1": "Usé humor",
+        "2": "Ignoré el mensaje",
+        "3": "Respondí con claridad",
+        "4": "Hice otra cosa"
       },
       "responseRequirement": "exact",
       "correctResponses": {
@@ -733,7 +733,7 @@
     },
     "Q3": {
       "type": "written",
-      "prompt": "What would you do in the future to protect your private information and other people’s private information on social media?"
+      "prompt": "¿Qué harías en el futuro para proteger tu información privada y la información privada de otras personas en las redes sociales?"
     }
   },
   "targeted-esp": {

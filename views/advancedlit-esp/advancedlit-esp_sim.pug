@@ -19,7 +19,7 @@ block content
          i.question.icon.float
          .content
            .ui.header ¿Necesitas ayuda?
-           p ¡Asegúrate de que estás haciento clic en "Entendido" en los puntos azules!
+           p ¡Asegúrate de que estás haciendo clic en "Entendido" en los puntos azules!
          
        .ui.icon.message.warning.hidden#clickAllDotsWarning
          i.close.icon
@@ -46,7 +46,7 @@ block content
                    span 
                      | Los administradores del TestDrive van a revisar el post luego.
          .content
-           .right.floated.meta= "10 minutes ago"
+           .right.floated.meta= "Hace 10 minutos"
            a
              img.ui.avatar.image(src=cdn+'/profile_pictures/user47.jpeg')
              span='Ariel Simon'
@@ -66,7 +66,7 @@ block content
            .ui.labeled.button(tabindex='0')
              .ui.like.button
                i.heart.icon
-               | Like
+               | Me gusta
              a.ui.basic.red.left.pointing.label.count 0
          .content
            .ui.comments
@@ -78,11 +78,11 @@ block content
                  .metadata
                    span.date Hace un minuto
                    i.heart.icon
-                   |  0 Likes
+                   |  0 me gusta
                  .text()
                    | ¡Tienes razón!
                  .actions
-                   a.like Like
+                   a.like Me gusta
                    a.flag Reportar     
              .comment
                a.avatar
@@ -92,16 +92,16 @@ block content
                  .metadata
                    span.date Hace un minuto
                    i.heart.icon
-                   |  0 Likes
+                   |  0 me gusta
                  .text()
                    | qué lindo 😍
                  .actions
-                   a.like Like
+                   a.like Me gusta
                    a.flag Reportar   
          .extra.content
            .ui.fluid.left.labeled.right.icon.input
              .ui.label
-               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+               img.ui.avatar.image(src=(user && user.profile && user.profile.picture) ? (cdn + '/profile_pictures/' + user.profile.picture) : (cdn + '/profile_pictures/avatar-icon.svg'), name=(user && user.profile && user.profile.name) ? user.profile.name : 'Usuario')
              input.newcomment(type='text' placeholder='Escribir un comentario')
              i.big.send.link.icon  
        
@@ -139,7 +139,7 @@ block content
            .ui.labeled.button(tabindex='0')
              .ui.like.button
                i.heart.icon
-               | Like
+               | Me gusta
              a.ui.basic.red.left.pointing.label.count 0
          .content
            .ui.comments
@@ -151,11 +151,11 @@ block content
                  .metadata
                    span.date Hace un minuto
                    i.heart.icon
-                   |  0 Likes
+                   |  0 me gusta
                  .text()
                    | ¿¡¿¡¿qué?!?!?
                  .actions
-                   a.like Like
+                   a.like Me gusta
                    a.flag Reportar     
              .comment
                a.avatar
@@ -165,16 +165,16 @@ block content
                  .metadata
                    span.date Hace un minuto
                    i.heart.icon
-                   |  0 Likes
+                   |  0 me gusta
                  .text()
                    | estaré tan aburrido en casa
                  .actions
-                   a.like Like
+                   a.like Me gusta
                    a.flag Reportar   
          .extra.content
            .ui.fluid.left.labeled.right.icon.input
              .ui.label
-               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+               img.ui.avatar.image(src=(user && user.profile && user.profile.picture) ? (cdn + '/profile_pictures/' + user.profile.picture) : (cdn + '/profile_pictures/avatar-icon.svg'), name=(user && user.profile && user.profile.name) ? user.profile.name : 'Usuario')
              input.newcomment(type='text' placeholder='Escribir un comentario')
              i.big.send.link.icon    
        
@@ -209,7 +209,7 @@ block content
            .ui.labeled.button(tabindex='0')
              .ui.like.button
                i.heart.icon
-               | Like
+               | Me gusta
              a.ui.basic.red.left.pointing.label.count 0
          .content
            .ui.comments
@@ -221,11 +221,11 @@ block content
                  .metadata
                    span.date Hace un minuto
                    i.heart.icon
-                   |  0 Likes
+                   |  0 me gusta
                  .text()
                    | ¡¡Quiero uno!!
                  .actions
-                   a.like Like
+                   a.like Me gusta
                    a.flag Reportar     
              .comment
                a.avatar
@@ -235,16 +235,16 @@ block content
                  .metadata
                    span.date Hace un minuto
                    i.heart.icon
-                   |  0 Likes
+                   |  0 me gusta
                  .text()
                    | ¿Qué sabor es??
                  .actions
-                   a.like Like
+                   a.like Me gusta
                    a.flag Reportar   
          .extra.content
            .ui.fluid.left.labeled.right.icon.input
              .ui.label
-               img.ui.avatar.image(src=cdn+'/profile_pictures/'+user.profile.picture, name=user.profile.name)
+               img.ui.avatar.image(src=(user && user.profile && user.profile.picture) ? (cdn + '/profile_pictures/' + user.profile.picture) : (cdn + '/profile_pictures/avatar-icon.svg'), name=(user && user.profile && user.profile.name) ? user.profile.name : 'Usuario')
              input.newcomment(type='text' placeholder='Escribir un comentario')
              i.big.send.link.icon        
    //- #####################################################

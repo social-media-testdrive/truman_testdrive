@@ -24,7 +24,7 @@ function onPrint(){
     var responseOne = document.getElementById("literacy_responseOne").value;
     $(".insertPrint").append(responseOne);
 
-    $(".insertPrint").append("<h4>¿Por qué es importante evaluar la información que ves en las redes social?</h4>");
+    $(".insertPrint").append("<h4>¿Por qué es importante evaluar la información que ves en las redes sociales?</h4>");
     var responseTwo = document.getElementById("literacy_responseTwo").value;
     $(".insertPrint").append(responseTwo);
 

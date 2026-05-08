@@ -26,6 +26,39 @@ var hintsList = [
 let keySetting1 = $("input[name='allowTagInput']").is(':checked');
 let keySetting2 = $("input[name='autoTagInput']").is(':checked');
 
+function syncTagSettingsFromDom() {
+  keySetting1 = $("input[name='allowTagInput']").is(':checked');
+  keySetting2 = $("input[name='autoTagInput']").is(':checked');
+}
+
+function onAllowTagChange() {
+  syncTagSettingsFromDom();
+  if (keySetting1 === false) {
+    $('#tagCue1Text').hide();
+  }
+  if (closedHints === hintsList.length) {
+    if (keySetting1 === false && keySetting2 === false) {
+      $('.free4').addClass('green');
+    } else {
+      $('.free4').removeClass('green');
+    }
+  }
+}
+
+function onAutoTagChange() {
+  syncTagSettingsFromDom();
+  if (keySetting2 === false) {
+    $('#tagCue2Text').hide();
+  }
+  if (closedHints === hintsList.length) {
+    if (keySetting1 === false && keySetting2 === false) {
+      $('.free4').addClass('green');
+    } else {
+      $('.free4').removeClass('green');
+    }
+  }
+}
+
 function customOnHintCloseFunction() {
  closedHints++;
  clickedHints = 0;
@@ -35,6 +68,7 @@ function customOnHintCloseFunction() {
      $('#cyberTransButton').css("margin-bottom", "4em");
    }
  }
+ syncTagSettingsFromDom();
  //turn the button green if all three criteria are met
  if(closedHints == hintsList.length) {
    //remove the yellow warning about dots
@@ -49,18 +83,25 @@ function customOnHintCloseFunction() {
 }
 
 
-//Make the dropdown work
-$('.ui.dropdown')
-  .dropdown('set selected', '0');
+$(function () {
+  $('#tagCue1').checkbox({ onChange: onAllowTagChange });
+  $('#tagCue2').checkbox({ onChange: onAutoTagChange });
+  $('.ui.toggle.checkbox:not(.read-only)').not('#tagCue1').not('#tagCue2').checkbox();
+  $('.ui.toggle.read-only.checkbox').checkbox();
 
-$('#locationDropdown')
-  .dropdown('set selected', '2');
+  $('.ui.selection.dropdown').not('#locationDropdown').dropdown();
+  $('.ui.selection.dropdown').not('#locationDropdown').dropdown('set selected', '0');
+  $('#locationDropdown').dropdown();
+  $('#locationDropdown').dropdown('set selected', '2');
+  $('.blocklistDropdown').dropdown();
+});
 
 /*All code below is using logic to determine if all required criteria are met before allowing to proceed, handling error messages*/
 
 //Giving appropriate feedback upon clicking continue
 
 $('#cyberTransButton').on('click', function () {
+  syncTagSettingsFromDom();
   if(keySetting1 == true){
     $('#tagCue1Text').show();
     $('#tagCue1').transition('bounce');
@@ -85,40 +126,3 @@ $('#cyberTransButton').on('click', function () {
   }
 });
 
-//Get the value of the toggle when it changes, make messaging disappear if corrrected
-
-$(".ui.toggle.checkbox[name='allowTagToggle']").change(function() {
-  keySetting1 = $("input[name='allowTagInput']").is(":checked");
-
-  //If the yellow warning is already open, make it disappear when setting is corrected
-  if(keySetting1 == false){
-    $('#tagCue1Text').hide();
-  }
-
-  if(closedHints == hintsList.length) {
-    if((keySetting1 == false) && (keySetting2 == false)){
-       $( ".free4" ).addClass("green");
-    }
-    else{
-      $( ".free4" ).removeClass("green");
-    }
-  }
-});
-
-$(".ui.toggle.checkbox[name='autoTagToggle']").change(function() {
-  keySetting2 = $("input[name='autoTagInput']").is(":checked");
-
-  //If the yellow warning is already open, make it disappear when setting is corrected
-  if(keySetting2 == false){
-    $('#tagCue2Text').hide();
-  }
-
-  if(closedHints == hintsList.length) {
-    if((keySetting1 == false) && (keySetting2 == false)){
-       $( ".free4" ).addClass("green");
-    }
-    else{
-      $( ".free4" ).removeClass("green");
-    }
-  }
-});

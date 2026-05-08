@@ -20,9 +20,7 @@ var stepsList = [
 
 var hintsList = [
   {
-    hint: `Your friend Corey just posted an article that says your school is
-    closing, and it looks like many of your other friends are sharing it as
-    well. Click on the article to see what it says.`,
+    hint: `Tu amigo Corey acaba de publicar un artículo que dice que tu escuela va a cerrar, y parece que muchos de tus otros amigos también lo están compartiendo. Haz clic en el artículo para ver qué dice.`,
     element: '#hint1',
     hintPosition: 'middle-middle',
     audioFile: ['CUSML.9.4.02.mp3']

@@ -4,7 +4,7 @@ block content
   
   .computer.only.tablet.only.four.wide.column 
   .eight.wide.computer.ten.wide.tablet.sixteen.wide.mobile.column()
-    .ui.one.column.centered.grid.feedbackMessagesGrid
+    .ui.one.column.centered.grid.feedbackMessagesGrid.sim-privacy-feedback
       .ui.fixed.bottom.sticky
         .ui.icon.compact.hidden.message.warning#clickNextHelpMessage
           i.close.icon
@@ -16,32 +16,32 @@ block content
           i.close.icon
           i.question.icon.float
           .content
-            .ui.header Need some help? 
-            p Make sure you are clicking "Got it" on the blue dots!
+            .ui.header Need some help?
+            p Once the blue dots appear, open each one and click “Got it” before using the bottom button.
           
         .ui.icon.message.warning#clickAllDotsWarning
           i.close.icon
           i.hand.pointer.icon.float
           .content
             .ui.header There are still blue dots to find!
-            p Click through all of the blue dots to continue.
+            p There are five blue dots on this page—open each and click “Got it.” The bottom button then turns green so you can continue (you don’t have to fill in every dropdown).
             
     #step1.ui.container.addTopMargin
       h2.ui.header Privacy Settings
       br
-      
-      br.ui.divider
+      .ui.divider
+      br
       form.ui.form
         .grouped.fields#hint1
-          label.sectionTitle(for='account') Account Settings  
-            .field#hint2
-              br
-              .ui.toggle.checkbox(name='publicToggle')
-                  input(type='checkbox' name='isPrivate')
-                  label Private account
-            span.settingSmallLabel When your account is private, only people you approve can see your posts.
+          label.sectionTitle(for='account') Account Settings
+          .field#hint2
             br
-            br
+            .ui.toggle.checkbox(name='publicToggle')
+              input#privacySimIsPrivate(type='checkbox' name='isPrivate')
+              label(for='privacySimIsPrivate') Private account
+          span.settingSmallLabel When your account is private, only people you approve can see your posts.
+          br
+          br
             
       .ui.divider
       br
@@ -53,44 +53,31 @@ block content
             label.subsectionTitle(for='contacts') Contacts
             .field#hint3
               br
-              label.standardLabel Allow friend requests from
-                .div
-                .ui.selection.dropdown(name='friendRequestsDropdown')
-                  input(type='hidden' name='friendRequests')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
+              label.standardLabel(for='privacySimFriendRequests') Allow friend requests from
+              select.ui.fluid.dropdown.privacy-sim-single#privacySimFriendRequests(name='friendRequests')
+                option(value='') Select
+                option(value='0') Everyone
+                option(value='1') Friends of Friends
             br
             .field
-              label.standardLabel Who can see my friends list?
-                .div
-                .ui.selection.dropdown(name='friendListDropdown')
-                  input(type='hidden' name='friendList')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
+              label.standardLabel(for='privacySimFriendList') Who can see my friends list?
+              select.ui.fluid.dropdown.privacy-sim-single#privacySimFriendList(name='friendList')
+                option(value='') Select
+                option(value='0') Everyone
+                option(value='1') Friends of Friends
+                option(value='2') Friends
+                option(value='3') Only Me
             br
             label.subsectionTitle(for='comments') Comments
             .field
               br
-              label.standardLabel Allow comments from
-                .div
-                .ui.selection.dropdown(name='commentsListDropdown')
-                  input(type='hidden' name='commentsList')
-                  i.dropdown.icon
-                  .default.text Select
-                  .default.
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
+              label.standardLabel(for='privacySimCommentsList') Allow comments from
+              select.ui.fluid.dropdown.privacy-sim-single#privacySimCommentsList(name='commentsList')
+                option(value='') Select
+                option(value='0') Everyone
+                option(value='1') Friends of Friends
+                option(value='2') Friends
+                option(value='3') Only Me
             br
             .field
               label.standardLabel Block comments from
@@ -122,40 +109,36 @@ block content
                   option Ella Sroni
             br
             label.subsectionTitle(for='tags') Tags
-              .field
-                br
-                .ui.toggle.checkbox(name='tagToggle1')
-                  input(type='checkbox' name='allowTags' checked='checked')
-                  label Allow people to tag me in their posts
-              .field
-                .ui.toggle.checkbox(name='tagToggle2')
-                  input(type='checkbox' name='addTags' checked='checked')
-                  label Automatically add tagged posts in my timeline
-                  br
-                  br
+            .field
+              br
+              .ui.toggle.checkbox(name='tagToggle1')
+                input(type='checkbox' name='allowTags' checked='checked')
+                label Allow people to tag me in their posts
+            .field
+              .ui.toggle.checkbox(name='tagToggle2')
+                input(type='checkbox' name='addTags' checked='checked')
+                label Automatically add tagged posts in my timeline
+              br
+              br
       .ui.divider
       br
       form.ui.form
         .grouped.fields
             label.sectionTitle(for='information') Location Sharing Settings
-              .field#hint4
-                br
-                .ui.toggle.checkbox(name='locationToggle')
-                  input(type='checkbox' name='shareLocation' checked='checked')
-                  label Turn on location sharing
+            .field#hint4
+              br
+              .ui.toggle.checkbox(name='locationToggle')
+                input(type='checkbox' name='shareLocation' checked='checked')
+                label Turn on location sharing
             .field#hint5
               br
-              label.standardLabel Share my location with
-                .div
-                .ui.selection.dropdown(name='shareLocationWithToggle')
-                  input(type='hidden' name='shareLocationWith')
-                  i.dropdown.icon
-                  .default.text Select
-                  .menu
-                    .item(data-value='0') Everyone
-                    .item(data-value='1') Friends of Friends
-                    .item(data-value='2') Friends
-                    .item(data-value='3') Only Me
+              label.standardLabel(for='privacySimShareLocationWith') Share my location with
+              select.ui.fluid.dropdown.privacy-sim-single#privacySimShareLocationWith(name='shareLocationWith')
+                option(value='') Select
+                option(value='0') Everyone
+                option(value='1') Friends of Friends
+                option(value='2') Friends
+                option(value='3') Only Me
             br
             .ui.divider
             br
@@ -167,6 +150,10 @@ block content
           |   Let's Continue!
 
 block scripts
+  //- If the module bundle 404s, base_sim.js still parses (privacy-only fallback).
+  script.
+    if (typeof hintsList === 'undefined') { var hintsList = []; }
+    if (typeof stepsList === 'undefined') { var stepsList = []; }
   script(src="/module_js/privacy/privacy_sim.js")
   script(src="/module_js/voiceover.js")
   script(src="/module_js/base_sim.js")

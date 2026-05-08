@@ -165,6 +165,14 @@ button,
     height: 15px;
 }
 
+/*
+ * Privacy (and similar) pages raise #hint1 / #step1 z-index so dropdown menus clear the help strip.
+ * Intro.js hints default to no z-index, so the form layer can paint above the dots and swallow clicks.
+ */
+.introjs-hint {
+    z-index: 10000004 !important;
+}
+
 
 /* ---- INTROJS STEPS ---- */
 
@@ -185,6 +193,8 @@ button,
     border: 1px solid rgba(0, 149, 255, .5);
     box-shadow: 0 2px 20px rgba(0, 149, 255, .4);
     background-color: rgba(255, 255, 255, 0);
+    /* Transparent layer still sat above #step1 and ate clicks (toggles, dropdowns). */
+    pointer-events: none;
 }
 
 

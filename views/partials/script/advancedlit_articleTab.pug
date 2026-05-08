@@ -2,12 +2,17 @@
   .ui.grid.gridInsideTab          
     .row
       .column
-
-        h2.articleSubheading 
-          | Uh oh! It looks like we're having trouble loading this article.
-        h1.articleHeading
-          | You can let the TestDrive team know about any issues by sending us 
-          | an email. Just click "Contact Us" at the bottom of the page.
+        if advancedlitArticleTabLocale === 'es'
+          h2.articleSubheading 
+            | ¡Vaya! Parece que hay un problema al cargar este artículo.
+          h1.articleHeading
+            | Puedes avisar al equipo de TestDrive enviándonos un correo: haz clic en «Contáctanos» al final de la página.
+        else
+          h2.articleSubheading 
+            | Uh oh! It looks like we're having trouble loading this article.
+          h1.articleHeading
+            | You can let the TestDrive team know about any issues by sending us 
+            | an email. Just click "Contact Us" at the bottom of the page.
         p.articleAuthor
         p.articleDate
     .row

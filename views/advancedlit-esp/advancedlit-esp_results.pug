@@ -2,7 +2,7 @@ extends ../ui_layout-esp
 
 block content
   -var cdn = "https://dhpd030vnpk29.cloudfront.net";
-  -var chosenTopic = user.advancedlitTopic;
+  -var chosenTopic = (user && user.advancedlitTopic) ? user.advancedlitTopic : '';
   
   .ui.container.resultsAddBottomMargin
     .ui.stackable.column.grid

@@ -25,22 +25,19 @@ var hintsList = [
 //Get the status of the key setting
 let keySetting1 = $("input[name='toggleValue']").is(':checked');
 
-//Using logic to determine if all required criteria are met before allowing to proceed
-
-$(".ui.toggle.checkbox[name='togglePrivateAccount']").change(function() {
-  keySetting1 = $("input[name='toggleValue']").is(":checked");
-  if(keySetting1 == true){
+function onPrivateAccountToggleChange() {
+  keySetting1 = $("input[name='toggleValue']").is(':checked');
+  if (keySetting1 == true) {
     $('#privateAccountCueText').hide();
   }
-  if(closedHints == hintsList.length) {
-    if((keySetting1 == true)){
-       $( "#cyberTransButton" ).addClass("green");
-    }
-    else{
-      $( "#cyberTransButton" ).removeClass("green");
+  if (closedHints == hintsList.length) {
+    if (keySetting1 == true) {
+      $('#cyberTransButton').addClass('green');
+    } else {
+      $('#cyberTransButton').removeClass('green');
     }
   }
-});
+}
 
 function customOnHintCloseFunction() {
   closedHints++;
@@ -97,9 +94,13 @@ $('#cyberTransButton').on('click', function () {
   }
 });
 
-//Make the dropdown work
-$('.ui.dropdown')
-  .dropdown('set selected', '0');
-
-$('#locationDropdown')
-  .dropdown('set selected', '2');
+$(function () {
+  $('#privateAccountCue').checkbox({
+    onChange: onPrivateAccountToggleChange,
+  });
+  $('.ui.toggle.checkbox:not(.read-only)').not('#privateAccountCue').checkbox();
+  $('.ui.selection.dropdown').dropdown();
+  $('.ui.selection.dropdown').dropdown('set selected', '0');
+  $('#locationDropdown').dropdown('set selected', '2');
+  $('.blocklistDropdown').dropdown();
+});

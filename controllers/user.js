@@ -266,7 +266,7 @@ exports.postUpdateProfile = async(req, res, next) => {
  * GET /me/:modId
  * Profile page.
  */
-exports.getMe = async(req, res) => {
+exports.getMe = async(req, res, next) => {
     try {
         const user = await User.findById(req.user.id).exec();
         const userPosts = user.getPosts(req.params.modId);
@@ -284,7 +284,7 @@ exports.getMe = async(req, res) => {
  * GET /habitsTimer
  * Get the timestamp information for the habits module.
  */
-exports.getHabitsTimer = async(req, res) => {
+exports.getHabitsTimer = async(req, res, next) => {
     try {
         const user = await User.findById(req.user.id).exec();
         const startTime = user.firstHabitViewTime;
@@ -308,11 +308,18 @@ exports.getHabitsTimer = async(req, res) => {
  * GET /esteemTopic
  * Get the topic the user selected in the esteem module.
  */
-exports.getEsteemTopic = async(req, res) => {
+exports.getEsteemTopic = async(req, res, next) => {
     try {
-        const user = await User.findById(req.user.id).exec();
-        const selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
         res.set('Content-Type', 'application/json; charset=UTF-8');
+        if (!req.user || !req.user.id) {
+            return res.send({ esteemTopic: '' });
+        }
+        const user = await User.findById(req.user.id).exec();
+        if (!user) {
+            return res.send({ esteemTopic: '' });
+        }
+        const topics = Array.isArray(user.esteemTopic) ? user.esteemTopic : [];
+        const selectedTopic = topics.length ? topics[topics.length - 1] : '';
         res.send({ esteemTopic: selectedTopic });
     } catch (err) {
         next(err);
@@ -340,26 +347,37 @@ exports.postPageLog = async(req, res, next) => {
  */
 exports.postUpdateInterestSelection = async(req, res, next) => {
     try {
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        if (!req.user || !req.user.id) {
+            // isAuthenticated skips login when Mongo URIs are unset; guests may have no req.user.
+            return res.send({ result: 'success', skipped: true });
+        }
         const user = await User.findById(req.user.id).exec();
+        if (!user) {
+            return res.status(404).send({ result: 'error', message: 'User not found' });
+        }
         let userTopic;
         switch (req.body.subdirectory2) {
             case 'targeted':
-                userTopic = user.targetedAdTopic;
-                break;
             case 'targeted-esp':
+                if (!Array.isArray(user.targetedAdTopic)) {
+                    user.targetedAdTopic = [];
+                }
                 userTopic = user.targetedAdTopic;
                 break;
             case 'esteem-esp':
-                userTopic = user.esteemTopic;
-                break;
             case 'esteem':
+                if (!Array.isArray(user.esteemTopic)) {
+                    user.esteemTopic = [];
+                }
                 userTopic = user.esteemTopic;
                 break;
+            default:
+                return res.status(400).send({ result: 'error', message: 'Unknown module' });
         }
         userTopic.push(req.body.chosenTopic);
         await user.save();
-        res.set('Content-Type', 'application/json; charset=UTF-8');
-        res.send({ result: "success" });
+        res.send({ result: 'success' });
     } catch (err) {
         next(err);
     }
@@ -418,7 +436,7 @@ exports.postAdvancedlitInterestSelection = async(req, res, next) => {
  * GET /advancedlitTopic
  * Get the advancedlit topic the user selected.
  */
-exports.getAdvancedlitTopic = async(req, res) => {
+exports.getAdvancedlitTopic = async(req, res, next) => {
     try {
         const user = await User.findById(req.user.id).exec();
         res.set('Content-Type', 'application/json; charset=UTF-8');
@@ -754,9 +772,10 @@ exports.getLearnerEarnedBadges = (req, res, next) => {
  * Delete user account.
  */
 exports.getDeleteAccount = async(req, res, next) => {
-    // Check if user exists
+    // With no MongoDB, isAuthenticated can call next() without attaching req.user (/delete still runs).
     if (!req.user) {
-        return res.status(401).send('Unauthorized');
+        res.set('Content-Type', 'application/json; charset=UTF-8');
+        return res.send({ result: 'success' });
     }
     // Is this a guest account?
     if (typeof req.user.isGuest !== 'undefined' && req.user.isGuest) {

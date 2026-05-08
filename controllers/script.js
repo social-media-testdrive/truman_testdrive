@@ -2,6 +2,8 @@ const Script = require('../models/Script.js');
 const User = require('../models/User');
 const Notification = require('../models/Notification');
 const mongoose = require('mongoose');
+const fs = require('fs');
+const path = require('path');
 const _ = require('lodash');
 
 /**
@@ -99,7 +101,9 @@ exports.getScript = (req, res, next) => {
         console.log('modId:', req.params.modId);
         // Use Spanish template for Spanish modules
         if (req.params.modId.endsWith('-esp')) {
-            const templatePath = req.params.modId + '/' + req.params.modId + '_script';
+            const specializedTemplate = req.params.modId + '/' + req.params.modId + '_script';
+            const specializedAbsolute = path.join(__dirname, '..', 'views', specializedTemplate + '.pug');
+            const templatePath = fs.existsSync(specializedAbsolute) ? specializedTemplate : 'script-esp';
             console.log('Using Spanish template:', templatePath);
             return res.render(templatePath, { script: [], mod: req.params.modId });
         } else {
@@ -946,12 +950,18 @@ exports.postBlueDotAction = (req, res, next) => {
  * TODO: This function should probably be moved to the user controller.
  */
 exports.postReflectionAction = (req, res, next) => {
+    if (!req.user || !req.user.id) {
+        return res.json({ result: 'success', skipped: true });
+    }
 
     User.findById(req.user.id, (err, user) => {
 
         // somehow user does not exist here
         if (err) {
             return next(err);
+        }
+        if (!user) {
+            return res.json({ result: 'success', skipped: true });
         }
 
         // Define the push location
@@ -987,11 +997,17 @@ exports.postReflectionAction = (req, res, next) => {
  * TODO: This function should probably be moved to the user controller.
  */
 exports.postQuizAction = (req, res, next) => {
+    if (!req.user || !req.user.id) {
+        return res.json({ result: 'success', skipped: true });
+    }
 
     User.findById(req.user.id, (err, user) => {
         // somehow user does not exist here
         if (err) {
             return next(err);
+        }
+        if (!user) {
+            return res.json({ result: 'success', skipped: true });
         }
 
         // Define the push location

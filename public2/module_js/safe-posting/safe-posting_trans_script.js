@@ -19,7 +19,7 @@ const stepsList = [
     intro: `Try to spot and respond to posts where someone shared private
      information. You can also create a post that's okay to share with a broad
      audience on social media - one that doesn’t have any private information.`,
-     audioFile: ['CUSML.11.6.5.mp3']
+    audioFile: ['CUSML.11.6.5.mp3']
   },
   {
     intro: `Be on the lookout for any direct messages and try responding to them.

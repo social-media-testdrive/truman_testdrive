@@ -1,26 +1,26 @@
 const stepsList = [{
-        intro: `Click "Next" to begin!`,
+        intro: `¡Haz clic en "Siguiente" para comenzar!`,
         audioFile: ['']
     },
     {
-        intro: `Click on "Done" and then look for the blue dots&nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
+        intro: `Haz clic en "Listo" y luego busca los puntos azules&nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'>
     <div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'>
-    </div></a> &nbsp; &nbsp; &nbsp; &nbsp; to learn more...`,
+    </div></a> &nbsp; &nbsp; &nbsp; &nbsp; para saber más...`,
         audioFile: ['CUSML.11.5.1.mp3']
     }
 ];
 
 const hintsList = [{
         element: '#hint1',
-        hint: `If you see your friends sharing private information on social media,
-    it's a good idea to tell them to take it down.`,
+        hint: `Si ves que tus amigos comparten información privada en las redes sociales,
+    es una buena idea decirles que la quiten.`,
         hintPosition: 'middle-right',
         audioFile: ['CUSML.11.5.3.mp3']
     },
     {
         element: '#hint2',
-        hint: `Since these messages came from a stranger, you should not share any
-    private information with them. Remember, you can also ignore the person.`,
+        hint: `Como estos mensajes vienen de un desconocido, no debes compartir
+    ninguna información privada con esa persona. Recuerda que también puedes ignorarla.`,
         hintPosition: 'top-middle',
         audioFile: ['CUSML.11.5.2.mp3']
     }
@@ -46,17 +46,17 @@ function endIntro() {
         'showBullets': false,
         'showStepNumbers': false,
         'scrollToElement': true,
-        'doneLabel': 'Done &#10003',
-        'nextLabel': 'Next &rarr;',
-        'prevLabel': '&larr; Back',
-        'skipLabel': 'Exit'
+        'doneLabel': 'Listo &#10003',
+        'nextLabel': 'Siguiente &rarr;',
+        'prevLabel': '&larr; Atrás',
+        'skipLabel': 'Salir'
     });
     intro.setOptions({
         steps: [{
-            intro: 'Now let’s review what we learned.'
+            intro: 'Ahora repasemos lo que aprendimos.'
         }]
     });
-    intro.start().onexit(function() {
-        window.location.href = '/trans/safe-posting';
+    intro.start().onexit(function () {
+        window.location.href = '/trans/safe-posting-esp';
     });
-};
+}

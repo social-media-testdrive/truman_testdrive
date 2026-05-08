@@ -28,15 +28,15 @@ block content
       form.ui.form
         .grouped.fields
           label.sectionTitle(for='account') Account Settings
-            br
-            br
-            .field
-              .ui.toggle.read-only.checkbox(name='togglePrivateAccount')
-                input(type='checkbox' name='toggleValue')
-                label Private account
-            span.settingSmallLabel When your account is private, only people you approve can see your posts.
-            br
-            br
+          br
+          br
+          .field
+            .ui.toggle.read-only.checkbox(name='togglePrivateAccount')
+              input(type='checkbox' name='toggleValue')
+              label Private account
+          span.settingSmallLabel When your account is private, only people you approve can see your posts.
+          br
+          br
             
       .ui.divider
       br
@@ -49,8 +49,8 @@ block content
             .field
               br
               label.standardLabel Allow friend requests from
-                .div
-                .ui.selection.disabled.dropdown
+              .div
+              .ui.selection.dropdown
                   input(type='hidden' name='friendRequests')
                   i.dropdown.icon
                   .default.text Select
@@ -60,8 +60,8 @@ block content
             br
             .field
               label.standardLabel Who can see my friends list?
-                .div
-                .ui.selection.disabled.dropdown
+              .div
+              .ui.selection.dropdown
                   input(type='hidden' name='friendList')
                   i.dropdown.icon
                   .default.text Select
@@ -75,9 +75,9 @@ block content
             .field
               br
               label.standardLabel Allow comments from
-                .div
-                .ui.selection.disabled.dropdown
-                  input(type='hidden' name='friendRequests')
+              .div
+              .ui.selection.dropdown
+                  input(type='hidden' name='commentsList')
                   i.dropdown.icon
                   .default.text Select
                   .menu
@@ -89,7 +89,7 @@ block content
             .field
               label.standardLabel Block comments from
               .div
-                select.ui.fluid.search.disabled.dropdown(multiple='')
+                select.ui.fluid.search.dropdown.blocklistDropdown(multiple='')
                   option Fake N. Ame
                   option Ima Robot
                   option Cloe Hansen
@@ -116,32 +116,32 @@ block content
                   option Ella Sroni
             br
             label.subsectionTitle(for='tags') Tags
-              .field#hint2
-                br
-                .ui.toggle.checkbox(name='allowTagToggle')#tagCue1
-                  input(type='checkbox' name='allowTagInput' checked='checked')
-                  label Allow people to tag me in their posts
-              .field
-                .ui.toggle.checkbox(name='autoTagToggle')#tagCue2
-                  input(type='checkbox' name='autoTagInput' checked='checked')
-                  label Automatically add tagged posts in my timeline
-                  br
-                  br
+            .field#hint2
+              br
+              .ui.toggle.checkbox(name='allowTagToggle')#tagCue1
+                input(type='checkbox' name='allowTagInput' checked='checked')
+                label Allow people to tag me in their posts
+            .field
+              .ui.toggle.checkbox(name='autoTagToggle')#tagCue2
+                input(type='checkbox' name='autoTagInput' checked='checked')
+                label Automatically add tagged posts in my timeline
+              br
+              br
       .ui.divider
       br
       form.ui.form
         .grouped.fields
             label.sectionTitle(for='information') Location Sharing Settings
-              .field
-                br
-                .ui.toggle.read-only.checkbox
-                  input(type='checkbox' name='locationShare')
-                  label Turn on location sharing
+            .field
+              br
+              .ui.toggle.read-only.checkbox
+                input(type='checkbox' name='locationShare')
+                label Turn on location sharing
             .field
               br
               label.standardLabel Share my location with
-                .div
-                .ui.selection.disabled.dropdown#locationDropdown
+              .div
+              .ui.selection.dropdown#locationDropdown
                   input(type='hidden' name='resetDropdownSelection')
                   i.dropdown.icon
                   .default.text Select

@@ -1,29 +1,22 @@
 var hintsList = [{
-        hint: `Let’s try to analyze the news article to identify if this is an
-    accurate story.`,
+        hint: `Intentemos analizar el artículo de noticias para identificar si esta es una historia precisa y fiable.`,
         element: '#hint1',
         audioFile: ['CUSML.9.4.03.mp3']
     },
     {
-        hint: `This label tells you if the article is an opinion piece or a news
-    story. It’s great to read about other people’s opinions, but it’s important
-    not to confuse it for being fact!`,
+        hint: `Esta etiqueta te indica si el artículo es una columna de opinión o una noticia informativa. Leer opiniones ajenas está bien, ¡pero no las confundas con hechos comprobados!`,
         element: '#hint2',
         hintPosition: 'bottom-left',
         audioFile: ['CUSML.9.4.04.mp3']
     },
     {
-        hint: `Trustworthy news articles will also explain how and where their
-    information was gathered, and provide links to sources used by the author.
-    This article does not cite any official sources.`,
+        hint: `Los artículos de noticias fiables suelen explicar cómo y dónde reunieron la información y ofrecen enlaces a las fuentes que usó el autor. Este artículo no cita ninguna fuente oficial.`,
         element: '#hint3',
         hintPosition: 'bottom-middle',
         audioFile: ['CUSML.9.4.05.mp3']
     },
     {
-        hint: `Let’s search for more sources to see if others are reporting the same
-    news. Click the “Search for” button to learn what the first five results
-    are.`,
+        hint: `Busquemos más fuentes para ver si otros medios informan lo mismo. Haz clic en el botón de búsqueda para ver cuáles son los primeros cinco resultados.`,
         element: '#hint4',
         hintPosition: 'bottom-middle',
         audioFile: ['CUSML.9.4.06.mp3']

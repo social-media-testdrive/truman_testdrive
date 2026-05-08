@@ -15,9 +15,7 @@ var stepsList = [
   },
   {
     element: document.querySelectorAll('#step1')[0],
-    intro: `Dale click a Listo y busca los puntos azules &nbsp;&nbsp;<a role='button' tabindex='0'
-    class='introjs-hint'><div class='introjs-hint-dot'></div><div
-    class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para aprender más...`,
+    intro: `Dale clic a "Listo" y busca los puntos azules&nbsp;&nbsp;<a role='button' tabindex='0' class='introjs-hint'><div class='introjs-hint-dot'></div><div class='introjs-hint-pulse'></div></a> &nbsp; &nbsp; &nbsp; &nbsp; para aprender más...`,
     scrollTo:'tooltip',
     position:'left',
     audioFile: ['CUSML.7.6.2.mp3']
@@ -57,72 +55,88 @@ var hintsList = [
   }
 ];
 
-$('.ui.dropdown').dropdown('set selected', '0');
-
-$('.ui.dropdown').dropdown('set selected', '0');
-
 let clickAction = false;
 
-// Defining multi-select onAdd and onRemove functions, triggered when a dropdown multi-select is changed
-$('.blocklistDropdown').dropdown({
-    onAdd: function(addedValue, addedText, $addedChoice) {
-        clickAction = true;
-        $('#confirmContinueCheck').hide();
-        let cat = {};
-        cat.subdirectory1 = 'sim';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = 'blockList- add';
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = addedValue;
+function applyPrivacySimDropdownDefaults() {
+  $('#step1 select.privacy-sim-single').each(function () {
+    const $wrap = $(this).closest('.ui.dropdown');
+    if (!$wrap.length) return;
+    try {
+      $wrap.dropdown('set selected', '0');
+    } catch (e) { /* noop */ }
+  });
+}
 
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
+function eventsAfterHints() {
+  applyPrivacySimDropdownDefaults();
+}
+
+$(function () {
+  $('.ui.toggle.checkbox').checkbox();
+
+  $('#step1 select.privacy-sim-single').dropdown({
+    fullTextSearch: false,
+    forceSelection: false,
+    onChange: function (value, text) {
+      clickAction = true;
+      $('#confirmContinueCheck').hide();
+
+      const $module = $(this);
+      const $select = $module.is('select') ? $module : $module.find('select').first();
+
+      let cat = {};
+      cat.subdirectory1 = 'sim';
+      cat.subdirectory2 = 'privacy';
+      cat.inputField = $select.attr('name');
+      cat.absoluteTimestamp = Date.now();
+      cat.inputText = text;
+
+      $.post('/privacyAction', {
+        action: cat,
+        actionType: 'privacy',
+        _csrf: $('meta[name="csrf-token"]').attr('content'),
+      });
     },
-    onRemove: function(addedValue, removedText, $removedChoice) {
-        clickAction = true;
-        $('#confirmContinueCheck').hide();
+  });
+  applyPrivacySimDropdownDefaults();
 
-        let cat = {};
-        cat.subdirectory1 = 'sim';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = 'blockList- remove';
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = addedValue;
+  $('.blocklistDropdown').dropdown({
+    onAdd: function (addedValue, addedText, $addedChoice) {
+      clickAction = true;
+      $('#confirmContinueCheck').hide();
+      let cat = {};
+      cat.subdirectory1 = 'sim';
+      cat.subdirectory2 = 'privacy';
+      cat.inputField = 'blockList- add';
+      cat.absoluteTimestamp = Date.now();
+      cat.inputText = addedValue;
 
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-    }
-});
+      $.post('/privacyAction', {
+        action: cat,
+        actionType: 'privacy',
+        _csrf: $('meta[name="csrf-token"]').attr('content'),
+      });
+    },
+    onRemove: function (addedValue, removedText, $removedChoice) {
+      clickAction = true;
+      $('#confirmContinueCheck').hide();
 
-//Triggered when a dropdown select is changed
-$('.ui.selection.dropdown:not(.blocklistDropdown)').dropdown({
-    onChange: function(value, text, $choice) {
-        clickAction = true;
-        $('#confirmContinueCheck').hide();
+      let cat = {};
+      cat.subdirectory1 = 'sim';
+      cat.subdirectory2 = 'privacy';
+      cat.inputField = 'blockList- remove';
+      cat.absoluteTimestamp = Date.now();
+      cat.inputText = addedValue;
 
-        let cat = {};
-        cat.subdirectory1 = 'sim';
-        cat.subdirectory2 = 'privacy';
-        cat.inputField = $(this).find('input').attr('name');
-        cat.absoluteTimestamp = Date.now();
-        cat.inputText = text;
+      $.post('/privacyAction', {
+        action: cat,
+        actionType: 'privacy',
+        _csrf: $('meta[name="csrf-token"]').attr('content'),
+      });
+    },
+  });
 
-        $.post("/privacyAction", {
-            action: cat,
-            actionType: 'privacy',
-            _csrf: $('meta[name="csrf-token"]').attr('content')
-        });
-    }
-});
-
-//Triggered when a toggle is changed
-$('.ui.toggle.checkbox input').change(function() {
+  $('.ui.toggle.checkbox input').on('change', function () {
     clickAction = true;
     $('#confirmContinueCheck').hide();
 
@@ -131,11 +145,16 @@ $('.ui.toggle.checkbox input').change(function() {
     cat.subdirectory2 = 'privacy';
     cat.inputField = $(this).attr('name');
     cat.absoluteTimestamp = Date.now();
-    cat.inputText = $(this).is(':checked') ? "true" : "false";
+    cat.inputText = $(this).is(':checked') ? 'true' : 'false';
 
-    $.post("/privacyAction", {
-        action: cat,
-        actionType: 'privacy',
-        _csrf: $('meta[name="csrf-token"]').attr('content')
+    $.post('/privacyAction', {
+      action: cat,
+      actionType: 'privacy',
+      _csrf: $('meta[name="csrf-token"]').attr('content'),
     });
-})
+  });
+
+  $(window).on('load', function () {
+    setTimeout(applyPrivacySimDropdownDefaults, 300);
+  });
+});
