@@ -11,6 +11,9 @@ const _ = require('lodash');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const CSVToJSON = require("csvtojson");
+
+let db; 
+
 /** 
  * Input Files:
  * Use CSV files instead of json files. Use a CSV file reader and use that as input.
@@ -34,34 +37,48 @@ async function readData() {
 }
 
 dotenv.config({ path: '.env' });
+console.log("URI loaded:", !!process.env.PRO_MONGODB_URI);
 
-mongoose.connect(process.env.PRO_MONGODB_URI, { useNewUrlParser: true });
-const db = mongoose.connection;
-mongoose.connection.on('error', (err) => {
-    console.error(err);
-    console.log('%s MongoDB connection error. Please make sure MongoDB is running.');
-    process.exit(1);
-});
+async function openDatabaseConnection() {
+    await mongoose.connect(process.env.PRO_MONGODB_URI, {});
+    console.log("Connected to MongoDB database");
+    db = mongoose.connection;
+    db.on('error', (err) => {
+        console.error(err);
+        console.log('%s MongoDB connection error. Please make sure MongoDB is running.', err);
+        process.exit(1);
+    });
+}
 
 /**
  * Drop existing collections before loading to make sure we don't overwrite the data in case we run the script twice or more.
  */
-function dropCollections() {
-    return new Promise((resolve, reject) => { //Drop the actors collection
-        console.log(color_start, "Dropping actors...");
-        db.collections['actors'].drop(function(err) {
-            console.log(color_success, 'Actors collection dropped');
-            resolve("done");
-        });
-    }).then(function(result) { //Drop the scripts collection
-        return new Promise((resolve, reject) => {
-            console.log(color_start, "Dropping scripts...");
-            db.collections['scripts'].drop(function(err) {
-                console.log(color_success, 'Scripts collection dropped');
-                resolve("done");
-            });
-        });
-    })
+async function dropCollections() {
+    console.log(color_start, "Dropping actors...");
+    try {
+        await db.dropCollection('actors');
+        console.log(color_success, 'Actors collection dropped');
+    } catch (err) {
+        if (err.codeName === 'NamespaceNotFound' || err.code === 26) {
+            console.log('Actors collection did not exist yet, skipping.');
+        } else {
+            console.log(color_error, 'Error dropping actors collection:', err.message);
+            throw err;
+        }
+    }
+
+    console.log(color_start, "Dropping scripts...");
+    try {
+        await db.dropCollection('scripts');
+        console.log(color_success, 'Scripts collection dropped');
+    } catch (err) {
+        if (err.codeName === 'NamespaceNotFound' || err.code === 26) {
+            console.log('Scripts collection did not exist yet, skipping.');
+        } else {
+            console.log(color_error, 'Error dropping scripts collection:', err.message);
+            throw err;
+        }
+    }
 }
 
 //Capitalize a string
@@ -268,6 +285,7 @@ function createPostRepliesInstances() {
 async function loadDatabase() {
     try {
         await readData(); //read data from csv files and convert it to json for loading
+        await openDatabaseConnection(); //wait for mongoose connection to be established before loading data
         await dropCollections(); //drop existing collecions before loading data
         await console.log(color_start, "Starting to populate actors collection...");
         await createActorInstances();

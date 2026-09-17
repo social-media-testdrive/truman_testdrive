@@ -11,14 +11,14 @@ const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
  */
 exports.getClasses = (req, res) => {
     if (!req.user.isInstructor) {
-        res.redirect('/');
+        return res.redirect('/');
     }
     Class.find({ teacher: req.user.id, deleted: false })
         .then((classes) => {
             //classes is array with all classes for this instructor
             res.render('teacherDashboard/classManagement', { classes: classes });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 /**
@@ -27,7 +27,7 @@ exports.getClasses = (req, res) => {
  */
 exports.getClassSize = (req, res, next) => {
     if (!req.user.isInstructor) {
-        res.redirect('/');
+        return res.redirect('/');
     }
     Class.findOne({
             accessCode: req.params.classId,
@@ -43,7 +43,7 @@ exports.getClassSize = (req, res, next) => {
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ studentCount: studentCount });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 /*
@@ -52,7 +52,7 @@ exports.getClassSize = (req, res, next) => {
  */
 exports.getClass = (req, res, next) => {
     if (!req.user.isInstructor) {
-        res.redirect('/');
+        return res.redirect('/');
     }
     Class.findOne({
             accessCode: req.params.classId,
@@ -67,7 +67,7 @@ exports.getClass = (req, res, next) => {
             }
             res.render('teacherDashboard/viewClass', { found_class: found_class });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 /**
@@ -89,11 +89,11 @@ exports.getClassUsernames = (req, res, next) => {
                 const myerr = new Error('Class not found!');
                 return next(myerr);
             }
-            const usernameArray = found_class.map(student => student.username);
+            const usernameArray = found_class.students.map(student => student.username);
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classUsernames: usernameArray });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 /*
@@ -113,7 +113,7 @@ exports.getClassIdList = (req, res, next) => {
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classIdList: outputData });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 /**
@@ -144,7 +144,7 @@ exports.getModuleProgress = (req, res, next) => {
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classModuleProgress: outputData });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 function getClassPageTimes(found_class, modName) {
@@ -215,7 +215,7 @@ exports.getClassPageTimes = (req, res, next) => {
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classPageTimes: classPageTimes });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 /**
@@ -245,7 +245,7 @@ exports.getClassFreeplayActions = (req, res, next) => {
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ classFreeplayActions: outputData });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 /**
@@ -276,7 +276,7 @@ exports.getReflectionResponses = (req, res, next) => {
             res.set('Content-Type', 'application/json; charset=UTF-8');
             res.json({ reflectionResponses: outputData });
         })
-        .catch((err) => done(err));
+        .catch((err) => next(err));
 }
 
 /**
@@ -293,6 +293,7 @@ exports.postCreateClass = async(req, res, next) => {
                 res.redirect('/login');
             });
         });
+        return;
     }
     const validationErrors = [];
     if (validator.isEmpty(req.body.classname)) validationErrors.push({ msg: 'Class Name cannot be blank.' });
@@ -381,7 +382,7 @@ exports.removeStudentFromClass = async(req, res, next) => {
         return res.redirect('/login');
     }
     try {
-        const found_class = Class.findOne({
+        const found_class = await Class.findOne({
                 accessCode: req.body.accessCode,
                 teacher: req.user.id,
                 deleted: false
@@ -404,7 +405,7 @@ exports.removeStudentFromClass = async(req, res, next) => {
         found_class.students.splice(studentIndex, 1);
         await found_class.save();
 
-        const found_student = User.findById(studentId).exec();
+        const found_student = await User.findById(studentId).exec();
         if (!found_student) {
             const myerr = new Error('Student not found!');
             return next(myerr);
@@ -454,7 +455,7 @@ async function getUniqueUsername(accessCode, adjectiveArray, nounArray, username
     return usernameArray;
 }
 
-async function saveUsernameInExistingClass(req, item, existingClass) {
+async function saveUsernameInExistingClass(req, item, existingClass, next) {
     let duplicateUser = await User.findOne({
             username: item,
             accessCode: req.body.accessCode,
@@ -537,7 +538,7 @@ exports.generateStudentAccounts = async(req, res, next) => {
             // async.each is waiting for each call to getUsername to return and runs callback for each of those
             let promiseArray = [];
             for (let username of usernameArray) {
-                promiseArray.push(saveUsernameInExistingClass(req, username, existingClass));
+                promiseArray.push(saveUsernameInExistingClass(req, username, existingClass, next));
             }
             await Promise.all(promiseArray);
             await existingClass.save();
@@ -998,7 +999,7 @@ exports.postClassTimeReportCsv = async(req, res, next) => {
 
         let csvString = headerArray.join(',') + '\n';
 
-        const found_class = Class.findOne({
+        const found_class = await Class.findOne({
                 accessCode: req.params.classId,
                 teacher: req.user.id,
                 deleted: false

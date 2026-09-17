@@ -50,16 +50,12 @@ exports.getClassLogin = (req, res) => {
  * Route only exists if isResearchVersion = true.
  */
 exports.postStudentLogin = (req, res, next) => {
-    //req.assert('email', 'Email is not valid').isEmail();
-    // commented out by Anna
-    //req.assert('password', 'Password cannot be blank').notEmpty();
-    req.assert('username', 'Please enter your username.').notEmpty();
-    //req.sanitize('email').normalizeEmail({ remove_dots: false });
-
-    const errors = req.validationErrors();
-
-    if (errors) {
-        req.flash('errors', errors);
+    const validationErrors = [];
+    if (!req.body.username || validator.isEmpty(req.body.username)) {
+        validationErrors.push({ msg: 'Please enter your username.' });
+    }
+    if (validationErrors.length) {
+        req.flash('errors', validationErrors);
         return res.redirect(`/classLogin/${req.params.accessCode}`);
     }
 
@@ -166,32 +162,30 @@ exports.logout = (req, res) => {
  */
 exports.getGuest = async(req, res, next) => {
     if (req.params.modId === "delete") {
-        // avoiding a specific user behavior that causes 500 errors
-        res.send({
-            result: "failure"
-        });
+        return res.send({ result: "failure" });
     }
     const currDate = Date.now();
     try {
-        const user = new User({
-            username: "guest" + makeid(10),
-            password: "thinkblue",
-            active: true,
-            isGuest: true,
-            lastNotifyVisit: currDate,
-            profile: {
-                name: "Guest",
-                location: "Guest Town",
-                bio: "",
-                picture: "avatar-icon.svg"
+        if (req.body && req.body.username) {   // check for actual content, not just an empty object
+            const existingUser = await User.findOne({ username: req.body.username }).exec();
+            if (existingUser) {
+                req.flash('errors', { msg: 'An account with that Username already exists.' });
+                return res.redirect('/guest/' + req.params.modId);
+            }
+        } else {
+            const user = new User({
+                username: "guest" + makeid(10),
+                password: "thinkblue",
+                active: true,
+                isGuest: true,
+                lastNotifyVisit: currDate,
+                profile: {
+                    name: "Guest",
+                    location: "Guest Town",
+                    bio: "",
+                    picture: "avatar-icon.svg"
             }
         });
-
-        const existingUser = await User.findOne({ username: req.body.username }).exec();
-        if (existingUser) {
-            req.flash('errors', { msg: 'An account with that Username already exists.' });
-            return res.redirect('/guest/' + req.params.modId);
-        } else {
             await user.save();
             req.logIn(user, (err) => {
                 if (err) {
@@ -258,7 +252,7 @@ exports.postUpdateProfile = async(req, res, next) => {
  * GET /me/:modId
  * Profile page.
  */
-exports.getMe = async(req, res) => {
+exports.getMe = async(req, res, next) => {
     try {
         const user = await User.findById(req.user.id).exec();
         const userPosts = user.getPosts(req.params.modId);
@@ -276,7 +270,7 @@ exports.getMe = async(req, res) => {
  * GET /habitsTimer
  * Get the timestamp information for the habits module.
  */
-exports.getHabitsTimer = async(req, res) => {
+exports.getHabitsTimer = async(req, res, next) => {
     try {
         const user = await User.findById(req.user.id).exec();
         const startTime = user.firstHabitViewTime;
@@ -300,7 +294,7 @@ exports.getHabitsTimer = async(req, res) => {
  * GET /esteemTopic
  * Get the topic the user selected in the esteem module.
  */
-exports.getEsteemTopic = async(req, res) => {
+exports.getEsteemTopic = async(req, res, next) => {
     try {
         const user = await User.findById(req.user.id).exec();
         const selectedTopic = user.esteemTopic[user.esteemTopic.length - 1];
@@ -563,7 +557,7 @@ async function getSectionJsonFromFile(filePath) {
     try {
         sectionJson = JSON.parse(sectionJsonBuffer);
     } catch (err) {
-        return next(err);
+        throw err;
     }
     return sectionJson;
 }

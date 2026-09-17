@@ -14,35 +14,35 @@
         "test": "mocha --reporter spec"
     },
     "dependencies": {
-        "@node-rs/bcrypt": "^1.10.5",
+        "@node-rs/bcrypt": "^1.10.9",
         "async": "^3.2.6",
-        "body-parser": "^1.20.3",
-        "connect-mongo": "^5.1.0",
+        "body-parser": "^2.3.0",
+        "connect-mongo": "^6.0.0",
         "csv-writer": "^1.6.0",
-        "csvtojson": "^2.0.10",
-        "dotenv": "^16.4.5",
-        "express": "^4.21.1",
+        "csvtojson": "^2.0.14",
+        "dotenv": "^17.4.2",
+        "express": "^5.2.1",
         "express-flash": "0.0.2",
-        "express-session": "^1.18.1",
-        "lodash": "^4.17.21",
+        "express-session": "^1.19.0",
+        "lodash": "^4.18.1",
         "lusca": "^1.7.0",
-        "mongoose": "^8.8.3",
-        "morgan": "^1.10.0",
-        "multer": "^1.4.5-lts.1",
+        "mongoose": "^9.10.1",
+        "morgan": "^1.12.1",
+        "multer": "^2.4.0",
         "passport": "^0.7.0",
         "passport-local": "^1.0.0",
         "path": "^0.12.7",
-        "pug": "^3.0.3",
-        "validator": "^13.12.0"
+        "pug": "^3.0.4",
+        "validator": "^13.15.35"
     },
     "devDependencies": {
-        "chai": "^5.1.2",
-        "nodemon": "^3.1.7",
-        "sinon": "^19.0.2",
-        "supertest": "^7.0.0"
+        "chai": "^6.2.2",
+        "nodemon": "^3.1.14",
+        "sinon": "^22.1.0",
+        "supertest": "^7.2.2"
     },
     "engines": {
-        "node": "22.11.0",
-        "npm": "10.9.0"
+        "node": "24.21.0",
+        "npm": "11.19.0"
     }
 }

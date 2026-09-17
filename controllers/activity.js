@@ -175,7 +175,7 @@ exports.postActivityData = async(req, res, next) => {
         const quizAnswersArray = getfilterObjects(user.quizAction, ['attemptNumber', 'attemptDuration', 'answers', 'numCorrect'], module, 'modual');
 
         // Check to see if user viewed quiz explanations in the current module 
-        viewQuizExplanationsBoolean = (user.viewQuizExplanations.find(record => record.module === module && record.click === true) !== undefined);
+        const viewQuizExplanationsBoolean = (user.viewQuizExplanations.find(record => record.module === module && record.click === true) !== undefined);
 
         // update activityData values
         activityData.newPosts = newPostsArray;

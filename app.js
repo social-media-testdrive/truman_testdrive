@@ -3,7 +3,7 @@
  */
 const express = require('express');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo').MongoStore;
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const lusca = require('lusca');
@@ -119,7 +119,7 @@ app.use((req, res, next) => {
     // After successful login, redirect back to the intended page
     if (!req.user &&
         req.path !== '/login' &&
-        req.path !== '/classLogin/:accessCode' &&
+        !req.path.startsWith('/classLogin/') &&
         !req.path.match(/\./)) {
         req.session.returnTo = req.originalUrl;
     }
@@ -616,7 +616,7 @@ app.use((req, res, next) => {
 
 });
 
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     err.status = err.status || 500;
     err.stack = req.app.get('env') === 'development' ? err.stack : ''; // Only provide error stack in development.
     err.message = req.app.get('env') === 'development' ? err.message : " Oops! Something went wrong.";

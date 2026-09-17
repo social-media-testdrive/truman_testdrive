@@ -12,6 +12,8 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const CSVToJSON = require("csvtojson");
 
+let db; 
+
 /** 
  * Input Files:
  * Use CSV files instead of json files. Use a CSV file reader and use that as input.
@@ -38,14 +40,18 @@ async function readData() {
 }
 
 dotenv.config({ path: '.env' });
+console.log("URI loaded:", !!process.env.PRO_MONGODB_URI);
 
-mongoose.connect(process.env.PRO_MONGODB_URI, { useNewUrlParser: true });
-const db = mongoose.connection;
-mongoose.connection.on('error', (err) => {
-    console.error(err);
-    console.log('%s MongoDB connection error. Please make sure MongoDB is running.');
-    process.exit(1);
-});
+async function openDatabaseConnection() {
+    await mongoose.connect(process.env.PRO_MONGODB_URI, {});
+    console.log("Connected to MongoDB database");
+    db = mongoose.connection;
+    db.on('error', (err) => {
+        console.error(err);
+        console.log('%s MongoDB connection error. Please make sure MongoDB is running.', err);
+        process.exit(1);
+    });
+}
 
 /**
  * Returns array, where the first element of the array contains the usernames of all actors in the database currently, 
@@ -331,6 +337,7 @@ function deletePostInstances(toDelete_PostIDs) {
 async function loadDatabase() {
     try {
         await readData(); //read data from csv files and convert it to json for loading
+        await openDatabaseConnection(); //wait for mongoose connection to be established before loading data
         const existingActors = await Actor.find().exec();
         const existingScripts = await Script.find().exec();
         const [existingActorsUsernames, existingScriptsPostIDs] = getUniqueIdentifiersOfObjects(existingActors, existingScripts);

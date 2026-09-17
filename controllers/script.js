@@ -7,7 +7,7 @@ const _ = require('lodash');
  * GET /habitsNotificationTimes
  * Get the notification timestamps for the habits module
  */
-exports.getNotificationTimes = async(req, res) => {
+exports.getNotificationTimes = async(req, res, next) => {
     try {
         const script_feed = await Script
             .find()
@@ -52,12 +52,12 @@ exports.getNotificationTimes = async(req, res) => {
  */
 exports.getSinglePost = async(req, res, next) => {
     try {
-        const post = await Script.find()
-            .where(post_id).equals(req.params.postId)
-            .exec();
+        const post = await Script.findOne({ post_id: req.params.postId }).exec();
         if (post) {
             res.set({ 'Content-Type': 'application/json; charset=UTF-8' });
             res.json({ post: post });
+        } else {
+            res.status(404).json({ error: 'Post not found' });
         }
     } catch (err) {
         next(err);

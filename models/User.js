@@ -307,15 +307,10 @@ const userSchema = new mongoose.Schema({
 /**
  * Password hash middleware.
  */
-userSchema.pre('save', async function save(next) {
+userSchema.pre('save', async function save() {
     const user = this;
-    if (!user.isModified('password')) { return next(); }
-    try {
-        user.password = await bcrypt.hash(user.password, 10);
-        next();
-    } catch (err) {
-        next(err);
-    }
+    if (!user.isModified('password')) { return; }
+    user.password = await bcrypt.hash(user.password, 10);
 });
 
 /**
